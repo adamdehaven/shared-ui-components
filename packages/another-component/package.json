@@ -1,0 +1,41 @@
+{
+  "name": "@kong/demo-component",
+  "version": "0.0.0-development",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "main": "./dist/demo-component.umd.js",
+  "module": "./dist/demo-component.js",
+  "exports": {
+    ".": {
+      "import": "./dist/demo-component.js",
+      "require": "./dist/demo-component.umd.cjs"
+    },
+    "./package.json": "./package.json",
+    "./dist/*": "./dist/*"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "pnpm typecheck && vite build && vue-tsc --emitDeclarationOnly",
+    "preview": "vite preview --port 4173",
+    "lint": "eslint '**/*.{js,ts,vue}'",
+    "lint:fix": "eslint '**/*.{js,ts,vue}' --fix",
+    "test:unit": "vitest --environment jsdom",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
+    "typechecknew": "vue-tsc --noEmit"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.38"
+  },
+  "repository": "https://github.com/Kong/kong-ui-shared-components/tree/main/packages/demo-component",
+  "author": "Kong, Inc.",
+  "license": "UNLICENSED",
+  "volta": {
+    "extends": "../../package.json"
+  }
+}
