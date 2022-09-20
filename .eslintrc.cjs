@@ -42,4 +42,15 @@ module.exports = {
     '@typescript-eslint/indent': ['error', 2],
     '@typescript-eslint/func-call-spacing': ['error', 'never'],
   },
+  overrides: [
+    {
+      files: [
+        'cypress/integration/**.spec.{js,ts,jsx,tsx}',
+        'cypress/integration/**.cy.{js,ts,jsx,tsx}',
+      ],
+      extends: [
+        'plugin:cypress/recommended',
+      ],
+    },
+  ],
 }
