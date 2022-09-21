@@ -1,0 +1,39 @@
+{
+  "name": "@kong-ui/utils",
+  "version": "0.0.1",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/utils.umd.js",
+  "module": "./dist/utils.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/utils.js",
+      "require": "./dist/utils.umd.cjs"
+    },
+    "./package.json": "./package.json",
+    "./dist/*": "./dist/*"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "scripts": {
+    "build": "run-s typecheck build:package build:types",
+    "build:package": "vite build",
+    "build:types": "vue-tsc --emitDeclarationOnly",
+    "lint": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path ../../.eslintignore",
+    "lint:fix": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path ../../.eslintignore --fix",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "repository": "https://github.com/Kong/kong-ui-shared-components/tree/main/packages/utils",
+  "author": "Kong, Inc.",
+  "license": "UNLICENSED",
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.38"
+  }
+}
