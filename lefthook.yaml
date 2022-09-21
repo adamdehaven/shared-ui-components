@@ -1,14 +1,12 @@
 # Reference:
 # https://github.com/evilmartians/lefthook/blob/master/docs/full_guide.md
 
-pre-commit:
-  commands:
-    eslint:
-      run: pnpm run lint
+# pre-commit:
+#   commands:
+#     eslint:
+#       run: pnpm run lint
 
 # commit-msg:
 #   commands:
 #     commitlint:
-#       skip:
-#         - rebase
-#       run: yarn commitlint --edit "$1"
+#       run: pnpm commitlint --edit
