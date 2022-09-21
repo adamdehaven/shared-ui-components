@@ -1,6 +1,6 @@
 # ui-shared-components
 
-> NOTE: Docs are a work in-progress
+> Note: Docs are a work in-progress
 
 > Monorepo for internally published Vue components
 

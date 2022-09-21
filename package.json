@@ -76,6 +76,10 @@
       "jiraAppend": "]"
     }
   },
+  "engines": {
+    "node": ">=16.17.0",
+    "pnpm": "7.x"
+  },
   "volta": {
     "node": "16.17.0"
   }

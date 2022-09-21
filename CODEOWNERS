@@ -3,6 +3,8 @@
 # opens a PR, unless a later match takes precedence.
 * @adamdehaven @ValeryG @jillztom
 
+/cli @adamdehaven
+
 # Individual package owners
 
 /packages/utils @adamdehaven @ValeryG @jillztom

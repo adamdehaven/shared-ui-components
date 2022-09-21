@@ -1,6 +1,6 @@
 # Creating a package
 
-> NOTE: Docs are a work in-progress
+> Note: Docs are a work in-progress
 
 ## Contents
 
