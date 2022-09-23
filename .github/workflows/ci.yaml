@@ -1,0 +1,172 @@
+name: CI
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+on:
+  push:
+    branches:
+      - main
+  pull_request: {}
+
+jobs:
+
+  install-dependencies:
+    name: Install Dependencies
+    runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    outputs:
+      changed_glob: ${{steps.changed_packages.outputs.glob}}
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v3
+
+      - name: Setup PNPM with Dependencies
+        uses: ./.github/actions/setup-pnpm-with-dependencies/
+        with:
+          force-install: 'true'
+
+      - name: Getting changed packages
+        id: changed_packages
+        # glob: "{packages/(demo-component|utils)}"
+        run: |
+          echo "::set-output name=glob::$(echo '{packages/('$(lerna changed | tr '\n' '|'|sed 's/@kong-ui\///g')))}"|sed 's/|)}/)}/'
+
+  build:
+    name: Build And Test
+    needs: install-dependencies
+    runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v3
+
+      - name: Setup PNPM with Dependencies
+        uses: ./.github/actions/setup-pnpm-with-dependencies/
+
+      - name: Lint Packages
+        run: pnpm  --stream --filter "${{needs.install-dependencies.outputs.changed_glob}}" run lint
+
+      - name: Build Packages
+        # The `...` syntax tells pnpm to include dependent packages
+        run: pnpm --stream --filter "...${{needs.install-dependencies.outputs.changed_glob}}..." run build
+
+      - name: Run Unit Tests
+        run: pnpm --stream --filter "${{needs.install-dependencies.outputs.changed_glob}}" run test:unit
+
+      - name: Prepare Cypress
+        run: pnpm cypress install
+
+      - name: Run Component Tests
+        uses: cypress-io/github-action@v4
+        with:
+          install: false
+          command: pnpm run test:component
+          spec: ${{needs.install-dependencies.outputs.changed_glob}}
+
+
+      - name: Upload Screenshots
+        uses: actions/upload-artifact@v3
+        continue-on-error: true
+        if: failure()
+        with:
+          name: cypress_screenshots_component
+          path: cypress/screenshots/
+
+      - name: Save build artifacts
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: package-dist-artifacts
+          path: packages/*/dist
+
+      - name: Publish to preview branch
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "TODO: publish to preview branch"
+
+      - name: Create PR message with konnect link
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "TODO: create PR message with konnect link"
+
+
+  publish:
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    name: Publish
+    needs:
+      - install-dependencies
+      - build
+    runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      GH_TOKEN: ${{ secrets.KONGPONENTS_BOT_PAT }}
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.KONGPONENTS_BOT_PAT }}
+
+      - name: Setup PNPM with Dependencies
+        uses: ./.github/actions/setup-pnpm-with-dependencies/
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: package-dist-artifacts
+
+      - name: Update package versions
+        run: |
+          git config --local user.name "gha-bot"
+          lerna version --conventional-commits --create-release github --yes
+
+      - name: Publish packages to NPM
+        run: pnpm -r --stream --filter "${{needs.install-dependencies.outputs.changed_glob}}" run publish  --access restricted
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # Packages must be added to <https://github.com/Kong/package-publisher/blob/main/publisher-config.json> in order to be published
+      - name: Trigger a build for packages.konghq.tech
+        run: curl -X POST https://api.netlify.com/build_hooks/62e831854acf631f9ebc7242
+
+      # - name: Push JS Map files
+      #   id: push-js-maps
+          # TODO
+      #   # for this we need updated versions and we would have to push those map files with the specific prefix
+          # based on version number and package name
+      #   run: |
+      #     pnpm datadog-ci sourcemaps upload dist/assets \
+      #       --service=konnect-ui \
+      #       --release-version="$(git rev-parse --short HEAD)" \
+      #       --minified-path-prefix=/assets
+      #   env:
+      #     DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+
+  notify-slack:
+    name: Slack Notification
+    if: ${{ always() && github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    needs:
+      - publish
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v3
+
+      - name: Get aggregate Workflow status
+        uses: technote-space/workflow-conclusion-action@v3
+
+      - name: Send notification
+        uses: edge/simple-slack-notify@v1
+        env:
+          SLACK_WEBHOOK_URL: ${{ env.WORKFLOW_CONCLUSION == 'failure' && secrets.SLACK_WEBHOOK_URL_ALERT || secrets.SLACK_WEBHOOK_URL_NOTIFY }}
+        with:
+          status: ${{ env.WORKFLOW_CONCLUSION }}
+          success_text: '<${env.GITHUB_SERVER_URL}/${env.GITHUB_REPOSITORY}/actions/runs/${env.GITHUB_RUN_ID}|${env.GITHUB_WORKFLOW} (${env.GITHUB_RUN_NUMBER})> workflow completed successfully :mario_luigi_dance:'
+          failure_text: '<${env.GITHUB_SERVER_URL}/${env.GITHUB_REPOSITORY}/actions/runs/${env.GITHUB_RUN_ID}|${env.GITHUB_WORKFLOW} (${env.GITHUB_RUN_NUMBER})> workflow failed :sad-panda:'
+          fields: |
+            [{ "title": "Repository", "value": "<${env.GITHUB_SERVER_URL}/${env.GITHUB_REPOSITORY}|${env.GITHUB_REPOSITORY}>", "short": true },
+             { "title": "Branch", "value": "<${env.GITHUB_SERVER_URL}/${env.GITHUB_REPOSITORY}/tree/${env.GITHUB_HEAD_REF || env.GITHUB_REF.substring(11)}|${env.GITHUB_HEAD_REF || env.GITHUB_REF.substring(11)}>", "short": true },
+             { "title": "Revision", "value": "<${env.GITHUB_SERVER_URL}/${env.GITHUB_REPOSITORY}/commit/${env.GITHUB_SHA}|${env.GITHUB_SHA.substring(0,7)}>", "short": true }]

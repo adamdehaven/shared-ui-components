@@ -31,7 +31,7 @@ updates:
     schedule:
       interval: daily
       time: '03:00'
-  - directory: /packages/utils
+  - directory: /packages/demo-utils
     package-ecosystem: npm
     registries:
       - npm

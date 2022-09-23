@@ -27,7 +27,9 @@
     "preview": "vite preview --port 4173",
     "lint": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path ../../.eslintignore",
     "lint:fix": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path ../../.eslintignore --fix",
-    "typecheck": "vue-tsc --noEmit"
+    "typecheck": "vue-tsc --noEmit",
+    "test:unit": "cross-env FORCE_COLOR=1 vitest --config ./vite.config.ts ",
+    "test:unit:open": "cross-env FORCE_COLOR=1 vitest --config ./vite.config.shared.ts --ui"
   },
   "repository": "https://github.com/Kong/kong-ui-shared-components/tree/main/packages/demo-component",
   "author": "Kong, Inc.",
@@ -39,6 +41,6 @@
     "vue": "^3.2.38"
   },
   "dependencies": {
-    "@kong-ui/utils": "^0.0.1"
+    "@kong-ui/demo-utils": "^0.0.1"
   }
 }

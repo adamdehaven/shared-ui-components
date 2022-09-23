@@ -7,6 +7,6 @@
 
 # Individual package owners
 
-/packages/utils @adamdehaven @ValeryG @jillztom
+/packages/demo-utils @adamdehaven @ValeryG @jillztom
 
 /packages/demo-component @adamdehaven @ValeryG

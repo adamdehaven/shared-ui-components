@@ -3,7 +3,7 @@ description: Reusable composition of setup-node, cache, and pnpm install actions
 inputs:
   nodejs-version:
     description: 'Version of NodeJS to use (ex: 16.15.0)'
-    required: true
+    default: '16'
   force-install:
     description: When 'true', pnpm install will be executed regardless of a cache hit
     required: false
@@ -30,9 +30,10 @@ runs:
         npm i -g pnpm@^7.0.0
         pnpm --version
 
+
     - name: Dependency Cache
       id: dependency-cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: '**/node_modules'
         key: pnpm-${{ inputs.nodejs-version }}-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}

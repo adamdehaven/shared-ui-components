@@ -1,17 +1,17 @@
 {
-  "name": "@kong-ui/utils",
+  "name": "@kong-ui/demo-utils",
   "version": "0.0.1",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/utils.umd.js",
-  "module": "./dist/utils.js",
+  "main": "./dist/demo-utils.umd.js",
+  "module": "./dist/demo-utils.js",
   "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/utils.js",
-      "require": "./dist/utils.umd.cjs"
+      "import": "./dist/demo-utils.js",
+      "require": "./dist/demo-utils.umd.cjs"
     },
     "./package.json": "./package.json",
     "./dist/*": "./dist/*"
@@ -27,7 +27,7 @@
     "lint:fix": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path ../../.eslintignore --fix",
     "typecheck": "vue-tsc --noEmit"
   },
-  "repository": "https://github.com/Kong/kong-ui-shared-components/tree/main/packages/utils",
+  "repository": "https://github.com/Kong/kong-ui-shared-components/tree/main/packages/demo-utils",
   "author": "Kong, Inc.",
   "license": "UNLICENSED",
   "volta": {
