@@ -94,7 +94,7 @@ importers:
 
   packages/demo-component:
     specifiers:
-      '@kong-ui/demo-utils': ^0.0.1
+      '@kong-ui/demo-utils': ^0.0.2
     dependencies:
       '@kong-ui/demo-utils': link:../demo-utils
 

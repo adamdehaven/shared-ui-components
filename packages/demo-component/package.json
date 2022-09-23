@@ -1,6 +1,6 @@
 {
   "name": "@kong-ui/demo-component",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "module",
   "files": [
     "dist"
@@ -41,6 +41,6 @@
     "vue": "^3.2.38"
   },
   "dependencies": {
-    "@kong-ui/demo-utils": "^0.0.1"
+    "@kong-ui/demo-utils": "^0.0.2"
   }
 }
