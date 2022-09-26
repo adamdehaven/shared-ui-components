@@ -5,5 +5,5 @@
 </template>
 
 <script setup lang="ts">
-import {%%COMPONENT_NAME%%} from '../src/{%%COMPONENT_NAME%%}.vue'
+import {%%COMPONENT_NAME%%} from '../src'
 </script>

@@ -5,5 +5,5 @@
 </template>
 
 <script setup lang="ts">
-import TestButton from '../src/TestButton.vue'
+import TestButton from '../src'
 </script>
