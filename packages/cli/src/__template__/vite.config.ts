@@ -7,8 +7,8 @@ export default mergeConfig(sharedViteConfig, defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, './src/index.ts'),
-      name: 'demo-utils',
-      fileName: (format) => `demo-utils.${format}.js`,
+      name: '{%%PACKAGE_NAME%%}',
+      fileName: (format) => `{%%PACKAGE_NAME%%}.${format}.js`,
     },
   },
 }))

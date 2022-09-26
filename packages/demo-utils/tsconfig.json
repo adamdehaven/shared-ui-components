@@ -1,18 +1,18 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "outDir": "dist",
-    "declarationDir": "dist/types"
+    "declarationDir": "dist/types",
+    "types": [
+      "../../cypress/support"
+    ]
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "sandbox/**/*"
   ],
   "exclude": [
     "node_modules",
-    "dist",
-    "sandbox",
-    "**/*.spec.ts",
-    "**/*.cy.ts"
+    "dist"
   ]
 }

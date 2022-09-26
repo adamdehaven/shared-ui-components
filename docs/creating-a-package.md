@@ -15,6 +15,7 @@
     - [`publishConfig`](#publishconfig)
   - [Include `tsconfig` files](#include-tsconfig-files)
     - [`tsconfig.json`](#tsconfigjson)
+    - [`tsconfig.build.json`](#tsconfigbuildjson)
   - [Include a `README.md` file](#include-a-readmemd-file)
   - [Implement your package within a `src/` directory](#implement-your-package-within-a-src-directory)
     - [Unit Tests](#unit-tests)
@@ -117,33 +118,11 @@ Please consult the `tsconfig.json` file that is already within existing packages
 
 ### `tsconfig.json`
 
-Each package MUST have a `tsconfig.json` file that extends the monorepo root `tsconfig.json`. This file can add/override Typescript compiler options as needed by the package. The minimum required `tsconfig.json` looks like:
+Each package MUST have a `tsconfig.json` file that extends the **monorepo root** `tsconfig.json`. This file can add/override Typescript compiler options as needed by the package. The minimum required `tsconfig.json` is generated when running the CLI.
 
-```json
-{
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    },
-    "outDir": "dist",
-    "declarationDir": "dist/types"
-  },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "sandbox",
-    "**/*.spec.ts",
-    "**/*.cy.ts"
-  ]
-}
-```
+### `tsconfig.build.json`
+
+Each package MUST have a `tsconfig.build.json` file that extends the **package root** `tsconfig.json` in order to exclude files and types that should be omitted from the build artifact. The minimum required `tsconfig.build.json` is generated when running the CLI.
 
 ## Include a `README.md` file
 

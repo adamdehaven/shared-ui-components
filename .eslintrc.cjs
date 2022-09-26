@@ -12,6 +12,7 @@ module.exports = {
     '@vue/eslint-config-typescript',
     'plugin:vue/vue3-recommended',
     '@vue/standard',
+    'plugin:cypress/recommended', // if this is missing, it looks like type errors
   ],
   parserOptions: {
     ecmaVersion: 'latest',

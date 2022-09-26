@@ -3,6 +3,10 @@
 # opens a PR, unless a later match takes precedence.
 * @adamdehaven @ValeryG @jillztom
 
+# @kong-ui/core package
+/packages/core @adamdehaven @ValeryG @jillztom
+
+# Component CLI
 /cli @adamdehaven
 
 # Individual package owners
