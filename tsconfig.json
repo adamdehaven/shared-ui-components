@@ -19,6 +19,7 @@
       "dom.iterable"
     ],
     "types": [
+      "node",
       "vite/client",
       "cypress"
     ]
