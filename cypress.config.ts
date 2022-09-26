@@ -9,6 +9,8 @@ export default defineConfig({
       viteConfig: sharedViteConfig,
     },
     supportFile: 'cypress/support/index.ts',
+    specPattern: 'src/**/*.cy.ts',
+    excludeSpecPattern: '__template__/**/*.cy.ts',
   },
   includeShadowDom: true,
   fixturesFolder: 'cypress/fixtures',
