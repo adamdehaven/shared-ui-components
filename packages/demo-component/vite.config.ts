@@ -8,7 +8,7 @@ export default mergeConfig(sharedViteConfig, defineConfig({
     lib: {
       entry: resolve(__dirname, './src/index.ts'),
       name: 'demo-component',
-      fileName: (format) => `kong-ui.demo-component.${format}.js`,
+      fileName: (format) => `demo-component.${format}.js`,
     },
   },
 }))

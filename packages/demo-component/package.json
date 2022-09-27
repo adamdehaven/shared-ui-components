@@ -10,8 +10,8 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/kong-ui.demo-component.es.js",
-      "require": "./dist/kong-ui.demo-component.umd.js"
+      "import": "./dist/demo-component.es.js",
+      "require": "./dist/demo-component.umd.js"
     },
     "./package.json": "./package.json",
     "./dist/*": "./dist/*"
