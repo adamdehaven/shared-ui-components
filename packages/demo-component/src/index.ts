@@ -15,4 +15,16 @@ const registerWebComponent = () => {
   customElements.define('test-button', TestButtonCustomElement)
 }
 
+if (typeof window !== 'undefined') {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  window.kongui = {
+    // @ts-ignore
+    ...window.kongui,
+    demo_component: {
+      TestButton,
+    },
+  }
+}
+
 export { TestButton, registerWebComponent }
