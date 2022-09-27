@@ -56,24 +56,24 @@ jobs:
       - name: Run Unit Tests
         run: pnpm --stream --filter "${{needs.install-dependencies.outputs.changed_glob}}" run test:unit
 
-      - name: Prepare Cypress
-        run: pnpm cypress install
+      # - name: Prepare Cypress
+      #   run: pnpm cypress install
 
-      - name: Run Component Tests
-        uses: cypress-io/github-action@v4
-        with:
-          install: false
-          command: pnpm run test:component
-          spec: ${{needs.install-dependencies.outputs.changed_glob}}
+      # - name: Run Component Tests
+      #   uses: cypress-io/github-action@v4
+      #   with:
+      #     install: false
+      #     command: pnpm run test:component
+      #     spec: ${{needs.install-dependencies.outputs.changed_glob}}
 
 
-      - name: Upload Screenshots
-        uses: actions/upload-artifact@v3
-        continue-on-error: true
-        if: failure()
-        with:
-          name: cypress_screenshots_component
-          path: cypress/screenshots/
+      # - name: Upload Screenshots
+      #   uses: actions/upload-artifact@v3
+      #   continue-on-error: true
+      #   if: failure()
+      #   with:
+      #     name: cypress_screenshots_component
+      #     path: cypress/screenshots/
 
       - name: Save build artifacts
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
@@ -117,6 +117,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: package-dist-artifacts
+          path: packages/
 
       - name: Update package versions
         run: |
