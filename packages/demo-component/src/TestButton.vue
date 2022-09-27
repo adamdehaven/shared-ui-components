@@ -30,7 +30,8 @@ const win = useWindow()
 
 const buttonClick = (): void => {
   active.value = !active.value
-
+  
+  // Set the display URL to the window.location.hostname
   displayUrl.value = win.getLocationHostname()
 }
 </script>
