@@ -117,12 +117,6 @@ importers:
     dependencies:
       '@kong-ui/demo-utils': link:../demo-utils
 
-  packages/demo-test:
-    specifiers:
-      '@kong-ui/demo-utils': workspace:^0.1.0
-    dependencies:
-      '@kong-ui/demo-utils': link:../demo-utils
-
   packages/demo-utils:
     specifiers: {}
 
