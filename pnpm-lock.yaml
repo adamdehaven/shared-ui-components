@@ -113,13 +113,13 @@ importers:
 
   packages/demo-component:
     specifiers:
-      '@kong-ui/demo-utils': workspace:^0.0.2
+      '@kong-ui/demo-utils': workspace:^0.1.0
     dependencies:
       '@kong-ui/demo-utils': link:../demo-utils
 
   packages/demo-test:
     specifiers:
-      '@kong-ui/demo-utils': workspace:^0.0.2
+      '@kong-ui/demo-utils': workspace:^0.1.0
     dependencies:
       '@kong-ui/demo-utils': link:../demo-utils
 
