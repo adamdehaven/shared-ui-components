@@ -15,6 +15,12 @@ const registerWebComponent = () => {
   customElements.define('test-button', TestButtonCustomElement)
 }
 
+// @ts-ignore
+window.TestButton = TestButton
+
+console.log('package window defined?', typeof window !== 'undefined')
+console.log('package window', window)
+
 if (typeof window !== 'undefined') {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
