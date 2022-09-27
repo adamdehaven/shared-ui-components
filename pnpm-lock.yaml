@@ -113,7 +113,7 @@ importers:
 
   packages/demo-component:
     specifiers:
-      '@kong-ui/demo-core': workspace:^0.0.1
+      '@kong-ui/demo-core': workspace:^0.1.0
     dependencies:
       '@kong-ui/demo-core': link:../demo-core
 
