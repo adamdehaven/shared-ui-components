@@ -1,9 +1,9 @@
 export interface WindowComposable {
-  getLocationSearch: () => string,
   getLocationHostname: () => string,
   getLocationHref: () => string,
-  getLocationPathname: () => string,
   getLocationOrigin: () => string,
+  getLocationPathname: () => string,
+  getLocationSearch: () => string,
   getUrlSearchParams: () => URLSearchParams,
   setLocationHref: (url: string) => void
 }

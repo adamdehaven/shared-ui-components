@@ -108,7 +108,16 @@ importers:
       vue: 3.2.39
       vue-tsc: 0.40.13_typescript@4.7.4
 
+  packages/cli:
+    specifiers: {}
+
   packages/demo-component:
+    specifiers:
+      '@kong-ui/demo-utils': workspace:^0.0.2
+    dependencies:
+      '@kong-ui/demo-utils': link:../demo-utils
+
+  packages/demo-test:
     specifiers:
       '@kong-ui/demo-utils': workspace:^0.0.2
     dependencies:

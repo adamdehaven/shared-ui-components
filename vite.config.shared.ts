@@ -56,5 +56,7 @@ export default defineConfig({
     coverage: {
       reporter: ['text', 'json', 'html'],
     },
+    include: ['**/src/**/*.spec.ts'],
+    exclude: ['**/__template__/**/*.spec.ts'],
   },
 })

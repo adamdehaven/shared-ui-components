@@ -1,5 +1,5 @@
 {
-  "name": "@kong-ui/demo-component",
+  "name": "@kong-ui/demo-test",
   "version": "0.1.0",
   "type": "module",
   "main": "./dist/demo-component.umd.js",

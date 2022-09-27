@@ -22,10 +22,12 @@
   "scripts": {
     "build": "run-s typecheck build:package build:types",
     "build:package": "vite build",
-    "build:types": "vue-tsc -p ./tsconfig.build.json --emitDeclarationOnly",
-    "lint": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path ../../.eslintignore",
-    "lint:fix": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path ../../.eslintignore --fix",
-    "typecheck": "vue-tsc -p ./tsconfig.build.json --noEmit"
+    "build:types": "vue-tsc -p './tsconfig.build.json' --emitDeclarationOnly",
+    "lint": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../.eslintignore'",
+    "lint:fix": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../.eslintignore' --fix",
+    "typecheck": "vue-tsc -p './tsconfig.build.json' --noEmit",
+    "test:unit": "cross-env FORCE_COLOR=1 vitest run",
+    "test:unit:open": "cross-env FORCE_COLOR=1 vitest --ui"
   },
   "repository": "https://github.com/Kong/kong-ui-shared-components/tree/main/packages/demo-utils",
   "author": "Kong, Inc.",
