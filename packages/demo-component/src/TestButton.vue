@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useWindow } from '@kong-ui/demo-utils'
+import { useWindow } from '@kong-ui/demo-core'
 
 const displayUrl = ref('')
 const active = ref(false)

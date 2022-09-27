@@ -1,17 +1,17 @@
 {
-  "name": "@kong-ui/demo-utils",
-  "version": "0.1.0",
+  "name": "@kong-ui/demo-core",
+  "version": "0.0.1",
   "type": "module",
-  "main": "./dist/demo-utils.umd.js",
-  "module": "./dist/demo-utils.es.js",
+  "main": "./dist/demo-core.umd.js",
+  "module": "./dist/demo-core.es.js",
   "types": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "import": "./dist/demo-utils.es.js",
-      "require": "./dist/demo-utils.umd.js"
+      "import": "./dist/demo-core.es.js",
+      "require": "./dist/demo-core.umd.js"
     },
     "./package.json": "./package.json",
     "./dist/*": "./dist/*"
@@ -20,16 +20,18 @@
     "access": "restricted"
   },
   "scripts": {
+    "dev": "cross-env DEV_SANDBOX=true vite",
     "build": "run-s typecheck build:package build:types",
     "build:package": "vite build",
     "build:types": "vue-tsc -p './tsconfig.build.json' --emitDeclarationOnly",
+    "preview": "vite preview --port 4173",
     "lint": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../.eslintignore'",
     "lint:fix": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../.eslintignore' --fix",
     "typecheck": "vue-tsc -p './tsconfig.build.json' --noEmit",
     "test:unit": "cross-env FORCE_COLOR=1 vitest run",
     "test:unit:open": "cross-env FORCE_COLOR=1 vitest --ui"
   },
-  "repository": "https://github.com/Kong/kong-ui-shared-components/tree/main/packages/demo-utils",
+  "repository": "https://github.com/Kong/kong-ui-shared-components/tree/main/packages/demo-core",
   "author": "Kong, Inc.",
   "license": "UNLICENSED",
   "volta": {

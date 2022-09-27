@@ -42,6 +42,6 @@
     "vue": "^3.2.38"
   },
   "dependencies": {
-    "@kong-ui/demo-utils": "workspace:^0.1.0"
+    "@kong-ui/demo-core": "workspace:^0.0.1"
   }
 }
