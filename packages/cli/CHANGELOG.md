@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.2.0...@kong-ui/cli@0.2.1) (2022-09-28)
+
+
+### ♻️ Chores
+
+* give global var proper name ([880e889](https://github.com/Kong/kong-ui-shared-components/commit/880e889cb3225c076508f009e54e4f67ece0c4a5))
+
+
+
+
+
 # [0.2.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.1.0...@kong-ui/cli@0.2.0) (2022-09-27)
 
 
