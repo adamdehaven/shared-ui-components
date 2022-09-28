@@ -10,7 +10,7 @@ export default mergeConfig(sharedViteConfig, defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, './src/index.ts'),
-      name: packageName,
+      name: 'KongUiDemoCore', // The name of the exposed global variable
       fileName: (format) => `${packageName}.${format}.js`,
     },
   },
