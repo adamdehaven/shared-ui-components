@@ -63,3 +63,12 @@ For more information on different components that compose our commit messages, p
 [Lefthook](https://github.com/evilmartians/lefthook) is used to manage Git Hooks within the repo. A `commit-msg` hook is automatically setup that enforces commit message stands with `commitlint`, see [`lefthook.yml`](./lefthook.yaml).
 
 Additionally, CI will use `commitlint` to validate the commits associated with a PR in the `Lint and Validate` job.
+
+
+## Preview components.
+If your package components are already consumed by **Konnect** (`Kong/khcp-ui`) and you are working on the fix/change for this component - you can preview how your version of the component is acting in existing **Konnect DEV** environment or in **Konnect PR previews**.
+
+- Create your branch of and PR preview in this repository, do your code changes.
+- Open https://cloud.konghq.tech or your Konnect Development preview URL with `pkgdomain=pr-<N>--ui-shared-components` query string (where <N> - ui-shared-components PR number).
+
+konnect will pull preview of component build in your PR and use it.

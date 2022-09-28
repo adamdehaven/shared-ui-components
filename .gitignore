@@ -13,6 +13,7 @@ dist
 dist-ssr
 coverage
 *.local
+_public
 
 cypress/videos/
 cypress/screenshots/
@@ -27,5 +28,7 @@ cypress/screenshots/
 *.sln
 *.sw?
 
+# Local Netlify folder
+.netlify
 # cli bin
 packages/cli/bin

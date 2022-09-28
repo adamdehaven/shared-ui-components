@@ -42,9 +42,9 @@ jobs:
             filter=${filter}$(echo "${pkg}" | sed 's/@kong-ui\///g')"|"
 
             cPkg=$(echo "${pkg}" | sed 's/@kong-ui/packages/g')
-            compgen -G "${cPkg}/**/*.cy.ts"
-            if [[ $? == 0 ]]; then
-                spec="${spec} --spec ${cPkg}"
+            compGenRes=$(compgen -G "${cPkg}/**/*.cy.ts" || true)
+            if [[ -n "${compGenRes}" ]]; then
+              spec="${spec} --spec ${cPkg}"
             fi
           done
           filter=$(echo "${filter}" | sed 's/|$//')")}"
@@ -106,15 +106,14 @@ jobs:
           name: package-dist-artifacts
           path: packages/*/dist
 
-      - name: Publish to preview branch
+      - name: Publish previews
         if: github.event_name == 'pull_request'
-        run: |
-          echo "TODO: publish to preview branch"
+        uses: ./.github/actions/publish-previews/
+        with:
+          changed-glob: ${{needs.install-dependencies.outputs.changed_glob}}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          netlify-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
-      - name: Create PR message with konnect link
-        if: github.event_name == 'pull_request'
-        run: |
-          echo "TODO: create PR message with konnect link"
 
 
   publish:
