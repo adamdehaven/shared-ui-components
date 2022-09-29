@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.4](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/demo-component@0.3.3...@kong-ui/demo-component@0.3.4) (2022-09-29)
+
+
+### 📦 Code Refactoring
+
+* import package script ([#18](https://github.com/Kong/kong-ui-shared-components/issues/18)) ([aeb6ffc](https://github.com/Kong/kong-ui-shared-components/commit/aeb6ffc081a3b606c7c4f0fcab3b463ffa463a3f))
+
+
+
+
+
 ## [0.3.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/demo-component@0.3.2...@kong-ui/demo-component@0.3.3) (2022-09-29)
 
 
