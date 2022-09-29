@@ -120,10 +120,7 @@ importers:
       '@kong-ui/demo-core': link:../demo-core
 
   packages/demo-core:
-    specifiers:
-      '@kong-ui/demo-component': workspace:^0.3.2
-    dependencies:
-      '@kong-ui/demo-component': link:../demo-component
+    specifiers: {}
 
 packages:
 
