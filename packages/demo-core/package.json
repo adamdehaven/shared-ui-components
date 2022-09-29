@@ -1,6 +1,6 @@
 {
   "name": "@kong-ui/demo-core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "main": "./dist/demo-core.umd.js",
   "module": "./dist/demo-core.es.js",

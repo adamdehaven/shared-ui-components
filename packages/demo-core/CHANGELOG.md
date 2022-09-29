@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/demo-core@0.1.1...@kong-ui/demo-core@0.1.2) (2022-09-29)
+
+
+### 🐛 Bug Fixes
+
+* cyclical dependencies ([2ae0a3c](https://github.com/Kong/kong-ui-shared-components/commit/2ae0a3cac0ae441c3261df2cb37f9e29e3fae8a8))
+* remove imports ([9458dd2](https://github.com/Kong/kong-ui-shared-components/commit/9458dd27b9251ac9f508659cd6030c58b3a0c468))
+
+
+### ♻️ Chores
+
+* fix imports ([ab180d7](https://github.com/Kong/kong-ui-shared-components/commit/ab180d7f0fa4ffdeea003868c9bebc9a04f35dae))
+* update config ([e78f0a7](https://github.com/Kong/kong-ui-shared-components/commit/e78f0a7eacbf9c60535ae601b2ec37a25991d898))
+
+
+
+
+
 ## [0.1.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/demo-core@0.1.0...@kong-ui/demo-core@0.1.1) (2022-09-28)
 
 
