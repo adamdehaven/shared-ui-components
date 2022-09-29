@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.5](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/demo-component@0.3.4...@kong-ui/demo-component@0.3.5) (2022-09-29)
+
+
+### 🐛 Bug Fixes
+
+* component import ([cdd7898](https://github.com/Kong/kong-ui-shared-components/commit/cdd78985012e7431805cbd0f628b3d74416d48b4))
+
+
+
+
+
 ## [0.3.4](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/demo-component@0.3.3...@kong-ui/demo-component@0.3.4) (2022-09-29)
 
 
