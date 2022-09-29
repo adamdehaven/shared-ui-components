@@ -1,6 +1,6 @@
 import type { App } from 'vue'
 import { defineCustomElement } from 'vue'
-import TestButton from '../src/TestButton.vue'
+import TestButton from './TestButton.vue'
 
 // Export Vue plugin as the default
 export default {

@@ -24,6 +24,11 @@ defineProps({
     type: String,
     required: true,
   },
+  theButtonIsVisible: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
 })
 
 const win = useWindow()

@@ -10,7 +10,10 @@
         <kong-auth-login />
       </div>
       <hr>
-      <!-- <TestButton msg="This is the button" /> -->
+      <TestButton
+        msg="Test"
+        :the-button-is-visible="true"
+      />
       <!-- <NewComponent msg="This is the button" /> -->
     </div>
   </main>
@@ -18,11 +21,13 @@
 
 <script setup lang="ts">
 import { usePackage } from '../src'
-// import { TestButton } from '@kong-ui/demo-component'
-// import '@kong-ui/demo-component/dist/style.css'
+import { TestButton } from '@kong-ui/demo-component'
+
+// const ButtonComponent: typeof TestButton = TestButton
+
+// console.log(ButtonComponent)
 
 const { importPackage, loadingPackage, loadingStyles } = usePackage()
-
 // @ts-ignore
 // const NewComponent = window.kongui.demo_component.TestButton
 
