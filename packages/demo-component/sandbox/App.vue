@@ -5,5 +5,5 @@
 </template>
 
 <script setup lang="ts">
-import TestButton from '../src'
+import { TestButton } from '../src'
 </script>
