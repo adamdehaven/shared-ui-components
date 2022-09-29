@@ -68,12 +68,13 @@ export default function usePackage(): {
 
       // TODO: Mock process.env.NODE_ENV for now
       // @ts-ignore
-      window.process = { env: { NODE_ENV: 'production' } }
+      // window.process = { env: { NODE_ENV: 'production' } }
 
       // Create an array to store the requests we need to make
       const importArray: Promise<any>[] = []
 
       // Import package urls
+      // TODO: Should we use native ES imports, or add to the document.head? If adding to the document.head, make sure to add the `async` attribute to the script tag
       for (const url of packageUrls) {
         importArray.push(import(/* @vite-ignore */ url))
       }

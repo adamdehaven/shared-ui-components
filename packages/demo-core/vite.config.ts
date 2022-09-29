@@ -7,6 +7,11 @@ const packageName = 'demo-core'
 
 // Merge the shared Vite config with the local one defined below
 export default mergeConfig(sharedViteConfig, defineConfig({
+  // Define global constant replacements
+  define: {
+    'process.env.development': JSON.stringify('development'),
+    'process.env.production': JSON.stringify('production'),
+  },
   build: {
     lib: {
       entry: resolve(__dirname, './src/index.ts'),
