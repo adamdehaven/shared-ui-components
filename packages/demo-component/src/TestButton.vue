@@ -1,22 +1,21 @@
 <template>
-  <div class="test-button">
+  <div class="demo-component">
     <button
-      :class="{ 'active': active }"
+      :class="{ 'active': active, 'not-active': !active }"
       @click="buttonClick"
     >
       {{ msg }}
     </button>
-    <p v-if="active && displayUrl">
-      The current hostname is <code>{{ displayUrl }}</code>
+    <p v-if="active && displayText">
+      <b>{{ displayText }}</b>
     </p>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useWindow } from '@kong-ui/demo-core'
 
-const displayUrl = ref('')
+const displayText = ref('')
 const active = ref(false)
 
 defineProps({
@@ -31,24 +30,18 @@ defineProps({
   },
 })
 
-const win = useWindow()
-
 const buttonClick = (): void => {
   active.value = !active.value
 
-  // Set the display URL to the window.location.hostname
-  displayUrl.value = win.getLocationHostname()
+  // Set the display text
+  displayText.value = active.value ? "I'm active!" : ''
 }
 </script>
 
 <style lang="scss">
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.2;
-}
-
-.test-button button {
+.demo-component button {
   display: inline-flex;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
   background: #ccc;
   padding: 4px 16px;
@@ -76,12 +69,5 @@ body {
       background: darken(#007ac1, 10%);
     }
   }
-}
-
-code {
-  color: #007ac1;
-  background: #eee;
-  padding: 4px 8px;
-  border-radius: 6px;
 }
 </style>
