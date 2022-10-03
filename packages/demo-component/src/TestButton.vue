@@ -6,6 +6,7 @@
     >
       {{ msg }}
     </button>
+    <p>{{ buttonIsActive }}</p>
     <p v-if="active && displayText">
       <b>{{ displayText }}</b>
     </p>
@@ -13,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const displayText = ref('')
 const active = ref(false)
@@ -29,6 +30,8 @@ defineProps({
     default: true,
   },
 })
+
+const buttonIsActive = computed((): string => active.value ? 'Active' : 'Not active')
 
 const buttonClick = (): void => {
   active.value = !active.value

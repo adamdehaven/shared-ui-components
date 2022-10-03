@@ -20,12 +20,12 @@
     "access": "restricted"
   },
   "scripts": {
-    "dev": "cross-env DEV_SANDBOX=true vite",
+    "dev": "cross-env USE_SANDBOX=true vite",
     "build": "run-s typecheck build:package build:types",
     "build:package": "vite build",
     "build:types": "vue-tsc -p './tsconfig.build.json' --emitDeclarationOnly",
     "preview:package": "vite preview --port 4173",
-    "preview": "cross-env DEV_SANDBOX=true run-s build:package preview:package",
+    "preview": "cross-env USE_SANDBOX=true run-s build:package preview:package",
     "lint": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../.eslintignore'",
     "lint:fix": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../.eslintignore' --fix",
     "typecheck": "vue-tsc -p './tsconfig.build.json' --noEmit",

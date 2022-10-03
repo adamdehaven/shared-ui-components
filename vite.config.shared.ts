@@ -46,9 +46,9 @@ export default defineConfig({
       allow: [join(__dirname, '..')],
     },
   },
-  // Change the root when utilizing the sandbox via DEV_SANDBOX=true to use the `/sandbox/*` files
+  // Change the root when utilizing the sandbox via USE_SANDBOX=true to use the `/sandbox/*` files
   // During the build process, the `/sandbox/*` files are not used and we should default to the package root.
-  root: process.env.DEV_SANDBOX ? './sandbox' : process.cwd(),
+  root: process.env.USE_SANDBOX ? './sandbox' : process.cwd(),
   test: {
     globals: true,
     environment: 'jsdom',

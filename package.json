@@ -16,6 +16,7 @@
     "test:component:ci": "BABEL_ENV=cypress cypress run --component -b chrome",
     "test:unit": "cross-env FORCE_COLOR=1 pnpm -r run test:unit",
     "test:unit:open": "cross-env FORCE_COLOR=1 pnpm -r run test:unit:open",
+    "vue-sandbox": "pnpm --filter \"vue-sandbox-app\" run dev",
     "commit": "cz",
     "create-package": "pnpm --filter \"@kong-ui/cli\" run create-package",
     "generate-dependabot-config": "ts-node ./scripts/generate-dependabot-config"
@@ -57,8 +58,8 @@
     "js-yaml": "^4.1.0",
     "jsdom": "^20.0.0",
     "lerna": "^5.5.1",
-    "netlify-cli": "^11.8.2",
     "nanospinner": "^1.1.0",
+    "netlify-cli": "^11.8.2",
     "node-emoji": "^1.11.0",
     "npm-run-all": "^4.1.5",
     "picocolors": "^1.0.0",
@@ -70,6 +71,7 @@
     "tslib": "^2.4.0",
     "typescript": "~4.7.4",
     "vite": "^3.0.9",
+    "vite-plugin-externals": "^0.5.1",
     "vitest": "^0.23.0",
     "vue": "^3.2.38",
     "vue-tsc": "^0.40.7"

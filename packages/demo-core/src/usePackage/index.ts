@@ -1,17 +1,19 @@
-import { ref, Ref, readonly, computed, ComputedRef, onBeforeMount, nextTick } from 'vue'
+import { ref, Ref, readonly, computed, ComputedRef, nextTick } from 'vue'
 
 export type ScriptType = 'umd' | 'es'
 
-export interface PackageScripts {
-  /** @property {string[]} urls Array of strings of URL scripts to import */
-  urls: string[]
+export interface PackageScript {
+  /** @property {string} libName String of the lib name defined in the component's vite.config.ts. Only required for UMD imports; ES imports can pass an empty string. Example: 'demo-component' or 'kong-ui-demo-component' */
+  libName: string
+  /** @property {string} url String of URL of script to import */
+  url: string
   /** @property {ScriptType} type The type of the script bundle being imported, one of 'umd' or 'es'. Default is 'umd' */
   type?: ScriptType
 }
 
 export interface ImportParams {
-  /** @property {PackageScripts} scripts Script import config object */
-  scripts: PackageScripts,
+  /** @property {PackageScript} script Script import config object */
+  script: PackageScript,
   /** @property {Object} styles Style import config object */
   styles?: {
     /** @property {string[]} urls Array of strings of CSS assets. */
@@ -23,8 +25,8 @@ export interface ImportParams {
   onReady?: () => Promise<void>
 }
 
-export default function usePackage(): {
-  importPackage: ({ scripts, styles, onReady }: ImportParams) => void,
+export default function usePackage({ script, styles, onReady }: ImportParams): {
+  importPackage: () => Promise<any>,
   loadingPackage: Ref<boolean>,
   loadingStyles: Ref<boolean>,
 } {
@@ -35,21 +37,14 @@ export default function usePackage(): {
   /**
    * Private function to import scripts via native ES import
    */
-  const importScripts = async (scripts: PackageScripts, onReady?: () => Promise<void>) => {
+  const importScripts = async (): Promise<any> => {
     // Create an array to store the requests we need to make
-    const { urls, type } = scripts
+    const { libName, url, type } = script
     const importType = type !== undefined && ['umd', 'es'].includes(type) ? type : 'umd'
 
     // Import ES Module(s)
     if (importType === 'es') {
-      const importArray: Promise<any>[] = []
-
-      for (const url of urls) {
-        importArray.push(import(/* @vite-ignore */ url))
-      }
-
-      // Make requests
-      await Promise.all(importArray)
+      await import(/* @vite-ignore */ url)
 
       // Call onReady function now that package is imported
       if (typeof onReady === 'function') {
@@ -59,24 +54,39 @@ export default function usePackage(): {
       return
     }
 
-    // Scripts are umd files, so inject into the document.head with async attribute
-    for (const url of urls) {
-      const scriptTag = document.createElement('script')
+    // Must prefix with `kong-ui-`
+    const globalLibVariable = libName.startsWith('kong-ui-') ? libName : `kong-ui-${libName}`
 
-      scriptTag.async = true
-      scriptTag.src = url
-      document.head.appendChild(scriptTag)
+    // If the package global is already bound to the window, return the existing object
+    // @ts-ignore
+    if (window[globalLibVariable]) return window[globalLibVariable]
 
-      // TODO: https://errorsandanswers.com/waiting-for-dynamically-loaded-script/
-      // On multiple script load
-      scriptTag.addEventListener('load', async () => {
-        console.log('onLoad')
+    // Scripts is a umd file, so inject into the document.head
+    // @ts-ignore
+    window[globalLibVariable] = await new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.async = true
+      script.addEventListener('load', async () => {
         // Call onReady function now that package is imported
         if (typeof onReady === 'function') {
           await onReady()
         }
+
+        // Set loadingPackage ref to false after calling the optional onReady() callback
+        loadingPackage.value = false
+
+        // @ts-ignore
+        resolve(window[globalLibVariable])
       })
-    }
+      script.addEventListener('error', () => {
+        reject(new Error(`Could not load '${globalLibVariable}' from ${url}`))
+      })
+      script.src = url
+      document.head.appendChild(script)
+    })
+
+    // @ts-ignore
+    return window[globalLibVariable]
   }
 
   /**
@@ -106,51 +116,53 @@ export default function usePackage(): {
   }
 
   /**
-   * Import the package scripts/modules and corresponding CSS files - should only be called within the Vue `setup` function.
+   * Import the package scripts/modules and corresponding CSS files - should only be called within the Vue `setup` function inside `defineAsyncComponent` or the `onBeforeMount` hooks.
    */
-  const importPackage = async ({ scripts, styles, onReady }: ImportParams): Promise<void> => {
-    if (!scripts || !scripts.urls || !scripts.urls.length || typeof window === 'undefined' || typeof document === 'undefined') return
+  const importPackage = async (): Promise<any> => {
+    if (!script || !script.url || typeof window === 'undefined' || typeof document === 'undefined') return
 
-    const useShadowDom: ComputedRef<boolean> = computed((): boolean => !!styles && !!styles?.urls && !!styles?.urls.length && !!styles.shadowRoot)
+    const useShadowDom: ComputedRef<boolean> = computed((): boolean => Boolean(styles && styles?.urls && styles?.urls.length && styles.shadowRoot))
 
     // If no styles are being imported, set loadingStyles ref to false
     if (!styles || !styles?.urls || !styles?.urls?.length) {
       loadingStyles.value = false
     }
 
-    onBeforeMount(async () => {
-      // If injecting styles and NOT utilizing the shadowDOM, add the styles
-      // to the document.head before mounting the component
-      if (styles?.urls && !useShadowDom.value) {
-        await importStyles(styles.urls)
-        loadingStyles.value = false
-      }
+    // If injecting styles and NOT utilizing the shadowDOM, add the styles
+    // to the document.head before mounting the component
+    if (styles?.urls && styles?.urls?.length && !useShadowDom.value) {
+      await importStyles(styles.urls)
+      loadingStyles.value = false
+    }
 
-      // TODO: Mock process.env.NODE_ENV for now (Currently resolved with the `define` entry in the vite.config.ts)
-      // @ts-ignore
-      // window.process = { env: { NODE_ENV: 'production' } }
+    // If loading a UMD bundle
+    if ((!script.type || script.type === 'umd') && !useShadowDom.value) {
+      // Since this is a UMD bundle, we MUST return the result of the importScripts function call
+      // in order to pass the component to the consuming app.
+      return await importScripts()
+    }
 
-      await importScripts(scripts, onReady)
+    // We're loading an ES Module, so do NOT return the result of the importScripts function call
+    await importScripts()
 
-      // Await a DOM refresh so that element(s) are potentially added to the DOM
-      await nextTick()
+    // Await a DOM refresh so that element(s) are potentially added to the DOM
+    await nextTick()
 
-      // Always set loadingPackage ref to false after calling the optional onReady() callback
-      loadingPackage.value = false
+    // Always set loadingPackage ref to false after calling the optional onReady() callback
+    loadingPackage.value = false
 
-      // If injecting styles and ARE utilizing the shadowDOM, add the styles into the shadowRoot
-      if (styles?.urls && useShadowDom.value) {
+    // If injecting styles and ARE utilizing the shadowDOM, add the styles into the shadowRoot
+    if (styles?.urls && useShadowDom.value) {
       // Since we are appending styles to the shadowRoot, this must be called AFTER
       // loadingPackage has been set to true and after the user onReady() callback to
       // ensure that the element is hopefully present in the DOM.
-        await importStyles(styles.urls, styles?.shadowRoot)
+      await importStyles(styles.urls, styles?.shadowRoot)
 
-        // Await a DOM refresh so that styles are present in the DOM
-        await nextTick()
+      // Await a DOM refresh so that styles are present in the DOM
+      await nextTick()
 
-        loadingStyles.value = false
-      }
-    })
+      loadingStyles.value = false
+    }
   }
 
   return {
