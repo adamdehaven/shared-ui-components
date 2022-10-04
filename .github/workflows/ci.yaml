@@ -154,7 +154,13 @@ jobs:
 
       # Packages must be added to <https://github.com/Kong/package-publisher/blob/main/publisher-config.json> in order to be published
       - name: Trigger a build for packages.konghq.tech
-        run: curl -X POST https://api.netlify.com/build_hooks/62e831854acf631f9ebc7242
+        run: |
+          curl -X POST \
+              -H 'Accept: application/vnd.github.everest-preview+json' \
+              -H  'Content-Type: application/json' \
+              -H 'Authorization: token ${{ secrets.KONGPONENTS_BOT_PAT }}' \
+              --data '{"event_type": "webhook"}' https://api.github.com/repos/Kong/package-publisher/dispatches
+
 
       # - name: Push JS Map files
       #   id: push-js-maps
