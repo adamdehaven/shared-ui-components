@@ -1,6 +1,6 @@
 {
   "name": "vue-sandbox-app",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -11,7 +11,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "@kong-ui/core": "workspace:^0.0.0",
+    "@kong-ui/core": "workspace:^0.1.0",
     "vue": "^3.2.38",
     "vue-router": "^4.1.5"
   }

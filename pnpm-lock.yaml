@@ -126,13 +126,13 @@ importers:
 
   packages/demo-component:
     specifiers:
-      '@kong-ui/core': workspace:^0.0.0
+      '@kong-ui/core': workspace:^0.1.0
     dependencies:
       '@kong-ui/core': link:../core
 
   packages/vue-sandbox-app:
     specifiers:
-      '@kong-ui/core': workspace:^0.0.0
+      '@kong-ui/core': workspace:^0.1.0
       vue: ^3.2.38
       vue-router: ^4.1.5
     dependencies:
