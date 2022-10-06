@@ -41,5 +41,8 @@
   },
   "peerDependencies": {
     "vue": "^3.2.38"
+  },
+  "dependencies": {
+    "@kong-ui/core": "workspace:^0.0.0"
   }
 }

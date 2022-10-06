@@ -1,0 +1,13 @@
+{
+  "form": {
+    "title": "This is the form title",
+    "section": {
+      "sentence": "This is a nested sentence"
+    },
+    "paragraph": "This is a paragraph from en.json",
+    "fields": [
+      "one",
+      "two"
+    ]
+  }
+}

@@ -10,14 +10,20 @@
     <p v-if="active && displayText">
       <b>{{ displayText }}</b>
     </p>
+    <p>{{ t('form.paragraph') }}</p>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import english from './locales/en.json'
+import { useI18n } from '@kong-ui/core'
 
 const displayText = ref('')
 const active = ref(false)
+
+// @ts-ignore
+const { t } = useI18n(english)
 
 defineProps({
   msg: {

@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 import { defineAsyncComponent, onBeforeMount } from 'vue'
-import { usePackage } from '@kong-ui/demo-core'
+import { usePackage } from '@kong-ui/core'
 
 defineProps<{
   msg: string
