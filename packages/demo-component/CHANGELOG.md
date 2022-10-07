@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/demo-component@0.5.0...@kong-ui/demo-component@0.5.1) (2022-10-07)
+
+
+### ⚙️ Continuous Integrations
+
+* KHCP-4857 publishing source maps to datadog. ([#22](https://github.com/Kong/kong-ui-shared-components/issues/22)) ([a2b9052](https://github.com/Kong/kong-ui-shared-components/commit/a2b9052e5530ec4bfbd40e1f958860c0e0728ee8))
+
+
+
+
+
 # [0.5.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/demo-component@0.4.0...@kong-ui/demo-component@0.5.0) (2022-10-06)
 
 
