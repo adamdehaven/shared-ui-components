@@ -7,7 +7,8 @@
     "paragraph": "This is a paragraph from en.json",
     "fields": [
       "one",
-      "two"
+      "two",
+      "three"
     ]
   }
 }

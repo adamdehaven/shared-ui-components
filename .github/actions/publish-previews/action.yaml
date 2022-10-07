@@ -1,7 +1,7 @@
 name: Publish preview
 description: Publishes changed projects to netlify and provides PR comment with the preview link
 inputs:
-  changed-glob:
+  filter:
     description: changed projects in glob pattern
     required: true
   repo-token:
@@ -21,14 +21,17 @@ runs:
       shell: bash
       run: |
         mkdir _public
-        for folder in $(echo "${{inputs.changed-glob}}" |sed 's/{packages\/(//g'|sed 's/)}//g'| tr '|' '\n')
+        for folder in $(echo "${{inputs.filter}}" |sed 's/{packages\/(//g'|sed 's/)}//g'| tr '|' '\n')
         do
-            echo "Processing ${folder}"
+            echo "Processing previews for ${folder}"
             if [[ -d "packages/${folder}/dist" ]]; then
                 echo "dist folder found"
                 pkgName=$(cat packages/${folder}/package.json | jq .name | sed 's/"//g')
                 mkdir -p "_public/${pkgName}"
                 cp -R "packages/${folder}/dist" "_public/${pkgName}/."
+                cd "packages/${folder}"
+                pnpm pack --pack-destination ../../_public
+                cd ../../
             fi
         done
 
@@ -42,7 +45,25 @@ runs:
       uses: marocchino/sticky-pull-request-comment@v2
       with:
         message: |
-            ## Preview URL
-            To ***preview*** components changed in this PR in current version of ***konnect*** use following URL:
+            ## ***Preview*** components from this PR in consuming application
+
+            ### for CDN consumption:
+            for **Konnect** or any other app that supports pkgdomain use it in the query string
+            example:
             https://cloud.konghq.tech?pkgdomain=pr-${{ github.event.number }}--ui-shared-components
+
+            or add query string into script loader in your consuming application code:
+            ```
+            script: {
+              libName: 'demo-component', // Required for UMD builds
+              url: 'https://packages.konghq.tech/@kong-ui/demo-component@0.5.0/dist/demo-component.umd.js?pkgdomain=pr-${{ github.event.number }}--ui-shared-components',
+              type: 'umd'
+            ```
+
+            ### for NPM consumption:
+            update `package.json` of consuming application and reference component package via tarball preview
+            ```
+            "@kong-ui/demo-component": "https://pr-${{ github.event.number }}--ui-shared-components.netlify.app/kong-ui-demo-component-0.4.0.tgz",
+            ```
+            where 0.4.0 - current version of the package you are modifying in this PR.
         GITHUB_TOKEN: ${{ inputs.repo-token }}

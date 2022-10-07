@@ -110,11 +110,9 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: ./.github/actions/publish-previews/
         with:
-          changed-glob: ${{needs.install-dependencies.outputs.changed_glob}}
+          filter: ${{needs.install-dependencies.outputs.filter}}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           netlify-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-
-
 
   publish:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
@@ -162,18 +160,26 @@ jobs:
               --data '{"event_type": "webhook"}' https://api.github.com/repos/Kong/package-publisher/dispatches
 
 
-      # - name: Push JS Map files
-      #   id: push-js-maps
-          # TODO
-      #   # for this we need updated versions and we would have to push those map files with the specific prefix
-          # based on version number and package name
-      #   run: |
-      #     pnpm datadog-ci sourcemaps upload dist/assets \
-      #       --service=konnect-ui \
-      #       --release-version="$(git rev-parse --short HEAD)" \
-      #       --minified-path-prefix=/assets
-      #   env:
-      #     DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+      - name: Push JS Map files
+        id: push-js-maps
+        run: |
+          for folder in $(echo "${{needs.install-dependencies.outputs.filter}}" |sed 's/{packages\/(//g'|sed 's/)}//g'| tr '|' '\n')
+          do
+              echo "Processing map files for ${folder}"
+              if [[ -d "packages/${folder}/dist" ]]; then
+                echo "dist folder found"
+
+                pkgName=$(cat packages/${folder}/package.json |jq  -r ".name")
+                pkgVersion=$(cat packages/${folder}/package.json |jq  -r ".version")
+
+                pnpm datadog-ci sourcemaps upload packages/${folder}/dist \
+                  --service=konnect-ui \
+                  --release-version="_" \
+                  --minified-path-prefix=https://packages.konghq.tech/${pkgName}@${pkgVersion}/dist
+              fi
+          done
+        env:
+          DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
 
   notify-slack:
     name: Slack Notification
