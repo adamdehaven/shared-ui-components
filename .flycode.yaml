@@ -4,8 +4,8 @@ environments:
     branch: main
     mode: pull-request
 apps:
-  - name: kong-ui-shared-components
+  - name: ui-shared/demo-component
     path: ""
     text-resources:
-      - path: src/locales/*.json
+      - path: packages/demo-component/src/locales/*.json
         format: nested-key-value
