@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.3.0...@kong-ui/cli@0.3.1) (2022-10-13)
+
+
+### 🐛 Bug Fixes
+
+* **cli:** update cli templates ([59c9e32](https://github.com/Kong/kong-ui-shared-components/commit/59c9e326a6804b14160aace72d0666b292aae811))
+* **template:** start version at 0.0.0 ([8162d52](https://github.com/Kong/kong-ui-shared-components/commit/8162d52568c572862b2cde1a9b4b1bca0717ec03))
+* **template:** update sandbox app template ([a2203bf](https://github.com/Kong/kong-ui-shared-components/commit/a2203bf4e92656c9836593a7cf1dd6704035190f))
+
+
+
+
+
 # [0.3.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.2.2...@kong-ui/cli@0.3.0) (2022-10-03)
 
 
