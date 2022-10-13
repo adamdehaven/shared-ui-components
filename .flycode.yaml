@@ -7,5 +7,5 @@ apps:
   - name: ui-shared-components
     path: ""
     text-resources:
-      - path: packages/demo-component/src/locales/*.json
+      - path: packages/**/src/locales/*.json
         format: nested-key-value
