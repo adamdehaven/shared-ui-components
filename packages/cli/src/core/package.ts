@@ -78,14 +78,19 @@ export const createPackageFiles = async (packageName: string): Promise<void> => 
         ├── sandbox/
         │   ├── App.vue
         │   ├── index.html
-        │   └── index.ts
-        ├── src/
         │   ├── index.ts
-        │   ├── ${componentName}.vue
-        │   ├── ${componentName}.cy.ts
-        │   └── ${componentName}.spec.ts
+        │   └── tsconfig.json
+        ├── src/
+        │   ├── components/
+        │   │  ├── ${componentName}.cy.ts
+        │   │  ├── ${componentName}.spec.ts
+        │   │  └── ${componentName}.vue
+        │   ├── locales/
+        │   │  └── en.json
+        │   ├── index.ts
         ├── package.json
         ├── README.md
+        ├── tsconfig.build.json
         ├── tsconfig.json
         └── vite.config.ts
     `,

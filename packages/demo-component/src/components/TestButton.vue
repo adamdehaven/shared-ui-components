@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import english from './locales/en.json'
+import english from '../locales/en.json'
 import { useI18n } from '@kong-ui/core'
 
 const displayText = ref('')

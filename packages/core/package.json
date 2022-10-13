@@ -43,8 +43,5 @@
   },
   "dependencies": {
     "flat": "^5.0.2"
-  },
-  "devDependencies": {
-    "@types/flat": "^5.0.2"
   }
 }

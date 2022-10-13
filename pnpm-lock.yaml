@@ -10,6 +10,7 @@ importers:
       '@digitalroute/cz-conventional-changelog-for-jira': ^7.4.0
       '@evilmartians/lefthook': ^1.1.1
       '@rushstack/eslint-patch': ^1.2.0
+      '@types/flat': ^5.0.2
       '@types/inquirer': ^9.0.1
       '@types/js-yaml': ^4.0.5
       '@types/jsdom': ^20.0.0
@@ -64,6 +65,7 @@ importers:
       '@digitalroute/cz-conventional-changelog-for-jira': 7.4.0
       '@evilmartians/lefthook': 1.1.1
       '@rushstack/eslint-patch': 1.2.0
+      '@types/flat': 5.0.2
       '@types/inquirer': 9.0.1
       '@types/js-yaml': 4.0.5
       '@types/jsdom': 20.0.0
@@ -117,18 +119,18 @@ importers:
 
   packages/core:
     specifiers:
-      '@types/flat': ^5.0.2
       flat: ^5.0.2
     dependencies:
       flat: 5.0.2
-    devDependencies:
-      '@types/flat': 5.0.2
 
   packages/demo-component:
     specifiers:
       '@kong-ui/core': workspace:^0.1.0
     dependencies:
       '@kong-ui/core': link:../core
+
+  packages/dynamic-sidebar:
+    specifiers: {}
 
   packages/vue-sandbox-app:
     specifiers:

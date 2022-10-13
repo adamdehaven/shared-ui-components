@@ -1,9 +1,9 @@
 import type { App } from 'vue'
 // import { defineCustomElement } from 'vue'
-import TestButton from './TestButton.vue'
-import RedButton from './RedButton.vue'
+import TestButton from './components/TestButton.vue'
+import RedButton from './components/RedButton.vue'
 
-// // Export Vue plugin as the default
+// Export Vue plugin as the default
 export default {
   install: (app: App): void => {
     app.component('TestButton', TestButton)
@@ -12,7 +12,7 @@ export default {
 }
 
 // const TestButtonCustomElement = defineCustomElement(TestButton)
-// // Export a function that registers a native web component
+// Export a function that registers a native web component
 // const registerWebComponent = () => {
 //   customElements.define('test-button', TestButtonCustomElement)
 // }
