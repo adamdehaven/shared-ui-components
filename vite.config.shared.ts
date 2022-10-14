@@ -20,6 +20,7 @@ export default defineConfig({
     outDir: './dist',
     cssCodeSplit: false,
     minify: true,
+    sourcemap: true,
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled into your library
       external: ['vue'],
@@ -29,7 +30,6 @@ export default defineConfig({
           vue: 'Vue',
         },
         exports: 'named',
-        sourcemap: true,
       },
     },
   },

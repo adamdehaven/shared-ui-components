@@ -8,6 +8,6 @@ describe('<{%%COMPONENT_NAME%%} />', () => {
   it('renders', () => {
     const wrapper = mount({%%COMPONENT_NAME%%})
 
-    expect(wrapper).to.be.visible()
+    expect(wrapper.isVisible()).toBe(true)
   })
 })
