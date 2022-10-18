@@ -1,6 +1,3 @@
-// Import types for custom commands
-/// <reference types="../../../cypress/support" />
-
 // Cypress component test spec file
 
 import {%%COMPONENT_NAME%%} from './{%%COMPONENT_NAME%%}.vue'

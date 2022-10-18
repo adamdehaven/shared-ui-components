@@ -16,7 +16,6 @@
     "test:component:ci": "BABEL_ENV=cypress cypress run --component -b chrome",
     "test:unit": "cross-env FORCE_COLOR=1 pnpm -r run test:unit",
     "test:unit:open": "cross-env FORCE_COLOR=1 pnpm -r run test:unit:open",
-    "vue-sandbox": "pnpm --filter \"vue-sandbox-app\" run dev",
     "commit": "cz",
     "create-package": "pnpm --filter \"@kong-ui/cli\" run create-package",
     "generate-dependabot-config": "ts-node ./scripts/generate-dependabot-config"
@@ -75,6 +74,7 @@
     "vite-plugin-externals": "^0.5.1",
     "vitest": "^0.23.0",
     "vue": "^3.2.38",
+    "vue-router": "^4.1.5",
     "vue-tsc": "^0.40.7"
   },
   "workspaces": [

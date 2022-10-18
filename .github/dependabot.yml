@@ -22,7 +22,7 @@ updates:
     commit-message:
       prefix: build(deps)
     open-pull-requests-limit: 5
-  - directory: /packages/demo-component
+  - directory: /packages/core
     package-ecosystem: npm
     registries:
       - npm
@@ -31,7 +31,7 @@ updates:
     schedule:
       interval: daily
       time: '03:00'
-  - directory: /packages/demo-utils
+  - directory: /packages/demo-component
     package-ecosystem: npm
     registries:
       - npm
@@ -40,3 +40,12 @@ updates:
     schedule:
       interval: daily
       time: '03:15'
+  - directory: /packages/poc-dynamic-sidebar
+    package-ecosystem: npm
+    registries:
+      - npm
+    commit-message:
+      prefix: build(deps)
+    schedule:
+      interval: daily
+      time: '03:30'

@@ -1,0 +1,49 @@
+{
+  "name": "@kong-ui/poc-dynamic-sidebar",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/poc-dynamic-sidebar.umd.js",
+  "module": "./dist/poc-dynamic-sidebar.es.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/poc-dynamic-sidebar.es.js",
+      "require": "./dist/poc-dynamic-sidebar.umd.js"
+    },
+    "./package.json": "./package.json",
+    "./dist/*": "./dist/*"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "scripts": {
+    "dev": "cross-env USE_SANDBOX=true vite",
+    "build": "run-s typecheck build:package build:types",
+    "build:package": "vite build",
+    "build:types": "vue-tsc -p './tsconfig.build.json' --emitDeclarationOnly",
+    "preview:package": "vite preview --port 4173",
+    "preview": "cross-env USE_SANDBOX=true run-s build:package preview:package",
+    "lint": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../.eslintignore'",
+    "lint:fix": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../.eslintignore' --fix",
+    "typecheck": "vue-tsc -p './tsconfig.build.json' --noEmit",
+    "test:component": "BABEL_ENV=cypress cross-env FORCE_COLOR=1 cypress run --component -b chrome --spec './src/**/*.cy.ts' --project '../../.'",
+    "test:unit": "cross-env FORCE_COLOR=1 vitest run",
+    "test:unit:open": "cross-env FORCE_COLOR=1 vitest --ui"
+  },
+  "repository": "https://github.com/Kong/kong-ui-shared-components/tree/main/packages/poc-dynamic-sidebar",
+  "author": "Kong, Inc.",
+  "license": "UNLICENSED",
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.38",
+    "vue-router": "^4.1.5"
+  },
+  "dependencies": {
+    "@kong/kongponents": "8.0.0-beta.37"
+  }
+}

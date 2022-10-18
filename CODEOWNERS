@@ -6,7 +6,6 @@
 # Component CLI
 /cli @adamdehaven
 
-# UI Core Team
-
+# Core UI Team
 /packages/core @adamdehaven @ValeryG @jillztom
-/packages/demo-component @adamdehaven @ValeryG
+/packages/poc-dynamic-sidebar @adamdehaven @ValeryG @jillztom

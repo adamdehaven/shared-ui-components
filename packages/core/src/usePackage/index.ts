@@ -3,25 +3,25 @@ import { ref, Ref, readonly, computed, ComputedRef, nextTick } from 'vue'
 export type ScriptType = 'umd' | 'es'
 
 export interface PackageScript {
-  /** @property {string} libName String of the lib name defined in the component's vite.config.ts. Only required for UMD imports; ES imports can pass an empty string. Example: 'demo-component' or 'kong-ui-demo-component' */
+  /** String of the lib name defined in the component's vite.config.ts. Only required for UMD imports; ES imports can pass an empty string. Example: 'demo-component' or 'kong-ui-demo-component' */
   libName: string
-  /** @property {string} url String of URL of script to import */
+  /** String of URL of script to import */
   url: string
-  /** @property {ScriptType} type The type of the script bundle being imported, one of 'umd' or 'es'. Default is 'umd' */
+  /** The type of the script bundle being imported, one of 'umd' or 'es'. Default is 'umd' */
   type?: ScriptType
 }
 
 export interface ImportParams {
-  /** @property {PackageScript} script Script import config object */
+  /** Script import config object */
   script: PackageScript,
-  /** @property {Object} styles Style import config object */
+  /** Style import config object */
   styles?: {
-    /** @property {string[]} urls Array of strings of CSS assets. */
+    /** Array of strings of CSS assets. */
     urls?: string[]
-    /** @property {string} shadowRoot Query selector string of the shadowRoot element if adding the styles to the shadowDOM. */
+    /** Query selector string of the shadowRoot element if adding the styles to the shadowDOM. */
     shadowRoot?: string
   }
-  /** @property {function} Asynchronous function to call once package has been loaded. */
+  /** Asynchronous function to call once package has been loaded. */
   onReady?: () => Promise<void>
 }
 
