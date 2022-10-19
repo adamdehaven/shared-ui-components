@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/poc-dynamic-sidebar@0.1.2...@kong-ui/poc-dynamic-sidebar@0.1.3) (2022-10-19)
+
+
+### ♻️ Chores
+
+* fix logo container color ([d2b6d41](https://github.com/Kong/kong-ui-shared-components/commit/d2b6d4158dc29d344762c4007264c138172780bc))
+* update header height ([3d6b19b](https://github.com/Kong/kong-ui-shared-components/commit/3d6b19b52fba29dfd2666e7930f9721b51b8ce5d))
+
+
+
+
+
 ## [0.1.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/poc-dynamic-sidebar@0.1.1...@kong-ui/poc-dynamic-sidebar@0.1.2) (2022-10-19)
 
 
