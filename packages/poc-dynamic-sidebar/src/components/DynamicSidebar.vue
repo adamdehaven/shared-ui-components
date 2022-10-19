@@ -1,5 +1,8 @@
 <template>
-  <aside class="kong-ui-poc-dynamic-sidebar">
+  <aside
+    class="kong-ui-poc-dynamic-sidebar"
+    :style="computedStyles"
+  >
     <div
       v-if="hasLogo"
       class="logo-container"
@@ -54,7 +57,16 @@ const props = defineProps({
     required: false,
     default: () => ([]),
   },
+  headerHeight: {
+    type: Number,
+    required: false,
+    default: 60,
+  },
 })
+
+const computedStyles = computed(() => ({
+  minHeight: `${props.headerHeight}px`,
+}))
 
 const slots = useSlots()
 const hasLogo = computed(() => !!slots.logo)
@@ -101,8 +113,8 @@ li.sidebar-level-divider {
 .logo-container {
   display: flex;
   align-items: center;
+  margin-bottom: 8px;
   padding: 0 16px;
-  min-height: 60px;
 }
 </style>
 
