@@ -133,9 +133,9 @@ importers:
 
   packages/poc-dynamic-sidebar:
     specifiers:
-      '@kong/kongponents': 8.0.0-beta.37
+      '@kong/kongponents': 8.0.0-beta.40
     dependencies:
-      '@kong/kongponents': 8.0.0-beta.37
+      '@kong/kongponents': 8.0.0-beta.40
 
 packages:
 
@@ -645,8 +645,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@kong/kongponents/8.0.0-beta.37:
-    resolution: {integrity: sha512-tep16YdAEccBJxj/VV4UyUHx0USCL/m7lh2pVr4dnOegfV2JbmDn1f+dJJDm9Ulpm82tzlJnR9agSsYuzSdk+A==}
+  /@kong/kongponents/8.0.0-beta.40:
+    resolution: {integrity: sha512-ZhWnx6oXMohPvlztqC2BT1gU4YGxI3SLTCy8wEvJORruSqHMSaptZmunQtYtMFj1sdfqVHSs5BvisyUoewiK3g==}
     hasBin: true
     peerDependencies:
       vue: '>= 3.2.37'
