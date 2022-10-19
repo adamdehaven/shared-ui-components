@@ -112,6 +112,7 @@ li.sidebar-level-divider {
 
 .logo-container {
   display: flex;
+  color: #fff;
   align-items: center;
   margin-bottom: 8px;
   padding: 0 16px;
