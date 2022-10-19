@@ -3,4 +3,4 @@ dist
 **/dist/*
 public
 bin
-cli/template
+__template__
