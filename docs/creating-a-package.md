@@ -2,38 +2,71 @@
 
 > Note: Docs are a work in-progress
 
-## Contents
+- [Required: Use the provided CLI to scaffold your new package](#required-use-the-provided-cli-to-scaffold-your-new-package)
+- [Package Structure](#package-structure)
+- [Include a `package.json` file](#include-a-packagejson-file)
+  - [`dependencies`](#dependencies)
+  - [`peerDependencies`](#peerdependencies)
+  - [`devDependencies`](#devdependencies)
+  - [`scripts`](#scripts)
+  - [`publishConfig`](#publishconfig)
+  - [`files`](#files)
+  - [`types`](#types)
+- [Include `tsconfig` files](#include-tsconfig-files)
+  - [`tsconfig.json`](#tsconfigjson)
+  - [`tsconfig.build.json`](#tsconfigbuildjson)
+- [Include a `README.md` file](#include-a-readmemd-file)
+- [Implement your package within a `src/` directory](#implement-your-package-within-a-src-directory)
+  - [Unit Tests](#unit-tests)
+  - [Component Tests](#component-tests)
+- [Integrate with CI](#integrate-with-ci)
+  - [Publishing](#publishing)
+- [Update `CODEOWNERS`](#update-codeowners)
+- [Update Dependabot Config](#update-dependabot-config)
 
-- [Creating a package](#creating-a-package)
-  - [Contents](#contents)
-  - [Create a new package directory](#create-a-new-package-directory)
-  - [Include a `package.json` file](#include-a-packagejson-file)
-    - [`dependencies`](#dependencies)
-    - [`peerDependencies`](#peerdependencies)
-    - [`devDependencies`](#devdependencies)
-    - [`scripts`](#scripts)
-    - [`publishConfig`](#publishconfig)
-  - [Include `tsconfig` files](#include-tsconfig-files)
-    - [`tsconfig.json`](#tsconfigjson)
-    - [`tsconfig.build.json`](#tsconfigbuildjson)
-  - [Include a `README.md` file](#include-a-readmemd-file)
-  - [Implement your package within a `src/` directory](#implement-your-package-within-a-src-directory)
-    - [Unit Tests](#unit-tests)
-    - [Component Tests](#component-tests)
-  - [Integrate with CI](#integrate-with-ci)
-    - [Publishing](#publishing)
-  - [Update `CODEOWNERS`](#update-codeowners)
-  - [Update Dependabot Config](#update-dependabot-config)
+## Required: Use the provided CLI to scaffold your new package
 
-## Create a new package directory
+After running `pnpm install` to ensure your project is up-to-date, you **must** use the provided CLI to create a new package.
 
-Create a new directory for your package within the `packages/` directory of this repository.
-The name of the directory _should_ match the NPM package name defined in `package.json` (without the scope).
-Example: `@kong-ui/my-awesome-component` NPM package should live in the directory `packages/my-awesome-component`.
+```sh
+pnpm run create-package
+```
+
+This will launch an interactive prompt that will first verify your desired package name is available and then scaffold the required package structure and files.
+
+Once complete, the prompt will output the directory tree that was created and provide additional info on getting started.
+
+```txt
+Start Coding 🚀
+
+Your new package comes with an interactive sandbox where you can
+play with your new component.
+
+Configure the component import and usage inside the
+/packages/demo-component/sandbox/ directory.
+
+# Start the dev server
+$ pnpm --filter "@kong-ui/demo-component" run dev
+```
+
+## Package Structure
+
+This monorepo comes pre-configured with config files and other settings that :sparkles: automatically  work :sparkles: for all packages when [created via the CLI](#required-use-the-provided-cli-to-scaffold-your-new-package). In order to take advantage of this shared setup, each project must be structured correctly, including:
+
+- A `README.md` at the package root that explains the purpose of the package, usage instructions, etc. You can create additional `.md` files as needed for documentation, but please link to them from the package root `README.md`
+- A `package.json` file in the package root. The package `name` must follow the pattern `@kong-ui/{package-name}` where `{package-name}` is the same as the directory name itself.
+- A `tsconfig.json` that extends the root `tsconfig.json`
+- A `tsconfig.build.json` that extends the local package `tsconfig.json`
+- A `vite.config.ts` that extends (via `mergeConfig`) the root `vite.config.shared.ts`
+- All code **must** be contained within the `{package-name}/src` directory
+- A file at `src/index.ts` that exports all of the package exports.
+- If utilizing **any** text strings, your package **must** utilize a `src/locales/{lang}.json` file for the text strings and incorporate the `useI18n` helper from `@kong-ui/core`
+- All packages are initialized with their own fully-functional Vue sandbox.
 
 ## Include a `package.json` file
 
-Please consult the `package.json` files that are already within existing packages for a complete example.
+The `package.json` file is created automatically after running the CLI. Please consult the `package.json` files that are already within existing packages for a complete example.
+
 Some important fields to consider when adding your `package.json` are:
 
 ### `dependencies`
@@ -42,26 +75,26 @@ Make sure to include all explicitly versioned runtime dependencies within this s
 
 #### Depedencies on packages also managed within this monorepo
 
-Add the dependency to your `package.json` file by package name using the _latest_ package version (as defined in its own `package.json` file). For example, if you are developing `@kong-ui/new-foo` and `@kong-ui/foo` already exists as a package within `shared-js`, add the following to the `package.json` file of `@kong-ui/new-foo`:
+Add the dependency to your `package.json` file by package name using the _latest_ package version (as defined in its own `package.json` file). For example, if you are developing `@kong-ui/new-component` and `@kong-ui/demo-component` already exists as a package within `ui-shared-components`, add the following to the `package.json` file of `@kong-ui/new-component`:
 
 ```json
 "dependencies": {
-  "@kong-ui/foo": "0.6.2"
+  "@kong-ui/demo-component": "^1.6.2"
 }
 ```
 
-where `0.6.2` is the version that's currently listed in the `package.json` file of `@kong-ui/foo` within the `shared-js` repo.
+where `1.6.2` is the version that's currently listed in the `package.json` file of `@kong-ui/demo-component` within the `ui-shared-components` repo.
 
-During local development, the local version of `@kong-ui/foo` will be symlinked and used within `@kong-ui/new-foo`.
-During our release automation, Lerna will ensure that the version of `@kong-ui/foo` required in the `package.json` of `@kong-ui/new-foo` is kept up-to-date. That is, when a new version of `@kong-ui/foo` is released the `package.json` file of `@kong-ui/new-foo` is also updated and thus a new version of `@kong-ui/new-foo` is released.
+During local development, the local version of `@kong-ui/demo-component` will be symlinked and used within `@kong-ui/new-component`.
+During our release automation, Lerna will ensure that the version of `@kong-ui/demo-component` required in the `package.json` of `@kong-ui/new-component` is kept up-to-date. That is, when a new version of `@kong-ui/demo-component` is released the `package.json` file of `@kong-ui/new-component` is also updated and thus a new version of `@kong-ui/new-component` is released.
 
 ### `peerDependencies`
 
-Include loosely bounded (SemVer-wise) peer deps, i.e. `react` or `@nestjs/core`
+Include loosely bounded (SemVer-wise) peer deps, i.e. `vue` or `vue-router`
 
 ### `devDependencies`
 
-`devDependencies` should be empty or not defined at all within your `package.json` (with some exception). Please define `devDependencies` within the monorepo root `package.json` file, for example:
+`devDependencies` should be empty or not defined at all within your package's `package.json` (with some exception). Please define `devDependencies` within the monorepo root `package.json` file, for example:
 
 ```bash
  pnpm add -wD @types/foo
@@ -73,9 +106,13 @@ The following scripts should be defined within your package so that it's properl
 
 - `dev` to run the local sandbox of your component utilizing the files within the local `/sandbox/*` directory.
 - `build` to compile/transpile your package into a `dist/` artifact
+  - `build:package` (see existing examples)
+  - `build:types` (see existing examples)
 - `lint` to validate your code style/formatting via ESLint
 - `lint:fix` to automatically resolve basic code style/formatting issues with ESLint
 - `typecheck` to validate typecheck the code
+- `test:component` - to run Cypress component tests (if applicable)
+- `test:unit` - to run Vitest unit tests (if applicable)
 
 Your `scripts` section may also contain as many additional scripts as you'd like. However, please note that:
 
@@ -83,15 +120,10 @@ Your `scripts` section may also contain as many additional scripts as you'd like
 
 So, if you wanted to run lint the code in your package defined as the `lint` script command for a package named `@kong-ui/foo` you would run:
 
-```bash
-pnpm --filter "@kong-ui/foo" run lint
-
-# OR
-
-lerna run lint --scope "@kong-ui/foo"
+```sh
+pnpm --filter "@kong-ui/demo-component" run lint
 ```
 
-<!--
 ### `publishConfig`
 
 The `publishConfig` field is important as it marks the package as private for the given organization scope (i.e. `@kong-ui/`) and leverages pnpm features to rewrite the `main` and `typings` fields at time of publish. It should look something like:
@@ -99,10 +131,8 @@ The `publishConfig` field is important as it marks the package as private for th
 ```json
 "publishConfig": {
   "access": "restricted",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts"
 }
-``` -->
+```
 
 ### `files`
 
@@ -110,6 +140,12 @@ The [`files`](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#files) 
 
 ```json
 "files": ["dist"]
+```
+
+### `types`
+
+```json
+"types": "dist/types/index.d.ts"
 ```
 
 ## Include `tsconfig` files
@@ -122,7 +158,7 @@ Each package MUST have a `tsconfig.json` file that extends the **monorepo root**
 
 ### `tsconfig.build.json`
 
-Each package MUST have a `tsconfig.build.json` file that extends the **package root** `tsconfig.json` in order to exclude files and types that should be omitted from the build artifact. The minimum required `tsconfig.build.json` is generated when running the CLI.
+Each package MUST have a `tsconfig.build.json` file that extends the local **package** `tsconfig.json` in order to exclude files and types that should be omitted from the build artifact. The minimum required `tsconfig.build.json` is generated when running the CLI.
 
 ## Include a `README.md` file
 
@@ -136,7 +172,7 @@ All Vue and Typescript source code for your package should live within the `src/
 
 ### Unit Tests
 
-By convention, all unit tests MUST be included in the `src/` directory and follow the `*.spec.ts` filename pattern. A unit test can be defined as any test that does not require a visual UI running. An example of something you would write a Unit Test for would be a composable function or code within the `@kong-ui/utils` package. Unit tests are run via [Vitest](https://vitest.dev/).
+By convention, all unit tests MUST be included in the `src/` directory and follow the `*.spec.ts` filename pattern. A unit test can be defined as any test that does not require a visual UI running. An example of something you would write a Unit Test for would be a composable function or code within the `@kong-ui/core` package. Unit tests are run via [Vitest](https://vitest.dev/).
 
 ### Component Tests
 
@@ -154,7 +190,7 @@ By following this guide, CI integration should happen automatically. That is, yo
 
 ### Publishing
 
-Please reference the in-depth package publishing documentation [here](./package_publishing.md).
+Packaging is automatic via the CI. Releases are done via lerna and follow semantic-versioning.
 
 ## Update `CODEOWNERS`
 
@@ -163,6 +199,8 @@ Please update the `CODEOWNERS` file at the root of the repository so that it inc
 Refer to the [Github Docs](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners) on `CODEOWNERS` for more information.
 
 ## Update Dependabot Config
+
+> **Note**: This is automatically ran when creating a package via the CLI
 
 [Dependabot](https://docs.github.com/en/code-security/dependabot) is used to keep repo/package dependencies up-to-date. Because of limitations in how Dependabot is currently configured, the script [`generate-dependabot-config.ts`](../scripts/generate-dependabot-config.ts) is used to autogenerate the configuration.
 

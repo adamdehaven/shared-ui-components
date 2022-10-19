@@ -12,6 +12,7 @@ export default function useI18n(messages: Record<string, string>) {
 
   return {
     t,
+    // TODO: I'm not sure this is needed; we likely shouldn't be exporting the flattened messages object but rather should make devs interact through the provided methods (e.g. `t`)
     messages: flatten(messages),
   }
 }

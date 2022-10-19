@@ -6,27 +6,16 @@
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-## Table of Contents
-
-- [ui-shared-components](#ui-shared-components)
-  - [Table of Contents](#table-of-contents)
-  - [Repo Structure](#repo-structure)
-  - [Creating a package](#creating-a-package)
-  - [Package Publishing](#package-publishing)
-  - [Development](#development)
-    - [Requirements](#requirements)
-    - [Setup](#setup)
-    - [Committing Changes](#committing-changes)
-
-## Repo Structure
+- [Creating a package](#creating-a-package)
+- [Development](#development)
+  - [Requirements](#requirements)
+  - [Setup](#setup)
+  - [Committing Changes](#committing-changes)
+- [Preview components](#preview-components)
 
 ## Creating a package
 
 View the guide on creating a new package within the monorepo [here](./docs/creating-a-package.md)
-
-## Package Publishing
-
-View the reference on how packages are versioned and published independently within the monorepo [here](./docs/package-publishing.md)
 
 ## Development
 
@@ -50,7 +39,7 @@ pnpm install
 
 This repo uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). [Commitizen](https://github.com/commitizen/cz-cli) and [Commitlint](https://github.com/conventional-changelog/commitlint) are used to help build and enforce commit messages.
 
-It is __highly recommended__ to use the following command in order to create your commits:
+It is **highly recommended** to use the following command in order to create your commits:
 
 ```sh
 pnpm commit
@@ -65,7 +54,8 @@ For more information on different components that compose our commit messages, p
 Additionally, CI will use `commitlint` to validate the commits associated with a PR in the `Lint and Validate` job.
 
 
-## Preview components.
+## Preview components
+
 If your package components are already consumed by **Konnect** (`Kong/khcp-ui`) and you are working on the fix/change for this component - you can preview how your version of the component is acting in existing **Konnect DEV** environment or in **Konnect PR previews**.
 
 - Create your branch of and PR preview in this repository, do your code changes.
