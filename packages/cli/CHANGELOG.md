@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.4.1...@kong-ui/cli@0.4.2) (2022-10-19)
+
+
+### ♻️ Chores
+
+* enable commitlint and pre-push lint ([#32](https://github.com/Kong/kong-ui-shared-components/issues/32)) ([87f03d2](https://github.com/Kong/kong-ui-shared-components/commit/87f03d2deb195d5e297863687eb9e832b78a5357))
+
+
+
+
+
 ## [0.4.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.4.0...@kong-ui/cli@0.4.1) (2022-10-19)
 
 
