@@ -80,7 +80,7 @@ const bottomNavItems = computed(() => props.bottomItems.length ? prepareNavItems
 </script>
 
 <style lang="scss" scoped>
-.kong-ui-dynamic-sidebar {
+.kong-ui-poc-dynamic-sidebar {
   position: relative;
   display: flex;
   flex-direction: column;
