@@ -49,3 +49,39 @@ updates:
     schedule:
       interval: daily
       time: '03:30'
+  - directory: /packages/test-package-three
+    package-ecosystem: npm
+    registries:
+      - npm
+    commit-message:
+      prefix: build(deps)
+    schedule:
+      interval: daily
+      time: '03:45'
+  - directory: /packages/test-package-two
+    package-ecosystem: npm
+    registries:
+      - npm
+    commit-message:
+      prefix: build(deps)
+    schedule:
+      interval: daily
+      time: '04:00'
+  - directory: /packages/test-package
+    package-ecosystem: npm
+    registries:
+      - npm
+    commit-message:
+      prefix: build(deps)
+    schedule:
+      interval: daily
+      time: '04:15'
+  - directory: /packages/test-thing-four
+    package-ecosystem: npm
+    registries:
+      - npm
+    commit-message:
+      prefix: build(deps)
+    schedule:
+      interval: daily
+      time: '04:30'

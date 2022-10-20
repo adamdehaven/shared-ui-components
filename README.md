@@ -1,8 +1,8 @@
 # ui-shared-components
 
-> Note: Docs are a work in-progress
+> **Note**: Docs are a work in-progress
 
-> Monorepo for internally published Vue components
+Monorepo for internally-published Vue components
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
@@ -18,6 +18,10 @@
 View the guide on creating a new package within the monorepo [here](./docs/creating-a-package.md)
 
 ## Development
+
+> **Note**: more info to come
+
+All packages should be created utilizing the `pnpm run create-package` CLI. [See here for more details.](./docs/creating-a-package.md#required-use-the-provided-cli-to-scaffold-your-new-package)
 
 ### Requirements
 

@@ -1,18 +1,22 @@
-import pc from 'picocolors'
 import fs from 'fs'
 import path from 'path'
 import { sleep, packagePath, pascalCase, packageTemplatePath, getTemplateFileList } from '.'
 import { createSpinner, Spinner } from 'nanospinner'
+import pc from 'picocolors'
 import boxen from 'boxen'
 import emoji from 'node-emoji'
 import { execSync } from 'child_process'
+import inquirer, { Answers } from 'inquirer'
+import questions from '../questions'
+
+const { packageName, confirmPackageName } = questions
 
 /**
  * @description Create new files for package
  * @param {string} packageName Package name
  * @return {*}
  */
-export const createPackageFiles = async (packageName: string): Promise<void> => {
+const createPackageFiles = async (packageName: string): Promise<void> => {
   const spinner: Spinner = createSpinner('Creating new package...').start()
   await sleep()
 
@@ -82,18 +86,9 @@ export const createPackageFiles = async (packageName: string): Promise<void> => 
     ${pc.white('packages/')}
     ${pc.white('└──')} ${packageName}/
         ├── sandbox/
-        │   ├── App.vue
-        │   ├── index.html
-        │   ├── index.ts
-        │   └── tsconfig.json
         ├── src/
         │   ├── components/
-        │   │  ├── ${componentName}.cy.ts
-        │   │  ├── ${componentName}.spec.ts
-        │   │  └── ${componentName}.vue
         │   ├── locales/
-        │   │  └── en.json
-        │   ├── index.ts
         ├── package.json
         ├── README.md
         ├── tsconfig.build.json
@@ -113,14 +108,19 @@ export const createPackageFiles = async (packageName: string): Promise<void> => 
     `
 ${pc.cyan(pc.bold(`Start Coding ${emoji.get('rocket')}`))}
 
-Your new package comes with an interactive sandbox where you can
-play with your new component.
+Check out your package files in /packages/${packageName}/*
 
-Configure the component import and usage inside the
+Your package also comes pre-configured with a Vue
+sandbox where you can interact with your component(s).
+
+Configure the component imports and usage inside the
 /packages/${packageName}/sandbox/ directory.
 
-# Start the dev server
-$ pnpm --filter "@kong-ui/${packageName}" run dev
+# Run commands for your package from the root
+$ ${pc.cyan(`pnpm --filter "@kong-ui/${packageName}" {your command}`)}
+
+# Start the sandbox dev server
+$ ${pc.cyan(`pnpm --filter "@kong-ui/${packageName}" run dev`)}
 `,
     {
       title: `@kong-ui/${packageName}`,
@@ -130,4 +130,44 @@ $ pnpm --filter "@kong-ui/${packageName}" run dev
       margin: 1,
     },
   ))
+}
+
+export const createPackage = async (): Promise<void> => {
+  console.clear()
+  console.log(boxen(pc.cyan(pc.bold(`${emoji.get('sparkles')} Create a new component package ${emoji.get('sparkles')}`)), {
+    title: '@kong-ui',
+    titleAlignment: 'center',
+    textAlignment: 'center',
+    padding: 1,
+    margin: 1,
+  }))
+
+  const getPackageName = async (): Promise<Answers> => {
+    // Ask for the package name
+    const { name } = await inquirer.prompt([packageName])
+
+    // Output a message confirming their package name
+    console.log('  Package name: ' + pc.cyan(`@kong-ui/${name}`))
+
+    // Ask the user to confirm the package name
+    const { confirmName } = await inquirer.prompt([confirmPackageName])
+
+    if (!confirmName) {
+      // The user did NOT confirm the package name, so inform them that we're starting over
+      console.log('  Ok, let\'s start over...')
+      console.log('')
+
+      // Start over
+      return getPackageName()
+    }
+
+    return {
+      name,
+    }
+  }
+
+  const answers = await getPackageName()
+
+  // Create packages/* files
+  await createPackageFiles(answers.name)
 }
