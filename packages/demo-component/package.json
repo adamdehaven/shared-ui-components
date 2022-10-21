@@ -1,6 +1,6 @@
 {
   "name": "@kong-ui/demo-component",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "type": "module",
   "main": "./dist/demo-component.umd.js",
   "module": "./dist/demo-component.es.js",
@@ -43,6 +43,6 @@
     "vue": "^3.2.38"
   },
   "dependencies": {
-    "@kong-ui/core": "workspace:^0.2.1"
+    "@kong-ui/core": "workspace:^0.2.2"
   }
 }
