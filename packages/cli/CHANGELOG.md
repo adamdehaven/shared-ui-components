@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.4.2...@kong-ui/cli@0.4.3) (2022-10-21)
+
+
+### 📦 Code Refactoring
+
+* update cli and readme ([5a7e909](https://github.com/Kong/kong-ui-shared-components/commit/5a7e9094833455d73df819d5804d54a82d8d09e9))
+
+
+
+
+
 ## [0.4.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.4.1...@kong-ui/cli@0.4.2) (2022-10-19)
 
 
