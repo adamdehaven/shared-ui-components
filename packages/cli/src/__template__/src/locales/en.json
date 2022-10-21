@@ -1,5 +1,5 @@
 {
   "general": {
-    "packageName": "{%%PACKAGE_NAME%%}"
+    "package_name": "{%%PACKAGE_NAME%%}"
   }
 }
