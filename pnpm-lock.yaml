@@ -39,7 +39,7 @@ importers:
       eslint-plugin-vue: ^9.5.1
       inquirer: ^9.1.4
       js-yaml: ^4.1.0
-      jsdom: ^20.0.0
+      jsdom: ^20.0.1
       lerna: ^5.5.1
       nanospinner: ^1.1.0
       netlify-cli: ^11.8.3
@@ -95,7 +95,7 @@ importers:
       eslint-plugin-vue: 9.5.1_eslint@8.23.1
       inquirer: 9.1.4
       js-yaml: 4.1.0
-      jsdom: 20.0.0
+      jsdom: 20.0.1
       lerna: 5.5.1
       nanospinner: 1.1.0
       netlify-cli: 11.8.3
@@ -111,7 +111,7 @@ importers:
       typescript: 4.7.4
       vite: 3.1.3_sass@1.54.9
       vite-plugin-externals: 0.5.1_vite@3.1.3
-      vitest: 0.24.0_yajyk4l4swzmmsw4skqorvibnm
+      vitest: 0.24.0_bk5ucetu33zeflzxkq3a3qgj74
       vue: 3.2.39
       vue-router: 4.1.5_vue@3.2.39
       vue-tsc: 0.40.13_typescript@4.7.4
@@ -3266,11 +3266,11 @@ packages:
       negotiator: 0.6.3
     dev: true
 
-  /acorn-globals/6.0.0:
-    resolution: {integrity: sha512-ZQl7LOWaF5ePqqcX4hLuv/bLXYQNfNWw2c0/yX/TsPRKamzHcTGQnlCjHT3TsmkOUVEPS3crCxiPfdzE/Trlhg==}
+  /acorn-globals/7.0.1:
+    resolution: {integrity: sha512-umOSDSDrfHbTNPuNpC2NSnnA3LUrqpevPb4T9jRx4MagXNS0rs+gwiTcAvqCRmsD6utzsrzNt+ebm00SNWiC3Q==}
     dependencies:
-      acorn: 7.4.1
-      acorn-walk: 7.2.0
+      acorn: 8.8.0
+      acorn-walk: 8.2.0
     dev: true
 
   /acorn-jsx/5.3.2_acorn@8.8.0:
@@ -3281,20 +3281,9 @@ packages:
       acorn: 8.8.0
     dev: true
 
-  /acorn-walk/7.2.0:
-    resolution: {integrity: sha512-OPdCF6GsMIP+Az+aWfAAOEt2/+iVDKE7oy6lJ098aoe59oAmK76qV6Gw60SbZ8jHuG2wH058GF4pLFbYamYrVA==}
-    engines: {node: '>=0.4.0'}
-    dev: true
-
   /acorn-walk/8.2.0:
     resolution: {integrity: sha512-k+iyHEuPgSw6SbuDpGQM+06HQUa04DZ3o+F6CSzXMvvI5KMvnaEqXe+YVe555R9nn6GPt404fos4wcgpw12SDA==}
     engines: {node: '>=0.4.0'}
-    dev: true
-
-  /acorn/7.4.1:
-    resolution: {integrity: sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
     dev: true
 
   /acorn/8.8.0:
@@ -4015,10 +4004,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       fill-range: 7.0.1
-    dev: true
-
-  /browser-process-hrtime/1.0.0:
-    resolution: {integrity: sha512-9o5UecI3GhkpM6DrXr69PblIuWxPKk9Y0jHBRhdocZ2y7YECBFCsHm79Pr3OyR2AvjhDkabFJaDJMYRazHgsow==}
     dev: true
 
   /buffer-alloc-unsafe/1.1.0:
@@ -8943,8 +8928,8 @@ packages:
     resolution: {integrity: sha512-UVU9dibq2JcFWxQPA6KCqj5O42VOmAY3zQUfEKxU0KpTGXwNoCjkX1e13eHNvw/xPynt6pU0rZ1htjWTNTSXsg==}
     dev: true
 
-  /jsdom/20.0.0:
-    resolution: {integrity: sha512-x4a6CKCgx00uCmP+QakBDFXwjAJ69IkkIWHmtmjd3wvXPcdOS44hfX2vqkOQrVrq8l9DhNNADZRXaCEWvgXtVA==}
+  /jsdom/20.0.1:
+    resolution: {integrity: sha512-pksjj7Rqoa+wdpkKcLzQRHhJCEE42qQhl/xLMUKHgoSejaKOdaXEAnqs6uDNwMl/fciHTzKeR8Wm8cw7N+g98A==}
     engines: {node: '>=14'}
     peerDependencies:
       canvas: ^2.5.0
@@ -8954,7 +8939,7 @@ packages:
     dependencies:
       abab: 2.0.6
       acorn: 8.8.0
-      acorn-globals: 6.0.0
+      acorn-globals: 7.0.1
       cssom: 0.5.0
       cssstyle: 2.3.0
       data-urls: 3.0.2
@@ -8971,13 +8956,12 @@ packages:
       saxes: 6.0.0
       symbol-tree: 3.2.4
       tough-cookie: 4.1.2
-      w3c-hr-time: 1.0.2
       w3c-xmlserializer: 3.0.0
       webidl-conversions: 7.0.0
       whatwg-encoding: 2.0.0
       whatwg-mimetype: 3.0.0
       whatwg-url: 11.0.0
-      ws: 8.8.1
+      ws: 8.10.0
       xml-name-validator: 4.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -13870,7 +13854,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.24.0_yajyk4l4swzmmsw4skqorvibnm:
+  /vitest/0.24.0_bk5ucetu33zeflzxkq3a3qgj74:
     resolution: {integrity: sha512-k5j3FPTor+MJx2x0pDW2gtVk+s9VC6nSHT3SoqOIk9Je5fFpPgict+Xy2eAVXUogvSixs45Ya1oZk+oK93BO0w==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -13898,7 +13882,7 @@ packages:
       '@vitest/ui': 0.24.3
       chai: 4.3.6
       debug: 4.3.4
-      jsdom: 20.0.0
+      jsdom: 20.0.1
       local-pkg: 0.4.2
       strip-literal: 0.4.2
       tinybench: 2.3.0
@@ -13968,12 +13952,6 @@ packages:
       '@vue/runtime-dom': 3.2.39
       '@vue/server-renderer': 3.2.39_vue@3.2.39
       '@vue/shared': 3.2.39
-    dev: true
-
-  /w3c-hr-time/1.0.2:
-    resolution: {integrity: sha512-z8P5DvDNjKDoFIHK7q8r8lackT6l+jo/Ye3HOle7l9nICP9lf1Ci25fy9vHd0JOWewkIFzXIEig3TdKT7JQ5fQ==}
-    dependencies:
-      browser-process-hrtime: 1.0.0
     dev: true
 
   /w3c-xmlserializer/3.0.0:
@@ -14260,8 +14238,8 @@ packages:
         optional: true
     dev: true
 
-  /ws/8.8.1:
-    resolution: {integrity: sha512-bGy2JzvzkPowEJV++hF07hAD6niYSr0JzBNo/J29WsB57A2r7Wlc1UFcTR9IzrPvuNVO4B8LGqF8qcpsVOhJCA==}
+  /ws/8.10.0:
+    resolution: {integrity: sha512-+s49uSmZpvtAsd2h37vIPy1RBusaLawVe8of+GyEPsaJTCMpj/2v8NpeK1SHXjBlQ95lQTmQofOJnFiLoaN3yw==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
