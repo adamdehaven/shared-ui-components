@@ -37,7 +37,7 @@ jobs:
         run: |
           echo "github actor: ${GITHUB_ACTOR}"
           lernaCommand="changed"
-          if [[ "${GITHUB_ACTOR}" == "renovate (bot)" ]]; then
+          if [[ "${GITHUB_ACTOR}" == "renovate[bot]" ]]; then
             lernaCommand="ls"
           fi
           filter="{packages/("
