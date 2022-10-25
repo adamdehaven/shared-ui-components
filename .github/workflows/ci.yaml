@@ -35,9 +35,14 @@ jobs:
         # filter: "{packages/(demo-component|utils)}"
         # spec: "--spec packages/demo-component --spec packages/demo-test" (only if cy.ts found in package)
         run: |
+          echo "github actor: ${GITHUB_ACTOR}"
+          lernaCommand="changed"
+          if [[ "${GITHUB_ACTOR}" == "renovate (bot)" ]]; then
+            lernaCommand="ls"
+          fi
           filter="{packages/("
           spec=""
-          for pkg in $(lerna changed)
+          for pkg in $(lerna ${lernaCommand})
           do
             filter=${filter}$(echo "${pkg}" | sed 's/@kong-ui\///g')"|"
 

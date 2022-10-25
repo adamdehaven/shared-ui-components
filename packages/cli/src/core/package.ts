@@ -5,7 +5,6 @@ import { createSpinner, Spinner } from 'nanospinner'
 import pc from 'picocolors'
 import boxen from 'boxen'
 import emoji from 'node-emoji'
-import { execSync } from 'child_process'
 import inquirer, { Answers } from 'inquirer'
 import questions from '../questions'
 
@@ -72,11 +71,6 @@ const createPackageFiles = async (packageName: string): Promise<void> => {
   }
 
   spinner.success({ text: 'Created the package files.' })
-
-  spinner.start({ text: 'Updating the dependabot config...' })
-  await sleep(500)
-  execSync('pnpm -w --reporter=silent run generate-dependabot-config', { stdio: 'pipe' })
-  spinner.success({ text: 'Updated the dependabot config.' })
 
   spinner.start({ text: 'Verifying file structure...' })
 

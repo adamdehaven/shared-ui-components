@@ -22,7 +22,6 @@
 - [Integrate with CI](#integrate-with-ci)
   - [Publishing](#publishing)
 - [Update `CODEOWNERS`](#update-codeowners)
-- [Update Dependabot Config](#update-dependabot-config)
 
 ## Required: Use the provided CLI to scaffold your new package
 
@@ -198,16 +197,3 @@ Please update the `CODEOWNERS` file at the root of the repository so that it inc
 
 Refer to the [Github Docs](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners) on `CODEOWNERS` for more information.
 
-## Update Dependabot Config
-
-> **Note**: This is automatically ran when creating a package via the CLI
-
-[Dependabot](https://docs.github.com/en/code-security/dependabot) is used to keep repo/package dependencies up-to-date. Because of limitations in how Dependabot is currently configured, the script [`generate-dependabot-config.ts`](../scripts/generate-dependabot-config.ts) is used to autogenerate the configuration.
-
-When adding a new package, simply run:
-
-```bash
-pnpm run generate-dependabot-config
-```
-
-and then check in the updated configuration file ([`dependabot.yml`](../.github/dependabot.yml)).

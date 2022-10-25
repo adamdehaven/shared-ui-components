@@ -17,8 +17,7 @@
     "test:unit": "cross-env FORCE_COLOR=1 pnpm -r run test:unit",
     "test:unit:open": "cross-env FORCE_COLOR=1 pnpm -r run test:unit:open",
     "commit": "cz",
-    "create-package": "pnpm --filter \"@kong-ui/cli\" run create-package",
-    "generate-dependabot-config": "ts-node ./scripts/generate-dependabot-config"
+    "create-package": "pnpm --filter \"@kong-ui/cli\" run create-package"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
