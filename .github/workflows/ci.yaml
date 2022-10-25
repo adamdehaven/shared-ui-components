@@ -30,16 +30,25 @@ jobs:
         with:
           force-install: 'true'
 
+      - name: Check for pnpm-lock change
+        id: lock-changed
+        uses: tj-actions/changed-files@v33
+        with:
+          files: |
+            pnpm-lock.yaml
+
       - name: Getting changed packages
         id: changed_packages
         # filter: "{packages/(demo-component|utils)}"
         # spec: "--spec packages/demo-component --spec packages/demo-test" (only if cy.ts found in package)
         run: |
-          echo "github actor: ${GITHUB_ACTOR}"
           lernaCommand="changed"
-          if [[ "${GITHUB_ACTOR}" == "renovate[bot]" ]]; then
+          if [[ "${{ steps.lock-changed.outputs.any_changed }}" == "true" ]]; then
             lernaCommand="ls"
           fi
+
+          echo "lernaCommand: ${lernaCommand}"
+
           filter="{packages/("
           spec=""
           for pkg in $(lerna ${lernaCommand})
@@ -47,8 +56,8 @@ jobs:
             filter=${filter}$(echo "${pkg}" | sed 's/@kong-ui\///g')"|"
 
             cPkg=$(echo "${pkg}" | sed 's/@kong-ui/packages/g')
-            compGenRes=$(compgen -G "${cPkg}/**/*.cy.ts" || true)
-            if [[ -n "${compGenRes}" ]]; then
+            findRes=$(find "${cPkg}" -name "*.cy.ts" || true)
+            if [[ -n "${findRes}" ]]; then
               spec="${spec} --spec ${cPkg}"
             fi
           done
@@ -83,6 +92,7 @@ jobs:
         run: pnpm --stream --filter "${{needs.install-dependencies.outputs.filter}}" run test:unit
 
       - name: Prepare Cypress
+        if: ${{ needs.install-dependencies.outputs.spec != '' }}
         run: pnpm cypress install
 
 

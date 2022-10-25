@@ -56,8 +56,8 @@ runs:
         message: |
             ## ***Preview*** components from this PR in consuming application
 
-            ### for CDN consumption:
-            for **Konnect** or any other app that supports pkgdomain use it in the query string
+            ### CDN consumption:
+            For **Konnect** or any other app that supports pkgdomain use it in the query string
             example:
             https://cloud.konghq.tech?pkgdomain=pr-${{ github.event.number }}--ui-shared-components
 
@@ -69,9 +69,9 @@ runs:
               type: 'umd'
             ```
 
-            ### for NPM consumption:
-            update `package.json` of consuming application and reference component package via tarball preview (example for `@kong-ui/demo-component`):
+            ### NPM consumption:
+            In consuming application project install preview version of shared package by running following command (example for `@kong-ui/demo-component`, plz change package name and version in the command line):
             ```
-            "@kong-ui/demo-component": "https://pr-${{ github.event.number }}--ui-shared-components.netlify.app/kong-ui-demo-component-0.4.0-${{steps.prepare_previews.outputs.sha_short}}.tgz",
+            yarn add "@kong-ui/demo-component@https://pr-${{ github.event.number }}--ui-shared-components.netlify.app/kong-ui-demo-component-0.4.0-${{steps.prepare_previews.outputs.sha_short}}.tgz"
             ```
         GITHUB_TOKEN: ${{ inputs.repo-token }}
