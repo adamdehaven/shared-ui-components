@@ -161,7 +161,7 @@ jobs:
           lerna version --conventional-commits --create-release github --yes
 
       - name: Publish packages to NPM
-        run: pnpm --stream --filter "${{needs.install-dependencies.outputs.filter}}" publish  --access restricted
+        run: pnpm --stream --filter "${{needs.install-dependencies.outputs.filter}}" publish  --no-git-checks --access restricted
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
