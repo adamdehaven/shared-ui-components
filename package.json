@@ -30,7 +30,7 @@
     "@types/inquirer": "^9.0.2",
     "@types/js-yaml": "^4.0.5",
     "@types/jsdom": "^20.0.0",
-    "@types/node": "^16.11.59",
+    "@types/node": "^16.11.68",
     "@types/node-emoji": "^1.8.2",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
