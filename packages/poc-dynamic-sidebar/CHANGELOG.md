@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/poc-dynamic-sidebar@0.1.6...@kong-ui/poc-dynamic-sidebar@0.1.7) (2022-10-26)
+
+
+### ⚙️ Continuous Integrations
+
+* replace set-output in workflows ([#55](https://github.com/Kong/kong-ui-shared-components/issues/55)) ([d0dd767](https://github.com/Kong/kong-ui-shared-components/commit/d0dd767c514ace11efd939a09de99e226568a6e8))
+
+
+
+
+
 ## [0.1.6](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/poc-dynamic-sidebar@0.1.5...@kong-ui/poc-dynamic-sidebar@0.1.6) (2022-10-21)
 
 
