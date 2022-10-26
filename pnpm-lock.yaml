@@ -46,7 +46,7 @@ importers:
       node-emoji: ^1.11.0
       npm-run-all: ^4.1.5
       picocolors: ^1.0.0
-      postcss: ^8.4.16
+      postcss: ^8.4.18
       postcss-custom-properties: ^12.1.9
       rimraf: ^3.0.2
       sass: ^1.54.9
@@ -102,8 +102,8 @@ importers:
       node-emoji: 1.11.0
       npm-run-all: 4.1.5
       picocolors: 1.0.0
-      postcss: 8.4.16
-      postcss-custom-properties: 12.1.9_postcss@8.4.16
+      postcss: 8.4.18
+      postcss-custom-properties: 12.1.9_postcss@8.4.18
       rimraf: 3.0.2
       sass: 1.54.9
       ts-node: 10.9.1_66dblbmo5bpav4k43xuzi7ejru
@@ -3143,7 +3143,7 @@ packages:
       '@vue/shared': 3.2.39
       estree-walker: 2.0.2
       magic-string: 0.25.9
-      postcss: 8.4.16
+      postcss: 8.4.18
       source-map: 0.6.1
     dev: true
 
@@ -5669,8 +5669,8 @@ packages:
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
     dependencies:
       is-url: 1.2.4
-      postcss: 8.4.16
-      postcss-values-parser: 6.0.2_postcss@8.4.16
+      postcss: 8.4.18
+      postcss-values-parser: 6.0.2_postcss@8.4.18
     dev: true
 
   /detective-sass/4.0.1:
@@ -11526,13 +11526,13 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /postcss-custom-properties/12.1.9_postcss@8.4.16:
+  /postcss-custom-properties/12.1.9_postcss@8.4.18:
     resolution: {integrity: sha512-/E7PRvK8DAVljBbeWrcEQJPG72jaImxF3vvCNFwv9cC8CzigVoNIpeyfnJzphnN3Fd8/auBf5wvkw6W9MfmTyg==}
     engines: {node: ^12 || ^14 || >=16}
     peerDependencies:
       postcss: ^8.2
     dependencies:
-      postcss: 8.4.16
+      postcss: 8.4.18
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -11548,7 +11548,7 @@ packages:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
     dev: true
 
-  /postcss-values-parser/6.0.2_postcss@8.4.16:
+  /postcss-values-parser/6.0.2_postcss@8.4.18:
     resolution: {integrity: sha512-YLJpK0N1brcNJrs9WatuJFtHaV9q5aAOj+S4DI5S7jgHlRfm0PIbDCAFRYMQD5SHq7Fy6xsDhyutgS0QOAs0qw==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -11556,12 +11556,12 @@ packages:
     dependencies:
       color-name: 1.1.4
       is-url-superb: 4.0.0
-      postcss: 8.4.16
+      postcss: 8.4.18
       quote-unquote: 1.0.0
     dev: true
 
-  /postcss/8.4.16:
-    resolution: {integrity: sha512-ipHE1XBvKzm5xI7hiHCZJCSugxvsdq2mPnsq5+UF+VHCjiBvtDrlxJfMBToWaP9D5XlgNmcFGqoHmUn0EYEaRQ==}
+  /postcss/8.4.18:
+    resolution: {integrity: sha512-Wi8mWhncLJm11GATDaQKobXSNEYGUHeQLiQqDFG1qQ5UTDPTEvKw0Xt5NsTpktGTwLps3ByrWsBrG0rB8YQ9oA==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.4
@@ -13944,7 +13944,7 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.15.8
-      postcss: 8.4.16
+      postcss: 8.4.18
       resolve: 1.22.1
       rollup: 2.78.1
       sass: 1.54.9
