@@ -3,6 +3,11 @@
 # opens a PR, unless a later match takes precedence.
 * @adamdehaven @ValeryG @jillztom
 
+# Renovate bot auto-merges
+pnpm-lock.yaml @kongponents-bot @adamdehaven @ValeryG @jillztom
+package.json @kongponents-bot @adamdehaven @ValeryG @jillztom
+/packages/*/package.json @kongponents-bot @adamdehaven @ValeryG @jillztom
+
 # Component CLI
 /cli @adamdehaven
 
