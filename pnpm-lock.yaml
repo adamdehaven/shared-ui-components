@@ -47,7 +47,7 @@ importers:
       npm-run-all: ^4.1.5
       picocolors: ^1.0.0
       postcss: ^8.4.18
-      postcss-custom-properties: ^12.1.9
+      postcss-custom-properties: ^12.1.10
       rimraf: ^3.0.2
       sass: ^1.54.9
       ts-node: ^10.9.1
@@ -103,7 +103,7 @@ importers:
       npm-run-all: 4.1.5
       picocolors: 1.0.0
       postcss: 8.4.18
-      postcss-custom-properties: 12.1.9_postcss@8.4.18
+      postcss-custom-properties: 12.1.10_postcss@8.4.18
       rimraf: 3.0.2
       sass: 1.54.9
       ts-node: 10.9.1_66dblbmo5bpav4k43xuzi7ejru
@@ -11526,8 +11526,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /postcss-custom-properties/12.1.9_postcss@8.4.18:
-    resolution: {integrity: sha512-/E7PRvK8DAVljBbeWrcEQJPG72jaImxF3vvCNFwv9cC8CzigVoNIpeyfnJzphnN3Fd8/auBf5wvkw6W9MfmTyg==}
+  /postcss-custom-properties/12.1.10_postcss@8.4.18:
+    resolution: {integrity: sha512-U3BHdgrYhCrwTVcByFHs9EOBoqcKq4Lf3kXwbTi4hhq0qWhl/pDWq2THbv/ICX/Fl9KqeHBb8OVrTf2OaYF07A==}
     engines: {node: ^12 || ^14 || >=16}
     peerDependencies:
       postcss: ^8.2
