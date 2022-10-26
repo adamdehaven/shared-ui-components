@@ -122,7 +122,6 @@ li.sidebar-level-divider {
 <style lang="scss">
 // Scope with wrapper class intead of using `scoped` so these styles will apply to child components
 .kong-ui-poc-dynamic-sidebar {
-
   // Shared styles for the primary and secondary elements
   ol {
     margin: 0;

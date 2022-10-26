@@ -63,8 +63,8 @@ jobs:
           done
           filter=$(echo "${filter}" | sed 's/|$//')")}"
 
-          echo "::set-output name=filter::${filter}"
-          echo "::set-output name=spec::${spec}"
+          echo "filter=${filter}" >> $GITHUB_OUTPUT
+          echo "spec=${spec}" >> $GITHUB_OUTPUT
 
   build:
     name: Build And Test

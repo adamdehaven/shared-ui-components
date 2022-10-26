@@ -26,7 +26,7 @@ runs:
       run: |
         mkdir _public
         sha_short=$(git rev-parse --short HEAD)
-        echo "::set-output name=sha_short::${sha_short}"
+        echo "sha_short=${sha_short}" >> $GITHUB_OUTPUT
         for folder in $(echo "${{inputs.filter}}" |sed 's/{packages\/(//g'|sed 's/)}//g'| tr '|' '\n')
         do
             echo "Processing previews for ${folder}"
