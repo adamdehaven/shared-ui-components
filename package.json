@@ -56,7 +56,7 @@
     "inquirer": "^9.1.4",
     "js-yaml": "^4.1.0",
     "jsdom": "^20.0.1",
-    "lerna": "^5.5.1",
+    "lerna": "^5.5.4",
     "nanospinner": "^1.1.0",
     "netlify-cli": "^11.8.3",
     "node-emoji": "^1.11.0",
