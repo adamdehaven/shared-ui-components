@@ -40,7 +40,7 @@
     "extends": "../../package.json"
   },
   "peerDependencies": {
-    "vue": "^3.2.38"
+    "vue": "^3.2.41"
   },
   "dependencies": {
     "@kong-ui/core": "workspace:^0.2.2"

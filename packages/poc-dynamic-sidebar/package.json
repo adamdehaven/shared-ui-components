@@ -40,7 +40,7 @@
     "extends": "../../package.json"
   },
   "peerDependencies": {
-    "vue": "^3.2.38",
+    "vue": "^3.2.41",
     "vue-router": "^4.1.6"
   },
   "dependencies": {
