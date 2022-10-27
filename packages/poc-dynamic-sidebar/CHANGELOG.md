@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/poc-dynamic-sidebar@0.1.7...@kong-ui/poc-dynamic-sidebar@0.1.8) (2022-10-27)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency vue-router to ^4.1.6 ([#69](https://github.com/Kong/kong-ui-shared-components/issues/69)) ([8c3da17](https://github.com/Kong/kong-ui-shared-components/commit/8c3da17ce5cb03b8a60f788cfe98b342c28a92ba))
+
+
+
+
+
 ## [0.1.7](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/poc-dynamic-sidebar@0.1.6...@kong-ui/poc-dynamic-sidebar@0.1.7) (2022-10-26)
 
 
