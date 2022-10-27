@@ -1,12 +1,12 @@
+# CODEOWNERS Docs
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#example-of-a-codeowners-file
+
+# Order is important; the last matching pattern takes the most precedence.
+
 # These owners will be the default owners for everything in
 # the repo. They will be requested for review whenever someone
 # opens a PR, unless a later match takes precedence.
 * @adamdehaven @ValeryG @jillztom
-
-# Renovate bot auto-merges
-pnpm-lock.yaml @kongponents-bot @adamdehaven @ValeryG @jillztom
-package.json @kongponents-bot @adamdehaven @ValeryG @jillztom
-/packages/*/package.json @kongponents-bot @adamdehaven @ValeryG @jillztom
 
 # Component CLI
 /cli @adamdehaven
@@ -14,3 +14,9 @@ package.json @kongponents-bot @adamdehaven @ValeryG @jillztom
 # Core UI Team
 /packages/core @adamdehaven @ValeryG @jillztom
 /packages/poc-dynamic-sidebar @adamdehaven
+
+# Renovate Bot approvals
+# These rules MUST remain at the bottom as the last entry
+pnpm-lock.yaml @kongponents-bot @adamdehaven @ValeryG @jillztom
+package.json @kongponents-bot @adamdehaven @ValeryG @jillztom
+/packages/*/package.json @kongponents-bot @adamdehaven @ValeryG @jillztom
