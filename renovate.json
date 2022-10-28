@@ -3,6 +3,7 @@
   "extends": [
     "config:base",
     ":semanticCommits",
+    ":automergeRequireAllStatusChecks",
     ":automergePatch",
     ":automergeMinor"
   ],
@@ -12,7 +13,8 @@
     "packages/cli/src/__template__/package.json"
   ],
   "labels": [
-    "dependencies"
+    "dependencies",
+    "renovate-bot"
   ],
   "schedule": [
     "every weekday"
