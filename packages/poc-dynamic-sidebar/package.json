@@ -44,6 +44,6 @@
     "vue-router": "^4.1.6"
   },
   "dependencies": {
-    "@kong/kongponents": "^8.1.2"
+    "@kong/kongponents": "^8.1.3"
   }
 }
