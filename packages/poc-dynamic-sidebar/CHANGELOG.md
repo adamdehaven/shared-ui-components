@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.11](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/poc-dynamic-sidebar@0.1.10...@kong-ui/poc-dynamic-sidebar@0.1.11) (2022-10-28)
+
+
+### 🐛 Bug Fixes
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.1.3 ([#93](https://github.com/Kong/kong-ui-shared-components/issues/93)) ([7ff3545](https://github.com/Kong/kong-ui-shared-components/commit/7ff3545314682fa4e5b05f51ad9ac19a1c3abfa0))
+
+
+
+
+
 ## [0.1.10](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/poc-dynamic-sidebar@0.1.9...@kong-ui/poc-dynamic-sidebar@0.1.10) (2022-10-27)
 
 
