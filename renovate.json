@@ -16,5 +16,8 @@
   ],
   "schedule": [
     "every weekday"
+  ],
+  "automergeSchedule": [
+    "every weekday"
   ]
 }
