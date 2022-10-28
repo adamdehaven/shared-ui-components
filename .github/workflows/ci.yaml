@@ -34,7 +34,7 @@ jobs:
 
       - name: Check for pnpm-lock change
         id: lock-changed
-        uses: tj-actions/changed-files@v33
+        uses: tj-actions/changed-files@v34
         with:
           files: |
             pnpm-lock.yaml
