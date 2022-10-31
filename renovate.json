@@ -19,6 +19,7 @@
   "schedule": [
     "every weekday"
   ],
+  "timezone": "America/New_York",
   "automergeSchedule": [
     "every weekday"
   ]
