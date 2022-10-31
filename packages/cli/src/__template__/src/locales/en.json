@@ -1,5 +1,6 @@
 {
-  "general": {
-    "package_name": "{%%PACKAGE_NAME%%}"
+  "header": {
+    "title": "Title of the header",
+    "content": "Content of the header"
   }
 }
