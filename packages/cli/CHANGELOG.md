@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.6](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.4.5...@kong-ui/cli@0.4.6) (2022-10-31)
+
+
+### ♻️ Chores
+
+* update template json ([ef6cab1](https://github.com/Kong/kong-ui-shared-components/commit/ef6cab19224b8b0661fb159e605b9ed35196d1b9))
+
+
+
+
+
 ## [0.4.5](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.4.4...@kong-ui/cli@0.4.5) (2022-10-25)
 
 **Note:** Version bump only for package @kong-ui/cli
