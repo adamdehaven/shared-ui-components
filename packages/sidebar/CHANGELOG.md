@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.1.1...@kong-ui/sidebar@0.1.2) (2022-11-01)
+
+
+### 🐛 Bug Fixes
+
+* **sidebar:** icon positioning when expanded ([bfeb246](https://github.com/Kong/kong-ui-shared-components/commit/bfeb2466ea2f19e60c57f43a7777721cf2557b87))
+
+
+
+
+
 ## [0.1.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.1.0...@kong-ui/sidebar@0.1.1) (2022-11-01)
 
 
