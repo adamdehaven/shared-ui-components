@@ -3,11 +3,14 @@ import { resolve } from 'path'
 import { defineConfig, mergeConfig } from 'vite'
 
 // Package name MUST always match the kebab-case package name inside the component's package.json file and the name of your `/packages/{package-name}` directory
-const packageName = 'poc-dynamic-sidebar'
+const packageName = 'sidebar'
 
 // Merge the shared Vite config with the local one defined below
 export default mergeConfig(sharedViteConfig, defineConfig({
   build: {
+    rollupOptions: {
+      external: ['@kong/kongponents'],
+    },
     lib: {
       // The kebab-case name of the exposed global variable. MUST be in the format `kong-ui-{package-name}`
       // Example: name: 'kong-ui-demo-component'

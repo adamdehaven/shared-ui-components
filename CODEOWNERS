@@ -13,7 +13,7 @@
 
 # Core UI Team
 /packages/core @adamdehaven @ValeryG @jillztom
-/packages/poc-dynamic-sidebar @adamdehaven
+/packages/sidebar @adamdehaven
 
 # Renovate Bot approvals
 # These rules MUST remain at the bottom as the last entry

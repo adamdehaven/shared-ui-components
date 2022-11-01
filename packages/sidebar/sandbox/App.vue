@@ -1,15 +1,17 @@
 <template>
   <div class="sandbox-container">
     <div class="sidebar-container">
-      <DynamicSidebar
+      <SidebarNav
         :top-items="sidebarItemsTop"
         :bottom-items="sidebarItemsBottom"
+        :profile-items="sidebarItemsProfile"
+        profile-name="Marty McFly"
         @click="sidebarItemClick"
       >
-        <template #logo>
+        <template #header>
           <p>This is my logo for now</p>
         </template>
-      </DynamicSidebar>
+      </SidebarNav>
     </div>
     <main>
       <router-view />
@@ -19,7 +21,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { DynamicSidebar, SidebarPrimaryItem, SidebarSecondaryItem } from '../src'
+import { SidebarNav, SidebarPrimaryItem, SidebarProfileItem, SidebarSecondaryItem } from '../src'
 import '@kong/kongponents/dist/style.css'
 
 const activeItem = ref<SidebarPrimaryItem>()
@@ -38,7 +40,6 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
       icon: 'sharedConfig',
       // TODO: using this item as a default when `activeItem` is undefined
       active: !activeItem.value || activeItem.value?.key === 'overview',
-      testId: 'overview',
     },
     {
       name: 'Runtime Manager',
@@ -48,12 +49,10 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
       active: activeItem.value?.key === 'runtime-manager',
       // TODO: actually when you click on Runtime Manager it would not expand until the user picks a runtime group
       expanded: activeItem.value?.key === 'runtime-manager' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'runtime-manager',
-      testId: 'runtime-manager',
       icon: 'runtimes',
       items: [
         {
           name: 'Runtime Instances',
-          testId: 'runtime-instances',
           to: '/?runtime-instances',
           active: activeItem.value?.name === 'Runtime Instances',
         },
@@ -101,14 +100,17 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
       active: activeItem.value?.key === 'service-hub',
       // TODO: actually when you click on Service Hub it would not expand until the user picks a service
       expanded: activeItem.value?.key === 'service-hub' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'service-hub',
-      testId: 'service-hub',
       icon: 'serviceHub',
       items: [
         {
-          name: 'Services',
-          to: '/?services',
-          active: activeItem.value?.name === 'Services',
-          testId: 'services',
+          name: 'Overview',
+          to: '/?service-overview',
+          active: activeItem.value?.name === 'Overview',
+        },
+        {
+          name: 'Versions',
+          to: '/?service-versions',
+          active: activeItem.value?.name === 'Versions',
         },
       ],
     },
@@ -119,7 +121,6 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
       active: activeItem.value?.key === 'dev-portal',
       // This item can always show the subnav
       expanded: activeItem.value?.key === 'dev-portal' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'dev-portal',
-      testId: 'dev-portal',
       icon: 'devPortal',
       items: [
         {
@@ -136,6 +137,7 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
           name: 'Access Requests',
           to: '/?access-requests',
           active: activeItem.value?.name === 'Access Requests',
+          badgeCount: 100,
         },
         {
           name: 'Developers',
@@ -161,7 +163,6 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
       active: activeItem.value?.key === 'analytics',
       // This item can always show the subnav
       expanded: activeItem.value?.key === 'analytics' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'analytics',
-      testId: 'analytics',
       icon: 'vitalsChart',
       items: [
         {
@@ -183,22 +184,20 @@ const sidebarItemsBottom = computed((): SidebarPrimaryItem[] => {
   return [
     {
       name: 'Organization',
+      key: 'organization',
       to: '/?organization',
       active: activeItem.value?.key === 'organization',
       // This item can always show the subnav
       expanded: activeItem.value?.key === 'organization' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'organization',
-      testId: 'organization',
       icon: 'people',
       items: [
         {
           name: 'Teams',
-          testId: 'teams',
           to: '/?teams',
           active: activeItem.value?.name === 'Teams',
         },
         {
           name: 'Users',
-          testId: 'users',
           to: '/?users',
           active: activeItem.value?.name === 'Users',
         },
@@ -206,26 +205,37 @@ const sidebarItemsBottom = computed((): SidebarPrimaryItem[] => {
     },
     {
       name: 'Settings',
+      key: 'settings',
       to: '/?settings',
       active: activeItem.value?.key === 'settings',
       // This item can always show the subnav
       expanded: activeItem.value?.key === 'settings' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'settings',
-      testId: 'settings',
       icon: 'cogwheel',
       items: [
         {
           name: 'Billing and Usage',
-          testId: 'billing-and-usage',
           to: '/?billing-and-usage',
           active: activeItem.value?.name === 'Billing and Usage',
         },
         {
           name: 'Auth Settings',
-          testId: 'auth-settings',
           to: '/?auth-settings',
           active: activeItem.value?.name === 'Auth Settings',
         },
       ],
+    },
+  ]
+})
+
+const sidebarItemsProfile = computed((): SidebarProfileItem[] => {
+  return [
+    {
+      name: 'Personal access tokens',
+      to: '/?personal-access-tokens',
+    },
+    {
+      name: 'Logout',
+      to: '/?logout',
     },
   ]
 })
@@ -236,6 +246,7 @@ html,
 body {
   padding: 0;
   margin: 0;
+  font-family: "Inter", Helvetica, Arial, sans-serif;
 }
 
 .sandbox-container {
@@ -248,7 +259,6 @@ body {
 }
 
 .sidebar-container {
-  min-width: 245px;
   height: 100vh;
 }
 </style>

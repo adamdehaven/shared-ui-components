@@ -10,7 +10,6 @@ export default mergeConfig(sharedViteConfig, defineConfig({
   build: {
     lib: {
       // The kebab-case name of the exposed global variable. MUST be in the format `kong-ui-{package-name}`
-      // Example: name: 'kong-ui-demo-component'
       name: `kong-ui-${packageName}`,
       entry: resolve(__dirname, './src/index.ts'),
       fileName: (format) => `${packageName}.${format}.js`,

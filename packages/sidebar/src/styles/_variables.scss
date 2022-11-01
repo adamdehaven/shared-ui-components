@@ -1,0 +1,47 @@
+$sidebar-width: 240px;
+$sidebar-background: linear-gradient(180deg, #003694 54.17%, #0f203f 100%);
+$sidebar-header-spacing: 16px;
+$sidebar-item-font-size: 14px;
+$sidebar-item-profile-height: 70px;
+$sidebar-item-border-radius: 4px;
+$profile-name-max-width: 170px;
+
+// Scrollbar
+$scrollbar-width: 8px;
+$scrollbar-foreground-color: var(--steel-400, #7d91b3);
+$scrollbar-background-color: transparent;
+
+@mixin scrollbarVisible(
+  $size: $scrollbar-width,
+  $foreground-color: $scrollbar-foreground-color,
+  $background-color: $scrollbar-background-color
+) {
+  // For Chrome & Safari
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+    opacity: 1;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // Standard version (Firefox only for now)
+  scrollbar-color: $foreground-color $background-color;
+  scrollbar-width: thin;
+}
+
+@mixin scrollbarHidden() {
+  // For Chrome & Safari
+  &::-webkit-scrollbar {
+    opacity: 0;
+  }
+
+  // Standard version (Firefox only for now)
+  scrollbar-color: transparent transparent;
+  scrollbar-width: thin;
+}
