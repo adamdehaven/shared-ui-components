@@ -159,7 +159,8 @@ jobs:
 
       - name: Update package versions
         run: |
-          git config --local user.name "gha-bot"
+          git config user.email "konnectx-engineers+kongponents-bot@konghq.com"
+          git config user.name "Kong UI Bot"
           lerna version --conventional-commits --create-release github --yes
 
       - name: Publish packages to NPM
