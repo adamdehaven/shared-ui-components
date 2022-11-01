@@ -1,7 +1,7 @@
 <template>
   <li
     :data-testid="item.testId ? `sidebar-item-${item.testId}` : null"
-    :class="[!subnavItem ? 'sidebar-item-primary' : 'sidebar-item-secondary', { 'expanded': (item as SidebarPrimaryItem).expanded }, { 'active': item.active }]"
+    :class="[!subnavItem ? 'sidebar-item-primary' : 'sidebar-item-secondary', { 'expanded': (item as SidebarPrimaryItem).expanded }, { 'active': item.active }, { 'has-label': !!(item as SidebarPrimaryItem).label && (item as SidebarPrimaryItem).expanded }]"
   >
     <component
       :is="useAnchorTag ? 'a' : 'router-link'"
@@ -164,11 +164,19 @@ const itemClick = (item: SidebarPrimaryItem | SidebarSecondaryItem) => {
     }
 
     &.active > a,
-    &.expanded > a {
-      color: var(--white, #fff);
+    &.expanded {
+      > a {
+        color: var(--white, #fff);
 
-      .sidebar-item-name {
-        font-weight: 600 !important;
+        .sidebar-item-name {
+          font-weight: 600 !important;
+        }
+      }
+
+      &.has-label {
+        .sidebar-item-icon {
+          margin-top: -14px; // Keep the icon properly aligned
+        }
       }
     }
 

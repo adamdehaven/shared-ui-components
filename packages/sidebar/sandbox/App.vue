@@ -97,6 +97,7 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
       name: 'Service Hub',
       key: 'service-hub',
       to: '/?service-hub',
+      label: 'Deloreans',
       active: activeItem.value?.key === 'service-hub',
       // TODO: actually when you click on Service Hub it would not expand until the user picks a service
       expanded: activeItem.value?.key === 'service-hub' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'service-hub',
