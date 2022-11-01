@@ -164,25 +164,25 @@ const itemClick = (item: SidebarPrimaryItem | SidebarSecondaryItem) => {
     }
 
     &.active > a,
-    &.expanded {
-      > a {
-        color: var(--white, #fff);
+    &.expanded > a {
+      color: var(--white, #fff);
 
-        .sidebar-item-name {
-          font-weight: 600 !important;
-        }
-      }
-
-      &.has-label {
-        .sidebar-item-icon {
-          margin-top: -14px; // Keep the icon properly aligned
-        }
+      .sidebar-item-name {
+        font-weight: 600 !important;
       }
     }
 
     ul.level-secondary {
       padding: 8px 0;
       border-top: 1px solid var(--black-25, rgba(0, 0, 0, 0.25));
+    }
+  }
+
+  .sidebar-item-primary {
+    &.expanded.has-label {
+      .sidebar-item-icon {
+        margin-top: -14px; // Keep the icon properly aligned
+      }
     }
   }
 }
