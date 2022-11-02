@@ -174,7 +174,7 @@ const itemClick = (item: SidebarPrimaryItem | SidebarSecondaryItem) => {
 
     ul.level-secondary {
       padding: 8px 0;
-      border-top: 1px solid var(--black-25, rgba(0, 0, 0, 0.25));
+      border-top: 1px solid var(--black-10, rgba(#000, 0.1));
     }
   }
 
@@ -209,6 +209,12 @@ const itemClick = (item: SidebarPrimaryItem | SidebarSecondaryItem) => {
 
 // Secondary-level nav item
 .sidebar-item-secondary {
+  margin-bottom: 4px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
   a {
     color: var(--steel-200, #DAE3F2) !important;
     min-height: 36px !important;
