@@ -195,7 +195,7 @@ const itemClick = (item: SidebarPrimaryItem | SidebarSecondaryItem) => {
 .sidebar-item-primary {
   &.active,
   &.expanded {
-    background-color: rgba(255, 255, 255, .1);
+    background-color: rgba(#fff, .1);
     border-radius: $sidebar-item-border-radius;
   }
 
@@ -235,7 +235,7 @@ const itemClick = (item: SidebarPrimaryItem | SidebarSecondaryItem) => {
 
   &.active > a {
     color: var(--white, #fff) !important;
-    background-color: rgba(#fff, 0.1);
+    background-color: rgba(#fff, 0.2);
     border-left: 4px solid var(--green-500, #07A88D);
     font-weight: 600 !important;
   }
