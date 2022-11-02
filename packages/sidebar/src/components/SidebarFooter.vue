@@ -59,7 +59,7 @@ const hasProfileItems = computed((): boolean => props.itemCount > 0)
 .sidebar-item-icon {
   display: flex;
   padding-right: 14px;
-  line-height: 1;
+  line-height: 0; // to align icon with the text baseline
 }
 
 .sidebar-profile-link {
