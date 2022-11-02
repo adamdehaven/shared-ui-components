@@ -1,7 +1,7 @@
 <template>
   <li
     :data-testid="item.testId ? `sidebar-item-${item.testId}` : null"
-    :class="[!subnavItem ? 'sidebar-item-primary' : 'sidebar-item-secondary', { 'expanded': (item as SidebarPrimaryItem).expanded }, { 'active': item.active }, { 'has-label': !!(item as SidebarPrimaryItem).label && (item as SidebarPrimaryItem).expanded }]"
+    :class="[!subnavItem ? 'sidebar-item-primary' : 'sidebar-item-secondary', { 'expanded': (item as SidebarPrimaryItem).expanded }, { 'active': item.active }]"
   >
     <component
       :is="useAnchorTag ? 'a' : 'router-link'"
@@ -173,16 +173,8 @@ const itemClick = (item: SidebarPrimaryItem | SidebarSecondaryItem) => {
     }
 
     ul.level-secondary {
-      padding: 8px 0;
+      padding: 4px 0 12px;
       border-top: 1px solid var(--black-10, rgba(#000, 0.1));
-    }
-  }
-
-  .sidebar-item-primary {
-    &.expanded.has-label {
-      .sidebar-item-icon {
-        margin-top: -14px; // Keep the icon properly aligned
-      }
     }
   }
 }
