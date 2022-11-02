@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.7](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.1.6...@kong-ui/sidebar@0.1.7) (2022-11-02)
+
+
+### 🐛 Bug Fixes
+
+* **sidebar:** icon line-height ([5a6516c](https://github.com/Kong/kong-ui-shared-components/commit/5a6516cadd7896f3988fe8f43851faf3b2b86284))
+
+
+
+
+
 ## [0.1.6](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.1.5...@kong-ui/sidebar@0.1.6) (2022-11-02)
 
 
