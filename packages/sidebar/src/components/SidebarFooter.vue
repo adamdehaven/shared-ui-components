@@ -19,7 +19,7 @@
           >
             <a
               class="profile-dropdown-trigger"
-              href="#"
+              role="button"
               @click.prevent
             >
               <span class="sidebar-profile-name">{{ name }}</span>
@@ -114,6 +114,7 @@ const hasProfileItems = computed((): boolean => props.itemCount > 0)
   text-decoration: none;
   white-space: nowrap;
   transition: color .2s ease-out;
+  cursor: pointer;
 
   &:hover {
     color: var(--white, #fff);
