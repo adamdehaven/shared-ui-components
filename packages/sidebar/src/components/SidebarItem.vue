@@ -9,6 +9,7 @@
       :href="useAnchorTag ? item.to || '#' : null"
       :target="openInNewWindow ? '_blank' : null"
       class="sidebar-item-link"
+      :class="{ 'sidebar-item-external-link': openInNewWindow }"
       @click="itemClick(item)"
     >
       <div
@@ -103,7 +104,7 @@ const openInNewWindow = computed((): boolean => {
     return false
   }
 
-  return props.item.external && props.item.to.startsWith('http')
+  return props.item.external && (props.item.to.startsWith('http') || props.item.to.startsWith('/'))
 })
 
 const itemHasBadge = computed(() => props.subnavItem && (props.item as SidebarSecondaryItem).badgeCount !== undefined)

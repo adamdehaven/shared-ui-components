@@ -50,8 +50,25 @@
       <KDropdownItem
         v-for="item in profileItems"
         :key="item.name"
-        :item="{ label: item.name, to: item.to }"
-      />
+        :class="{ 'external-profile-dropdown-link': item.external && typeof item.to === 'string' }"
+        :item="item.external && typeof item.to === 'string' ? null : { label: item.name, to: item.to }"
+        @click="itemClick(item)"
+      >
+        <a
+          v-if="item.external && typeof item.to === 'string'"
+          class="sidebar-item-external-link"
+          :href="item.to"
+          target="_blank"
+        >
+          {{ item.name }}
+          <KIcon
+            icon="externalLink"
+            color="var(--black-70, rgba(0,0,0,0.7))"
+            size="20"
+            viewBox="0 0 20 20"
+          />
+        </a>
+      </KDropdownItem>
     </SidebarFooter>
   </aside>
 </template>
@@ -204,6 +221,31 @@ const bottomNavItems = computed(() => props.bottomItems.length ? prepareNavItems
     left: 0;
     z-index: 1;
     width: 100%;
+  }
+}
+
+.external-profile-dropdown-link {
+  // Override padding on `button` element to apply to `.sidebar-item-external-link` instead
+  :deep(button.k-dropdown-item-trigger) {
+    padding: 0 !important;
+  }
+}
+
+.sidebar-item-external-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  line-height: 1.3;
+  text-decoration: none;
+
+  .external-profile-dropdown-link & {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  :deep(.kong-icon) {
+    display: inline-flex;
+    margin-bottom: -7px;
   }
 }
 </style>

@@ -24,9 +24,9 @@ import { ref, computed } from 'vue'
 import { SidebarNav, SidebarPrimaryItem, SidebarProfileItem, SidebarSecondaryItem } from '../src'
 import '@kong/kongponents/dist/style.css'
 
-const activeItem = ref<SidebarPrimaryItem>()
+const activeItem = ref<SidebarPrimaryItem | SidebarSecondaryItem | SidebarProfileItem>()
 
-const sidebarItemClick = (item: SidebarPrimaryItem): void => {
+const sidebarItemClick = (item: SidebarPrimaryItem | SidebarSecondaryItem | SidebarProfileItem): void => {
   activeItem.value = item
   console.log('activeItem: %o', activeItem.value)
 }
@@ -39,16 +39,16 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
       key: 'overview',
       icon: 'sharedConfig',
       // TODO: using this item as a default when `activeItem` is undefined
-      active: !activeItem.value || activeItem.value?.key === 'overview',
+      active: !activeItem.value || (activeItem.value as SidebarPrimaryItem)?.key === 'overview',
     },
     {
       name: 'Runtime Manager',
       to: '/?runtime-manager',
       label: 'retail-sandbox-rg', // runtime group name
       key: 'runtime-manager',
-      active: activeItem.value?.key === 'runtime-manager',
+      active: (activeItem.value as SidebarPrimaryItem)?.key === 'runtime-manager',
       // TODO: actually when you click on Runtime Manager it would not expand until the user picks a runtime group
-      expanded: activeItem.value?.key === 'runtime-manager' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'runtime-manager',
+      expanded: (activeItem.value as SidebarPrimaryItem)?.key === 'runtime-manager' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'runtime-manager',
       icon: 'runtimes',
       items: [
         {
@@ -98,9 +98,9 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
       key: 'service-hub',
       to: '/?service-hub',
       label: 'Deloreans',
-      active: activeItem.value?.key === 'service-hub',
+      active: (activeItem.value as SidebarPrimaryItem)?.key === 'service-hub',
       // TODO: actually when you click on Service Hub it would not expand until the user picks a service
-      expanded: activeItem.value?.key === 'service-hub' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'service-hub',
+      expanded: (activeItem.value as SidebarPrimaryItem)?.key === 'service-hub' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'service-hub',
       icon: 'serviceHub',
       items: [
         {
@@ -119,9 +119,9 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
       name: 'Dev Portal',
       key: 'dev-portal',
       to: '/?dev-portal',
-      active: activeItem.value?.key === 'dev-portal',
+      active: (activeItem.value as SidebarPrimaryItem)?.key === 'dev-portal',
       // This item can always show the subnav
-      expanded: activeItem.value?.key === 'dev-portal' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'dev-portal',
+      expanded: (activeItem.value as SidebarPrimaryItem)?.key === 'dev-portal' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'dev-portal',
       icon: 'devPortal',
       items: [
         {
@@ -161,9 +161,9 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
       name: 'Analytics',
       key: 'analytics',
       to: '/?analytics',
-      active: activeItem.value?.key === 'analytics',
+      active: (activeItem.value as SidebarPrimaryItem)?.key === 'analytics',
       // This item can always show the subnav
-      expanded: activeItem.value?.key === 'analytics' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'analytics',
+      expanded: (activeItem.value as SidebarPrimaryItem)?.key === 'analytics' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'analytics',
       icon: 'vitalsChart',
       items: [
         {
@@ -187,9 +187,9 @@ const sidebarItemsBottom = computed((): SidebarPrimaryItem[] => {
       name: 'Organization',
       key: 'organization',
       to: '/?organization',
-      active: activeItem.value?.key === 'organization',
+      active: (activeItem.value as SidebarPrimaryItem)?.key === 'organization',
       // This item can always show the subnav
-      expanded: activeItem.value?.key === 'organization' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'organization',
+      expanded: (activeItem.value as SidebarPrimaryItem)?.key === 'organization' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'organization',
       icon: 'people',
       items: [
         {
@@ -208,9 +208,9 @@ const sidebarItemsBottom = computed((): SidebarPrimaryItem[] => {
       name: 'Settings',
       key: 'settings',
       to: '/?settings',
-      active: activeItem.value?.key === 'settings',
+      active: (activeItem.value as SidebarPrimaryItem)?.key === 'settings',
       // This item can always show the subnav
-      expanded: activeItem.value?.key === 'settings' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'settings',
+      expanded: (activeItem.value as SidebarPrimaryItem)?.key === 'settings' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'settings',
       icon: 'cogwheel',
       items: [
         {
@@ -233,6 +233,11 @@ const sidebarItemsProfile = computed((): SidebarProfileItem[] => {
     {
       name: 'Personal access tokens',
       to: '/?personal-access-tokens',
+    },
+    {
+      name: 'External',
+      to: 'https://google.com/',
+      external: true,
     },
     {
       name: 'Logout',
