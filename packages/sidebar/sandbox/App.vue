@@ -242,6 +242,7 @@ const sidebarItemsProfile = computed((): SidebarProfileItem[] => {
     {
       name: 'Logout',
       to: '/?logout',
+      hasDivider: true,
     },
   ]
 })

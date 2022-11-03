@@ -129,12 +129,10 @@ const hasProfileItems = computed((): boolean => props.itemCount > 0)
   -webkit-user-select: none;
   user-select: none;
 }
-</style>
 
-<style lang="scss">
-.sidebar-profile-menu-popover.k-popover {
-  --KPopPaddingX: 0;
-  --KPopPaddingY: 0;
+:deep(.sidebar-profile-menu-popover.k-popover) {
+  --KPopPaddingX: 0 !important;
+  --KPopPaddingY: 0 !important;
   margin-top: 0 !important;
   left: -2px !important;
 
