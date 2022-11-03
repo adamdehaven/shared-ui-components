@@ -16,7 +16,6 @@ A Kong UI dynamic sidebar component.
   - [`profileItems`](#profileitems)
   - [`profileName`](#profilename)
   - [`headerHeight`](#headerheight)
-- [Notes](#notes)
 
 ## Features
 
@@ -155,21 +154,3 @@ A string to display in the sidebar footer profile area.
 The height of the sidebar `header` slot, in pixels.
 
 The `headerHeight` should be set to the same height as the host application's navbar element, if applicable.
-
-## Notes
-
-- Document that subnav links with required route params must be declared. Example:
-
-  ```ts
-  // Note: `currentRoute` equates to router.currentRoute and must be passed in to the consuming app's route generator
-  {
-    name: 'Runtime Instances',
-    to: {
-      name: 'runtime-instances',
-      params: {
-        control_plane_id: currentRoute?.params.control_plane_id
-      }
-    }
-  }
-  ```
-
