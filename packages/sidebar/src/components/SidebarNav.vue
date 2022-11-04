@@ -9,7 +9,7 @@
     >
       <slot name="header" />
     </div>
-    <nav>
+    <nav :style="navContainerStyles">
       <ul
         v-if="topNavItems.length"
         class="level-primary top-items"
@@ -118,6 +118,10 @@ const headerContainerStyles = computed(() => ({
   minHeight: `${props.headerHeight}px`,
 }))
 
+const navContainerStyles = computed(() => ({
+  marginTop: `${props.headerHeight}px`,
+}))
+
 const slots = useSlots()
 const hasHeader = computed(() => !!slots.header)
 
@@ -169,7 +173,7 @@ const bottomNavItems = computed(() => props.bottomItems.length ? prepareNavItems
     flex-direction: column;
     height: 100%;
     overflow-x: hidden;
-    overflow-y: auto; // Cannot use `overlay` here as it breaks in Firefox
+    overflow-y: scroll; // Must use `scroll` so that the scrollbar width is always accounted for. Cannot use `overlay` here as it breaks in Firefox
     padding-top: $sidebar-header-spacing;
     @include scrollbarHidden;
 
@@ -194,8 +198,10 @@ const bottomNavItems = computed(() => props.bottomItems.length ? prepareNavItems
 }
 
 .sidebar-header {
-  position: sticky;
+  position: absolute;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -268,7 +274,7 @@ const bottomNavItems = computed(() => props.bottomItems.length ? prepareNavItems
   .level-primary {
     display: flex;
     flex-direction: column;
-    padding: 0 8px;
+    padding: 0 0 0 8px;
 
     &:last-of-type {
       margin-bottom: $sidebar-header-spacing * 2;
