@@ -28,6 +28,7 @@ $scrollbar-background-color: transparent;
 
   // Standard version (Firefox only for now) - always include
   scrollbar-color: transparent transparent;
+  scrollbar-gutter: stable both-edges;
   scrollbar-width: thin;
 }
 
@@ -44,5 +45,6 @@ $scrollbar-background-color: transparent;
 
   // Standard version (Firefox only for now) - always include
   scrollbar-color: $foreground-color $background-color;
+  scrollbar-gutter: stable both-edges;
   scrollbar-width: thin;
 }
