@@ -29,9 +29,9 @@
         </div>
         <div class="sidebar-item-name-container">
           <div
-            v-if="subnavItem ? item.name.length < 25 : item.name.length < 19"
+            v-if="subnavItem ? item.name.length < 25 : item.name.length < 18"
             class="sidebar-item-name truncate-text"
-            :class="[subnavItem ? 'has-badge-max-width truncate-24' : 'truncate-18']"
+            :class="[subnavItem ? 'has-badge-max-width truncate-24' : 'truncate-17']"
           >
             {{ item.name }}
           </div>
@@ -45,7 +45,7 @@
             <div class="sidebar-item-name has-tooltip">
               <span
                 class="truncate-text"
-                :class="[subnavItem ? 'has-badge-max-width truncate-24' : 'truncate-18']"
+                :class="[subnavItem ? 'truncate-20' : 'truncate-17', { 'has-badge-max-width': itemHasBadge }]"
               >{{ item.name }}</span>
             </div>
           </KTooltip>
@@ -227,7 +227,7 @@ const itemClick = (item: SidebarPrimaryItem | SidebarSecondaryItem) => {
         justify-content: space-between; // for badges
 
         .has-badge-max-width {
-          max-width: 160px !important;
+          max-width: 134px !important;
         }
       }
     }
@@ -260,8 +260,8 @@ const itemClick = (item: SidebarPrimaryItem | SidebarSecondaryItem) => {
       white-space: nowrap;
 
       &.truncate {
-        &-18 {
-          max-width: 18ch;
+        &-17 {
+          max-width: 17ch;
         }
         &-20 {
           max-width: 20ch;
