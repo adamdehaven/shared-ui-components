@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.14](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.1.13...@kong-ui/sidebar@0.1.14) (2022-11-04)
+
+
+### 🐛 Bug Fixes
+
+* **sidebar:** scrollbar visibility and padding ([503c94c](https://github.com/Kong/kong-ui-shared-components/commit/503c94c8b3ecfdeeaf0db3138df26ecb3cc317e1))
+
+
+
+
+
 ## [0.1.13](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.1.12...@kong-ui/sidebar@0.1.13) (2022-11-04)
 
 
