@@ -173,7 +173,7 @@ const bottomNavItems = computed(() => props.bottomItems.length ? prepareNavItems
     flex-direction: column;
     height: 100%;
     overflow-x: hidden;
-    overflow-y: scroll; // Must use `scroll` so that the scrollbar width is always accounted for. Cannot use `overlay` here as it breaks in Firefox
+    overflow-y: scroll; // Must use `scroll` so that the scrollbar width is always accounted for. Cannot use `overlay` here as it breaks in Firefox.
     padding-top: $sidebar-header-spacing;
     @include scrollbarBase;
 

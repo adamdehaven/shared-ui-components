@@ -22,11 +22,11 @@ $scrollbar-background-color: transparent;
     height: $size;
   }
   &::-webkit-scrollbar-thumb {
-    background: transparent;
+    background: transparent; // Hide the scrollbar until hovered
     border-radius: 8px;
   }
   &::-webkit-scrollbar-track {
-    background: transparent;
+    background: transparent; // Hide the scrollbar until hovered
   }
 
   // Standard version (Firefox only for now)
@@ -39,9 +39,9 @@ $scrollbar-background-color: transparent;
   $background-color: $scrollbar-background-color
 ) {
   &::-webkit-scrollbar-thumb {
-    background: $foreground-color;
+    background: $foreground-color; // update the color to be visible
   }
   &::-webkit-scrollbar-track {
-    background: $background-color;
+    background: $background-color; // update the color to be visible
   }
 }
