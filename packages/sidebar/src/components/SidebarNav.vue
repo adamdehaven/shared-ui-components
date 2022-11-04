@@ -168,7 +168,8 @@ const bottomNavItems = computed(() => props.bottomItems.length ? prepareNavItems
     display: flex;
     flex-direction: column;
     height: 100%;
-    overflow: hidden overlay;
+    overflow-x: hidden;
+    overflow-y: auto; // Cannot use `overlay` here as it breaks in Firefox
     padding-top: $sidebar-header-spacing;
     @include scrollbarHidden;
 
