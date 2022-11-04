@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.17](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.1.16...@kong-ui/sidebar@0.1.17) (2022-11-04)
+
+
+### 🐛 Bug Fixes
+
+* **sidebar:** final scrollbar fix? ([d298e5a](https://github.com/Kong/kong-ui-shared-components/commit/d298e5a683856bf2ce6ab66e06fd844caa463e3b))
+
+
+
+
+
 ## [0.1.16](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.1.15...@kong-ui/sidebar@0.1.16) (2022-11-04)
 
 

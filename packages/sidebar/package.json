@@ -1,6 +1,6 @@
 {
   "name": "@kong-ui/sidebar",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "type": "module",
   "main": "./dist/sidebar.umd.js",
   "module": "./dist/sidebar.es.js",
