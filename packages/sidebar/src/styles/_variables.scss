@@ -11,15 +11,12 @@ $scrollbar-width: 8px;
 $scrollbar-foreground-color: var(--steel-400, #7d91b3);
 $scrollbar-background-color: transparent;
 
-@mixin scrollbarBase(
-  $size: $scrollbar-width,
-  $foreground-color: $scrollbar-foreground-color,
-  $background-color: $scrollbar-background-color
-) {
+@mixin scrollbarBase($size: $scrollbar-width) {
   // For Chrome & Safari
   &::-webkit-scrollbar {
     width: $size;
     height: $size;
+    opacity: 1;
   }
   &::-webkit-scrollbar-thumb {
     background: transparent; // Hide the scrollbar until hovered
@@ -29,7 +26,7 @@ $scrollbar-background-color: transparent;
     background: transparent; // Hide the scrollbar until hovered
   }
 
-  // Standard version (Firefox only for now)
+  // Standard version (Firefox only for now) - always include
   scrollbar-color: transparent transparent;
   scrollbar-width: thin;
 }
@@ -44,4 +41,8 @@ $scrollbar-background-color: transparent;
   &::-webkit-scrollbar-track {
     background: $background-color; // update the color to be visible
   }
+
+  // Standard version (Firefox only for now) - always include
+  scrollbar-color: $foreground-color $background-color;
+  scrollbar-width: thin;
 }
