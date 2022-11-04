@@ -11,31 +11,11 @@ $scrollbar-width: 8px;
 $scrollbar-foreground-color: var(--steel-400, #7d91b3);
 $scrollbar-background-color: transparent;
 
-@mixin scrollbarVisible(
+@mixin scrollbarBase(
   $size: $scrollbar-width,
   $foreground-color: $scrollbar-foreground-color,
   $background-color: $scrollbar-background-color
 ) {
-  // For Chrome & Safari
-  &::-webkit-scrollbar {
-    width: $size;
-    height: $size;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: $foreground-color;
-    border-radius: 8px;
-  }
-  &::-webkit-scrollbar-track {
-    background: $background-color;
-  }
-
-  // Standard version (Firefox only for now)
-  scrollbar-color: $foreground-color $background-color;
-  scrollbar-width: thin;
-}
-
-@mixin scrollbarHidden($size: $scrollbar-width) {
-  // For Chrome & Safari
   // For Chrome & Safari
   &::-webkit-scrollbar {
     width: $size;
@@ -52,4 +32,16 @@ $scrollbar-background-color: transparent;
   // Standard version (Firefox only for now)
   scrollbar-color: transparent transparent;
   scrollbar-width: thin;
+}
+
+@mixin scrollbarVisible(
+  $foreground-color: $scrollbar-foreground-color,
+  $background-color: $scrollbar-background-color
+) {
+  &::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
 }

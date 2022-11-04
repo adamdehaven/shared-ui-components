@@ -175,7 +175,7 @@ const bottomNavItems = computed(() => props.bottomItems.length ? prepareNavItems
     overflow-x: hidden;
     overflow-y: scroll; // Must use `scroll` so that the scrollbar width is always accounted for. Cannot use `overlay` here as it breaks in Firefox
     padding-top: $sidebar-header-spacing;
-    @include scrollbarHidden;
+    @include scrollbarBase;
 
     // Only show scrollbar when hovering over nav
     &:hover {
