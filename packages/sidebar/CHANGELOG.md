@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.12](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.1.11...@kong-ui/sidebar@0.1.12) (2022-11-04)
+
+
+### 🐛 Bug Fixes
+
+* **sidebar:** fix scrolling in firefox [KHCP-5242] ([326406c](https://github.com/Kong/kong-ui-shared-components/commit/326406cef730a1a2d2ac465159d64833018e8a92))
+
+
+
+
+
 ## [0.1.11](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.1.10...@kong-ui/sidebar@0.1.11) (2022-11-03)
 
 
