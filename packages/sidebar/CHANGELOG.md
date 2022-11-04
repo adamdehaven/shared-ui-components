@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.16](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.1.15...@kong-ui/sidebar@0.1.16) (2022-11-04)
+
+
+### 🐛 Bug Fixes
+
+* **sidebar:** standard sidebar css rules ([64c52f7](https://github.com/Kong/kong-ui-shared-components/commit/64c52f7acf5fcd22cb4f7574601a4420dd232e4d))
+
+
+
+
+
 ## [0.1.15](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.1.14...@kong-ui/sidebar@0.1.15) (2022-11-04)
 
 
