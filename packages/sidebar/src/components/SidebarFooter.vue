@@ -1,5 +1,9 @@
 <template>
-  <div class="sidebar-footer">
+  <nav
+    class="sidebar-footer"
+    aria-label="Profile menu"
+    aria-haspopup="true"
+  >
     <div class="sidebar-profile-link">
       <div class="sidebar-item-icon">
         <ProfileIcon />
@@ -20,6 +24,8 @@
             <a
               class="profile-dropdown-trigger"
               role="button"
+              tabindex="0"
+              aria-label="Open profile menu"
               @click.prevent
             >
               <span class="sidebar-profile-name">{{ name }}</span>
@@ -31,7 +37,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script setup lang="ts">
@@ -116,8 +122,16 @@ const hasProfileItems = computed((): boolean => props.itemCount > 0)
   transition: color .2s ease-out;
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     color: var(--white, #fff);
+  }
+
+  &:focus-visible {
+    outline: none;
+    span {
+      outline: 1px solid var(--steel-300, #A3B6D9);
+    }
   }
 }
 
@@ -140,6 +154,16 @@ const hasProfileItems = computed((): boolean => props.itemCount > 0)
   .k-dropdown-list {
     margin: var(--spacing-sm) 0;
     padding-left: 0;
+  }
+
+  .k-dropdown-item-trigger {
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+    &:focus-visible {
+      outline: 1px solid var(--steel-300, #A3B6D9);
+    }
   }
 }
 </style>

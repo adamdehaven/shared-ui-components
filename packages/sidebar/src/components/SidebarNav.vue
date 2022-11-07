@@ -9,7 +9,11 @@
     >
       <slot name="header" />
     </div>
-    <nav :style="navContainerStyles">
+    <nav
+      class="sidebar-nav"
+      :style="navContainerStyles"
+      aria-label="Main menu"
+    >
       <ul
         v-if="topNavItems.length"
         class="level-primary top-items"
@@ -168,7 +172,7 @@ const bottomNavItems = computed(() => props.bottomItems.length ? prepareNavItems
   height: 100vh;
   background: $sidebar-background;
 
-  nav {
+  nav.sidebar-nav {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -220,6 +224,11 @@ const bottomNavItems = computed(() => props.bottomItems.length ? prepareNavItems
     * {
       display: flex;
     }
+
+    a:focus-visible {
+      outline: 1px solid var(--steel-300, #A3B6D9);
+      border-radius: $sidebar-item-border-radius
+    }
   }
 
   &:after{
@@ -240,6 +249,10 @@ const bottomNavItems = computed(() => props.bottomItems.length ? prepareNavItems
   // Override padding on `button` element to apply to `.sidebar-item-external-link` instead
   :deep(button.k-dropdown-item-trigger) {
     padding: 0 !important;
+
+    &:focus-visible {
+      outline: none;
+    }
   }
 }
 
@@ -250,6 +263,10 @@ const bottomNavItems = computed(() => props.bottomItems.length ? prepareNavItems
   font-size: 14px;
   line-height: 1.3;
   text-decoration: none;
+
+  &:focus-visible {
+    outline: 1px solid var(--steel-300, #A3B6D9) !important;
+  }
 
   .external-profile-dropdown-link & {
     padding: var(--spacing-md) var(--spacing-lg);

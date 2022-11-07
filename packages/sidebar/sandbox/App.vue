@@ -9,7 +9,13 @@
         @click="sidebarItemClick"
       >
         <template #header>
-          <p>This is my logo for now</p>
+          <router-link
+            to="/"
+            tabindex="0"
+            class="logo-link"
+          >
+            This is my logo for now
+          </router-link>
         </template>
       </SidebarNav>
     </div>
@@ -36,6 +42,7 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
     {
       name: 'Overview',
       to: '/?overview',
+      external: true,
       key: 'overview',
       icon: 'sharedConfig',
       // TODO: using this item as a default when `activeItem` is undefined
@@ -254,6 +261,11 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Inter", Helvetica, Arial, sans-serif;
+}
+
+.logo-link {
+  color: #fff;
+  text-decoration: none;
 }
 
 .sandbox-container {

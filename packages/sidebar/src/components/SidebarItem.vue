@@ -4,66 +4,75 @@
     :class="[!subnavItem ? 'sidebar-item-primary' : 'sidebar-item-secondary', { 'expanded': (item as SidebarPrimaryItem).expanded }, { 'active': item.active }]"
   >
     <component
-      :is="useAnchorTag ? 'a' : 'router-link'"
+      :is="!useAnchorTag ? 'router-link' : 'div'"
+      v-slot="slotProps"
+      :custom="useAnchorTag ? undefined : true"
       :to="!item.external ? item.to : null"
-      :href="useAnchorTag ? item.to || '#' : null"
-      :target="openInNewWindow ? '_blank' : null"
-      class="sidebar-item-link"
-      :class="{ 'sidebar-item-external-link': openInNewWindow }"
-      @click="itemClick(item)"
     >
-      <div
-        class="sidebar-item-display"
-        :class="{ 'has-label': !!(item as SidebarPrimaryItem).label && (item as SidebarPrimaryItem).expanded, 'has-badge': itemHasBadge }"
+      <a
+        :href="useAnchorTag ? String(item.to || '#') : '#'"
+        :target="openInNewWindow ? '_blank' : undefined"
+        class="sidebar-item-link"
+        :class="{ 'sidebar-item-external-link': openInNewWindow, 'router-link': !useAnchorTag }"
+        :aria-expanded="(item as SidebarPrimaryItem).items?.length && (item as SidebarPrimaryItem).expanded ? true : undefined"
+        :aria-controls="(item as SidebarPrimaryItem).items?.length && (item as SidebarPrimaryItem).expanded ? `subnav-${(item as SidebarPrimaryItem).key}` : undefined"
+        @click="routerNavigate(item, slotProps?.navigate)"
+        @keypress.enter="routerNavigate(item, slotProps?.navigate)"
       >
         <div
-          v-if="(item as SidebarPrimaryItem).icon"
-          class="sidebar-item-icon"
+          class="sidebar-item-display"
+          :class="{ 'has-label': !!(item as SidebarPrimaryItem).label && (item as SidebarPrimaryItem).expanded, 'has-badge': itemHasBadge }"
         >
-          <KIcon
-            :icon="String((item as SidebarPrimaryItem).icon)"
-            :color="item.active || (item as SidebarPrimaryItem).expanded ? 'var(--white, #fff)' : '#B5BECD'"
-            size="20"
-            viewBox="0 0 20 20"
+          <div
+            v-if="(item as SidebarPrimaryItem).icon"
+            class="sidebar-item-icon"
+          >
+            <KIcon
+              :icon="String((item as SidebarPrimaryItem).icon)"
+              :color="item.active || (item as SidebarPrimaryItem).expanded ? 'var(--white, #fff)' : '#B5BECD'"
+              size="20"
+              viewBox="0 0 20 20"
+            />
+          </div>
+          <div class="sidebar-item-name-container">
+            <div
+              v-if="subnavItem ? item.name.length < 25 : item.name.length < 18"
+              class="sidebar-item-name truncate-text"
+              :class="[subnavItem ? 'has-badge-max-width truncate-24' : 'truncate-17']"
+            >
+              {{ item.name }}
+            </div>
+            <KTooltip
+              v-else
+              :label="item.name"
+              placement="right"
+              position-fixed
+              class="sidebar-item-tooltip"
+            >
+              <div class="sidebar-item-name has-tooltip">
+                <span
+                  class="truncate-text"
+                  :class="[subnavItem ? 'truncate-20' : 'truncate-17', { 'has-badge-max-width': itemHasBadge }]"
+                >{{ item.name }}</span>
+              </div>
+            </KTooltip>
+            <div
+              v-if="(item as SidebarPrimaryItem).label && (item as SidebarPrimaryItem).expanded"
+              class="sidebar-item-label truncate-text truncate-20"
+            >
+              {{ (item as SidebarPrimaryItem).label }}
+            </div>
+          </div>
+          <ItemBadge
+            v-if="itemHasBadge"
+            :count="(item as SidebarSecondaryItem).badgeCount"
           />
         </div>
-        <div class="sidebar-item-name-container">
-          <div
-            v-if="subnavItem ? item.name.length < 25 : item.name.length < 18"
-            class="sidebar-item-name truncate-text"
-            :class="[subnavItem ? 'has-badge-max-width truncate-24' : 'truncate-17']"
-          >
-            {{ item.name }}
-          </div>
-          <KTooltip
-            v-else
-            :label="item.name"
-            placement="right"
-            position-fixed
-            class="sidebar-item-tooltip"
-          >
-            <div class="sidebar-item-name has-tooltip">
-              <span
-                class="truncate-text"
-                :class="[subnavItem ? 'truncate-20' : 'truncate-17', { 'has-badge-max-width': itemHasBadge }]"
-              >{{ item.name }}</span>
-            </div>
-          </KTooltip>
-          <div
-            v-if="(item as SidebarPrimaryItem).label && (item as SidebarPrimaryItem).expanded"
-            class="sidebar-item-label truncate-text truncate-20"
-          >
-            {{ (item as SidebarPrimaryItem).label }}
-          </div>
-        </div>
-        <ItemBadge
-          v-if="itemHasBadge"
-          :count="(item as SidebarSecondaryItem).badgeCount"
-        />
-      </div>
+      </a>
     </component>
     <ul
       v-if="(item as SidebarPrimaryItem).items?.length && (item as SidebarPrimaryItem).expanded"
+      :id="`subnav-${(item as SidebarPrimaryItem).key}`"
       class="level-secondary"
     >
       <SidebarItem
@@ -109,8 +118,15 @@ const openInNewWindow = computed((): boolean => {
 
 const itemHasBadge = computed(() => props.subnavItem && (props.item as SidebarSecondaryItem).badgeCount !== undefined)
 
-const itemClick = (item: SidebarPrimaryItem | SidebarSecondaryItem) => {
+const itemClick = (item: SidebarPrimaryItem | SidebarSecondaryItem): void => {
   emit('click', item)
+}
+
+const routerNavigate = (item: SidebarPrimaryItem | SidebarSecondaryItem, navigate?: Function): void => {
+  itemClick(item)
+  if (typeof navigate === 'function') {
+    navigate()
+  }
 }
 </script>
 
@@ -149,13 +165,18 @@ const itemClick = (item: SidebarPrimaryItem | SidebarSecondaryItem) => {
         transition: all .2s ease-out;
       }
 
-      &:hover {
+      &:hover,
+      &:focus-visible {
         color: var(--white, #fff);
 
         // SVG fill color on hover
         svg:not(.profile-icon) path {
           fill: var(--white, #fff);
         }
+      }
+
+      &:focus-visible {
+        outline: 1px solid var(--steel-300, #A3B6D9);
       }
 
       .sidebar-item-tooltip {
@@ -166,7 +187,9 @@ const itemClick = (item: SidebarPrimaryItem | SidebarSecondaryItem) => {
     }
 
     &.active > a,
-    &.expanded > a {
+    &.active > div > a,
+    &.expanded > a,
+    &.expanded > div > a {
       color: var(--white, #fff);
 
       .sidebar-item-name {
@@ -193,10 +216,16 @@ const itemClick = (item: SidebarPrimaryItem | SidebarSecondaryItem) => {
     border-radius: $sidebar-item-border-radius;
   }
 
-  > a > .sidebar-item-display {
-    &.has-label {
-      padding-top: 12px;
-      padding-bottom: 12px;
+  > a,
+  > div > a {
+    border-radius: $sidebar-item-border-radius;
+
+    > .sidebar-item-display {
+
+      &.has-label {
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
     }
   }
 }
@@ -218,7 +247,8 @@ const itemClick = (item: SidebarPrimaryItem | SidebarSecondaryItem) => {
     background-color: transparent;
     transition: all .1s ease-in-out !important;
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       background-color: rgba(#fff, 0.05);
     }
 
