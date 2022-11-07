@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.1.18...@kong-ui/sidebar@0.2.0) (2022-11-07)
+
+
+### ✨ Features
+
+* **sidebar:** add keyboard navigation [KHCP-5239] ([#123](https://github.com/Kong/kong-ui-shared-components/issues/123)) ([a5ec681](https://github.com/Kong/kong-ui-shared-components/commit/a5ec6811ad214e60efc32f44f1e5f95c5a3de129))
+
+
+
+
+
 ## [0.1.18](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.1.17...@kong-ui/sidebar@0.1.18) (2022-11-04)
 
 
