@@ -123,10 +123,10 @@ const itemClick = (item: SidebarPrimaryItem | SidebarSecondaryItem): void => {
 }
 
 const routerNavigate = (item: SidebarPrimaryItem | SidebarSecondaryItem, navigate?: Function): void => {
-  itemClick(item)
   if (typeof navigate === 'function') {
     navigate()
   }
+  itemClick(item)
 }
 </script>
 
