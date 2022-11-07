@@ -39,7 +39,7 @@ runs:
                 tarBall=$(pnpm pack --pack-destination ../../_public)
                 hashedTarBall="$(echo "${tarBall}" |sed 's/\.tgz//g')-${sha_short}.tgz"
                 echo "${hashedTarBall}"
-                mv "${tarBall}"  "${hashedTarBall}"
+                cp "${tarBall}"  "${hashedTarBall}"
                 cd ../../
             fi
         done
