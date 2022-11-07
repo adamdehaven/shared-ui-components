@@ -16,8 +16,8 @@
         :class="{ 'sidebar-item-external-link': openInNewWindow, 'router-link': !useAnchorTag }"
         :aria-expanded="(item as SidebarPrimaryItem).items?.length && (item as SidebarPrimaryItem).expanded ? true : undefined"
         :aria-controls="(item as SidebarPrimaryItem).items?.length && (item as SidebarPrimaryItem).expanded ? `subnav-${(item as SidebarPrimaryItem).key}` : undefined"
-        @click="routerNavigate(item, slotProps?.navigate)"
-        @keypress.enter="routerNavigate(item, slotProps?.navigate)"
+        @click="navigate($event, item, slotProps?.navigate)"
+        @keypress.enter="navigate($event, item, slotProps?.navigate)"
       >
         <div
           class="sidebar-item-display"
@@ -122,11 +122,12 @@ const itemClick = (item: SidebarPrimaryItem | SidebarSecondaryItem): void => {
   emit('click', item)
 }
 
-const routerNavigate = (item: SidebarPrimaryItem | SidebarSecondaryItem, navigate?: Function): void => {
-  if (typeof navigate === 'function') {
-    navigate()
-  }
+const navigate = (event: Event, item: SidebarPrimaryItem | SidebarSecondaryItem, routerNavigate?: Function): void => {
   itemClick(item)
+  if (typeof routerNavigate === 'function') {
+    event.preventDefault()
+    routerNavigate()
+  }
 }
 </script>
 
