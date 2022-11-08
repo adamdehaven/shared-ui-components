@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.3.0...@kong-ui/core@0.3.1) (2022-11-08)
+
+
+### 🐛 Bug Fixes
+
+* remove console logs ([45db378](https://github.com/Kong/kong-ui-shared-components/commit/45db3788f70298ea67efb40c949bae10b73e8a55))
+
+
+
+
+
 # [0.3.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.2.3...@kong-ui/core@0.3.0) (2022-11-01)
 
 
