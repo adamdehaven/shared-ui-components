@@ -6,8 +6,6 @@ export default function useI18n(messages: Record<string, any>) {
     safe: true, // Preserve arrays
   })
 
-  console.log('flattenedMessages', flattenedMessages)
-
   const t = (translationKey: string) => {
     return flattenedMessages[translationKey]
   }

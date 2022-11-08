@@ -398,7 +398,6 @@ describe('<SidebarNav />', () => {
       cy.get(sidebar).find('.sidebar-item-link').eq(1).click().then(() => {
         // Check for emitted event
         cy.wrap(Cypress.vueWrapper.emitted()).should('have.property', 'click').then((evt) => {
-          console.log('evt', evt[0][0])
           // Verify emit payload
           cy.wrap(evt[0][0]).should('have.property', 'name')
           cy.wrap(evt[0][0]).should('have.property', 'key')
