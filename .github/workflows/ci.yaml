@@ -41,8 +41,6 @@ jobs:
 
       - name: Getting changed packages
         id: changed_packages
-        # filter: "{packages/(demo-component|utils)}"
-        # spec: "--spec packages/demo-component --spec packages/demo-test" (only if cy.ts found in package)
         run: |
           lernaCommand="changed"
           if [[ "${{ steps.lock-changed.outputs.any_changed }}" == "true" ]]; then
@@ -52,7 +50,8 @@ jobs:
           echo "lernaCommand: ${lernaCommand}"
 
           filter="{packages/("
-          spec=""
+          specPackages=""
+          packageIndex=0
           for pkg in $(lerna ${lernaCommand})
           do
             filter=${filter}$(echo "${pkg}" | sed 's/@kong-ui\///g')"|"
@@ -60,13 +59,21 @@ jobs:
             cPkg=$(echo "${pkg}" | sed 's/@kong-ui/packages/g')
             findRes=$(find "${cPkg}" -name "*.cy.ts" || true)
             if [[ -n "${findRes}" ]]; then
-              spec="${spec} --spec ${cPkg}"
+              if [[ "$packageIndex" -eq 0 ]]; then
+                specPackages="${cPkg}"
+              else
+                specPackages="${specPackages},${cPkg}"
+              fi
             fi
           done
           filter=$(echo "${filter}" | sed 's/|$//')")}"
-
           echo "filter=${filter}" >> $GITHUB_OUTPUT
-          echo "spec=${spec}" >> $GITHUB_OUTPUT
+
+          if [[ -n "$specPackages" ]]; then
+            specPackages="--spec '${specPackages}'"
+          fi
+
+          echo "spec=${specPackages}" >> $GITHUB_OUTPUT
 
   build:
     name: Build And Test
@@ -103,7 +110,7 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           install: false
-          command: pnpm run test:component:ci ${{needs.install-dependencies.outputs.spec}}
+          command: pnpm run test:component:ci ${{ needs.install-dependencies.outputs.spec }}
 
       - name: Upload Component Tests Results
         uses: actions/upload-artifact@v3
