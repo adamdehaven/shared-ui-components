@@ -65,7 +65,9 @@ jobs:
                 specPackages="${specPackages},${cPkg}"
               fi
             fi
+            packageIndex=$((packageIndex + 1))
           done
+
           filter=$(echo "${filter}" | sed 's/|$//')")}"
           echo "filter=${filter}" >> $GITHUB_OUTPUT
 
