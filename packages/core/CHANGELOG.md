@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.3.1...@kong-ui/core@0.3.2) (2022-11-09)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency vue to ^3.2.42 ([#135](https://github.com/Kong/kong-ui-shared-components/issues/135)) ([ebb0bf0](https://github.com/Kong/kong-ui-shared-components/commit/ebb0bf034a56622090e9e1a84c22465982f05e5b))
+
+
+
+
+
 ## [0.3.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.3.0...@kong-ui/core@0.3.1) (2022-11-08)
 
 
