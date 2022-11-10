@@ -197,7 +197,7 @@ const sidebarItemsBottom = computed((): SidebarPrimaryItem[] => {
       active: (activeItem.value as SidebarPrimaryItem)?.key === 'organization',
       // This item can always show the subnav
       expanded: (activeItem.value as SidebarPrimaryItem)?.key === 'organization' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'organization',
-      icon: 'people',
+      icon: 'organizations',
       items: [
         {
           name: 'Teams',

@@ -31,7 +31,6 @@
               :icon="String((item as SidebarPrimaryItem).icon)"
               :color="item.active || (item as SidebarPrimaryItem).expanded ? 'var(--white, #fff)' : '#B5BECD'"
               size="20"
-              viewBox="0 0 20 20"
             />
           </div>
           <div class="sidebar-item-name-container">
