@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.8](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.2.7...@kong-ui/sidebar@0.2.8) (2022-11-10)
+
+
+### 🐛 Bug Fixes
+
+* **sidebar:** update icon viewBox ([218d68a](https://github.com/Kong/kong-ui-shared-components/commit/218d68a3deac8803d65ca41e38843ba5badeb164))
+
+
+
+
+
 ## [0.2.7](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.2.6...@kong-ui/sidebar@0.2.7) (2022-11-10)
 
 
