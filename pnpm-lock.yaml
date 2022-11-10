@@ -121,6 +121,12 @@ importers:
   packages/cli:
     specifiers: {}
 
+  packages/copy-uuid:
+    specifiers:
+      '@kong-ui/core': workspace:^0.3.1
+    dependencies:
+      '@kong-ui/core': link:../core
+
   packages/core:
     specifiers:
       flat: ^5.0.2

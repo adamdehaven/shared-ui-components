@@ -15,6 +15,9 @@
 /packages/core @adamdehaven @ValeryG @jillztom
 /packages/sidebar @adamdehaven
 
+# Kong Manager Team
+/packages/copy-uuid @Leopoldthecoder
+
 # Renovate Bot approvals
 # These rules MUST remain at the bottom as the last entry
 pnpm-lock.yaml @kongponents-bot @adamdehaven @ValeryG @jillztom
