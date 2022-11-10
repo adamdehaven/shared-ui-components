@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.7](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.2.6...@kong-ui/sidebar@0.2.7) (2022-11-10)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency vue to ^3.2.44 ([#142](https://github.com/Kong/kong-ui-shared-components/issues/142)) ([25ee0bf](https://github.com/Kong/kong-ui-shared-components/commit/25ee0bfbb7eda216402a55d705c0968cc18d4dde))
+
+
+
+
+
 ## [0.2.6](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.2.5...@kong-ui/sidebar@0.2.6) (2022-11-09)
 
 
