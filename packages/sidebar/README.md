@@ -8,7 +8,7 @@ A Kong UI dynamic sidebar component.
 - [Requirements](#requirements)
 - [Usage](#usage)
   - [Install](#install)
-  - [Initialize](#initialize)
+  - [Usage Example](#usage-example)
 - [TypeScript interfaces](#typescript-interfaces)
 - [Props](#props)
   - [`topItems`](#topitems)
@@ -69,39 +69,156 @@ Install the component in your host application
 yarn add @kong-ui/sidebar
 ```
 
-### Initialize
+### Usage Example
 
 You will likely want to utilize a wrapper component in your application, so import the `SidebarNav` component and the package styles into your wrapper component.
+
+You will also need to utilize a factory function (e.g. a composable) in order to generate and update your menu items.
+
+<details>
+
+<summary>:sparkles: Click to view the expanded usage example :sparkles:</summary>
+
+#### `SidebarWrapper.vue`
 
 ```html
 <template>
   <SidebarNav
-    :top-items="sidebarItemsTop"
-    :bottom-items="sidebarItemsBottom"
-    :profile-items="sidebarItemsProfile"
+    :header-height="60"
+    :top-items="topItems"
+    :bottom-items="bottomItems"
+    :profile-items="profileItems"
     profile-name="Marty McFly"
     @click="activateSidebarItem"
   >
     <template #header>
-      <div class="d-flex">This is my logo</div>
+      <div class="d-flex w-100 align-items-center">
+        <router-link
+            class="d-flex align-items-center w-100"
+            :to="{ name: 'home' }"
+          >
+          This is my logo
+        </router-link>
+      </div>
     </template>
   </SidebarNav>
 </template>
 
 <script setup lang="ts">
+import { watch, onBeforeMount } from 'vue'
 // SidebarNav Component and types
 import { SidebarNav, SidebarPrimaryItem, SidebarSecondaryItem, SidebarProfileItem } from '@kong-ui/sidebar'
+import { RouteRecordRedirectOption, useRoute, useRouter } from 'vue-router'
+import useSidebar from '../composables/useSidebar'
 // Sidebar component styles
 import '@kong-ui/sidebar/dist/style.css'
 
+const { updateMenu, topItems, bottomItems, profileItems } = composables.useSidebar()
+const router = useRouter()
+const route = useRoute()
+
+// Update the sidebar menu when the route.path changes
+watch(
+  () => route.path,
+  (newPath, oldPath) => {
+    // If the path didn't change, there's no need to refresh the nav
+    if (newPath !== oldPath) {
+      // Important: Update up the menu to properly render the sidebar items on route change
+      updateMenu(route)
+    }
+  },
+)
+
 const activateSidebarItem = (item: SidebarPrimaryItem | SidebarSecondaryItem | SidebarProfileItem) => {
-  // Do something when item is clicked
-  //
-  // Keep in mind you also need to handle updating the sidebar items when
-  // a user navigates in the app WITHOUT interacting with the sidebar, e.g. a table row click.
+  if (typeof item?.to === 'object') {
+    try {
+      // Try to resolve the route based on the `item.to` property.
+      // If unsuccessful, the catch will fire and we will fallback to allowing the `route.path` watcher handle the update
+      const clickedRoute = router.resolve(item.to)
+
+      // Get the full clickedRoute route config (to check its `redirect` property)
+      const redirect: RouteRecordRedirectOption | undefined = router.getRoutes().find(route => route.name === clickedRoute.name)?.redirect
+
+      let shouldUpdateMenu = true
+
+      if (typeof redirect === 'object') {
+        // If `redirect` is an object and the clickedRoute.name is the same as the redirect.name, return false to prevent updating the menu
+        shouldUpdateMenu = (redirect as Record<string, any>).name && (redirect as Record<string, any>).name !== router.currentRoute.value.name
+      } else if (typeof redirect === 'string') {
+        // If `redirect` is a string and the clickedRoute.name is the same as the redirect (string, which is likely the route name), return false to prevent updating the menu
+        shouldUpdateMenu = redirect !== router.currentRoute.value.name
+      }
+
+      // If a redirect property exists
+      if (shouldUpdateMenu) {
+        // Pass true here to allow for the route change to still be evaluated
+        updateMenu(clickedRoute)
+      }
+    } catch (err) {
+      // do nothing, fallback to the `route.path` watcher to update the menu
+    }
+  }
 }
+
+onBeforeMount(() => {
+  updateMenu(route)
+})
 </script>
 ```
+
+#### `useSidebar.ts`
+
+```ts
+import { ref } from 'vue'
+import { SidebarPrimaryItem, SidebarProfileItem } from '@kong-ui/sidebar'
+import { RouteLocationNormalizedLoaded } from 'vue-router'
+
+export const useSidebar = () => {
+  const topItems = ref<SidebarPrimaryItem[]>([])
+  const bottomItems = ref<SidebarPrimaryItem[]>([])
+  const profileItems = ref<SidebarProfileItem[]>([])
+
+  const updateMenu = (currentRoute?: RouteLocationNormalizedLoaded) => {
+    // Determine if the sidebar item is active if any matched route.name evaluates to the `routeName` string passed
+    const active = (routeName: string): boolean => !!currentRoute?.matched.some(({ name }) => name === routeName)
+
+    topItems.value = [
+      {
+        name: 'Organizations',
+        key: 'organizations',
+        to: { name: 'organizations' },
+        active: active('root-organizations'), // L1 active() name must point to the root parent
+        icon: 'organizations',
+      },
+      {
+        name: 'Users',
+        key: 'users',
+        to: { name: 'users' },
+        active: active('root-users'), // L1 active() name must point to the root parent
+        icon: 'profile',
+      },
+      {
+        name: 'Control Planes',
+        key: 'control-planes',
+        to: { name: 'control-planes' },
+        active: active('root-control-planes'), // L1 active() name must point to the root parent
+        icon: 'workspaces',
+      },
+    ]
+
+    // In the future, update the bottomItems and profileItems here as needed
+  }
+
+  return {
+    updateMenu,
+    topItems,
+    bottomItems,
+    profileItems,
+  }
+}
+```
+
+</details>
 
 ## TypeScript interfaces
 
