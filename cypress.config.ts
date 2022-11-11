@@ -6,7 +6,9 @@ export default defineConfig({
     devServer: {
       framework: 'vue',
       bundler: 'vite',
-      viteConfig: sharedViteConfig,
+      viteConfig: {
+        ...sharedViteConfig,
+      },
     },
     supportFile: 'cypress/support/index.ts',
     specPattern: '**/src/**/*.cy.ts',
