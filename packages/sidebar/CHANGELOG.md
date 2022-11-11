@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.11](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.2.10...@kong-ui/sidebar@0.2.11) (2022-11-11)
+
+
+### 📚 Documentation
+
+* **sidebar:** update readme ([c60558e](https://github.com/Kong/kong-ui-shared-components/commit/c60558ec742f842ecfba7ece2bcf3eaf42e23322))
+* **sidebar:** update readme ([0de0126](https://github.com/Kong/kong-ui-shared-components/commit/0de0126f34677bf32df89c40ca7f0223ff6d578b))
+
+
+
+
+
 ## [0.2.10](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.2.9...@kong-ui/sidebar@0.2.10) (2022-11-11)
 
 
