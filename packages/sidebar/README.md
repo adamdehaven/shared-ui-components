@@ -9,13 +9,13 @@ A Kong UI dynamic sidebar component.
 - [Usage](#usage)
   - [Install](#install)
   - [Usage Example](#usage-example)
-- [TypeScript interfaces](#typescript-interfaces)
 - [Props](#props)
   - [`topItems`](#topitems)
   - [`bottomItems`](#bottomitems)
   - [`profileItems`](#profileitems)
   - [`profileName`](#profilename)
   - [`headerHeight`](#headerheight)
+- [TypeScript interfaces](#typescript-interfaces)
 
 ## Features
 
@@ -220,14 +220,6 @@ export const useSidebar = () => {
 
 </details>
 
-## TypeScript interfaces
-
-TypeScript interfaces [are available here](https://github.com/Kong/ui-shared-components/blob/main/packages/sidebar/src/types/index.ts) and can be directly imported into your host application. The following interfaces are available for import:
-
-```ts
-import type { SidebarPrimaryItem, SidebarSecondaryItem, SidebarProfileItem } from '@kong-ui/sidebar'
-```
-
 ## Props
 
 ### `topItems`
@@ -271,3 +263,11 @@ A string to display in the sidebar footer profile area.
 The height of the sidebar `header` slot, in pixels.
 
 The `headerHeight` should be set to the same height as the host application's navbar element, if applicable.
+
+## TypeScript interfaces
+
+TypeScript interfaces [are available here](https://github.com/Kong/ui-shared-components/blob/main/packages/sidebar/src/types/index.ts) and can be directly imported into your host application. The following interfaces are available for import:
+
+```ts
+import type { SidebarPrimaryItem, SidebarSecondaryItem, SidebarProfileItem } from '@kong-ui/sidebar'
+```
