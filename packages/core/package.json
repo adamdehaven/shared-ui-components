@@ -39,7 +39,7 @@
     "extends": "../../package.json"
   },
   "peerDependencies": {
-    "vue": "^3.2.44"
+    "vue": "^3.2.45"
   },
   "dependencies": {
     "flat": "^5.0.2"
