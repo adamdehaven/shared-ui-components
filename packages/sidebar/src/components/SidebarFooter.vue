@@ -151,6 +151,14 @@ const hasProfileItems = computed((): boolean => props.itemCount > 0)
   margin-top: 0 !important;
   left: -2px !important;
 
+  // Prevent animation classes from being applied by container app
+  &.fade-enter-active,
+  &.fade-enter-to,
+  &.fade-leave-active,
+  &.fade-leave-to {
+    animation: none !important;
+  }
+
   .k-dropdown-list {
     margin: var(--spacing-sm) 0;
     padding-left: 0;
