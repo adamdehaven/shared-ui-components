@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.12](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.2.11...@kong-ui/sidebar@0.2.12) (2022-11-12)
+
+
+### 🐛 Bug Fixes
+
+* **sidebar:** prevent animation class impacting popover [KHCP-5239] ([#147](https://github.com/Kong/kong-ui-shared-components/issues/147)) ([9add883](https://github.com/Kong/kong-ui-shared-components/commit/9add883957bf6a6e9616f990f76b67eb8f3d532d))
+
+
+
+
+
 ## [0.2.11](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.2.10...@kong-ui/sidebar@0.2.11) (2022-11-11)
 
 
