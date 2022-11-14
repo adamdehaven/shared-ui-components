@@ -10,9 +10,6 @@ inputs:
   netlify-token:
     description: netlify-auth-token
     required: true
-  short-sha:
-    description: short-sha of current commit
-    required: true
 outputs:
   preview-url:
     description: Preview URL
@@ -26,7 +23,7 @@ runs:
       run: |
         mkdir _public
         sha_short=$(git rev-parse --short HEAD)
-        echo "sha_short=${sha_short}" >> $GITHUB_OUTPUT
+        npm_instructions=""
         for folder in $(echo "${{inputs.filter}}" |sed 's/{packages\/(//g'|sed 's/)}//g'| tr '|' '\n')
         do
             echo "Processing previews for ${folder}"
@@ -39,10 +36,16 @@ runs:
                 tarBall=$(pnpm pack --pack-destination ../../_public)
                 hashedTarBall="$(echo "${tarBall}" |sed 's/\.tgz//g')-${sha_short}.tgz"
                 echo "${hashedTarBall}"
-                cp "${tarBall}"  "${hashedTarBall}"
+                mv "${tarBall}"  "${hashedTarBall}"
+                fNTarBall=$(echo ${hashedTarBall} | sed 's/^.*_public\///')
+                npm_instructions="${npm_instructions}yarn add \"${pkgName}@https://pr-${{ github.event.number }}--ui-shared-components.netlify.app/${fNTarBall}\""$'\r'$'\n'
                 cd ../../
             fi
         done
+
+        echo "npm_instructions<<EOF" >> $GITHUB_ENV
+        echo -e "$npm_instructions" >> $GITHUB_ENV
+        echo "EOF" >> $GITHUB_ENV
 
     - name: Publish to netlify
       shell: bash
@@ -53,25 +56,11 @@ runs:
     - name: Provide preview link info
       uses: marocchino/sticky-pull-request-comment@v2
       with:
+        header: pr_preview_consumption
         message: |
             ## ***Preview*** components from this PR in consuming application
-
-            ### CDN consumption:
-            For **Konnect** or any other app that supports pkgdomain use it in the query string
-            example:
-            https://cloud.konghq.tech?pkgdomain=pr-${{ github.event.number }}--ui-shared-components
-
-            or add query string into script loader in your consuming application code (example for `@kong-ui/demo-component`):
+            In consuming application project install preview versions of shared packages by running following commands:
             ```
-            script: {
-              libName: 'demo-component', // Required for UMD builds
-              url: 'https://packages.konghq.tech/@kong-ui/demo-component@0.5.0/dist/demo-component.umd.js?pkgdomain=pr-${{ github.event.number }}--ui-shared-components',
-              type: 'umd'
-            ```
-
-            ### NPM consumption:
-            In consuming application project install preview version of shared package by running following command (example for `@kong-ui/demo-component`, plz change package name and version in the command line):
-            ```
-            yarn add "@kong-ui/demo-component@https://pr-${{ github.event.number }}--ui-shared-components.netlify.app/kong-ui-demo-component-0.4.0-${{steps.prepare_previews.outputs.sha_short}}.tgz"
+            ${{env.npm_instructions}}
             ```
         GITHUB_TOKEN: ${{ inputs.repo-token }}
