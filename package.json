@@ -22,7 +22,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.2.0",
-    "@datadog/datadog-ci": "^1.17.0",
+    "@datadog/datadog-ci": "^2.0.0",
     "@digitalroute/cz-conventional-changelog-for-jira": "^7.4.2",
     "@evilmartians/lefthook": "^1.2.0",
     "@kong/kongponents": "^8.4.0",
