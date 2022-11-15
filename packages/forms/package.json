@@ -1,0 +1,57 @@
+{
+  "name": "@kong-ui/forms",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/forms.umd.js",
+  "module": "./dist/forms.es.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/forms.es.js",
+      "require": "./dist/forms.umd.js"
+    },
+    "./package.json": "./package.json",
+    "./dist/*": "./dist/*"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "scripts": {
+    "dev": "cross-env USE_SANDBOX=true vite",
+    "build": "run-s typecheck build:package build:types",
+    "build:package": "vite build",
+    "build:types": "vue-tsc -p './tsconfig.build.json' --emitDeclarationOnly",
+    "preview:package": "vite preview --port 4173",
+    "preview": "cross-env USE_SANDBOX=true run-s build:package preview:package",
+    "lint": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../.eslintignore'",
+    "lint:fix": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../.eslintignore' --fix",
+    "typecheck": "vue-tsc -p './tsconfig.build.json' --noEmit",
+    "test:component": "BABEL_ENV=cypress cross-env FORCE_COLOR=1 cypress run --component -b chrome --spec './src/**/*.cy.ts' --project '../../.'",
+    "test:component:open": "BABEL_ENV=cypress cross-env FORCE_COLOR=1 cypress open --component -b chrome --project '../../.'",
+    "test:unit": "cross-env FORCE_COLOR=1 vitest run",
+    "test:unit:open": "cross-env FORCE_COLOR=1 vitest --ui"
+  },
+  "repository": "https://github.com/Kong/kong-ui-shared-components/tree/main/packages/forms",
+  "author": "Kong, Inc.",
+  "license": "UNLICENSED",
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "dependencies": {
+    "@kong-ui/core": "workspace:^0.3.4",
+    "fecha": "^4.2.3",
+    "lodash": "^4.17.21",
+    "lodash.debounce": "^4.0.8"
+  },
+  "peerDependencies": {
+    "@kong/kongponents": "^8.3.3",
+    "vue": "^3.2.38"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.182",
+    "pug": "^3.0.2"
+  }
+}
