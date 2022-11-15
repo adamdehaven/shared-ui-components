@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.5.0...@kong-ui/cli@0.5.1) (2022-11-15)
+
+
+### 🐛 Bug Fixes
+
+* fix sandbox preview ([#155](https://github.com/Kong/kong-ui-shared-components/issues/155)) ([d565758](https://github.com/Kong/kong-ui-shared-components/commit/d565758d7ad3d072d8f14df2d79d123f80333726))
+
+
+
+
+
 # [0.5.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.4.6...@kong-ui/cli@0.5.0) (2022-11-01)
 
 

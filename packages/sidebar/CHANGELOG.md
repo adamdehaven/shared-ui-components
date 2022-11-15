@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.15](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.2.14...@kong-ui/sidebar@0.2.15) (2022-11-15)
+
+
+### 🐛 Bug Fixes
+
+* fix sandbox preview ([#155](https://github.com/Kong/kong-ui-shared-components/issues/155)) ([d565758](https://github.com/Kong/kong-ui-shared-components/commit/d565758d7ad3d072d8f14df2d79d123f80333726))
+
+
+
+
+
 ## [0.2.14](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.2.13...@kong-ui/sidebar@0.2.14) (2022-11-15)
 
 
