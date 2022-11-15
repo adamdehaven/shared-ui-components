@@ -101,12 +101,14 @@ Include loosely bounded (SemVer-wise) peer deps, i.e. `vue` or `vue-router`
 
 ### `scripts`
 
-The following scripts should be defined within your package so that it's properly integrated within the monorepo development cycle (and CI/CD):
+The following scripts should be defined within your package so that it's properly integrated within the monorepo development cycle (and CI/CD). Most of these are pre-configured when generating a new package via the CLI:
 
 - `dev` to run the local sandbox of your component utilizing the files within the local `/sandbox/*` directory.
 - `build` to compile/transpile your package into a `dist/` artifact
   - `build:package` (see existing examples)
   - `build:types` (see existing examples)
+- `preview` to build your sandbox and build as if it was an app being built for production
+  - `preview:package` (see existing examples)
 - `lint` to validate your code style/formatting via ESLint
 - `lint:fix` to automatically resolve basic code style/formatting issues with ESLint
 - `typecheck` to validate typecheck the code

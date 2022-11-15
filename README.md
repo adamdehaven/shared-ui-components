@@ -8,6 +8,12 @@ Monorepo for internally-published Vue components
 
 - [Creating a package](#creating-a-package)
 - [Development](#development)
+  - [Dev Server](#dev-server)
+  - [ESLint](#eslint)
+  - [Type Checking](#type-checking)
+  - [Testing](#testing)
+  - [Preview sandbox build](#preview-sandbox-build)
+  - [Build for production](#build-for-production)
   - [Requirements](#requirements)
   - [Setup](#setup)
   - [Committing Changes](#committing-changes)
@@ -19,9 +25,67 @@ View the guide on creating a new package within the monorepo [here](./docs/creat
 
 ## Development
 
-> **Note**: more info to come
-
 All packages must be created utilizing the `pnpm run create-package` CLI. [See here for more details.](./docs/creating-a-package.md#required-use-the-provided-cli-to-scaffold-your-new-package)
+
+### Dev Server
+
+Run the dev server in your `packages/{package-name}/sandbox/` directory with hot-module reload
+
+```sh
+pnpm --filter "@kong-ui/{package-name}" run dev
+```
+
+### ESLint
+
+Lint package files
+
+```sh
+# Lint only
+pnpm --filter "@kong-ui/{package-name}" run lint
+
+# Lint and fix
+pnpm --filter "@kong-ui/{package-name}" run lint:fix
+```
+
+### Type Checking
+
+Type check your package
+
+```sh
+pnpm --filter "@kong-ui/{package-name}" run typecheck
+```
+
+### Testing
+
+Run Component or Unit tests
+
+```sh
+# Component tests
+pnpm --filter "@kong-ui/{package-name}" run test:component
+
+# Component tests (with UI)
+pnpm --filter "@kong-ui/{package-name}" run test:open
+
+# Unit tests
+pnpm --filter "@kong-ui/{package-name}" run test:unit
+
+# Unit tests (with UI)
+pnpm --filter "@kong-ui/{package-name}" run test:unit:open
+```
+
+### Preview sandbox build
+
+Build your `packages/{package-name}/sandbox/` directory for production and serve locally
+
+```sh
+pnpm --filter "@kong-ui/{package-name}" run preview
+```
+
+### Build for production
+
+```sh
+pnpm --filter "@kong-ui/{package-name}" run build
+```
 
 ### Requirements
 

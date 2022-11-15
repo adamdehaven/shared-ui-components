@@ -6,7 +6,7 @@ import { defineConfig, mergeConfig } from 'vite'
 const packageName = 'sidebar'
 
 // Merge the shared Vite config with the local one defined below
-export default mergeConfig(sharedViteConfig, defineConfig({
+const config = mergeConfig(sharedViteConfig, defineConfig({
   build: {
     rollupOptions: {
       external: ['@kong/kongponents'],
@@ -20,3 +20,12 @@ export default mergeConfig(sharedViteConfig, defineConfig({
     },
   },
 }))
+
+// If we are trying to preview a build of the local `package/sidebar/sandbox` directory,
+// unset the external and lib properties
+if (process.env.PREVIEW_SANDBOX) {
+  config.build.rollupOptions.external = undefined
+  config.build.lib = undefined
+}
+
+export default config
