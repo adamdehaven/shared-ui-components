@@ -40,7 +40,7 @@
     "extends": "../../package.json"
   },
   "peerDependencies": {
-    "@kong/kongponents": "^8.4.3",
+    "@kong/kongponents": "^8.5.0",
     "vue": "^3.2.45"
   },
   "dependencies": {

@@ -9,7 +9,7 @@ importers:
       '@datadog/datadog-ci': ^2.0.0
       '@digitalroute/cz-conventional-changelog-for-jira': ^7.4.2
       '@evilmartians/lefthook': ^1.2.0
-      '@kong/kongponents': ^8.4.3
+      '@kong/kongponents': ^8.5.0
       '@rushstack/eslint-patch': ^1.2.0
       '@types/flat': ^5.0.2
       '@types/inquirer': ^9.0.3
@@ -66,7 +66,7 @@ importers:
       '@datadog/datadog-ci': 2.0.0
       '@digitalroute/cz-conventional-changelog-for-jira': 7.4.2
       '@evilmartians/lefthook': 1.2.0
-      '@kong/kongponents': 8.4.3_vue@3.2.45
+      '@kong/kongponents': 8.5.0_vue@3.2.45
       '@rushstack/eslint-patch': 1.2.0
       '@types/flat': 5.0.2
       '@types/inquirer': 9.0.3
@@ -656,8 +656,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@kong/kongponents/8.4.3_vue@3.2.45:
-    resolution: {integrity: sha512-Vwm7TLHFjWr2cGwWJS4ibrn240M4MxjnTtY5rUvoYhybac78A42y68J9Xhs+Suy49IFsZcOIGaF+ocJM7B+k2g==}
+  /@kong/kongponents/8.5.0_vue@3.2.45:
+    resolution: {integrity: sha512-Bt7Tloy55oZMeHknkF5gohW1eG9ExEZoZUSUyHQApfcHav1mudIOLm79RLgJNabKKT+q0M9xnCBpiwEU2O8Gyw==}
     hasBin: true
     peerDependencies:
       vue: '>= 3.2.37'
