@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/copy-uuid@0.1.9...@kong-ui/copy-uuid@0.2.0) (2022-11-17)
+
+
+### ✨ Features
+
+* using formatJS for useI18n wrapper in core package [KHCP-5228] ([#118](https://github.com/Kong/kong-ui-shared-components/issues/118)) ([cbf4f85](https://github.com/Kong/kong-ui-shared-components/commit/cbf4f858c9fe9cc2152a88ff265f8b9642434b96))
+
+
+
+
+
 ## [0.1.9](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/copy-uuid@0.1.8...@kong-ui/copy-uuid@0.1.9) (2022-11-16)
 
 

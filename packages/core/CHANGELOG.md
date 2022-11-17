@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.3.5...@kong-ui/core@0.4.0) (2022-11-17)
+
+
+### ✨ Features
+
+* using formatJS for useI18n wrapper in core package [KHCP-5228] ([#118](https://github.com/Kong/kong-ui-shared-components/issues/118)) ([cbf4f85](https://github.com/Kong/kong-ui-shared-components/commit/cbf4f858c9fe9cc2152a88ff265f8b9642434b96))
+
+
+
+
+
 ## [0.3.5](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.3.4...@kong-ui/core@0.3.5) (2022-11-11)
 
 
