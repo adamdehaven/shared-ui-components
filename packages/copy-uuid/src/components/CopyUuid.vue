@@ -37,12 +37,12 @@
 
 <script setup lang="ts">
 import { inject, PropType } from 'vue'
-import { useI18n } from '@kong-ui/core'
+import { createI18n } from '@kong-ui/core'
 import english from '../locales/en.json'
 import { COPY_UUID_NOTIFY_KEY } from '../const'
 import { CopyUuidNotifyParam } from '../types'
 
-const { t } = useI18n(english)
+const { t } = createI18n('en-us', english)
 
 const props = defineProps({
   uuid: {

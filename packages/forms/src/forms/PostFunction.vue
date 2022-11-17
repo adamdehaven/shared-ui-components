@@ -10,11 +10,11 @@
 
 <script setup lang="ts">
 import { PropType, computed } from 'vue'
-import { useI18n } from '@kong-ui/core'
+import { createI18n } from '@kong-ui/core'
 import english from '../locales/en.json'
 import VueFormGenerator from '../generator/FormGenerator.vue'
 
-const { t } = useI18n(english)
+const { t } = createI18n('en-us', english)
 
 const props = defineProps({
   formModel: {

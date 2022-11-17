@@ -1,7 +1,7 @@
 <template>
   <nav
     class="sidebar-footer"
-    aria-label="Profile menu"
+    :aria-label="t('profile_menu')"
     aria-haspopup="true"
   >
     <div class="sidebar-profile-link">
@@ -25,7 +25,7 @@
               class="profile-dropdown-trigger"
               role="button"
               tabindex="0"
-              aria-label="Open profile menu"
+              :aria-label="t('open_profile_menu')"
               @click.prevent
             >
               <span class="sidebar-profile-name">{{ name }}</span>
@@ -43,6 +43,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import ProfileIcon from './ProfileIcon.vue'
+import { createI18n } from '@kong-ui/core'
+import english from '../locales/en.json'
 
 const props = defineProps({
   name: {
@@ -56,6 +58,7 @@ const props = defineProps({
   },
 })
 
+const { t } = createI18n('en-us', english)
 const hasProfileItems = computed((): boolean => props.itemCount > 0)
 </script>
 

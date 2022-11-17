@@ -12,7 +12,7 @@
     <nav
       class="sidebar-nav"
       :style="navContainerStyles"
-      aria-label="Main menu"
+      :aria-label="t('main_menu')"
     >
       <ul
         v-if="topNavItems.length"
@@ -83,7 +83,10 @@ import { computed, useSlots, PropType } from 'vue'
 import { SidebarPrimaryItem, SidebarProfileItem } from '../types'
 import SidebarItem from './SidebarItem.vue'
 import SidebarFooter from './SidebarFooter.vue'
+import { createI18n } from '@kong-ui/core'
+import english from '../locales/en.json'
 
+const { t } = createI18n('en-us', english)
 const emit = defineEmits(['click'])
 
 const itemClick = (item: SidebarPrimaryItem | SidebarProfileItem): void => {
