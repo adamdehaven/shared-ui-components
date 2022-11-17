@@ -6,7 +6,7 @@ importers:
     specifiers:
       '@commitlint/cli': ^17.2.0
       '@commitlint/config-conventional': ^17.2.0
-      '@datadog/datadog-ci': ^2.0.0
+      '@datadog/datadog-ci': ^2.1.0
       '@digitalroute/cz-conventional-changelog-for-jira': ^7.4.2
       '@evilmartians/lefthook': ^1.2.1
       '@kong/kongponents': ^8.5.1
@@ -63,7 +63,7 @@ importers:
     devDependencies:
       '@commitlint/cli': 17.2.0
       '@commitlint/config-conventional': 17.2.0
-      '@datadog/datadog-ci': 2.0.0
+      '@datadog/datadog-ci': 2.1.0
       '@digitalroute/cz-conventional-changelog-for-jira': 7.4.2
       '@evilmartians/lefthook': 1.2.1
       '@kong/kongponents': 8.5.1_vue@3.2.45
@@ -468,8 +468,8 @@ packages:
       kuler: 2.0.0
     dev: true
 
-  /@datadog/datadog-ci/2.0.0:
-    resolution: {integrity: sha512-7T88P5jSznblwMz/C6ymQnVjDyTbdYQggREawjG5z+3JR6H9xF18ePH/YuyrP5AJUN4pxEUr2NfC0ACV0FjNBg==}
+  /@datadog/datadog-ci/2.1.0:
+    resolution: {integrity: sha512-JQZWHlcWuNdsW66e6ZtvM5C9vdfZyYiBvDEqCQ4snV1qfHItVFWqUKAqgpN0QPGm0/Zi935c320hMd1U8okzUQ==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
