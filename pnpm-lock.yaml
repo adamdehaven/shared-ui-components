@@ -8,7 +8,7 @@ importers:
       '@commitlint/config-conventional': ^17.2.0
       '@datadog/datadog-ci': ^2.0.0
       '@digitalroute/cz-conventional-changelog-for-jira': ^7.4.2
-      '@evilmartians/lefthook': ^1.2.0
+      '@evilmartians/lefthook': ^1.2.1
       '@kong/kongponents': ^8.5.1
       '@rushstack/eslint-patch': ^1.2.0
       '@types/flat': ^5.0.2
@@ -65,7 +65,7 @@ importers:
       '@commitlint/config-conventional': 17.2.0
       '@datadog/datadog-ci': 2.0.0
       '@digitalroute/cz-conventional-changelog-for-jira': 7.4.2
-      '@evilmartians/lefthook': 1.2.0
+      '@evilmartians/lefthook': 1.2.1
       '@kong/kongponents': 8.5.1_vue@3.2.45
       '@rushstack/eslint-patch': 1.2.0
       '@types/flat': 5.0.2
@@ -562,8 +562,8 @@ packages:
       - supports-color
     dev: true
 
-  /@evilmartians/lefthook/1.2.0:
-    resolution: {integrity: sha512-mvrv8oy9f0//R+I27kXl9PlBilhmcwO736vpFM0t359KqG0FN99rVw58rgCcu08XuOZ58mjjh9/vfdD4sbnn7g==}
+  /@evilmartians/lefthook/1.2.1:
+    resolution: {integrity: sha512-MZT40t0WY1Oz0xYJTBryanmvyXblqmbAI/pHNBI6Q2415NpISqDVHBrffVEXcjAOXBeGl2TPXQr4S/Dh0ckjTg==}
     cpu: [x64, arm64, ia32]
     os: [darwin, linux, win32]
     hasBin: true
