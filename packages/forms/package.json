@@ -47,7 +47,7 @@
     "lodash.debounce": "^4.0.8"
   },
   "peerDependencies": {
-    "@kong/kongponents": "^8.5.3",
+    "@kong/kongponents": "^8.5.4",
     "vue": "^3.2.38"
   },
   "devDependencies": {
