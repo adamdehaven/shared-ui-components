@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.2.1...@kong-ui/forms@0.3.0) (2022-11-18)
+
+
+### ✨ Features
+
+* **forms:** html tooltip text support ([#174](https://github.com/Kong/kong-ui-shared-components/issues/174)) ([9606b85](https://github.com/Kong/kong-ui-shared-components/commit/9606b853888824f23518c0e9e143029d8796d195))
+
+
+
+
+
 ## [0.2.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.2.0...@kong-ui/forms@0.2.1) (2022-11-17)
 
 
