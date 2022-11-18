@@ -3,7 +3,7 @@ input.form-control(type="text", :value="value", :autocomplete="schema.autocomple
 </template>
 
 <script>
-import abstractField from '../abstractField.js'
+import abstractField from '../abstractField'
 import { defaults } from 'lodash'
 
 export default {

@@ -4,7 +4,7 @@ input(type="text", :autocomplete="schema.autocomplete", :disabled="disabled || n
 
 <script>
 /* global $ */
-import abstractField from '../abstractField.js'
+import abstractField from '../abstractField'
 import { defaults } from 'lodash'
 export default {
   mixins: [abstractField],

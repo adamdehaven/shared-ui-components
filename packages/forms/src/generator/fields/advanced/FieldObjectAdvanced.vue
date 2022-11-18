@@ -32,6 +32,7 @@
             <vue-form-generator
               :schema="subSchema"
               :model="transformedModel[index]"
+              :options="{ helpAsHtml: true }"
               @model-updated="updateModel"
             />
           </div>

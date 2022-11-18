@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import abstractField from '../abstractField.js'
+import abstractField from '../abstractField'
 import { isFunction } from 'lodash'
 
 export default {

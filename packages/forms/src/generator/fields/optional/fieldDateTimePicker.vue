@@ -7,7 +7,7 @@
 
 <script>
 /* global $ */
-import abstractField from '../abstractField.js'
+import abstractField from '../abstractField'
 import { defaults } from 'lodash'
 import dateFieldHelper from '../../utils/dateFieldHelper'
 

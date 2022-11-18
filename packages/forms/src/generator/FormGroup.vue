@@ -23,7 +23,13 @@
           <i class="icon" />
         </div>
         <template #content>
-          {{ field.help }}
+          <div
+            v-if="options.helpAsHtml"
+            v-html="field.help"
+          />
+          <template v-else>
+            {{ field.help }}
+          </template>
         </template>
       </KTooltip>
     </label>

@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import abstractField from '../abstractField.js'
+import abstractField from '../abstractField'
 import { debounce, get as objGet, isFunction, isNumber } from 'lodash'
 import fecha from 'fecha'
 

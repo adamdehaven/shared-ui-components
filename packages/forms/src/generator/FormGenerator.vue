@@ -36,6 +36,7 @@ export default {
           validateAsync: false,
           validationErrorClass: 'error',
           validationSuccessClass: '',
+          helpAsHtml: false,
         }
       },
     },

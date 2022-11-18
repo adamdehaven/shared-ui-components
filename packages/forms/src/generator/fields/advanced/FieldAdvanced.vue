@@ -17,6 +17,7 @@
       <vue-form-generator
         :schema="schema"
         :model="model"
+        :options="{ helpAsHtml: true }"
         @model-updated="updateModel"
       />
     </div>

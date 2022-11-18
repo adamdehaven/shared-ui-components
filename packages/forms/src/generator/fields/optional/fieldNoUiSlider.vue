@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import abstractField from '../abstractField.js'
+import abstractField from '../abstractField'
 import { isArray, defaults } from 'lodash'
 
 export default {

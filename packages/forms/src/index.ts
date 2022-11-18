@@ -46,3 +46,4 @@ export const getSharedFormName = (modelName: string): string => {
 }
 
 export * from './const'
+export * as abstractField from './generator/fields/abstractField'

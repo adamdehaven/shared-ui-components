@@ -31,6 +31,7 @@
           <vue-form-generator
             :schema="{ fields: option.fields }"
             :model="model"
+            :options="{ helpAsHtml: true }"
             @model-updated="updateModel"
           />
         </div>

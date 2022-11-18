@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import { FORMS_API_KEY } from '../../../const'
 import abstractField from '../abstractField'
 import debounce from 'lodash.debounce'
 import { isValidUuid } from '../../utils/isValidUuid'
@@ -75,6 +76,7 @@ function getFieldState(model, associatedEntity, bypassSearch) {
 
 export default {
   mixins: [abstractField],
+  inject: [FORMS_API_KEY],
   emits: ['model-updated'],
 
   data() {
@@ -109,7 +111,11 @@ export default {
 
     switch (this.fieldState) {
       case fieldStates.UPDATE_ENTITY:
-        presetEntity = await this.getItem((await this.$api.findRecord(this.entity, this.model[this.schema.model])).data)
+        if (!this[FORMS_API_KEY]) {
+          console.warn('[@kong-ui/forms] No API service provided')
+          break
+        }
+        presetEntity = await this.getItem((await this[FORMS_API_KEY].getOne(this.entity, this.model[this.schema.model])).data)
         this.idValue = presetEntity.id
         break
       case fieldStates.CREATE_FROM_ENTITY:
@@ -198,8 +204,12 @@ export default {
       const data = []
       let offset = null
 
+      if (!this[FORMS_API_KEY]) {
+        console.warn('[@kong-ui/forms] No API service provided')
+        return []
+      }
       while (data.length < requestResultsLimit) {
-        const res = await this.$api.findAll(this.entity, {
+        const res = await this[FORMS_API_KEY].getAll(this.entity, {
           size: requestResultsLimit > 1000 ? 1000 : requestResultsLimit,
           offset,
           ...params,
@@ -218,7 +228,11 @@ export default {
     },
 
     async fetchExact(id) {
-      const res = await this.$api.findRecord(this.entity, id)
+      if (!this[FORMS_API_KEY]) {
+        console.warn('[@kong-ui/forms] No API service provided')
+        return {}
+      }
+      const res = await this[FORMS_API_KEY].getOne(this.entity, id)
 
       return res.data
     },

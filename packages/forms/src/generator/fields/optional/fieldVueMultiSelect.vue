@@ -47,7 +47,7 @@ multiselect(
       {{ selectOptions.maxElements }}
 </template>
 <script>
-import abstractField from '../abstractField.js'
+import abstractField from '../abstractField'
 
 export default {
   mixins: [abstractField],
