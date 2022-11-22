@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.9](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.8...@kong-ui/forms@0.3.9) (2022-11-22)
+
+
+### 🐛 Bug Fixes
+
+* **styles:** scope external link styles ([f117510](https://github.com/Kong/kong-ui-shared-components/commit/f11751036d224163f734993126f75b48d052b213))
+
+
+
+
+
 ## [0.3.8](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.7...@kong-ui/forms@0.3.8) (2022-11-22)
 
 
