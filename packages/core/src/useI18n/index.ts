@@ -7,8 +7,10 @@ type MessageFormatPrimitiveValue = string | number | boolean | null | undefined
 
 type SupportedLocales = 'en-us'
 
-type IntlShapeEx = IntlShape & {
+export type IntlShapeEx = IntlShape & {
   t: (translationKey: string, values?: Record<string, MessageFormatPrimitiveValue> | undefined, opts?: IntlMessageFormatOptions) => string,
+  te: (translationKey: string) => boolean,
+  tm: (translationKey: string) => Array<string>,
   source: Record<string, any>,
 }
 
@@ -32,8 +34,20 @@ export const createI18n = (locale: SupportedLocales, messages: Record<string, an
   const t = (translationKey: string, values?: Record<string, MessageFormatPrimitiveValue> | undefined, opts?: IntlMessageFormatOptions): string => {
     return intl.formatMessage(<MessageDescriptor>{ id: translationKey }, values, opts)
   }
+
+  const te = (key: string): boolean => {
+    return !!intl.messages[key]
+  }
+
+  const tm = (key: string): Array<string> => {
+    // @ts-ignore
+    return intl.messages[key] || []
+  }
+
   const localIntl = {
     t,
+    te,
+    tm,
     ...intl,
     source: messages,
   }

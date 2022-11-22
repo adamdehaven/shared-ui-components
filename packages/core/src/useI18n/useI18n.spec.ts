@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest'
-import { useI18n, createI18n } from '../index'
+import useI18n, { createI18n } from './index'
 
 const english = {
   global: {
@@ -8,6 +8,12 @@ const english = {
   test: {
     withParams: 'Good {dayPart}, My name is {name}!',
     withPluralization: 'There are {count} {count, plural, =0 {versions} =1 {version} other {versions}} available',
+  },
+  array: {
+    disabled: [
+      'You cannot update configurations for services',
+      'You cannot accept new developer portal applications',
+    ],
   },
 }
 
@@ -60,6 +66,41 @@ describe('i18n', () => {
       expect(t('test.withPluralization', { count: 0 })).toEqual('There are 0 versions available')
       expect(t('test.withPluralization', { count: 1 })).toEqual('There are 1 version available')
       expect(t('test.withPluralization', { count: 11 })).toEqual('There are 11 versions available')
+    })
+  })
+
+  describe('function `te`', () => {
+    beforeAll(() => {
+      createI18n('en-us', english, true)
+    })
+
+    it('should recognize exiting key', () => {
+      const { te } = useI18n()
+      expect(te('global.ok')).toBeTruthy()
+    })
+
+    it('should recognize non-exiting key', () => {
+      const { te } = useI18n()
+      expect(te('global.not.ok')).toBeFalsy()
+    })
+  })
+
+  describe('function `tm`', () => {
+    beforeAll(() => {
+      createI18n('en-us', english, true)
+    })
+
+    it('should return array for exiting key', () => {
+      const { tm } = useI18n()
+      expect(tm('array.disabled')).toEqual([
+        'You cannot update configurations for services',
+        'You cannot accept new developer portal applications',
+      ])
+    })
+
+    it('should return empty array for non-existing key', () => {
+      const { tm } = useI18n()
+      expect(tm('global.not.ok')).toEqual([])
     })
   })
 
