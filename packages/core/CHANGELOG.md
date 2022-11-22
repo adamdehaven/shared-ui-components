@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.4.0...@kong-ui/core@0.5.0) (2022-11-22)
+
+
+### ✨ Features
+
+* KHCP-5228, KHCP-5302. i18n missing pieces and i18n-t component. ([#173](https://github.com/Kong/kong-ui-shared-components/issues/173)) ([2c25b32](https://github.com/Kong/kong-ui-shared-components/commit/2c25b3268f7d34e4fde023c149034fc498a1e18a))
+
+
+
+
+
 # [0.4.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.3.5...@kong-ui/core@0.4.0) (2022-11-17)
 
 
