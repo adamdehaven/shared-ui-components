@@ -17,6 +17,7 @@
   - [`tsconfig.build.json`](#tsconfigbuildjson)
 - [Include a `README.md` file](#include-a-readmemd-file)
 - [Implement your package within a `src/` directory](#implement-your-package-within-a-src-directory)
+  - [Component Requirements](#component-requirements)
   - [Unit Tests](#unit-tests)
   - [Component Tests](#component-tests)
 - [Integrate with CI](#integrate-with-ci)
@@ -170,6 +171,40 @@ The one exception is the `Development` section of the README. It is acceptable t
 ## Implement your package within a `src/` directory
 
 All Vue and Typescript source code for your package should live within the `src/` directory of your package.
+
+### Component Requirements
+
+#### Styles
+
+In order to prevent component styles from leaking out into the consuming application, **all** component styles **MUST** adhere to one of the following rules:
+
+1. (Preferred) All styles must be `scoped` within your components with `<style lang="scss" scoped>`.
+   1. If you need to target nested components (e.g. Kongponents) to override styles, you'll need to utilize [deep selectors](https://vuejs.org/api/sfc-css-features.html#deep-selectors)
+
+    ```html
+    <style lang="scss" scoped>
+    .your-component-class {
+      :deep(.k-button) {
+        /* KButton override styles go here */
+        border-color: red;
+      }
+    }
+    </style>
+    ```
+
+2. All component styles must be wrapped in a unique wrapper class so that styles do not leak out into the consuming application.
+
+    The class name should follow the syntax `.kong-ui-{package-name}`
+
+   This is a good practice even if you go with option one outlined above.
+
+    ```html
+    <style lang="scss" scoped>
+    .kong-ui-demo-component {
+      /* All other styles must go inside the wrapper */
+    }
+    </style>
+    ```
 
 ### Unit Tests
 

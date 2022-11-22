@@ -18,10 +18,11 @@ Monorepo for internally-published Vue components
   - [Setup](#setup)
   - [Committing Changes](#committing-changes)
 - [Preview components](#preview-components)
+- [Running consuming application with local copy of the package](#running-consuming-application-with-local-copy-of-the-package)
 
 ## Creating a package
 
-View the guide on creating a new package within the monorepo [here](./docs/creating-a-package.md)
+[View the guide on creating a new package within the monorepo here](./docs/creating-a-package.md)
 
 ## Development
 
@@ -139,56 +140,61 @@ You are developing shared component (let's say `@kong-ui/forms`) and you need to
 
 1. in the folder `ui-shared-components/packages/forms` run
 
-```sh
-yarn link
-```
+    ```sh
+    yarn link
+    ```
 
-2. make sure your package is getting build in watch mode, for this in in the folder `ui-shared-components/packages/forms` run:
-```sh
-pnpm build:package --watch
-```
+1. make sure your package is getting build in watch mode, for this in in the folder `ui-shared-components/packages/forms` run:
 
-3. In the root folder of `khcp-ui` application run:
+    ```sh
+    pnpm build:package --watch
+    ```
 
-```sh
-yarn link "@kong-ui/forms"
-```
+1. In the root folder of `khcp-ui` application run:
 
-4. Run your consuming application as usual and enjoy your forms code changes visible in your local env immediately.
-```sh
-yarn run dev
-```
+    ```sh
+    yarn link "@kong-ui/forms"
+    ```
 
+1. Run your consuming application as usual and enjoy your forms code changes visible in your local env immediately.
+
+    ```sh
+    yarn run dev
+    ```
 
 In some cases HMR (hot module reloading) is not working out of the box in this configuration, to force it you might need following changes in `vite.config.ts` of consuming application:
 
 1. add `watch: ignored` into the `server` config:
-```ts
-  server: {
-       watch: {
-         ignored: ['!**/node_modules/@kong-ui/forms/**']
-       },
-```
-2. add `optimizeDeps` into the root of the config:
 
-```ts
-    optimizeDeps: {
-      exclude: ['@kong-ui/forms']
-    },
-```
-<i>Please do not commit these changes</i>
+    ```ts
+      server: {
+          watch: {
+            ignored: ['!**/node_modules/@kong-ui/forms/**']
+          },
+    ```
 
-And finally, when you done working with local (linked copy) of youe ui-shared package, unlink it:
+1. add `optimizeDeps` into the root of the config:
 
-1. in the folder `ui-shared-components/packages/forms` run
+    ```ts
+        optimizeDeps: {
+          exclude: ['@kong-ui/forms']
+        },
+    ```
 
-```sh
-yarn unlink
-```
-2. In the root folder of `khcp-ui` application run:
+    _Please do not commit these changes_
 
-```sh
-yarn unlink "@kong-ui/forms"
-yarn install --force --frozen-lockfile
-```
+    And finally, when you done working with local (linked copy) of youe ui-shared package, unlink it:
+
+1. In the folder `ui-shared-components/packages/forms` run
+
+    ```sh
+    yarn unlink
+    ```
+
+1. In the root folder of `khcp-ui` application run:
+
+    ```sh
+    yarn unlink "@kong-ui/forms"
+    yarn install --force --frozen-lockfile
+    ```
 
