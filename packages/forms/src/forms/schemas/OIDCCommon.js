@@ -14,7 +14,7 @@ export default {
   }, {
     help: 'The discovery endpoint (or just the issuer identifier).',
     inputType: 'text',
-    label: 'config.issuer)',
+    label: 'config.issuer',
     model: 'config-issuer',
     required: true,
     type: 'input',
