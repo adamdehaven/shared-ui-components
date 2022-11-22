@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.11](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.10...@kong-ui/forms@0.3.11) (2022-11-22)
+
+
+### 🐛 Bug Fixes
+
+* **forms:** remove the redundant parenthesis ([#193](https://github.com/Kong/kong-ui-shared-components/issues/193)) ([ce6dfe7](https://github.com/Kong/kong-ui-shared-components/commit/ce6dfe797994dbb54075b910e09413f7d156f04c))
+
+
+
+
+
 ## [0.3.10](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.9...@kong-ui/forms@0.3.10) (2022-11-22)
 
 
