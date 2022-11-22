@@ -17,6 +17,7 @@
 
 # Kong Manager Team
 /packages/copy-uuid @Leopoldthecoder
+/packages/forms @Leopoldthecoder @sumimakito
 
 # Renovate Bot approvals
 # These rules MUST remain at the bottom as the last entry
