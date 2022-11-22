@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.5](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.4...@kong-ui/forms@0.3.5) (2022-11-22)
+
+
+### 🐛 Bug Fixes
+
+* **forms:** update OIDC plugin config labels ([#187](https://github.com/Kong/kong-ui-shared-components/issues/187)) ([b67b945](https://github.com/Kong/kong-ui-shared-components/commit/b67b9452a57f980ed173a8310b7d26fc022f7c3c))
+
+
+
+
+
 ## [0.3.4](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.3...@kong-ui/forms@0.3.4) (2022-11-22)
 
 
