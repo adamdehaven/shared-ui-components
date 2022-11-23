@@ -199,7 +199,7 @@ In order to prevent component styles from leaking out into the consuming applica
    This is a good practice even if you go with option one outlined above.
 
     ```html
-    <style lang="scss" scoped>
+    <style lang="scss">
     .kong-ui-demo-component {
       /* All other styles must go inside the wrapper */
     }
