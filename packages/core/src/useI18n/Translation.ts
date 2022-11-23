@@ -15,25 +15,29 @@ const TranslationComponent = (i18n: IntlShapeEx) => defineComponent({
     },
   },
   setup(props, { slots }) {
+    //  deconstructString('Previewing {rowsMax} of {rowsTotal} rows')
+    //  Result: (5)['Previewing ', '{rowsMax}', ' of ', '{rowsTotal}', ' rows']
+
+    /**
+     * Deconstruct the given translation string, splitting into an array based on `{(.*)}` matches
+     * @param {string} str The translation string to split
+     * @return {string[]} An array of strings
+     */
+    const deconstructString = (str: string): string[] => {
+      if (!str) {
+        return []
+      }
+
+      const matchRegex = /(\{[^}]+\})/g
+
+      return str.split(matchRegex).filter(Boolean)
+    }
+
     return (): VNodeChild => {
       const keys = Object.keys(slots).filter(key => key !== '_')
       const sourceString = i18n.messages[props.keypath].toString()
 
-      //  "Previewing {rowsMax} of {rowsTotal} rows"
-      //    -> (5)['Previewing {', 'rowsMax', '} of {', 'rowsTotal', '} rows']
-      // eslint-disable-next-line
-      let hArray: Array<any> = sourceString.split(/(?<=\{)([^\}]+)(?=\})/)
-
-      // ['Previewing {', 'rowsMax', '} of {', 'rowsTotal', '} rows']
-      // -> ['Previewing ', '{rowsMax}', ' of ', '{rowsTotal}', ' rows']
-      for (let i = 0; i < hArray.length - 2; i++) {
-        if (hArray[i].endsWith('{') && hArray[i + 2].startsWith('}')) {
-          hArray[i + 1] = '{' + hArray[i + 1] + '}'
-
-          hArray[i] = hArray[i].replace(/{$/, '')
-          hArray[i + 2] = hArray[i + 2].replace(/^}/, '')
-        }
-      }
+      let hArray: Array<any> = deconstructString(sourceString)
 
       hArray = hArray.filter(a => a !== '')
 
