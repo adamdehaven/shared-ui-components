@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.13](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.12...@kong-ui/forms@0.3.13) (2022-11-23)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@types](https://github.com/types)/lodash to ^4.14.190 ([#200](https://github.com/Kong/kong-ui-shared-components/issues/200)) ([2b152fb](https://github.com/Kong/kong-ui-shared-components/commit/2b152fb9d61e36484a808dba0f87989e9ded2e86))
+
+
+
+
+
 ## [0.3.12](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.11...@kong-ui/forms@0.3.12) (2022-11-22)
 
 
