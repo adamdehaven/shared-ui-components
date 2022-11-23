@@ -51,7 +51,7 @@
     "vue": "^3.2.38"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.189",
+    "@types/lodash": "^4.14.190",
     "pug": "^3.0.2"
   }
 }
