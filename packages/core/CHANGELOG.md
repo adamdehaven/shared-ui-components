@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.5.0...@kong-ui/core@0.5.1) (2022-11-23)
+
+
+### 🐛 Bug Fixes
+
+* **core:** i18n translation component lookbehind [KHCP-5457] ([#201](https://github.com/Kong/kong-ui-shared-components/issues/201)) ([234b5b9](https://github.com/Kong/kong-ui-shared-components/commit/234b5b9f1e72e0c18d327d05a892874024052a1d))
+
+
+
+
+
 # [0.5.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.4.0...@kong-ui/core@0.5.0) (2022-11-22)
 
 
