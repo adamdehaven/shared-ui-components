@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.5.1...@kong-ui/core@0.5.2) (2022-11-29)
+
+
+### 🐛 Bug Fixes
+
+* **deps:** update dependency intl-messageformat to ^10.2.2 ([#211](https://github.com/Kong/kong-ui-shared-components/issues/211)) ([2295ab2](https://github.com/Kong/kong-ui-shared-components/commit/2295ab28217a227cb4f11a755468f2973aa5f24f))
+
+
+
+
+
 ## [0.5.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.5.0...@kong-ui/core@0.5.1) (2022-11-23)
 
 
