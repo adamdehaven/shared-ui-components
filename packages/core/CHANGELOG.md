@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.5.2...@kong-ui/core@0.5.3) (2022-11-29)
+
+
+### 🐛 Bug Fixes
+
+* **deps:** update dependency [@formatjs](https://github.com/formatjs)/intl to ^2.6.0 ([#214](https://github.com/Kong/kong-ui-shared-components/issues/214)) ([63616af](https://github.com/Kong/kong-ui-shared-components/commit/63616af48c2f808863b99d85befb81ceea09d34d))
+
+
+### 🚨 Tests
+
+* **i18n:** rename component test file ([8f5369b](https://github.com/Kong/kong-ui-shared-components/commit/8f5369bfd1c54d6fa25474a5f5c7cfe39d8f35c9))
+
+
+
+
+
 ## [0.5.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.5.1...@kong-ui/core@0.5.2) (2022-11-29)
 
 
