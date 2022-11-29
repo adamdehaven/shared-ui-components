@@ -3,13 +3,14 @@
     class="advanced-field-dropdown-wrapper"
     data-testid="advanced-field-dropdown-wrapper"
   >
-    <div
-      class="advanced-field-title"
+    <button
+      class="advanced-field-title non-visual-button"
+      type="button"
       @click="handleOpen"
     >
       <i class="material-icons">{{ isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_right' }}</i>
       <span>{{ titleText }}</span>
-    </div>
+    </button>
     <div
       :class="openClass"
       class="advanced-field-dropdown"
