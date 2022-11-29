@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.4.0...@kong-ui/forms@0.4.1) (2022-11-29)
+
+
+### 🐛 Bug Fixes
+
+* **forms:** style of advance field trigger ([#206](https://github.com/Kong/kong-ui-shared-components/issues/206)) ([c0a98d7](https://github.com/Kong/kong-ui-shared-components/commit/c0a98d7ed7451b1dc8a6e38bf782d107cd7c617d))
+
+
+
+
+
 # [0.4.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.15...@kong-ui/forms@0.4.0) (2022-11-29)
 
 
