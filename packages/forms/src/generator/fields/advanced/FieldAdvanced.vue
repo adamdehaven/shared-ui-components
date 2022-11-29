@@ -78,10 +78,14 @@ export default {
     color: #0077cc;
     cursor: pointer;
     order: 2;
+    padding: 0;
+    font-size: inherit;
     i {
+      color: #0077cc;
       font-size: 1rem;
     }
     &:hover span {
+      color: #0077cc;
       text-decoration: underline;
     }
   }
