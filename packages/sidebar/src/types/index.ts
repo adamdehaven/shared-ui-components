@@ -3,8 +3,10 @@ export interface SidebarSecondaryItem {
   name: string
   /** The [Vue Router `to` object](https://router.vuejs.org/api/interfaces/RouterLinkProps.html#to) or a URL path (relative or absolute) to navigate to on click */
   to: string | Record<string, any>
-  /** Set external to true if you want to navigate via anchor tag instead of a router-link. If the `to` property is a string that starts with `http*` it will open in a new window */
+  /** Set external to true if you want to navigate via anchor tag instead of a router-link. The `to` property must be set to a string. */
   external?: boolean
+  /** Set newWindow to true if you want to open the link in a new window or tab. If the `to` property is set to a string that starts with `http*` it will open in a new window automatically. Setting newWindow to true essentially forces external to true as well. */
+  newWindow?: boolean
   /** Is the sidebar item active */
   active?: boolean
   /** Number to display in a badge to the right of the L2 item name */

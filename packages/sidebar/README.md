@@ -266,7 +266,7 @@ The `headerHeight` should be set to the same height as the host application's na
 
 ## TypeScript interfaces
 
-TypeScript interfaces [are available here](https://github.com/Kong/ui-shared-components/blob/main/packages/sidebar/src/types/index.ts) and can be directly imported into your host application. The following interfaces are available for import:
+TypeScript interfaces [are available here](https://github.com/Kong/ui-shared-components/blob/main/packages/sidebar/src/types/index.ts) and can be directly imported into your host application. The following type interfaces are available for import:
 
 ```ts
 import type { SidebarPrimaryItem, SidebarSecondaryItem, SidebarProfileItem } from '@kong-ui/sidebar'

@@ -55,15 +55,15 @@
         v-for="item in profileItems"
         :key="item.name"
         :has-divider="item.hasDivider"
-        :class="[{ 'has-divider': item.hasDivider },{ 'external-profile-dropdown-link': item.external && typeof item.to === 'string' }]"
-        :item="item.external && typeof item.to === 'string' ? null : { label: item.name, to: item.to }"
+        :class="[{ 'has-divider': item.hasDivider },{ 'external-profile-dropdown-link': item.newWindow && typeof item.to === 'string' }]"
+        :item="item.newWindow && typeof item.to === 'string' ? null : { label: item.name, to: item.to }"
         @click="itemClick(item)"
       >
         <a
-          v-if="item.external && typeof item.to === 'string'"
+          v-if="item.newWindow && typeof item.to === 'string'"
           class="sidebar-item-external-link"
           :href="item.to"
-          target="_blank"
+          :target="item.newWindow ? '_blank' : undefined"
         >
           {{ item.name }}
           <KIcon

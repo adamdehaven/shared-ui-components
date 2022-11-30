@@ -7,7 +7,7 @@
       :is="!useAnchorTag ? 'router-link' : 'div'"
       v-slot="slotProps"
       :custom="useAnchorTag ? undefined : true"
-      :to="!item.external ? item.to : null"
+      :to="!item.newWindow ? item.to : null"
     >
       <a
         :href="useAnchorTag ? String(item.to || '#') : '#'"
@@ -103,16 +103,22 @@ const props = defineProps({
   },
 })
 
-// Force anchor tag if `item.external` is true, or `item.to` starts with `http`
-const useAnchorTag = computed((): boolean => (!!props.item.external && typeof props.item.to === 'string') || (typeof props.item.to === 'string' && props.item.to.startsWith('http')))
-
-// Should component use an anchor tag and open the link in a new window
-const openInNewWindow = computed((): boolean => {
-  if (!props.item.to || typeof props.item.to !== 'string' || !props.item.external) {
+// Force anchor tag if `item.newWindow` is true, or `item.to` starts with `http`
+const useAnchorTag = computed((): boolean => {
+  if (typeof props.item.to !== 'string') {
     return false
   }
 
-  return props.item.external && (props.item.to.startsWith('http') || props.item.to.startsWith('/'))
+  return !!props.item.newWindow || !!props.item.external || props.item.to.startsWith('http')
+})
+
+// Should component use an anchor tag and open the link in a new window
+const openInNewWindow = computed((): boolean => {
+  if (!props.item.to || typeof props.item.to !== 'string' || !props.item.newWindow) {
+    return false
+  }
+
+  return props.item.newWindow && (props.item.to.startsWith('http') || props.item.to.startsWith('/'))
 })
 
 const itemHasBadge = computed(() => props.subnavItem && (props.item as SidebarSecondaryItem).badgeCount !== undefined)

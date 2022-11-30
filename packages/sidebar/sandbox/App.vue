@@ -42,7 +42,8 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
     {
       name: 'Overview',
       to: '/?overview',
-      external: true,
+      // external: true,
+      newWindow: true,
       key: 'overview',
       icon: 'sharedConfig',
       // TODO: using this item as a default when `activeItem` is undefined
@@ -244,7 +245,7 @@ const sidebarItemsProfile = computed((): SidebarProfileItem[] => {
     {
       name: 'External',
       to: 'https://google.com/',
-      external: true,
+      newWindow: true,
     },
     {
       name: 'Logout',
