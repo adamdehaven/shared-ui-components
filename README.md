@@ -6,6 +6,7 @@ Monorepo for internally-published Vue components
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
+- [What goes here](#what-goes-here)
 - [Creating a package](#creating-a-package)
 - [Development](#development)
   - [Dev Server](#dev-server)
@@ -19,6 +20,15 @@ Monorepo for internally-published Vue components
   - [Committing Changes](#committing-changes)
 - [Preview components](#preview-components)
 - [Running consuming application with local copy of the package](#running-consuming-application-with-local-copy-of-the-package)
+
+## What goes here
+
+Here are some criteria to help figure out if your code belongs to this mono-repository. If all of the following are true, you are welcome to create a new package:
+
+- You are creating component(s) that may have some business domain-specific logic or internal Kong/Konnect look-and-feel, and you do not want to expose in our public [Kongponents component library](https://github.com/Kong/kongponents).
+- You are writing component/code that is to be used in multiple applications (e.g. Konnect and Konnect Admin, or Konnect and Mesh, etc.).
+- Your code is about UI. If you are wring the code to be used on the backend, then [shared-js](https://github.com/Kong/shared-js) is the better choice.
+
 
 ## Creating a package
 
