@@ -140,7 +140,7 @@ importers:
   packages/forms:
     specifiers:
       '@kong-ui/core': workspace:^0.5.3
-      '@types/lodash': ^4.14.190
+      '@types/lodash': ^4.14.191
       fecha: ^4.2.3
       lodash: ^4.17.21
       lodash.debounce: ^4.0.8
@@ -151,7 +151,7 @@ importers:
       lodash: 4.17.21
       lodash.debounce: 4.0.8
     devDependencies:
-      '@types/lodash': 4.14.190
+      '@types/lodash': 4.14.191
       pug: 3.0.2
 
   packages/sidebar:
@@ -2812,8 +2812,8 @@ packages:
       '@types/node': 16.18.3
     dev: true
 
-  /@types/lodash/4.14.190:
-    resolution: {integrity: sha512-5iJ3FBJBvQHQ8sFhEhJfjUP+G+LalhavTkYyrAYqz5MEJG+erSv0k9KJLb6q7++17Lafk1scaTIFXcMJlwK8Mw==}
+  /@types/lodash/4.14.191:
+    resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
     dev: true
 
   /@types/minimatch/3.0.5:
@@ -14421,7 +14421,7 @@ packages:
       vue: ^3.1.0
     dependencies:
       '@popperjs/core': 2.4.0
-      '@types/lodash': 4.14.190
+      '@types/lodash': 4.14.191
       date-fns: 2.29.3
       date-fns-tz: 1.3.7_date-fns@2.29.3
       lodash: 4.17.21
