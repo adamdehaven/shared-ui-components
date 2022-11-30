@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.6](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.4.5...@kong-ui/forms@0.4.6) (2022-11-30)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.7.0 ([#215](https://github.com/Kong/kong-ui-shared-components/issues/215)) ([a01e55b](https://github.com/Kong/kong-ui-shared-components/commit/a01e55b78b4325b14326585064531ef0ffe2588e))
+
+
+
+
+
 ## [0.4.5](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.4.4...@kong-ui/forms@0.4.5) (2022-11-29)
 
 **Note:** Version bump only for package @kong-ui/forms
