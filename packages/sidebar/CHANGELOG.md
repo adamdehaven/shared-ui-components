@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.3.17...@kong-ui/sidebar@0.4.0) (2022-11-30)
+
+
+### ✨ Features
+
+* **sidebar:** items can open in new window ([#217](https://github.com/Kong/kong-ui-shared-components/issues/217)) ([4f02525](https://github.com/Kong/kong-ui-shared-components/commit/4f02525201364ce924c781f1b9c52b53354a7a21))
+
+
+
+
+
 ## [0.3.17](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.3.16...@kong-ui/sidebar@0.3.17) (2022-11-30)
 
 
