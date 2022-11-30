@@ -39,7 +39,7 @@
     "extends": "../../package.json"
   },
   "peerDependencies": {
-    "@kong/kongponents": "^8.6.4",
+    "@kong/kongponents": "^8.7.0",
     "vue": "^3.2.45",
     "vue-router": "^4.1.5"
   },
