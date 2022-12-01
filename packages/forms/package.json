@@ -1,6 +1,6 @@
 {
   "name": "@kong-ui/forms",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "type": "module",
   "main": "./dist/forms.umd.js",
   "module": "./dist/forms.es.js",
@@ -41,7 +41,7 @@
     "extends": "../../package.json"
   },
   "dependencies": {
-    "@kong-ui/core": "workspace:^0.5.3",
+    "@kong-ui/core": "workspace:^0.5.4",
     "fecha": "^4.2.3",
     "lodash": "^4.17.21",
     "lodash.debounce": "^4.0.8"

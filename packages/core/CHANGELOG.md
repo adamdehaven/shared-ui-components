@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.4](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.5.3...@kong-ui/core@0.5.4) (2022-12-01)
+
+
+### 🐛 Bug Fixes
+
+* **deps:** update formatjs monorepo ([#222](https://github.com/Kong/kong-ui-shared-components/issues/222)) ([29a754e](https://github.com/Kong/kong-ui-shared-components/commit/29a754e63659617c6ea811d2b0e3ff04faf87c39))
+
+
+
+
+
 ## [0.5.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.5.2...@kong-ui/core@0.5.3) (2022-11-29)
 
 
