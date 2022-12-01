@@ -25,7 +25,7 @@
     "@datadog/datadog-ci": "^2.1.0",
     "@digitalroute/cz-conventional-changelog-for-jira": "^7.4.2",
     "@evilmartians/lefthook": "^1.2.3",
-    "@kong/kongponents": "^8.7.1",
+    "@kong/kongponents": "^8.7.2",
     "@rushstack/eslint-patch": "^1.2.0",
     "@types/flat": "^5.0.2",
     "@types/inquirer": "^9.0.3",
