@@ -137,12 +137,21 @@ Additionally, CI will use `commitlint` to validate the commits associated with a
 
 ## Preview components
 
-If your package components are already consumed by **Konnect** (`Kong/khcp-ui`) and you are working on the fix/change for this component - you can preview how your version of the component is acting in existing **Konnect DEV** environment or in **Konnect PR previews**.
+You are working on the PR and changing component project. Let's say `@kong-ui/forms`. You want to try to deploy consuming application (`khcp-ui` for example) that uses your changed code without merging your changes to main and publishing new version of @kong-ui/forms. Here are the steps:
 
-- Create your branch of and PR preview in this repository, do your code changes.
-- Open <https://cloud.konghq.tech> or your Konnect Development preview URL with `pkgdomain=pr-<N>--ui-shared-components` query string (where <N> - ui-shared-components PR number).
+1. Look at your PR where your changes for @kong-ui/forms. Every time PR is getting build, tarball preview of package is getting deployed, and there is PR comment created:
 
-konnect will pull preview of component build in your PR and use it.
+```text
+Preview components from this PR in consuming application
+
+In consuming application project install preview versions of shared packages by running following commands:
+
+yarn add "@kong-ui/forms@https://pr-212--ui-shared-components.netlify.app/kong-ui-forms-0.4.5-395a8bc.tgz"
+
+```
+
+install the tarball version of the package using command provided in the PR in consuming application, let that PR be deployed, and see PR preview of consuming application utiizing @kong-ui/forms code from your branch.
+
 
 ## Running consuming application with local copy of the package
 
