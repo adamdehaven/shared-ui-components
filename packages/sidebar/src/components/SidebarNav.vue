@@ -282,12 +282,15 @@ if (route && route?.path && route?.query) {
 // Automatically close the sidebar if the window is resized
 const { debounce } = useDebounce()
 const debouncedResizeHandler = debounce(() => {
-  if (mobileSidebarOpen.value) {
+  // Only trigger toggle if the sidebar is open, and if the windowWidth changes
+  if (mobileSidebarOpen.value && (windowWidth.value !== window?.innerWidth || 0)) {
+    windowWidth.value = window?.innerWidth
     toggleSidebar(false)
   }
 }, 200)
 
 // Disable mobile sidebar transitions when the window is resized
+const windowWidth = ref<number>()
 const transitionsDisabled = ref(false)
 const resizeTimer = ref()
 const disableTransitions = () => {
@@ -326,6 +329,8 @@ watch(focusTrapEnabled, async (enabled: boolean) => {
 }, { immediate: true })
 
 onMounted(() => {
+  // Set the window width once the component mounts
+  windowWidth.value = window?.innerWidth
   // Automatically close the sidebar if the window is resized
   window.addEventListener('resize', debouncedResizeHandler)
   // Disable mobile sidebar transitions when the window is resized
