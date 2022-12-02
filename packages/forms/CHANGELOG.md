@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.11](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.4.10...@kong-ui/forms@0.4.11) (2022-12-02)
+
+
+### 🐛 Bug Fixes
+
+* **forms:** adjust btn-link KButton styles ([#228](https://github.com/Kong/kong-ui-shared-components/issues/228)) ([8ac1be9](https://github.com/Kong/kong-ui-shared-components/commit/8ac1be94fcec095d787c1b3c9827118943eb22c8))
+
+
+
+
+
 ## [0.4.10](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.4.9...@kong-ui/forms@0.4.10) (2022-12-02)
 
 
