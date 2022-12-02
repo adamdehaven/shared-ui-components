@@ -1,5 +1,7 @@
 {
   "main_menu": "Main menu",
   "profile_menu": "Profile menu",
-  "open_profile_menu": "Open profile menu"
+  "open_profile_menu": "Open profile menu",
+  "open": "Open",
+  "close": "Close"
 }

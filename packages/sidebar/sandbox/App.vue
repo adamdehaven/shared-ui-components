@@ -1,24 +1,47 @@
 <template>
-  <div class="sandbox-container">
-    <div class="sidebar-container">
-      <SidebarNav
-        :top-items="sidebarItemsTop"
-        :bottom-items="sidebarItemsBottom"
-        :profile-items="sidebarItemsProfile"
-        profile-name="Marty McFly"
-        @click="sidebarItemClick"
+  <header class="navbar">
+    <nav>
+      <SidebarToggle
+        :active="mobileSidebarOpen"
+        @toggle="sidebarToggled"
+      />
+      <router-link
+        to="/"
+        class="mobile-logo"
       >
-        <template #header>
+        <GruceLogo />
+      </router-link>
+    </nav>
+  </header>
+  <div class="sandbox-container">
+    <SidebarNav
+      :top-items="sidebarItemsTop"
+      :bottom-items="sidebarItemsBottom"
+      :profile-items="sidebarItemsProfile"
+      profile-name="Marty McFly"
+      :open="mobileSidebarOpen"
+      :header-height="60"
+      mobile-enabled
+      :z-index="6"
+      :mobile-top-offset="60"
+      :mobile-header-visible="false"
+      @click="sidebarItemClick"
+      @toggle="sidebarToggled"
+    >
+      <template #header>
+        <div class="kong-logo d-flex w-100">
           <router-link
             to="/"
-            tabindex="0"
-            class="logo-link"
+            class="d-flex align-items-center w-100"
           >
-            This is my logo for now
+            <GruceLogo />
+            <div class="d-flex pl-4 konnect-header-title">
+              <AppLogo />
+            </div>
           </router-link>
-        </template>
-      </SidebarNav>
-    </div>
+        </div>
+      </template>
+    </SidebarNav>
     <main>
       <router-view />
     </main>
@@ -27,7 +50,9 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { SidebarNav, SidebarPrimaryItem, SidebarProfileItem, SidebarSecondaryItem } from '../src'
+import { SidebarNav, SidebarToggle, SidebarPrimaryItem, SidebarProfileItem, SidebarSecondaryItem } from '../src'
+import GruceLogo from './GruceLogo.vue'
+import AppLogo from './AppLogo.vue'
 import '@kong/kongponents/dist/style.css'
 
 const activeItem = ref<SidebarPrimaryItem | SidebarSecondaryItem | SidebarProfileItem>()
@@ -254,14 +279,30 @@ const sidebarItemsProfile = computed((): SidebarProfileItem[] => {
     },
   ]
 })
+
+const mobileSidebarOpen = ref(false)
+const sidebarToggled = (isOpen: boolean) => {
+  mobileSidebarOpen.value = isOpen
+}
 </script>
 
 <style lang="scss">
+$navbar-height: 60px;
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: "Inter", Helvetica, Arial, sans-serif;
+}
+
+// Leave un-scoped to remove body overflow when the sidebar is open
+body.kong-ui-sidebar-open {
+  overflow-y: hidden;
+
+  @media screen and (min-width: 768px) {
+    overflow-y: auto;
+  }
 }
 
 .logo-link {
@@ -271,14 +312,52 @@ body {
 
 .sandbox-container {
   display: flex;
+}
 
-  main {
-    padding: 16px 0;
-    margin-left: 36px;
+main {
+  width: 100%;
+  min-height: 2000px; // fake a height so the container scrolls
+  margin-top: $navbar-height;
+  padding: 16px 24px;
+
+  @media screen and (min-width: 768px) {
+    margin-left: 240px; // $sidebar-width
   }
 }
 
 .sidebar-container {
-  height: 100vh;
+  height: calc(100vh - #{$navbar-height});
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: $navbar-height;
+  background: #eee;
+
+  @media screen and (min-width: 768px) {
+    left: 240px;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--blue-500);
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  .mobile-logo {
+    display: flex;
+    align-items: center;
+
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+  }
 }
 </style>

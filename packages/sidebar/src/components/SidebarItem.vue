@@ -1,13 +1,13 @@
 <template>
   <li
-    :data-testid="item.testId ? `sidebar-item-${item.testId}` : null"
+    :data-testid="item.testId ? `sidebar-item-${item.testId}` : undefined"
     :class="[!subnavItem ? 'sidebar-item-primary' : 'sidebar-item-secondary', { 'expanded': (item as SidebarPrimaryItem).expanded }, { 'active': item.active }]"
   >
     <component
       :is="!useAnchorTag ? 'router-link' : 'div'"
       v-slot="slotProps"
-      :custom="useAnchorTag ? undefined : true"
-      :to="!item.newWindow ? item.to : null"
+      :custom="!useAnchorTag ? true : undefined"
+      :to="!useAnchorTag && !openInNewWindow ? item.to : undefined"
     >
       <a
         :href="useAnchorTag ? String(item.to || '#') : '#'"
@@ -139,6 +139,7 @@ const navigate = (event: Event, item: SidebarPrimaryItem | SidebarSecondaryItem,
 <style lang="scss">
 @import "../styles/variables";
 
+// Scope with wrapper class intead of using `scoped` so these styles will apply to child components
 .kong-ui-sidebar-nav {
   // Shared styles for the primary and secondary elements
   .sidebar-item-primary,

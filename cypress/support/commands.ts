@@ -1,7 +1,9 @@
 import { mount } from 'cypress/vue'
 import { ComponentPublicInstance, App } from 'vue'
+import router from '../fixtures/routes'
 import RouterLink from '../fixtures/RouterLink.vue'
 import Kongponents from '@kong/kongponents'
+import '@kong/kongponents/dist/style.css'
 
 interface VueError {
   err: unknown
@@ -33,11 +35,27 @@ Cypress.Commands.add('mount', (component, options = {}) => {
   options.global.components = options.global.components || {}
   options.global.plugins = options.global.plugins || []
 
+  options.router = router
   options.global.components.RouterLink = RouterLink
 
   // Add plugins
   options.global.plugins.push({
     install(app: App) {
+      /**
+       * Vue Router instance (mainly for testing <router-link> usage)
+       * See `cypress/fixtures/routes.ts` for existing routes, or to add new routes as needed.
+       *
+       * NOTE: If you enable the route via the line below, you need to comment out the line that
+       * registers the RouterLink stub component `options.global.components.RouterLink = RouterLink`.
+       *
+       * You will then have to ensure that ALL routes referenced by packages
+       * with <router-link> or router.push are registered in `cypress/fixtures/routes.ts`.
+       *
+       * (This is why this is disabled for now)
+       *
+       */
+      // app.use(options.router)
+
       // Kongponents
       app.use(Kongponents)
 

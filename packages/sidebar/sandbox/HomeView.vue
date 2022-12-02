@@ -1,5 +1,8 @@
 <template>
   <p>This is the HOME page showing <b>{{ routeName }}</b></p>
+  <div style="float: right">
+    <KButton>Focusable button</KButton>
+  </div>
 </template>
 
 <script setup lang="ts">

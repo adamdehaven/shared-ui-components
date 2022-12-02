@@ -1,9 +1,6 @@
 // Cypress component test spec file
 
 /* eslint-disable cypress/no-unnecessary-waiting */
-// @ts-ignore
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-import { mount } from 'cypress/vue'
 import CopyUuid from './CopyUuid.vue'
 import { COPY_UUID_NOTIFY_KEY } from '../const'
 import { CopyUuidNotifyParam } from '../types'

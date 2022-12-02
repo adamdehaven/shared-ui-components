@@ -17,7 +17,9 @@
   - [`tsconfig.build.json`](#tsconfigbuildjson)
 - [Include a `README.md` file](#include-a-readmemd-file)
 - [Implement your package within a `src/` directory](#implement-your-package-within-a-src-directory)
-  - [Component Requirements](#component-requirements)
+- [Component Requirements](#component-requirements)
+  - [Styles](#styles)
+- [Testing](#testing)
   - [Unit Tests](#unit-tests)
   - [Component Tests](#component-tests)
 - [Integrate with CI](#integrate-with-ci)
@@ -172,9 +174,11 @@ The one exception is the `Development` section of the README. It is acceptable t
 
 All Vue and Typescript source code for your package should live within the `src/` directory of your package.
 
-### Component Requirements
+## Component Requirements
 
-#### Styles
+### Styles
+
+#### Styles must be scoped
 
 In order to prevent component styles from leaking out into the consuming application, **all** component styles **MUST** adhere to one of the following rules:
 
@@ -205,6 +209,21 @@ In order to prevent component styles from leaking out into the consuming applica
     }
     </style>
     ```
+
+#### CSS Variables
+
+If your component exposes any CSS variables, they **must** be prefixed with your package name `--kong-ui-{package-name}`
+
+For example, the `@kong-ui/sidebar` package exposes the following CSS variables:
+
+```css
+--kong-ui-sidebar-width
+--kong-ui-sidebar-mobile-icon-color
+```
+
+## Testing
+
+All packages should have substantial test coverage comprised of unit and/or component tests.
 
 ### Unit Tests
 

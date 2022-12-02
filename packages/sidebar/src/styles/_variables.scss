@@ -11,6 +11,13 @@ $scrollbar-width: 8px;
 $scrollbar-foreground-color: var(--steel-400, #7d91b3);
 $scrollbar-background-color: transparent;
 
+// Breakpoints
+$viewport-sm: 640px;
+$viewport-md: 768px; // Mobile layout breakpoint
+$viewport-lg: 1024px;
+$viewport-xl: 1280px;
+$viewport-2xl: 1536px;
+
 @mixin scrollbarBase($size: $scrollbar-width) {
   // For Chrome & Safari
   &::-webkit-scrollbar {

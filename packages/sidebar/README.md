@@ -1,20 +1,22 @@
 # @kong-ui/sidebar
 
-> **NOTE**: Docs are a work-in-progress
-
 A Kong UI dynamic sidebar component.
 
 - [Features](#features)
 - [Requirements](#requirements)
 - [Usage](#usage)
   - [Install](#install)
-  - [Usage Example](#usage-example)
-- [Props](#props)
-  - [`topItems`](#topitems)
-  - [`bottomItems`](#bottomitems)
-  - [`profileItems`](#profileitems)
-  - [`profileName`](#profilename)
-  - [`headerHeight`](#headerheight)
+- [`SidebarNav.vue`](#sidebarnavvue)
+  - [Props](#props)
+  - [Slots](#slots)
+  - [Events](#events)
+  - [Usage example](#usage-example)
+- [`SidebarToggle.vue`](#sidebartogglevue)
+  - [Props ](#props-1)
+  - [Events ](#events-1)
+  - [Usage example ](#usage-example-1)
+- [CSS Variables](#css-variables)
+  - [CSS variable example](#css-variable-example)
 - [TypeScript interfaces](#typescript-interfaces)
 
 ## Features
@@ -24,6 +26,7 @@ A Kong UI dynamic sidebar component.
 - Built-in support for user Profile (in the sidebar footer) and profile dropdown items
 - Navigate via `<router-link>` in your host application, or provide regular URLs :link:
 - Slottable `header` area for displaying the host application logo
+- Included `SidebarToggle.vue` component utilized separately in the Navbar to toggle the sidebar's visibility on mobile :sparkles:
 
 ![sidebar component example from Konnect](./docs/sidebar.png)
 
@@ -35,6 +38,7 @@ A Kong UI dynamic sidebar component.
   - `KDropdownMenu`
   - `KIcon`
   - `KTooltip`
+- The sidebar is set to `position: fixed` and is expected to render at 100% of the viewport height. This means your Navbar, etc. should never be placed above the sidebar unless on mobile.
 - If L2 sidebar items have required `route.params` in their route, they must be properly declared in the `item.to` property. Example:
 
     ```ts
@@ -69,17 +73,167 @@ Install the component in your host application
 yarn add @kong-ui/sidebar
 ```
 
-### Usage Example
+## `SidebarNav.vue`
 
 You will likely want to utilize a wrapper component in your application, so import the `SidebarNav` component and the package styles into your wrapper component.
 
 You will also need to utilize a factory function (e.g. a composable) in order to generate and update your menu items.
 
+To utilize the mobile version of the sidebar included in the component, you must set the `mobileEnabled` prop to `true` and utilize the `SidebarToggle.vue` component. Examples can be found below.
+
+### Props
+
+#### `topItems`
+
+- type: `Array as PropType<SidebarPrimaryItem[]>`
+- required: `false`
+- default: `[]`
+
+An array of `SidebarPrimaryItem` objects to display in the top navigation list (above the divider).
+
+#### `bottomItems`
+
+- type: `Array as PropType<SidebarPrimaryItem[]>`
+- required: `false`
+- default: `[]`
+
+An array of `SidebarPrimaryItem` objects to display in the bottom navigation list (below the divider).
+
+#### `profileItems`
+
+- type: `Array as PropType<SidebarProfileItem[]>`
+- required: `false`
+- default: `[]`
+
+An array of `SidebarProfileItem` objects to display in the sidebar footer profile popup menu.
+
+#### `profileName`
+
+- type: `string`
+- required: `false`
+- default: `''`
+
+A string to display in the sidebar footer profile area.
+
+#### `headerHeight`
+
+- type: `number`
+- required: `false`
+- default: `60`
+
+The height of the sidebar `header` slot, in pixels.
+
+The `headerHeight` should be set to the same height as the host application's navbar element, if applicable.
+
+#### `zIndex`
+
+- type: `number`
+- required: `false`
+- default: `2`
+
+Set the `z-index` of the fixed sidebar.
+
+#### `open`
+
+- type: `boolean`
+- required: `false`
+- default: `false`
+
+Set to `true` when the mobile sidebar should be open.
+
+#### `mobileEnabled`
+
+- type: `boolean`
+- required: `false`
+- default: `false`
+
+Set to `true` to enable the sidebar from being automatically hidden off-screen on mobile (requiring you to utilize the `SidebarToggle.vue` component to hide/show the sidebar).
+
+#### `mobileTopOffset`
+
+- type: `number`
+- required: `false`
+- default: `0`
+
+The number of pixels to offset the sidebar from the top on mobile (viewport width less than `768px`). The `mobileTopOffset` should be set to the same height as the host application's navbar element, if applicable.
+
+When omitted, or the browser viewport is `768px` or greater, the sidebar has a `top` offset of `0px`.
+
+This is useful when your app has a navbar on mobile that appears above the sidebar.
+
+#### `mobileHeaderVisible`
+
+- type: `boolean`
+- required: `false`
+- default: `false`
+
+Used to determine whether to show or hide the `header` slot on mobile. The `header` slot is hidden by default on mobile.
+
+This is useful if your mobile navbar already displays the app logo.
+
+If you still want to show the sidebar `header` slot even on mobile, set `mobileHeaderVisible` to `true`.
+
+#### `mobileCloseDelay`
+
+- type: `number`
+- required: `false`
+- default: `350`
+
+The delay, in milliseconds, to wait before automatically closing the mobile sidebar when an `item` is clicked.
+
+#### `mobileOverlay`
+
+- type: `boolean`
+- required: `false`
+- default: `true`
+
+Show a fixed overlay over the body content when the mobile sidebar is open. To disable the overlay, set to `false`.
+
+#### `mobileOverlayZIndex`
+
+- type: `number`
+- required: `false`
+- default: `1`
+
+Set the `z-index` of the overlay that is shown behind the mobile sidebar, over the content, when the sidebar is open.
+
+#### `mobileOverlayCloseOnClick`
+
+- type: `boolean`
+- required: `false`
+- default: `true`
+
+Close the mobile sidebar when a user clicks on the sidebar overlay.
+
+### Slots
+
+#### `header`
+
+Utilize the `header` slot to inject your application's logo into the top of the sidebar, above the `topItems`.
+
+### Events
+
+#### `click`
+
+A `@click` event is emitted whenever an `item` in the sidebar is clicked.
+
+The `click` event emits a payload of the `item` that was clicked, along with its attributes and children, if applicable.
+
+#### `toggle`
+
+A `@toggle` event is emitted whenever the sidebar is opened or closed.
+
+The `toggle` event emits a payload of a `boolean` to indicate if the sidebar is open.
+
+### Usage example
+
 <details>
 
 <summary>:sparkles: Click to view the expanded usage example :sparkles:</summary>
 
-#### `SidebarWrapper.vue`
+#### `LayoutWrapper.vue`
+
+> Note: This example contains the `mobile-enabled` prop which requires utilizing the [`SidebarToggle.vue`](#sidebartogglevue) component as well. If your application does not want to have a responsive sidebar, you can exclude this prop (not recommended).
 
 ```html
 <template>
@@ -88,16 +242,17 @@ You will also need to utilize a factory function (e.g. a composable) in order to
     :top-items="topItems"
     :bottom-items="bottomItems"
     :profile-items="profileItems"
+    :header-height="60"
+    mobile-enabled
+    :mobile-top-offset="60"
+    :mobile-header-visible="false"
     profile-name="Marty McFly"
     @click="activateSidebarItem"
   >
     <template #header>
       <div class="d-flex w-100 align-items-center">
-        <router-link
-            class="d-flex align-items-center w-100"
-            :to="{ name: 'home' }"
-          >
-          This is my logo
+        <router-link :to="{ name: 'home' }">
+          <img src="my-logo.svg" />
         </router-link>
       </div>
     </template>
@@ -220,49 +375,130 @@ export const useSidebar = () => {
 
 </details>
 
-## Props
+## `SidebarToggle.vue`
 
-### `topItems`
+This package also exports a `SidebarToggle.vue` component that should be utilized in the host application's navbar in order to hide/show the Sidebar on mobile (under `768px` viewport width).
 
-- type: `Array as PropType<SidebarPrimaryItem[]>`
+When the mobile sidebar is toggled open, a class of `kong-ui-sidebar-open` is added to the `document.body`. This is useful in order to hide `body` overflow so that only the sidebar contents is scrollable.
+
+```scss
+// Leave un-scoped to remove body overflow when the sidebar is open
+body.kong-ui-sidebar-open {
+  overflow-y: hidden;
+
+  @media screen and (min-width: 768px) { // $viewport-md
+    overflow-y: auto;
+  }
+}
+```
+
+### Props&nbsp;
+
+#### `active`
+
+- type: `boolean`
 - required: `false`
-- default: `[]`
+- default: `false`
 
-An array of `SidebarPrimaryItem` objects to display in the top navigation list (above the divider).
+A boolean to indicate whether the toggle icon is active (meaning the mobile sidebar is open/expanded).
 
-### `bottomItems`
+### Events&nbsp;
 
-- type: `Array as PropType<SidebarPrimaryItem[]>`
-- required: `false`
-- default: `[]`
+#### `toggle`&nbsp;
 
-An array of `SidebarPrimaryItem` objects to display in the bottom navigation list (below the divider).
+A `@toggle` event is emitted whenever the `active` state of the toggle component changes.
 
-### `profileItems`
+The `toggle` event emits a payload of a `boolean` to indicate if the toggle icon is active.
 
-- type: `Array as PropType<SidebarProfileItem[]>`
-- required: `false`
-- default: `[]`
+### Usage example&nbsp;
 
-An array of `SidebarProfileItem` objects to display in the sidebar footer profile popup menu.
+<details>
 
-### `profileName`
+<summary>:sparkles: Click to view the expanded usage example :sparkles:</summary>
 
-- type: `string`
-- required: `false`
-- default: `''`
+```html
+<template>
+  <header class="navbar">
+    <nav>
+      <SidebarToggle
+        :active="mobileSidebarOpen"
+        @toggle="sidebarToggled"
+      />
+      <router-link to="/">
+        <img src="mylogo.svg" />
+      </router-link>
+    </nav>
+  </header>
+  <div class="sandbox-container">
+    <SidebarNav
+      :top-items="sidebarItemsTop"
+      :open="mobileSidebarOpen"
+      :header-height="60"
+      mobile-enabled
+      :mobile-top-offset="60"
+      :mobile-header-visible="false"
+      @click="sidebarItemClick"
+      @toggle="sidebarToggled"
+    >
+      <template #header>
+        <div class="kong-logo d-flex w-100">
+          <router-link to="/">
+            <img src="my-logo.svg" />
+          </router-link>
+        </div>
+      </template>
+    </SidebarNav>
+    <main>
+      <router-view />
+    </main>
+  </div>
+</template>
 
-A string to display in the sidebar footer profile area.
+<script setup lang="ts">
+import { ref, computed } from 'vue'
+import { SidebarNav, SidebarToggle, SidebarPrimaryItem } from '../src'
 
-### `headerHeight`
+const sidebarItemClick = (item: SidebarPrimaryItem): void => {
+  // Do something
+  console.log('item: %o', item)
+}
 
-- type: `number`
-- required: `false`
-- default: `60`
+const mobileSidebarOpen = ref(false)
+const sidebarToggled = (isOpen: boolean) => {
+  mobileSidebarOpen.value = isOpen
+}
+</script>
 
-The height of the sidebar `header` slot, in pixels.
+<style lang="scss">
+// Leave un-scoped to remove body overflow when the sidebar is open
+body.kong-ui-sidebar-open {
+  overflow-y: hidden;
 
-The `headerHeight` should be set to the same height as the host application's navbar element, if applicable.
+  @media screen and (min-width: 768px) { // $viewport-md
+    overflow-y: auto;
+  }
+}
+</style>
+```
+
+</details>
+
+## CSS Variables
+
+You can customize some of the sidebar CSS by adding CSS variables to your app. In most use-cases, this shouldn't be necessary.
+
+Variable | Description | Default
+---------|----------|---------
+`--kong-ui-sidebar-width` | The width of the sidebar | `240px`
+`--kong-ui-sidebar-mobile-icon-color` | The color of the "lines" of the mobile menu icon | `#1155cb`
+
+### CSS variable example
+
+```scss
+.your-app-container-class {
+  --kong-ui-sidebar-width: 300px;
+}
+```
 
 ## TypeScript interfaces
 
