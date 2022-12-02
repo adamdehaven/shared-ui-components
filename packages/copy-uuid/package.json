@@ -1,6 +1,6 @@
 {
   "name": "@kong-ui/copy-uuid",
-  "version": "0.2.21",
+  "version": "0.3.0",
   "type": "module",
   "main": "./dist/copy-uuid.umd.js",
   "module": "./dist/copy-uuid.es.js",
@@ -44,6 +44,6 @@
     "vue": "^3.2.45"
   },
   "dependencies": {
-    "@kong-ui/core": "workspace:^0.5.4"
+    "@kong-ui/core": "workspace:^0.6.0"
   }
 }

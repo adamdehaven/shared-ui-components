@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/copy-uuid@0.2.21...@kong-ui/copy-uuid@0.3.0) (2022-12-02)
+
+
+### ✨ Features
+
+* **sidebar:** responsive and mobile ([#209](https://github.com/Kong/kong-ui-shared-components/issues/209)) ([caf5077](https://github.com/Kong/kong-ui-shared-components/commit/caf5077bf5c217505904f6959be01653e3a8e53e))
+
+
+
+
+
 ## [0.2.21](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/copy-uuid@0.2.20...@kong-ui/copy-uuid@0.2.21) (2022-12-02)
 
 

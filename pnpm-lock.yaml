@@ -123,7 +123,7 @@ importers:
 
   packages/copy-uuid:
     specifiers:
-      '@kong-ui/core': workspace:^0.5.4
+      '@kong-ui/core': workspace:^0.6.0
     dependencies:
       '@kong-ui/core': link:../core
 
@@ -139,7 +139,7 @@ importers:
 
   packages/forms:
     specifiers:
-      '@kong-ui/core': workspace:^0.5.4
+      '@kong-ui/core': workspace:^0.6.0
       '@types/lodash': ^4.14.191
       fecha: ^4.2.3
       lodash: ^4.17.21
@@ -156,7 +156,7 @@ importers:
 
   packages/sidebar:
     specifiers:
-      '@kong-ui/core': workspace:^0.5.4
+      '@kong-ui/core': workspace:^0.6.0
       focus-trap: ^7.2.0
       focus-trap-vue: ^3.3.1
     dependencies:

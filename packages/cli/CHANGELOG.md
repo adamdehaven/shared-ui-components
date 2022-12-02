@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.5.1...@kong-ui/cli@0.6.0) (2022-12-02)
+
+
+### ✨ Features
+
+* **sidebar:** responsive and mobile ([#209](https://github.com/Kong/kong-ui-shared-components/issues/209)) ([caf5077](https://github.com/Kong/kong-ui-shared-components/commit/caf5077bf5c217505904f6959be01653e3a8e53e))
+
+
+
+
+
 ## [0.5.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.5.0...@kong-ui/cli@0.5.1) (2022-11-15)
 
 
