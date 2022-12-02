@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.5.1...@kong-ui/sidebar@0.5.2) (2022-12-02)
+
+
+### 🐛 Bug Fixes
+
+* **sidebar:** only trigger resize if width changes ([#233](https://github.com/Kong/kong-ui-shared-components/issues/233)) ([38701e3](https://github.com/Kong/kong-ui-shared-components/commit/38701e38f03a0f9a1350e2f7187abd1ad4c09faa))
+
+
+
+
+
 ## [0.5.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.5.0...@kong-ui/sidebar@0.5.1) (2022-12-02)
 
 **Note:** Version bump only for package @kong-ui/sidebar
