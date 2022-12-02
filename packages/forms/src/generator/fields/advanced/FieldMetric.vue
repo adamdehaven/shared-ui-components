@@ -17,7 +17,7 @@
       >
         <slot />
         <i
-          class="material-icons float-right mr-2 mb-2"
+          class="material-icons float-right mr-4 mb-4"
           @click="$emit('remove-item')"
         >delete</i>
       </div>

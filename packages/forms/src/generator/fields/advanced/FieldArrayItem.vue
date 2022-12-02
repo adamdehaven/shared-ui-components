@@ -3,7 +3,7 @@
     <slot />
     <KButton
       appearance="btn-link"
-      class="delete"
+      class="delete h-100 ml-5"
       type="button"
       @click="$emit('remove-item')"
     >

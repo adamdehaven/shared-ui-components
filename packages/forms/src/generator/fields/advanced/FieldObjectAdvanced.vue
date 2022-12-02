@@ -16,7 +16,7 @@
             <div>
               <KButton
                 appearance="btn-link"
-                class="delete pr-0"
+                class="delete"
                 type="button"
                 @click="removeElement(index)"
               >
@@ -69,7 +69,7 @@
         >
         <KButton
           :disabled="!newKeyName"
-          class="d-flex"
+          class="d-flex mx-5"
           data-testid="add-key"
           appearance="btn-link"
           @click="addKey"
