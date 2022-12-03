@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.4](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.5.3...@kong-ui/sidebar@0.5.4) (2022-12-03)
+
+
+### 🐛 Bug Fixes
+
+* **sidebar:** route watcher ([25ba24a](https://github.com/Kong/kong-ui-shared-components/commit/25ba24afa5b3a223a5c2daf394870620c154d001))
+* **sidebar:** route.query not required ([b2736a7](https://github.com/Kong/kong-ui-shared-components/commit/b2736a720ee60d63632a71c92a409c7bb2374414))
+
+
+### ♻️ Chores
+
+* **sidebar:** update sandbox ([786c1cd](https://github.com/Kong/kong-ui-shared-components/commit/786c1cdc3d780d1085c9801251ffcf3f80da4b1b))
+
+
+
+
+
 ## [0.5.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.5.2...@kong-ui/sidebar@0.5.3) (2022-12-03)
 
 
