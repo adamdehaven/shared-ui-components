@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.5.2...@kong-ui/sidebar@0.5.3) (2022-12-03)
+
+
+### 🐛 Bug Fixes
+
+* **sidebar:** body overflow ([dde9183](https://github.com/Kong/kong-ui-shared-components/commit/dde9183ffab62ebd372602e8a309916db9993620))
+
+
+
+
+
 ## [0.5.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.5.1...@kong-ui/sidebar@0.5.2) (2022-12-02)
 
 
