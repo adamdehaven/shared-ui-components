@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.6](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.5.5...@kong-ui/sidebar@0.5.6) (2022-12-03)
+
+
+### 📚 Documentation
+
+* **sidebar:** remove unneeded example ([dab6221](https://github.com/Kong/kong-ui-shared-components/commit/dab622110a668cb2a5d574e1271ccde16941358e))
+
+
+
+
+
 ## [0.5.5](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.5.4...@kong-ui/sidebar@0.5.5) (2022-12-03)
 
 
