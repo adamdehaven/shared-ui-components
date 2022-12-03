@@ -408,15 +408,15 @@ export const useSidebar = () => {
 
 This package also exports a `SidebarToggle.vue` component that should be utilized in the host application's navbar in order to hide/show the Sidebar on mobile (under `768px` viewport width).
 
-When the mobile sidebar is toggled open, a class of `kong-ui-sidebar-open` is added to the `document.body`. This is useful in order to hide `body` overflow so that only the sidebar contents is scrollable.
+When the mobile sidebar is toggled open, a class of `kong-ui-sidebar-open` is automatically added to the `document.body`, which applies a rule of `overflow: hidden` while the sidebar is open so that only the sidebar contents is scrollable.
 
 ```scss
 // Leave un-scoped to remove body overflow when the sidebar is open
 body.kong-ui-sidebar-open {
-  overflow-y: hidden;
+  overflow: hidden;
 
   @media screen and (min-width: 768px) { // $viewport-md
-    overflow-y: auto;
+    overflow: auto;
   }
 }
 ```
