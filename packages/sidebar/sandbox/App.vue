@@ -11,6 +11,12 @@
       >
         <GruceLogo />
       </router-link>
+      <KButton
+        :to="{ name: 'about' }"
+        size="small"
+      >
+        About
+      </KButton>
     </nav>
   </header>
   <div class="sandbox-container">
