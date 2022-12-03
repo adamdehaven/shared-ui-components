@@ -411,7 +411,6 @@ This package also exports a `SidebarToggle.vue` component that should be utilize
 When the mobile sidebar is toggled open, a class of `kong-ui-sidebar-open` is automatically added to the `document.body`, which applies a rule of `overflow: hidden` while the sidebar is open so that only the sidebar contents is scrollable.
 
 ```scss
-// Leave un-scoped to remove body overflow when the sidebar is open
 body.kong-ui-sidebar-open {
   overflow: hidden;
 
