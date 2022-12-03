@@ -271,7 +271,7 @@ watch(() => props.open, (isOpen: boolean) => {
 })
 
 // Automatically close the sidebar when the `route.path` or `route.query` changes, if the sidebar is open
-if (route && route?.path && route?.query) {
+if (route && route?.path) {
   watch([() => route?.path, () => route?.query], () => {
     if (!sidebarTogglePending.value && mobileSidebarOpen.value) {
       toggleSidebar(false)
