@@ -271,6 +271,8 @@ watch(() => props.open, (isOpen: boolean) => {
 })
 
 // Automatically close the sidebar when the `route.path` or `route.query` changes, if the sidebar is open
+// This only works in Apps that import `useRoute` directly from `vue-router` (not a custom composable
+// If an app uses a different import (like `khcp-ui`) then the app must handle closing the mobile sidebar when the route changes
 if (route && route?.path) {
   watch([() => route?.path, () => route?.query], () => {
     if (!sidebarTogglePending.value && mobileSidebarOpen.value) {

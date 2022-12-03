@@ -10,6 +10,7 @@ A Kong UI dynamic sidebar component.
   - [Props](#props)
   - [Slots](#slots)
   - [Events](#events)
+  - [Mobile sidebar](#mobile-sidebar)
   - [Usage example](#usage-example)
 - [`SidebarToggle.vue`](#sidebartogglevue)
   - [Props ](#props-1)
@@ -59,6 +60,7 @@ A Kong UI dynamic sidebar component.
               control_plane_id: currentRoute?.params.control_plane_id
             }
           },
+        },
       ],
     },
     ```
@@ -78,8 +80,6 @@ yarn add @kong-ui/sidebar
 You will likely want to utilize a wrapper component in your application, so import the `SidebarNav` component and the package styles into your wrapper component.
 
 You will also need to utilize a factory function (e.g. a composable) in order to generate and update your menu items.
-
-To utilize the mobile version of the sidebar included in the component, you must set the `mobileEnabled` prop to `true` and utilize the `SidebarToggle.vue` component. Examples can be found below.
 
 ### Props
 
@@ -225,6 +225,36 @@ A `@toggle` event is emitted whenever the sidebar is opened or closed.
 
 The `toggle` event emits a payload of a `boolean` to indicate if the sidebar is open.
 
+### Mobile sidebar
+
+To utilize the mobile version of the sidebar included in the component, you must set the `mobileEnabled` prop to `true` and utilize the `SidebarToggle.vue` component. [Examples can be found below](#sidebartogglevue).
+
+The mobile sidebar will automatically close on `route.path` or `route.query` change only if your app imports the `useRoute()` helper directly from `vue-router` as shown here:
+
+```ts
+import { useRoute } from 'vue-router'
+```
+
+If your app uses a different import, like `khcp-ui` from a custom composable, then the app must handle closing the mobile sidebar when the route object changes. Here's an example:
+
+```ts
+import { ref, watch } from 'vue'
+import composables from './composables'
+
+const route = composables.useRoute()
+const mobileSidebarOpen = ref<boolean>(false)
+
+watch(() => route.path, (newPath, oldPath) => {
+  // If the path didn't change, there's no need to refresh the nav
+  if (newPath !== oldPath) {
+    // Close the mobile sidebar if it's open
+    if (mobileSidebarOpen.value) {
+      mobileSidebarOpen.value = false
+    }
+  }
+})
+```
+
 ### Usage example
 
 <details>
@@ -360,7 +390,6 @@ export const useSidebar = () => {
         icon: 'workspaces',
       },
     ]
-
     // In the future, update the bottomItems and profileItems here as needed
   }
 
