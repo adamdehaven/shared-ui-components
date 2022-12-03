@@ -414,7 +414,7 @@ When the mobile sidebar is toggled open, a class of `kong-ui-sidebar-open` is au
 body.kong-ui-sidebar-open {
   overflow: hidden;
 
-  @media screen and (min-width: 768px) { // $viewport-md
+  @media screen and (min-width: $viewport-md) { // 768px
     overflow: auto;
   }
 }
@@ -496,17 +496,6 @@ const sidebarToggled = (isOpen: boolean) => {
   mobileSidebarOpen.value = isOpen
 }
 </script>
-
-<style lang="scss">
-// Leave un-scoped to remove body overflow when the sidebar is open
-body.kong-ui-sidebar-open {
-  overflow-y: hidden;
-
-  @media screen and (min-width: 768px) { // $viewport-md
-    overflow-y: auto;
-  }
-}
-</style>
 ```
 
 </details>
