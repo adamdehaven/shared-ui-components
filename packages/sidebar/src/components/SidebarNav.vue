@@ -543,10 +543,10 @@ onBeforeUnmount(() => {
 
 // Leave un-scoped to remove body overflow when the sidebar is open
 body.kong-ui-sidebar-open {
-  overflow-y: hidden;
+  overflow: hidden;
 
   @media screen and (min-width: $viewport-md) {
-    overflow-y: auto;
+    overflow: auto;
   }
 }
 </style>
