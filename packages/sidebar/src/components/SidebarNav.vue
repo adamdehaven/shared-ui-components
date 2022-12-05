@@ -106,10 +106,8 @@ import SidebarItem from './SidebarItem.vue'
 import SidebarFooter from './SidebarFooter.vue'
 import { FocusTrap } from 'focus-trap-vue'
 import { createI18n, useDebounce } from '@kong-ui/core'
-import { useRoute } from 'vue-router'
 import english from '../locales/en.json'
 
-const route = useRoute()
 const { t } = createI18n('en-us', english)
 const emit = defineEmits(['click', 'toggle'])
 
@@ -269,17 +267,6 @@ const itemClick = (item: SidebarPrimaryItem | SidebarProfileItem): void => {
 watch(() => props.open, (isOpen: boolean) => {
   toggleSidebar(isOpen)
 })
-
-// Automatically close the sidebar when the `route.path` or `route.query` changes, if the sidebar is open
-// This only works in Apps that import `useRoute` directly from `vue-router` (not a custom composable
-// If an app uses a different import (like `khcp-ui`) then the app must handle closing the mobile sidebar when the route changes
-if (route && route?.path) {
-  watch([() => route?.path, () => route?.query], () => {
-    if (!sidebarTogglePending.value && mobileSidebarOpen.value) {
-      toggleSidebar(false)
-    }
-  })
-}
 
 // Automatically close the sidebar if the window is resized
 const { debounce } = useDebounce()

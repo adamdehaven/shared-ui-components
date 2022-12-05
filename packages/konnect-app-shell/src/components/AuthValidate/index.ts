@@ -1,0 +1,2 @@
+// AuthValidate.ts
+export default {}
