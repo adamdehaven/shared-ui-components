@@ -41,10 +41,14 @@
     "extends": "../../package.json"
   },
   "peerDependencies": {
+    "@kong/kongponents": "^8.9.1",
     "vue": "^3.2.38"
   },
   "dependencies": {
     "@kong-ui/core": "workspace:^0.6.1",
     "@kong-ui/sidebar": "workspace:^0.6.0"
+  },
+  "devDependencies": {
+    "@kong/kongponents": "^8.9.1"
   }
 }

@@ -43,6 +43,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import ProfileIcon from './ProfileIcon.vue'
+import { KDropdownMenu } from '@kong/kongponents'
 import { createI18n } from '@kong-ui/core'
 import english from '../locales/en.json'
 

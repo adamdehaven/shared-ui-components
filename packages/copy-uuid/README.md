@@ -5,15 +5,16 @@ A Kong UI component for displaying uuid and copying it to clipboard.
 - [Features](#features)
 - [Requirements](#requirements)
 - [Usage](#usage)
-    - [Install](#install)
-    - [Initialize](#initialize)
+  - [Install](#install)
+  - [Register](#register)
+  - [Initialize](#initialize)
 - [TypeScript interfaces](#typescript-interfaces)
 - [Props](#props)
-    - [`uuid`](#uuid)
-    - [`truncated`](#truncated)
-    - [`useMono`](#usemono)
-    - [`isHidden`](#ishidden)
-    - [`notify`](#notify)
+  - [`uuid`](#uuid)
+  - [`truncated`](#truncated)
+  - [`useMono`](#usemono)
+  - [`isHidden`](#ishidden)
+  - [`notify`](#notify)
 
 ## Features
 
@@ -26,7 +27,7 @@ A Kong UI component for displaying uuid and copying it to clipboard.
 ## Requirements
 
 - `vue` must be initialized in the host application
-- `@kong/kongponents` must be available in the host application, along with the package style imports. [See here for instructions on installing Kongponents](https://kongponents.konghq.com/#globally-install-all-kongponents). Specifically, the following Kongponents must be registered and globally available in the host application:
+- `@kong/kongponents` must be available as a `dependency` in the host application, along with the package's style imports. [See here for instructions on installing Kongponents](https://kongponents.konghq.com/#globally-install-all-kongponents). Specifically, the following Kongponents must be available:
   - `KClipboardProvider`
   - `KIcon`
 

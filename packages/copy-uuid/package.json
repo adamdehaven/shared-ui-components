@@ -45,5 +45,8 @@
   },
   "dependencies": {
     "@kong-ui/core": "workspace:^0.6.1"
+  },
+  "devDependencies": {
+    "@kong/kongponents": "^8.9.1"
   }
 }

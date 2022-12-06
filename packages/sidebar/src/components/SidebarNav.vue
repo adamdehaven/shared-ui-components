@@ -76,7 +76,7 @@
           :key="item.name"
           :has-divider="item.hasDivider"
           :class="[{ 'has-divider': item.hasDivider },{ 'external-profile-dropdown-link': item.newWindow && typeof item.to === 'string' }]"
-          :item="item.newWindow && typeof item.to === 'string' ? null : { label: item.name, to: item.to }"
+          :item="item.newWindow && typeof item.to === 'string' ? undefined : { label: item.name, to: item.to }"
           @click="itemClick(item)"
         >
           <a
@@ -104,6 +104,7 @@ import { ref, computed, watch, useSlots, PropType, onMounted, onBeforeUnmount, n
 import { SidebarPrimaryItem, SidebarProfileItem } from '../types'
 import SidebarItem from './SidebarItem.vue'
 import SidebarFooter from './SidebarFooter.vue'
+import { KDropdownItem, KIcon } from '@kong/kongponents'
 import { FocusTrap } from 'focus-trap-vue'
 import { createI18n, useDebounce } from '@kong-ui/core'
 import english from '../locales/en.json'

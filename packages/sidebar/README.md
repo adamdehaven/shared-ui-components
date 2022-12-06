@@ -34,7 +34,7 @@ A Kong UI dynamic sidebar component.
 ## Requirements
 
 - `vue` and `vue-router` must be initialized in the host application
-- `@kong/kongponents` must be available in the host application, along with the package style imports. [See here for instructions on installing Kongponents](https://kongponents.konghq.com/#globally-install-all-kongponents). Specifically, the following Kongponents must be registered and globally available in the host application:
+- `@kong/kongponents` must be available as a `dependency` in the host application, along with the package's style imports. [See here for instructions on installing Kongponents](https://kongponents.konghq.com/#globally-install-all-kongponents). Specifically, the following Kongponents must be available:
   - `KDropdownItem`
   - `KDropdownMenu`
   - `KIcon`

@@ -39,6 +39,7 @@
 import { inject, PropType } from 'vue'
 import { createI18n } from '@kong-ui/core'
 import english from '../locales/en.json'
+import { KClipboardProvider, KIcon } from '@kong/kongponents'
 import { COPY_UUID_NOTIFY_KEY } from '../const'
 import { CopyUuidNotifyParam } from '../types'
 
