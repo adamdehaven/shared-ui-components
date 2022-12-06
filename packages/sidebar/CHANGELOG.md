@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.6.0...@kong-ui/sidebar@0.6.1) (2022-12-06)
+
+
+### 🐛 Bug Fixes
+
+* kongponent imports ([#244](https://github.com/Kong/kong-ui-shared-components/issues/244)) ([4abbdb8](https://github.com/Kong/kong-ui-shared-components/commit/4abbdb8c549d8776bccafdb5e46e7c525d293eaa))
+
+
+
+
+
 # [0.6.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/sidebar@0.5.8...@kong-ui/sidebar@0.6.0) (2022-12-05)
 
 
