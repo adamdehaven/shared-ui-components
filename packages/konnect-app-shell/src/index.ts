@@ -13,6 +13,7 @@ export default {
   },
 }
 
+// Do not export components located in `/packages/konnect-app-shell/src/components/internal/`
 export {
   AuthValidate,
   GeoSwitcher,

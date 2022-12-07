@@ -9,7 +9,7 @@ importers:
       '@datadog/datadog-ci': ^2.1.0
       '@digitalroute/cz-conventional-changelog-for-jira': ^7.4.2
       '@evilmartians/lefthook': ^1.2.4
-      '@kong/kongponents': ^8.9.1
+      '@kong/kongponents': ^8.10.1
       '@rushstack/eslint-patch': ^1.2.0
       '@types/flat': ^5.0.2
       '@types/inquirer': ^9.0.3
@@ -66,7 +66,7 @@ importers:
       '@datadog/datadog-ci': 2.1.0
       '@digitalroute/cz-conventional-changelog-for-jira': 7.4.2
       '@evilmartians/lefthook': 1.2.4
-      '@kong/kongponents': 8.9.1_vue@3.2.45
+      '@kong/kongponents': 8.10.1_vue@3.2.45
       '@rushstack/eslint-patch': 1.2.0
       '@types/flat': 5.0.2
       '@types/inquirer': 9.0.3
@@ -160,10 +160,12 @@ importers:
   packages/konnect-app-shell:
     specifiers:
       '@kong-ui/core': workspace:^0.6.1
+      '@kong-ui/navbar': workspace:^0.1.0
       '@kong-ui/sidebar': workspace:^0.6.1
       '@kong/kongponents': ^8.9.1
     dependencies:
       '@kong-ui/core': link:../core
+      '@kong-ui/navbar': link:../navbar
       '@kong-ui/sidebar': link:../sidebar
     devDependencies:
       '@kong/kongponents': 8.9.1
@@ -766,6 +768,28 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
+  /@kong/kongponents/8.10.1_vue@3.2.45:
+    resolution: {integrity: sha512-NVTmPB011tpIfl/s5MeDwOx4MtPTc9nFCHllA642v9f2idB42vSQ+6c3hULDfZ3uD+AGPHaamio7LnNKFFOnJw==}
+    hasBin: true
+    peerDependencies:
+      vue: '>= 3.2.37'
+    dependencies:
+      axios: 0.27.2
+      date-fns: 2.29.3
+      date-fns-tz: 1.3.7_date-fns@2.29.3
+      focus-trap: 7.2.0
+      focus-trap-vue: 3.3.1_nn2zg2o47bujavotzgw5cgkzcu
+      popper.js: 1.16.1
+      sortablejs: 1.15.0
+      swrv: 1.0.0_vue@3.2.45
+      uuid: 8.3.2
+      v-calendar: 3.0.0-alpha.8_vue@3.2.45
+      vue: 3.2.45
+      vue-draggable-next: 2.1.1_vyu2vwb5kgntc5eommqv3uyn34
+    transitivePeerDependencies:
+      - debug
+    dev: true
+
   /@kong/kongponents/8.9.1:
     resolution: {integrity: sha512-p4s1MzRNjWvh1pwizUYqM4dxDsjMZEjyQ44hDV0PpaWrpfMysMVUNKmMVKpWGD5LxoT3x645NDKWJppklZ0HIw==}
     hasBin: true
@@ -781,26 +805,6 @@ packages:
       swrv: 1.0.0
       uuid: 8.3.2
       v-calendar: 3.0.0-alpha.8
-    transitivePeerDependencies:
-      - debug
-    dev: true
-
-  /@kong/kongponents/8.9.1_vue@3.2.45:
-    resolution: {integrity: sha512-p4s1MzRNjWvh1pwizUYqM4dxDsjMZEjyQ44hDV0PpaWrpfMysMVUNKmMVKpWGD5LxoT3x645NDKWJppklZ0HIw==}
-    hasBin: true
-    peerDependencies:
-      vue: '>= 3.2.37'
-    dependencies:
-      axios: 0.27.2
-      date-fns: 2.29.3
-      date-fns-tz: 1.3.7_date-fns@2.29.3
-      focus-trap: 7.2.0
-      focus-trap-vue: 3.3.1_nn2zg2o47bujavotzgw5cgkzcu
-      popper.js: 1.16.1
-      swrv: 1.0.0_vue@3.2.45
-      uuid: 8.3.2
-      v-calendar: 3.0.0-alpha.8_vue@3.2.45
-      vue: 3.2.45
     transitivePeerDependencies:
       - debug
     dev: true
@@ -3926,7 +3930,7 @@ packages:
   /axios/0.27.2:
     resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
     dependencies:
-      follow-redirects: 1.15.2_debug@4.3.4
+      follow-redirects: 1.15.2
       form-data: 4.0.0
     transitivePeerDependencies:
       - debug
@@ -13228,6 +13232,10 @@ packages:
       is-plain-obj: 2.1.0
     dev: true
 
+  /sortablejs/1.15.0:
+    resolution: {integrity: sha512-bv9qgVMjUMf89wAvM6AxVvS/4MX3sPeN0+agqShejLU5z5GX4C75ow1O2e5k4L6XItUyAK3gH6AxSbXrOM5e8w==}
+    dev: true
+
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
@@ -14660,6 +14668,16 @@ packages:
   /void-elements/3.1.0:
     resolution: {integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /vue-draggable-next/2.1.1_vyu2vwb5kgntc5eommqv3uyn34:
+    resolution: {integrity: sha512-f5lmA7t6LMaL4viR7dU30zzvqJzaKQs0ymL0Jy9UDT9uiZ2tXF3MzPzEvpTH2UODXZJkT+SnjeV1fXHMsgXLYA==}
+    peerDependencies:
+      sortablejs: ^1.14.0
+      vue: ^3.2.2
+    dependencies:
+      sortablejs: 1.15.0
+      vue: 3.2.45
     dev: true
 
   /vue-eslint-parser/9.1.0_eslint@8.29.0:

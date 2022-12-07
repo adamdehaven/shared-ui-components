@@ -16,6 +16,10 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
+  resolve: {
+    // Use this option to force Vite to always resolve listed dependencies to the same copy (from project root)
+    dedupe: ['vue', 'vue-router', '@kong/kongponents'],
+  },
   build: {
     outDir: './dist',
     cssCodeSplit: false,

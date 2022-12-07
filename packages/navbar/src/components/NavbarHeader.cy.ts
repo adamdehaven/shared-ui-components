@@ -7,6 +7,6 @@ describe('<Navbar />', () => {
   it('TODO: This is an example test', () => {
     mount(Navbar)
 
-    cy.get('.kong-ui-navbar').should('be.visible')
+    cy.get('.kong-ui-navbar-header').should('be.visible')
   })
 })

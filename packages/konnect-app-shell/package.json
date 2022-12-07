@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "@kong-ui/core": "workspace:^0.6.1",
+    "@kong-ui/navbar": "workspace:^0.1.0",
     "@kong-ui/sidebar": "workspace:^0.6.1"
   },
   "devDependencies": {

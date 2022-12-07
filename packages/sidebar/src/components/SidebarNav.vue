@@ -2,7 +2,6 @@
   <div
     v-if="(mobileSidebarOpen && mobileOverlay && mobileEnabled)"
     class="kong-ui-sidebar-overlay"
-    :style="sidebarOverlayStyles"
     @click="closeSidebarFromOverlay"
   />
   <FocusTrap
@@ -20,18 +19,15 @@
         'mobile-disabled': !mobileEnabled,
         'disable-transitions': transitionsDisabled
       }"
-      :style="sidebarContainerStyles"
     >
       <div
         v-if="hasHeader"
         class="sidebar-header"
-        :style="headerContainerStyles"
       >
         <slot name="header" />
       </div>
       <nav
         class="sidebar-nav"
-        :style="navContainerStyles"
         :aria-label="t('main_menu')"
       >
         <ul
@@ -133,6 +129,10 @@ const props = defineProps({
     type: Number,
     default: 60,
   },
+  topOffset: {
+    type: Number,
+    default: 0,
+  },
   zIndex: {
     type: Number,
     default: 2,
@@ -176,22 +176,22 @@ const slots = useSlots()
 const hasHeader = computed(() => !!slots.header)
 
 const sidebarContainerStyles = computed(() => ({
-  top: props.mobileTopOffset && props.mobileEnabled ? `${props.mobileTopOffset}px` : undefined,
-  height: props.mobileTopOffset && props.mobileEnabled ? `calc(100% - ${props.mobileTopOffset}px)` : undefined,
-  zIndex: props.zIndex,
+  top: props.topOffset ? `${props.topOffset}px` : '0',
+  mobileTop: props.mobileTopOffset && props.mobileEnabled ? `${props.mobileTopOffset}px` : props.topOffset ? `${props.topOffset}px` : '0',
+  height: props.mobileTopOffset && props.mobileEnabled ? `calc(100% - ${props.mobileTopOffset}px)` : '100%',
 }))
 
 const headerContainerStyles = computed(() => ({
-  display: !props.mobileHeaderVisible && props.mobileEnabled ? 'none' : undefined,
+  display: !props.mobileHeaderVisible && props.mobileEnabled ? 'none' : 'flex',
   minHeight: `${props.headerHeight}px`,
 }))
 
-const navContainerStyles = computed(() => ({
-  marginTop: hasHeader.value ? `${props.headerHeight}px` : undefined,
+const sidebarNavStyles = computed(() => ({
+  marginTop: hasHeader.value ? `${props.headerHeight}px` : '0',
 }))
 
 const sidebarOverlayStyles = computed(() => ({
-  top: props.mobileTopOffset && props.mobileEnabled ? `${props.mobileTopOffset}px` : undefined,
+  top: props.mobileTopOffset && props.mobileEnabled ? `${props.mobileTopOffset}px` : '0',
   zIndex: props.mobileOverlayZIndex !== null ? props.mobileOverlayZIndex : (props.zIndex > 1 ? props.zIndex - 1 : 1),
 }))
 
@@ -339,23 +339,25 @@ onBeforeUnmount(() => {
 
 .kong-ui-sidebar-nav {
   position: fixed;
+  top: v-bind('sidebarContainerStyles.mobileTop');
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: v-bind('sidebarContainerStyles.height');
   background: $sidebar-background;
   left: -100%;
+  z-index: v-bind(zIndex);
   transition: left 0.2s ease-in-out;
 
   // Restrict the sidebar from going full-width on larger screens
-  @media screen and (min-width: $viewport-sm) {
+  @media (min-width: $viewport-sm) {
     width: var(--kong-ui-sidebar-width, $sidebar-width);
     max-width: var(--kong-ui-sidebar-width, $sidebar-width);
   }
 
-  @media screen and (min-width: $viewport-md) {
-    height: 100% !important; // `!important` to override the inline height style rule when not on mobile
-    top: 0 !important; // `!important` to override the inline height style rule when not on mobile
+  @media (min-width: $viewport-md) {
+    height: 100%;
+    top: v-bind('sidebarContainerStyles.top');
     left: 0;
   }
 
@@ -378,6 +380,7 @@ onBeforeUnmount(() => {
     display: flex;
     flex-direction: column;
     height: 100%;
+    margin-top: v-bind('sidebarNavStyles.marginTop');
     padding-top: $sidebar-header-spacing;
     overflow-x: hidden;
     // Must use `scroll` so that the scrollbar width is always accounted for. Cannot use `overlay` here as it breaks in Firefox.
@@ -403,7 +406,7 @@ onBeforeUnmount(() => {
 // Remove the top margin if `props.mobileHeaderVisible` is false, or if no header slot is present
 .mobile-header-hidden .sidebar-nav,
 .no-sidebar-header .sidebar-nav {
-  @media screen and (max-width: ($viewport-md - 1px)) {
+  @media (max-width: ($viewport-md - 1px)) {
     margin-top: 0 !important;
   }
 }
@@ -418,11 +421,12 @@ onBeforeUnmount(() => {
 
 .sidebar-header {
   position: absolute;
+  display: v-bind('headerContainerStyles.display');
+  min-height: v-bind('headerContainerStyles.minHeight');
   top: 0;
   left: 0;
   right: 0;
   z-index: 1;
-  display: flex;
   align-items: center;
   padding: 0 20px;
   color: #fff;
@@ -430,8 +434,8 @@ onBeforeUnmount(() => {
   -webkit-user-select: none;
   user-select: none;
 
-  @media screen and (min-width: $viewport-md) {
-    display: flex !important; // `!important` to override the inline height style rule when not on mobile
+  @media (min-width: $viewport-md) {
+    display: flex;
   }
 
   // Force the immediate child to be display flex
@@ -440,9 +444,13 @@ onBeforeUnmount(() => {
       display: flex;
     }
 
-    a:focus-visible {
-      outline: 1px solid var(--steel-300, #A3B6D9);
-      border-radius: $sidebar-item-border-radius
+    a {
+      text-decoration: none;
+
+      &:focus-visible {
+        outline: 1px solid var(--steel-300, #A3B6D9);
+        border-radius: $sidebar-item-border-radius
+      }
     }
   }
 
@@ -495,13 +503,14 @@ onBeforeUnmount(() => {
 
 .kong-ui-sidebar-overlay {
   position: fixed;
-  top: 0;
+  top: v-bind('sidebarOverlayStyles.top');
   bottom: 0;
   left: 0;
   right: 0;
   background-color: rgba(11, 23, 45, .6); // Same as KModal backdrop color
+  z-index: v-bind('sidebarOverlayStyles.zIndex');
 
-  @media screen and (min-width: $viewport-md) {
+  @media (min-width: $viewport-md) {
     display: none !important;
   }
 }
@@ -535,7 +544,7 @@ onBeforeUnmount(() => {
 body.kong-ui-sidebar-open {
   overflow: hidden;
 
-  @media screen and (min-width: $viewport-md) {
+  @media (min-width: $viewport-md) {
     overflow: auto;
   }
 }

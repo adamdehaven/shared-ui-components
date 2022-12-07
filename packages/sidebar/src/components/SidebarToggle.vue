@@ -52,14 +52,14 @@ watch(() => props.active, (active) => {
     outline: 1px solid var(--kong-ui-sidebar-mobile-icon-color, var(--blue-500, #1155cb));
   }
 
-  @media screen and (min-width: $viewport-md) {
+  @media (min-width: $viewport-md) {
     display: none;
   }
 
   .line {
     display: block;
-    width: 30px;
-    height: 3px;
+    width: 24px;
+    height: 2px;
     border-radius: $sidebar-item-border-radius;
     background-color: var(--kong-ui-sidebar-mobile-icon-color, var(--blue-500, #1155cb));
     margin: 6px auto;
@@ -73,11 +73,11 @@ watch(() => props.active, (active) => {
       }
 
       &:nth-child(1) {
-        transform: translateY(9px) rotate(45deg);
+        transform: translateY(8px) rotate(45deg);
       }
 
       &:nth-child(3){
-        transform: translateY(-9px) rotate(-45deg);
+        transform: translateY(-8px) rotate(-45deg);
       }
     }
   }

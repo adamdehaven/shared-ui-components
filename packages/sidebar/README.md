@@ -125,6 +125,16 @@ The height of the sidebar `header` slot, in pixels.
 
 The `headerHeight` should be set to the same height as the host application's navbar element, if applicable.
 
+#### `topOffset`
+
+- type: `number`
+- required: `false`
+- default: `0`
+
+The number of pixels to offset the sidebar from the top of the viewport. Typically, the default of `0` should be used.
+
+Useful if you're showing a full-width notification above the navbar and need to offset the top of the sidebar as well.
+
 #### `zIndex`
 
 - type: `number`
@@ -414,7 +424,7 @@ When the mobile sidebar is toggled open, a class of `kong-ui-sidebar-open` is au
 body.kong-ui-sidebar-open {
   overflow: hidden;
 
-  @media screen and (min-width: $viewport-md) { // 768px
+  @media (min-width: $viewport-md) { // 768px
     overflow: auto;
   }
 }

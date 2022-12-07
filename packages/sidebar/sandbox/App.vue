@@ -317,7 +317,7 @@ main {
   margin-top: $navbar-height;
   padding: 16px 24px;
 
-  @media screen and (min-width: 768px) {
+  @media (min-width: 768px) {
     margin-left: 240px; // $sidebar-width
   }
 }
@@ -335,7 +335,7 @@ main {
   height: $navbar-height;
   background: #eee;
 
-  @media screen and (min-width: 768px) {
+  @media (min-width: 768px) {
     left: 240px;
   }
 
@@ -352,7 +352,7 @@ main {
     display: flex;
     align-items: center;
 
-    @media screen and (min-width: 768px) {
+    @media (min-width: 768px) {
       display: none;
     }
   }
