@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.6.1...@kong-ui/core@0.6.2) (2022-12-07)
+
+
+### 📚 Documentation
+
+* add useDebounce readme ([3524860](https://github.com/Kong/kong-ui-shared-components/commit/3524860168ebd45f188ea97a06f308526991d569))
+
+
+
+
+
 ## [0.6.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.6.0...@kong-ui/core@0.6.1) (2022-12-02)
 
 
