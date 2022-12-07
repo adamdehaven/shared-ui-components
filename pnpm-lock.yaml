@@ -160,8 +160,8 @@ importers:
   packages/konnect-app-shell:
     specifiers:
       '@kong-ui/core': workspace:^0.6.1
-      '@kong-ui/navbar': workspace:^0.1.0
-      '@kong-ui/sidebar': workspace:^0.6.1
+      '@kong-ui/navbar': workspace:^0.2.0
+      '@kong-ui/sidebar': workspace:^0.7.0
       '@kong/kongponents': ^8.9.1
     dependencies:
       '@kong-ui/core': link:../core
@@ -3930,7 +3930,7 @@ packages:
   /axios/0.27.2:
     resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
     dependencies:
-      follow-redirects: 1.15.2
+      follow-redirects: 1.15.2_debug@4.3.4
       form-data: 4.0.0
     transitivePeerDependencies:
       - debug

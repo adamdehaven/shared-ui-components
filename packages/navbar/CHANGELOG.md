@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/navbar@0.1.0...@kong-ui/navbar@0.2.0) (2022-12-07)
+
+
+### ✨ Features
+
+* **konnect-app-shell:** update layout and add navbar ([#251](https://github.com/Kong/kong-ui-shared-components/issues/251)) ([c446215](https://github.com/Kong/kong-ui-shared-components/commit/c4462152be9b29fc58cab7d81708787da2357e5a))
+
+
+
+
+
 # 0.1.0 (2022-12-05)
 
 
