@@ -100,7 +100,7 @@ pnpm --filter "@kong-ui/{package-name}" run build
 
 ### Requirements
 
-- [NodeJS >= 16.x](https://nodejs.org/en/download/)
+- [NodeJS >= 18.x](https://nodejs.org/en/download/)
 - [pnpm 7.x](https://pnpm.io/installation) ([_Why pnpm?_](./docs/why-pnpm.md))
 - Kong npm registry token available as `NPM_TOKEN` in your shell environment ([_More info_](./docs/kong-npm-token-setup.md))
 
