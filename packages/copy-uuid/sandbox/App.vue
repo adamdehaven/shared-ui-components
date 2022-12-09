@@ -8,22 +8,22 @@
       <div>
         <h3>truncated=false</h3>
         <CopyUuid
-          :uuid="uuid"
           :truncated="false"
+          :uuid="uuid"
         />
       </div>
       <div>
         <h3>use-mono=false</h3>
         <CopyUuid
-          :uuid="uuid"
           :use-mono="false"
+          :uuid="uuid"
         />
       </div>
       <div>
         <h3>is-hidden=true</h3>
         <CopyUuid
-          :uuid="uuid"
           is-hidden
+          :uuid="uuid"
         />
       </div>
     </main>

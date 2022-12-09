@@ -220,11 +220,10 @@ In order to prevent component styles from leaking out into the consuming applica
 
 If your component exposes any CSS variables, they **must** be prefixed with your package name `--kong-ui-{package-name}`
 
-For example, the `@kong-ui/sidebar` package exposes the following CSS variables:
+For example, the `@kong-ui/app-layout` package exposes the following CSS variables:
 
 ```css
---kong-ui-sidebar-width
---kong-ui-sidebar-mobile-icon-color
+--kong-ui-app-sidebar-mobile-icon-color
 ```
 
 ## Testing

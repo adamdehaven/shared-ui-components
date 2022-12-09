@@ -1,8 +1,8 @@
 <template>
   <div class="kong-ui-copy-uuid">
     <div
-      :title="uuid"
       data-testid="copy-id"
+      :title="uuid"
     >
       <div
         :class="[
@@ -17,17 +17,17 @@
     <div class="uuid-icon-wrapper">
       <KClipboardProvider v-slot="{ copyToClipboard }">
         <span
+          data-testid="copy-to-clipboard"
           role="button"
           tabindex="0"
-          data-testid="copy-to-clipboard"
           @click.stop="copyIdToClipboard(copyToClipboard)"
         >
           <KIcon
             class="uuid-icon"
-            :title="t('iconTitle')"
-            icon="copy"
             color="var(--black-45)"
+            icon="copy"
             size="16"
+            :title="t('iconTitle')"
           />
         </span>
       </KClipboardProvider>

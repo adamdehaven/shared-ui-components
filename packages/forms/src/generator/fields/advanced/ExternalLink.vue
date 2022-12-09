@@ -1,17 +1,17 @@
 <template>
   <a
     v-if="href"
-    :href="href"
     class="external-link"
+    :href="href"
     rel="noopener"
     target="_blank"
   >
     <slot />
     <KIcon
-      icon="externalLink"
-      width="12"
       height="12"
+      icon="externalLink"
       view-box="0 0 12 12"
+      width="12"
     />
   </a>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div
-    :class="{ active: contentVisible }"
     class="field-dropdown"
+    :class="{ active: contentVisible }"
   >
     <div
       class="title"
@@ -19,7 +19,9 @@
         <i
           class="material-icons float-right mr-4 mb-4"
           @click="$emit('remove-item')"
-        >delete</i>
+        >
+          delete
+        </i>
       </div>
     </transition>
   </div>

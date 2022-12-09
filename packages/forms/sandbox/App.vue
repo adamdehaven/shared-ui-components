@@ -3,8 +3,8 @@
     <main>
       <p>This is the component sandbox.</p>
       <VueFormGenerator
-        :schema="schema"
         :model="model"
+        :schema="schema"
       />
     </main>
   </div>

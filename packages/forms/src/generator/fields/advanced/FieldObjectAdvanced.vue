@@ -1,8 +1,8 @@
 <template>
   <div
     :id="getFieldID(schema)"
-    :class="schema.fieldClasses"
     class="w-100"
+    :class="schema.fieldClasses"
   >
     <div
       v-for="(item, index) in value"
@@ -30,17 +30,17 @@
           <hr class="my-2">
           <div v-if="subSchema">
             <vue-form-generator
-              :schema="subSchema"
               :model="transformedModel[index]"
               :options="{ helpAsHtml: true }"
+              :schema="subSchema"
               @model-updated="updateModel"
             />
           </div>
           <div v-else>
             <input
               v-model="value[index]"
-              :placeholder="schema.fields && schema.fields[0].schema.placeholder"
               class="form-control"
+              :placeholder="schema.fields && schema.fields[0].schema.placeholder"
               type="text"
               @input="updateModel(value[index], model[schema.model])"
             >
@@ -56,22 +56,22 @@
       </div>
     </div>
     <div
-      :class="{'ml-7': hasObjectKeys}"
       class="mr-4 mt-4"
+      :class="{'ml-7': hasObjectKeys}"
     >
       <div class="d-flex">
         <input
           v-model="newKeyName"
-          :placeholder="schema.placeholder"
           class="form-control d-flex"
-          type="text"
           data-testid="keyname-input"
+          :placeholder="schema.placeholder"
+          type="text"
         >
         <KButton
-          :disabled="!newKeyName"
+          appearance="btn-link"
           class="d-flex mx-5"
           data-testid="add-key"
-          appearance="btn-link"
+          :disabled="!newKeyName"
           @click="addKey"
         >
           + Add {{ schema.buttonLabel || schema.label }}

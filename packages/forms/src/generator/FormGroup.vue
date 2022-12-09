@@ -5,20 +5,20 @@
   >
     <label
       v-if="fieldTypeHasLabel(field)"
-      :for="getFieldID(field)"
       :class="field.labelClasses"
+      :for="getFieldID(field)"
     >
       <span v-html="field.label" />
       <KTooltip
         v-if="field.help"
-        :position-fixed="true"
         max-width="300"
         placement="top"
+        :position-fixed="true"
       >
         <div
-          tabindex="0"
-          role="button"
           class="help"
+          role="button"
+          tabindex="0"
         >
           <i class="icon" />
         </div>
@@ -39,11 +39,11 @@
         v-bind="$attrs"
         :is="getFieldType(field)"
         ref="child"
-        :vfg="vfg"
         :disabled="fieldDisabled(field) || null"
+        :form-options="options"
         :model="model"
         :schema="field"
-        :form-options="options"
+        :vfg="vfg"
         @modelUpdated="onModelUpdated"
         @validated="onFieldValidated"
       />

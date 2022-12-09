@@ -11,14 +11,19 @@
 # Component CLI
 /cli @adamdehaven
 
+# Packages
+# ================================================
+
 # Core UI Team
 /packages/core @adamdehaven @ValeryG @jillztom
-/packages/sidebar @adamdehaven
+/packages/app-layout @adamdehaven @ValeryG @jillztom
+/packages/konnect-app-shell @adamdehaven @ValeryG @jillztom
 
 # Kong Manager Team
 /packages/copy-uuid @Leopoldthecoder
 /packages/forms @Leopoldthecoder @sumimakito
 
+# ================================================
 # Renovate Bot approvals
 # These rules MUST remain at the bottom as the last entry
 pnpm-lock.yaml @kongponents-bot @adamdehaven @ValeryG @jillztom

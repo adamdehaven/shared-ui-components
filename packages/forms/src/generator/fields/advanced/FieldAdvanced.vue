@@ -12,13 +12,13 @@
       <span>{{ titleText }}</span>
     </button>
     <div
-      :class="openClass"
       class="advanced-field-dropdown"
+      :class="openClass"
     >
       <vue-form-generator
-        :schema="schema"
         :model="model"
         :options="{ helpAsHtml: true }"
+        :schema="schema"
         @model-updated="updateModel"
       />
     </div>

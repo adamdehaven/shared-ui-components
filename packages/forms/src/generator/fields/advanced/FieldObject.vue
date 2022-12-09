@@ -2,9 +2,9 @@
   <div v-attributes="attributes">
     <div v-if="schema.schema">
       <vue-form-generator
-        :schema="schema.schema"
         :model="value"
         :options="formOptions"
+        :schema="schema.schema"
       />
     </div>
     <div v-else>

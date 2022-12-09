@@ -1,6 +1,9 @@
 <template>
-  <p>This is the HOME page.</p><br>
-  <KButton :to="{ name: 'about' }">
-    Button
-  </KButton>
+  <p>This is the <b>{{ route.meta.title }}</b> page.</p><br>
 </template>
+
+<script setup lang="ts">
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+</script>

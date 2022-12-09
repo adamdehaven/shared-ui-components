@@ -8,14 +8,14 @@
       <!-- Radio button -->
       <div class="form-group mb-0">
         <label
-          :class="`${option.label}-check`"
           class="k-input-label"
+          :class="`${option.label}-check`"
         >
           <input
             v-model="checkedGroup"
-            :value="i"
-            type="radio"
             class="k-input"
+            type="radio"
+            :value="i"
           >
           {{ option.label }}
           <div class="control-help">{{ option.description }}</div>
@@ -29,9 +29,9 @@
       >
         <div class="mb-0">
           <vue-form-generator
-            :schema="{ fields: option.fields }"
             :model="model"
             :options="{ helpAsHtml: true }"
+            :schema="{ fields: option.fields }"
             @model-updated="updateModel"
           />
         </div>

@@ -1,9 +1,9 @@
 <template>
   <VueFormGenerator
     v-if="displayForm"
-    :schema="finalSchema"
     :model="formModel"
     :options="formOptions"
+    :schema="finalSchema"
     @model-updated="onModelUpdated"
   />
 </template>

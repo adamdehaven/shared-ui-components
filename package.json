@@ -20,6 +20,7 @@
     "create-package": "pnpm --filter \"@kong-ui/cli\" run create-package"
   },
   "devDependencies": {
+    "@babel/types": "^7.20.5",
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
     "@datadog/datadog-ci": "^2.1.0",
@@ -68,6 +69,7 @@
     "rimraf": "^3.0.2",
     "sass": "^1.56.2",
     "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.2",
     "tslib": "^2.4.1",
     "typescript": "~4.9.4",
     "vite": "^3.2.5",

@@ -1,26 +1,27 @@
 <template>
-  <KonnectAppShell>
-    <template #notification>
-      <KAlert
-        :is-showing="showAlert"
-        alert-message="I'm an alert from the host app"
-        dismiss-type="icon"
-        appearance="danger"
-        @closed="handleCloseAlert"
-      />
-    </template>
-    <template #navbar>
-      <span>Navbar content from sandbox</span>
-    </template>
+  <KonnectAppShell
+    :sidebar-items="sidebarItems"
+  >
     <router-view />
   </KonnectAppShell>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 
-const showAlert = ref(true)
-const handleCloseAlert = (): void => {
-  showAlert.value = false
-}
+const route = useRoute()
+const sidebarItems = computed(() => {
+  if (route.name === 'mesh-manager') {
+    return {
+      parentKey: 'mesh-manager',
+      items: [{
+        name: 'Child page',
+        to: '/',
+      }],
+    }
+  }
+
+  return null
+})
 </script>

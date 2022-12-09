@@ -4,30 +4,30 @@
       :id="schema.model"
       ref="suggestion"
       v-model="idValue"
-      autosuggest
-      enable-filtering
-      clearable
-      width="100%"
       appearance="select"
-      :loading="loading"
+      autosuggest
+      clearable
+      enable-filtering
       :items="items"
+      :loading="loading"
       :placeholder="schema.placeholder"
-      @query-change="onQueryChange"
+      width="100%"
       @change="onSelected"
+      @query-change="onQueryChange"
     >
       <template #item-template="{item}">
         <span
+          class="w-100 first-part"
           :data-testid="item.id && `${item.id}-0`"
           :data-testlabel="item.label"
-          class="w-100 first-part"
         >
           {{ getSuggestionLabel(item).split(' - ')[0] }}
         </span>
         <span
           v-for="(field, idx) in getSuggestionLabel(item).split(' - ').slice(1)"
           :key="idx"
-          :data-testid="(item.id && `${item.id}-${idx + 1}`) || idx + 1"
           class="d-flex justify-content-between"
+          :data-testid="(item.id && `${item.id}-${idx + 1}`) || idx + 1"
         >
           {{ field }}
         </span>

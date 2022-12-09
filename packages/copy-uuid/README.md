@@ -123,7 +123,7 @@ You could also set up a `notify` method for each `copy-uuid` component instance 
 TypeScript interfaces [are available here](https://github.com/Kong/ui-shared-components/blob/main/packages/copy-uuid/src/types/index.ts) and can be directly imported into your host application. The following interfaces are available for import:
 
 ```ts
-import type { CopyUuidNotifyParam, CopyUuidInstallOptions } from '@kong-ui/sidebar'
+import type { CopyUuidNotifyParam, CopyUuidInstallOptions } from '@kong-ui/app-layout'
 ```
 
 ## Props

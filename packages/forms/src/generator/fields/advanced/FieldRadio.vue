@@ -7,16 +7,16 @@
     >
       <div class="form-group mb-0">
         <label
-          :class="option.name"
           class="k-input-label"
+          :class="option.name"
         >
           <input
             :id="schema.name+'-'+i"
-            :value="option.value"
-            :name="schema.name"
             :checked="checkOption(option)"
-            type="radio"
             class="k-input"
+            :name="schema.name"
+            type="radio"
+            :value="option.value"
             @change="onChange"
           >
           {{ option.name }}

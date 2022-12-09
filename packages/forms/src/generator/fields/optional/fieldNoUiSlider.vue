@@ -1,8 +1,8 @@
 <template>
   <div
     class="slider"
-    :disabled="disabled || null"
     :class="{ 'contain-pips': containPips, 'contain-tooltip': containTooltip }"
+    :disabled="disabled || null"
   />
 </template>
 

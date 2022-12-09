@@ -18,35 +18,35 @@
       >
         <component
           :is="getFieldType(schema.items)"
+          :form-options="formOptions"
           :model="item"
           :schema="generateSchema(value, schema.items, index)"
-          :form-options="formOptions"
           @model-updated="modelUpdated"
         />
       </component>
       <span v-else-if="schema.items">
         <component
           :is="getFieldType(schema.items)"
+          :form-options="formOptions"
           :model="item"
           :schema="generateSchema(value, schema.items, index)"
-          :form-options="formOptions"
           @model-updated="modelUpdated"
         />
       </span>
       <component
         :is="schema.itemContainerComponent"
         v-else-if="schema.itemContainerComponent"
+        :data-testid="`${getFieldID(schema)}-item-${index}`"
         :model="item"
         :schema="generateSchema(value, schema.items, index)"
-        :data-testid="`${getFieldID(schema)}-item-${index}`"
         @remove-item="removeElement(index)"
       >
         <FieldTextArea
           v-if=" schema.inputAttributes?.type === 'textarea'"
-          :model="item"
           class="k-input"
-          :schema="generateSchema(value, schema.items, index)"
           :form-options="formOptions"
+          :model="item"
+          :schema="generateSchema(value, schema.items, index)"
           @model-updated="modelUpdated"
         />
 
@@ -59,8 +59,8 @@
         <input
           v-if="schema.showRemoveButton"
           v-bind="schema.removeElementButtonAttributes"
-          :value="schema.removeElementButtonLabel || removeElementButtonLabel"
           type="button"
+          :value="schema.removeElementButtonLabel || removeElementButtonLabel"
           @click="removeElement(index)"
         >
       </component>
@@ -73,16 +73,16 @@
       <input
         v-if="schema.showRemoveButton"
         v-bind="schema.removeElementButtonAttributes"
-        :value="schema.removeElementButtonLabel || removeElementButtonLabel"
         type="button"
+        :value="schema.removeElementButtonLabel || removeElementButtonLabel"
         @click="removeElement(index)"
       >
     </div>
     <KButton
+      appearance="btn-link"
       :class="schema.newElementButtonLabelClasses"
       :data-testid="`add-${getFieldID(schema)}`"
       type="button"
-      appearance="btn-link"
       @click="newElement"
     >
       {{ schema.newElementButtonLabel || newElementButtonLabel }}

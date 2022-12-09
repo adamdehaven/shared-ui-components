@@ -2,10 +2,10 @@
   <div>
     <VueFormGenerator
       v-if="formModel.id && isEditing || !isEditing"
-      :schema="globalFields"
+      class="global-fields"
       :model="formModel"
       :options="formOptions"
-      class="global-fields"
+      :schema="globalFields"
       @model-updated="onModelUpdated"
     />
 
@@ -22,9 +22,9 @@
           </div>
           <VueFormGenerator
             v-if="displayForm"
-            :schema="commonFieldsSchema"
             :model="formModel"
             :options="formOptions"
+            :schema="commonFieldsSchema"
             @model-updated="onModelUpdated"
           />
 
@@ -62,9 +62,9 @@
           </div>
           <VueFormGenerator
             v-if="displayForm"
-            :schema="authFieldsSchema"
             :model="formModel"
             :options="formOptions"
+            :schema="authFieldsSchema"
             @model-updated="onModelUpdated"
           />
         </div>
@@ -81,9 +81,9 @@
           </div>
           <VueFormGenerator
             v-if="displayForm"
-            :schema="advancedFieldsSchema"
             :model="formModel"
             :options="formOptions"
+            :schema="advancedFieldsSchema"
             @model-updated="onModelUpdated"
           />
         </div>

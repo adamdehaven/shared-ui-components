@@ -1,7 +1,6 @@
 import type { App } from 'vue'
-import KonnectAppShell from './components/KonnectAppShell/KonnectAppShell.vue'
-import GeoSwitcher from './components/GeoSwitcher/GeoSwitcher.vue'
-import AuthValidate from './components/AuthValidate'
+import KonnectAppShell from './components/KonnectAppShell.vue'
+import symbolInjectionKeys from '@kong-ui/app-layout'
 
 // Export Vue plugin as the default
 export default {
@@ -13,8 +12,9 @@ export default {
   },
 }
 
-// Do not export components located in `/packages/konnect-app-shell/src/components/internal/`
 export {
-  AuthValidate,
-  GeoSwitcher,
+  // Export the symbolInjectionKeys from `@kong-ui/app-layout` so a consuming application can import them
+  symbolInjectionKeys,
 }
+
+export * from './types'

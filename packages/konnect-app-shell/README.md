@@ -1,5 +1,6 @@
 # @kong-ui/konnect-app-shell
 
-> Note: Docs TBD
+## TODO/Questions
 
-- App container must have an id of `#app` (we could change this, but would require the CSS selector to be updated so it gets `height: 100%`)
+- How can a consuming app close the mobile sidebar on navigate?
+- Can a consuming app properly import the `symbolInjectionKeys` from `@kong-ui/konnect-app-shell`?
