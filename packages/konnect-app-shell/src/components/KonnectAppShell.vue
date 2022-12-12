@@ -88,16 +88,26 @@ const topLevelSidebarItems = computed(() => {
     },
   ]
 
-  if (props.sidebarItems && props.sidebarItems.parentKey && props.sidebarItems.items?.length) {
+  if (props.sidebarItems && props.sidebarItems.parentKey) {
     topLevelItems.map((item: SidebarPrimaryItem) => {
+      // If the item.key equals the sidebarItems.parentKey
       if (item.key === props.sidebarItems.parentKey) {
-        // Set secondary items
-        item.items = props.sidebarItems.items
-        // Set active and expanded state
+        // Set active state
         item.active = true
-        item.expanded = true
-        // Set external to false since we know it's the same app
-        item.external = false
+
+        // If secondary sidebar items are present
+        if (props.sidebarItems.items?.length) {
+          // Set secondary items
+          item.items = props.sidebarItems.items
+          // Set expanded state
+          item.expanded = true
+          // Set external to false since we know it's the same app
+          item.external = false
+        }
+      } else {
+        // Set active and expanded to false since the parentKey doesn't match
+        item.active = false
+        item.expanded = false
       }
 
       return item
