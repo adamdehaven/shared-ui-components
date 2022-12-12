@@ -93,6 +93,9 @@ const topLevelSidebarItems = computed(() => {
 
   if (props.sidebarItems && props.sidebarItems.parentKey) {
     topLevelItems.map((item: SidebarPrimaryItem) => {
+      // Treat all top-level nav items as external
+      item.external = true
+
       // If the item.key equals the sidebarItems.parentKey
       if (item.key === props.sidebarItems.parentKey) {
         // Set active state
@@ -104,8 +107,6 @@ const topLevelSidebarItems = computed(() => {
           item.items = props.sidebarItems.items
           // Set expanded state
           item.expanded = true
-          // Set external to false since we know it's the same app
-          item.external = false
         }
       } else {
         // Set active and expanded to false since the parentKey doesn't match
