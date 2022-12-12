@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/app-layout@0.1.2...@kong-ui/app-layout@0.1.3) (2022-12-12)
+
+
+### 🐛 Bug Fixes
+
+* **app-layout:** remove img height ([458a920](https://github.com/Kong/kong-ui-shared-components/commit/458a920226d3394fd618cb4fe59867a4584c23aa))
+
+
+
+
+
 ## [0.1.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/app-layout@0.1.1...@kong-ui/app-layout@0.1.2) (2022-12-12)
 
 
