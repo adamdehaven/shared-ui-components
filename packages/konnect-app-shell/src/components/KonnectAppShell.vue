@@ -44,6 +44,7 @@ import { ref, computed, provide, onBeforeMount, readonly, PropType } from 'vue'
 import { AppLayout, GruceLogo, KonnectLogo, symbolInjectionKeys } from '@kong-ui/app-layout'
 import type { SidebarPrimaryItem, SidebarSecondaryItem } from '@kong-ui/app-layout'
 import { KonnectAppShellSidebarItem } from '../types'
+import '@kong-ui/app-layout/dist/style.css'
 
 const props = defineProps({
   // Provide the secondary sidebar items that should be injected into the top-level primary item with the corresponding `parentKey`

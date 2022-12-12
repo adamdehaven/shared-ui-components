@@ -4,7 +4,6 @@ import KonnectAppShell from '../src'
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from './pages/HomeView.vue'
 import Kongponents from '@kong/kongponents'
-import '@kong-ui/app-layout/dist/style.css'
 import '@kong/kongponents/dist/style.css'
 
 const router = createRouter({
