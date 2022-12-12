@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.5](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.4.4...@kong-ui/konnect-app-shell@0.4.5) (2022-12-12)
+
+
+### 🐛 Bug Fixes
+
+* **konnect-app-shell:** sidebar enum export ([453f72a](https://github.com/Kong/kong-ui-shared-components/commit/453f72a72771577d7dd7f020ef31dcaec966311a))
+
+
+
+
+
 ## [0.4.4](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.4.3...@kong-ui/konnect-app-shell@0.4.4) (2022-12-12)
 
 
