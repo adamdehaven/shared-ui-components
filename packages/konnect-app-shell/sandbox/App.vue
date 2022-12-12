@@ -12,12 +12,16 @@ import { useRoute } from 'vue-router'
 
 const route = useRoute()
 const sidebarItems = computed(() => {
-  if (route.name === 'mesh-manager') {
+  // Determine if the sidebar item is active if any matched route.name evaluates to the `routeName` string passed
+  const active = (routeName: string): boolean => !!route?.matched.some(({ name }) => name === routeName)
+
+  if (active('mesh-manager')) {
     return {
       parentKey: 'mesh-manager',
       items: [{
         name: 'Child page',
-        to: '/',
+        to: { name: 'mesh-manager-child' },
+        active: active('mesh-manager-child'),
       }],
     }
   }

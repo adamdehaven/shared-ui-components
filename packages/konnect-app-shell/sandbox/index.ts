@@ -32,6 +32,16 @@ const router = createRouter({
       meta: {
         title: 'Mesh Manager',
       },
+      children: [
+        {
+          path: 'child',
+          name: 'mesh-manager-child',
+          component: HomeView,
+          meta: {
+            title: 'Mesh Manager Child',
+          },
+        },
+      ],
     },
   ],
 })
