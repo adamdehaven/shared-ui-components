@@ -43,7 +43,7 @@
 import { ref, computed, provide, onBeforeMount, readonly, PropType } from 'vue'
 import { AppLayout, GruceLogo, KonnectLogo, symbolInjectionKeys } from '@kong-ui/app-layout'
 import type { SidebarPrimaryItem, SidebarSecondaryItem } from '@kong-ui/app-layout'
-import { KonnectAppShellSidebarItem } from '../types'
+import { KonnectAppShellSidebarItem, SidebarPrimaryItemKeys } from '../types'
 import '@kong-ui/app-layout/dist/style.css'
 
 const props = defineProps({
@@ -67,21 +67,21 @@ const topLevelSidebarItems = computed(() => {
   const topLevelItems: SidebarPrimaryItem[] = [
     {
       name: 'Overview',
-      key: 'overview',
+      key: SidebarPrimaryItemKeys.OVERVIEW,
       to: '/',
       external: true,
       icon: 'sharedConfig',
     },
     {
       name: 'Runtime Manager',
-      key: 'runtime-manager',
+      key: SidebarPrimaryItemKeys.RUNTIME_MANAGER,
       to: '/runtime-manager',
       external: true,
       icon: 'runtimes',
     },
     {
       name: 'Mesh Manager',
-      key: 'mesh-manager',
+      key: SidebarPrimaryItemKeys.MESH_MANAGER,
       to: '/mesh-manager',
       external: true,
       icon: 'brain',
