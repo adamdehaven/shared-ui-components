@@ -10,7 +10,7 @@ importers:
       '@datadog/datadog-ci': ^2.2.0
       '@digitalroute/cz-conventional-changelog-for-jira': ^7.5.0
       '@evilmartians/lefthook': ^1.2.4
-      '@kong/kongponents': ^8.11.1
+      '@kong/kongponents': ^8.12.0
       '@rushstack/eslint-patch': ^1.2.0
       '@types/flat': ^5.0.2
       '@types/inquirer': ^9.0.3
@@ -69,7 +69,7 @@ importers:
       '@datadog/datadog-ci': 2.2.0
       '@digitalroute/cz-conventional-changelog-for-jira': 7.5.0
       '@evilmartians/lefthook': 1.2.4
-      '@kong/kongponents': 8.11.1_vue@3.2.45
+      '@kong/kongponents': 8.12.0_vue@3.2.45
       '@rushstack/eslint-patch': 1.2.0
       '@types/flat': 5.0.2
       '@types/inquirer': 9.0.3
@@ -124,7 +124,7 @@ importers:
 
   packages/app-layout:
     specifiers:
-      '@kong/kongponents': ^8.11.1
+      '@kong/kongponents': ^8.12.0
       '@types/lodash.clonedeep': ^4.5.7
       focus-trap: ^7.2.0
       focus-trap-vue: ^3.3.1
@@ -134,7 +134,7 @@ importers:
       focus-trap-vue: 3.3.1_focus-trap@7.2.0
       lodash.clonedeep: 4.5.0
     devDependencies:
-      '@kong/kongponents': 8.11.1
+      '@kong/kongponents': 8.12.0
       '@types/lodash.clonedeep': 4.5.7
 
   packages/cli:
@@ -143,11 +143,11 @@ importers:
   packages/copy-uuid:
     specifiers:
       '@kong-ui/core': workspace:^0.6.2
-      '@kong/kongponents': ^8.11.1
+      '@kong/kongponents': ^8.12.0
     dependencies:
       '@kong-ui/core': link:../core
     devDependencies:
-      '@kong/kongponents': 8.11.1
+      '@kong/kongponents': 8.12.0
 
   packages/core:
     specifiers:
@@ -180,12 +180,12 @@ importers:
     specifiers:
       '@kong-ui/app-layout': workspace:^0.1.1
       '@kong-ui/core': workspace:^0.6.2
-      '@kong/kongponents': ^8.11.1
+      '@kong/kongponents': ^8.12.0
     dependencies:
       '@kong-ui/app-layout': link:../app-layout
       '@kong-ui/core': link:../core
     devDependencies:
-      '@kong/kongponents': 8.11.1
+      '@kong/kongponents': 8.12.0
 
 packages:
 
@@ -769,8 +769,9 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@kong/kongponents/8.11.1:
-    resolution: {integrity: sha512-UUV2LgzZR5rAqIdbWDkOb48fftPVGF83tAlniJhlEzOW2fofikOe8eUBxvJB/uuKMumMV2QRBzePy1Ul9pBGZA==}
+  /@kong/kongponents/8.12.0:
+    resolution: {integrity: sha512-AQ6C4805yUWY+QWwHU7PC8l8XA9rh2GJ69/CeGkGTX2jEKb2zOq8LtZoy446OgO823m7gvkGK1yEMuMEoiwzVA==}
+    engines: {node: '>=18.12.1 < 19'}
     hasBin: true
     peerDependencies:
       vue: '>= 3.2.37'
@@ -790,8 +791,9 @@ packages:
       - debug
     dev: true
 
-  /@kong/kongponents/8.11.1_vue@3.2.45:
-    resolution: {integrity: sha512-UUV2LgzZR5rAqIdbWDkOb48fftPVGF83tAlniJhlEzOW2fofikOe8eUBxvJB/uuKMumMV2QRBzePy1Ul9pBGZA==}
+  /@kong/kongponents/8.12.0_vue@3.2.45:
+    resolution: {integrity: sha512-AQ6C4805yUWY+QWwHU7PC8l8XA9rh2GJ69/CeGkGTX2jEKb2zOq8LtZoy446OgO823m7gvkGK1yEMuMEoiwzVA==}
+    engines: {node: '>=18.12.1 < 19'}
     hasBin: true
     peerDependencies:
       vue: '>= 3.2.37'
