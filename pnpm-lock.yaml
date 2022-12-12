@@ -8,7 +8,7 @@ importers:
       '@commitlint/cli': ^17.3.0
       '@commitlint/config-conventional': ^17.3.0
       '@datadog/datadog-ci': ^2.1.0
-      '@digitalroute/cz-conventional-changelog-for-jira': ^7.4.2
+      '@digitalroute/cz-conventional-changelog-for-jira': ^7.5.0
       '@evilmartians/lefthook': ^1.2.4
       '@kong/kongponents': ^8.11.1
       '@rushstack/eslint-patch': ^1.2.0
@@ -67,7 +67,7 @@ importers:
       '@commitlint/cli': 17.3.0
       '@commitlint/config-conventional': 17.3.0
       '@datadog/datadog-ci': 2.1.0
-      '@digitalroute/cz-conventional-changelog-for-jira': 7.4.2
+      '@digitalroute/cz-conventional-changelog-for-jira': 7.5.0
       '@evilmartians/lefthook': 1.2.4
       '@kong/kongponents': 8.11.1_vue@3.2.45
       '@rushstack/eslint-patch': 1.2.0
@@ -562,8 +562,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@digitalroute/cz-conventional-changelog-for-jira/7.4.2:
-    resolution: {integrity: sha512-rGK8cFAUyHzxkduj+uyenVj6aqaS82i3d+uLTQHUW2Vq/m6iUwo/ndHPc0jG8o9HSwDPpOVLCZUfBj2EY7KcCA==}
+  /@digitalroute/cz-conventional-changelog-for-jira/7.5.0:
+    resolution: {integrity: sha512-Y6aQRNeFej2+mdbI5P2vhdxHo/epHhH5RFWRObexrJYoLs6xOieODfh74hWGNUweChGrL4vCPdCrdVcQyhuBDQ==}
     engines: {node: '>= 10'}
     dependencies:
       '@ryansonshine/commitizen': 4.2.8
