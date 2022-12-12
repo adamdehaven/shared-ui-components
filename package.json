@@ -23,7 +23,7 @@
     "@babel/types": "^7.20.5",
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
-    "@datadog/datadog-ci": "^2.1.0",
+    "@datadog/datadog-ci": "^2.2.0",
     "@digitalroute/cz-conventional-changelog-for-jira": "^7.5.0",
     "@evilmartians/lefthook": "^1.2.4",
     "@kong/kongponents": "^8.11.1",
