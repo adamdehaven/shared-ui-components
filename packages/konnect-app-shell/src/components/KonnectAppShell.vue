@@ -64,6 +64,9 @@ const props = defineProps({
 })
 
 const topLevelSidebarItems = computed(() => {
+  // All `item.to` properties must:
+  // - be a string
+  // - have a trailing slash, e.g. `/mesh-manager/`
   const topLevelItems: SidebarPrimaryItem[] = [
     {
       name: 'Overview',
@@ -75,14 +78,14 @@ const topLevelSidebarItems = computed(() => {
     {
       name: 'Runtime Manager',
       key: SidebarPrimaryItemKeys.RUNTIME_MANAGER,
-      to: '/runtime-manager',
+      to: '/runtime-manager/',
       external: true,
       icon: 'runtimes',
     },
     {
       name: 'Mesh Manager',
       key: SidebarPrimaryItemKeys.MESH_MANAGER,
-      to: '/mesh-manager',
+      to: '/mesh-manager/',
       external: true,
       icon: 'brain',
     },
