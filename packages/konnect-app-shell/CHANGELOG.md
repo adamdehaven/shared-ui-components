@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.4](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.4.3...@kong-ui/konnect-app-shell@0.4.4) (2022-12-12)
+
+
+### 📦 Code Refactoring
+
+* **konnect-app-shell:** sidebar logic ([bf5e127](https://github.com/Kong/kong-ui-shared-components/commit/bf5e12708df032b485ead73f707ae3d33595f094))
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.12.0 ([#273](https://github.com/Kong/kong-ui-shared-components/issues/273)) ([d9e8861](https://github.com/Kong/kong-ui-shared-components/commit/d9e88618c41b070429958d7f37c1d3eec2df8dc0))
+* update sandbox ([e18b59d](https://github.com/Kong/kong-ui-shared-components/commit/e18b59df3d4bd19a427207bfc8e5d3f3eeab82b9))
+
+
+
+
+
 ## [0.4.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.4.2...@kong-ui/konnect-app-shell@0.4.3) (2022-12-12)
 
 
