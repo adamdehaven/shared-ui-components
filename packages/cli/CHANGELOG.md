@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.7.0...@kong-ui/cli@0.7.1) (2022-12-13)
+
+
+### ♻️ Chores
+
+* add stylelint ([#274](https://github.com/Kong/kong-ui-shared-components/issues/274)) ([83ed3a6](https://github.com/Kong/kong-ui-shared-components/commit/83ed3a6bedecd0b14f26c9ef219fa56c246e9228))
+
+
+
+
+
 # [0.7.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.6.0...@kong-ui/cli@0.7.0) (2022-12-05)
 
 
