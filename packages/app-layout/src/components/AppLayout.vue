@@ -62,11 +62,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed, watchEffect, onMounted, onBeforeUnmount, inject, PropType, toRef } from 'vue'
+import { ref, reactive, computed, watchEffect, onMounted, onBeforeUnmount, PropType, toRef } from 'vue'
 import AppNavbar from './navbar/AppNavbar.vue'
 import AppSidebar from './sidebar/AppSidebar.vue'
 import SidebarToggle from './sidebar/SidebarToggle.vue'
-import symbolInjectionKeys from '../symbol-injection-keys'
 import type { SidebarPrimaryItem, SidebarProfileItem } from '../types'
 import { useDebounce } from '../composables'
 
@@ -116,34 +115,19 @@ const props = defineProps({
   },
 })
 
-// Import Symbol Injection Keys
-const {
-  // AppLayout
-  appLayoutHideDefaultSlot,
-  // AppNavbar
-  appNavbarHidden,
-  // AppSidebar
-  appSidebarTopItems,
-  appSidebarBottomItems,
-  appSidebarProfileItems,
-  appSidebarProfileName,
-  appSidebarOpen,
-  appSidebarHidden,
-} = symbolInjectionKeys
-
 // Evaluate variables from injected symbols; fallback to prop values.
 // Must wrap the prop values in a computed so that they remain reactive.
-const hideDefaultSlot = inject(appLayoutHideDefaultSlot, computed(() => props.hideDefaultSlot))
+const hideDefaultSlot = computed(() => props.hideDefaultSlot)
 const navbar = reactive({
-  hidden: inject(appNavbarHidden, computed(() => props.navbarHidden)),
+  hidden: computed(() => props.navbarHidden),
 })
 const sidebar: AppSidebarProperties = reactive({
-  topItems: inject(appSidebarTopItems, computed(() => props.sidebarTopItems)),
-  bottomItems: inject(appSidebarBottomItems, computed(() => props.sidebarBottomItems)),
-  profileItems: inject(appSidebarProfileItems, computed(() => props.sidebarProfileItems)),
-  profileName: inject(appSidebarProfileName, computed(() => props.sidebarProfileName)),
-  open: inject(appSidebarOpen, computed(() => props.sidebarOpen)),
-  hidden: inject(appSidebarHidden, computed(() => props.sidebarHidden)),
+  topItems: computed(() => props.sidebarTopItems),
+  bottomItems: computed(() => props.sidebarBottomItems),
+  profileItems: computed(() => props.sidebarProfileItems),
+  profileName: computed(() => props.sidebarProfileName),
+  open: computed(() => props.sidebarOpen),
+  hidden: computed(() => props.sidebarHidden),
 })
 
 const mobileSidebarOpen = ref<boolean>(false)

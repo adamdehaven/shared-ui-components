@@ -71,19 +71,20 @@
         <KDropdownItem
           v-for="item in profileItems"
           :key="item.name"
-          :class="[{ 'has-divider': item.hasDivider },{ 'external-profile-dropdown-link': item.newWindow && typeof item.to === 'string' }]"
+          :class="[{ 'has-divider': item.hasDivider },{ 'external-profile-dropdown-link': (item.external || item.newWindow) && typeof item.to === 'string' }]"
           :has-divider="item.hasDivider"
-          :item="item.newWindow && typeof item.to === 'string' ? undefined : { label: item.name, to: item.to }"
+          :item="(item.external || item.newWindow) && typeof item.to === 'string' ? undefined : { label: item.name, to: item.to }"
           @click="itemClick(item)"
         >
           <a
-            v-if="item.newWindow && typeof item.to === 'string'"
+            v-if="(item.external || item.newWindow) && typeof item.to === 'string'"
             class="sidebar-item-external-link"
             :href="item.to"
             :target="item.newWindow ? '_blank' : undefined"
           >
             {{ item.name }}
             <KIcon
+              v-if="item.newWindow"
               color="var(--black-70, rgba(0,0,0,0.7))"
               icon="externalLink"
               size="20"

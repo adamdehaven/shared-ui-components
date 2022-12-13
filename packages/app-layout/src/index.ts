@@ -6,7 +6,6 @@ import SidebarToggle from './components/sidebar/SidebarToggle.vue'
 import AppError from './components/errors/AppError.vue'
 import GruceLogo from './components/icons/GruceLogo.vue'
 import KonnectLogo from './components/icons/KonnectLogo.vue'
-import symbolInjectionKeys from './symbol-injection-keys'
 
 // Export Vue plugin as the default
 export default {
@@ -27,8 +26,6 @@ export {
   AppError,
   GruceLogo,
   KonnectLogo,
-  // Other
-  symbolInjectionKeys,
 }
 
 export * from './types'

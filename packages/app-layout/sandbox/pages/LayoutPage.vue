@@ -1,5 +1,5 @@
 <template>
-  <AppLayout>
+  <AppLayout :sidebar-top-items="topItems">
     <template #notification>
       <KAlert
         alert-message="I'm an alert from the host app"
@@ -18,14 +18,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, provide, readonly } from 'vue'
-import symbolInjectionKeys from '../../src/symbol-injection-keys'
+import { ref, computed } from 'vue'
 // Sandbox only
 import NavLinks from '../components/NavLinks.vue'
 
-const { appSidebarTopItems } = symbolInjectionKeys
-
-const items = computed(() => ([
+const topItems = computed(() => ([
   {
     name: 'Mesh Manager',
     key: 'mesh-manager',
@@ -35,10 +32,6 @@ const items = computed(() => ([
     active: true,
   },
 ]))
-
-// Provide the top sidebar items; alternatively you could pass them as props on <AppLayout />
-// Wrap in readonly to prevent mutation in the inject component
-provide(appSidebarTopItems, readonly(items))
 
 const showAlert = ref(true)
 const handleCloseAlert = (): void => {

@@ -1,5 +1,10 @@
 <template>
-  <AppLayout>
+  <AppLayout
+    :sidebar-bottom-items="bottomItems"
+    :sidebar-profile-items="profileItems"
+    sidebar-profile-name="Adam"
+    :sidebar-top-items="topItems"
+  >
     <template #notification>
       <slot name="notification" />
     </template>
@@ -28,10 +33,6 @@
       </div>
     </template>
     <template #app-error>
-      <!-- <AppError v-if="hideAppShellDefaultSlot">
-        <h2>Error: Konnect App Shell</h2>
-        <p>This is an error from KonnectAppShell.</p>
-      </AppError> -->
       <slot name="app-error" />
     </template>
 
@@ -40,10 +41,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, provide, onBeforeMount, readonly, PropType } from 'vue'
-import { AppLayout, GruceLogo, KonnectLogo, symbolInjectionKeys } from '@kong-ui/app-layout'
-import type { SidebarPrimaryItem, SidebarSecondaryItem } from '@kong-ui/app-layout'
-import { KonnectAppShellSidebarItem, SidebarPrimaryItemKeys } from '../types'
+import { watchEffect, PropType } from 'vue'
+import { AppLayout, GruceLogo, KonnectLogo } from '@kong-ui/app-layout'
+import type { SidebarSecondaryItem } from '@kong-ui/app-layout'
+import { useAppSidebar } from '../composables'
+import { KonnectAppShellSidebarItem } from '../types'
 import '@kong-ui/app-layout/dist/style.css'
 
 const props = defineProps({
@@ -63,71 +65,13 @@ const props = defineProps({
   },
 })
 
-const topLevelSidebarItems = computed(() => {
-  // All `item.to` properties must:
-  // - be a string
-  // - have a trailing slash, e.g. `/mesh-manager/`
-  const topLevelItems: SidebarPrimaryItem[] = [
-    {
-      name: 'Overview',
-      key: SidebarPrimaryItemKeys.OVERVIEW,
-      to: '/',
-      external: true,
-      icon: 'sharedConfig',
-    },
-    {
-      name: 'Runtime Manager',
-      key: SidebarPrimaryItemKeys.RUNTIME_MANAGER,
-      to: '/runtime-manager/',
-      external: true,
-      icon: 'runtimes',
-    },
-    {
-      name: 'Mesh Manager',
-      key: SidebarPrimaryItemKeys.MESH_MANAGER,
-      to: '/mesh-manager/',
-      external: true,
-      icon: 'brain',
-    },
-  ]
+const { topItems, bottomItems, profileItems, update: updateSidebarItems } = useAppSidebar()
 
-  if (props.sidebarItems && props.sidebarItems.parentKey) {
-    topLevelItems.map((item: SidebarPrimaryItem) => {
-      // Treat all top-level nav items as external
-      item.external = true
-
-      // If the item.key equals the sidebarItems.parentKey
-      if (item.key === props.sidebarItems.parentKey) {
-        // Set active state
-        item.active = true
-
-        // If secondary sidebar items are present
-        if (props.sidebarItems.items?.length) {
-          // Set secondary items
-          item.items = props.sidebarItems.items
-          // Set expanded state
-          item.expanded = true
-        }
-      } else {
-        // Set active and expanded to false since the parentKey doesn't match
-        item.active = false
-        item.expanded = false
-      }
-
-      return item
-    })
+// Keep sidebarItems in sync with the useAppSidebar composable
+watchEffect(() => {
+  if (props.sidebarItems) {
+    updateSidebarItems(props.sidebarItems)
   }
-
-  return topLevelItems
-})
-const hideAppShellDefaultSlot = ref(false)
-const { appLayoutHideDefaultSlot, appSidebarTopItems } = symbolInjectionKeys
-
-// Wrap in readonly to prevent mutation in the inject component
-provide(appSidebarTopItems, readonly(topLevelSidebarItems))
-provide(appLayoutHideDefaultSlot, readonly(hideAppShellDefaultSlot))
-
-onBeforeMount(() => {
 })
 </script>
 
