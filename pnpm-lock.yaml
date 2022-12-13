@@ -188,7 +188,7 @@ importers:
 
   packages/konnect-app-shell:
     specifiers:
-      '@kong-ui/app-layout': workspace:^0.1.4
+      '@kong-ui/app-layout': workspace:^0.2.0
       '@kong-ui/core': workspace:^0.6.3
       '@kong/kongponents': ^8.12.0
     dependencies:

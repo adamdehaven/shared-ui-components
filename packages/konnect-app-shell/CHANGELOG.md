@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.4.9...@kong-ui/konnect-app-shell@0.5.0) (2022-12-13)
+
+
+### ✨ Features
+
+* **konnect-app-shell:** provide top-level nav items ([#279](https://github.com/Kong/kong-ui-shared-components/issues/279)) ([6e691ed](https://github.com/Kong/kong-ui-shared-components/commit/6e691ed45ac513373523661fb005600c51c62ec9))
+
+
+
+
+
 ## [0.4.9](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.4.8...@kong-ui/konnect-app-shell@0.4.9) (2022-12-13)
 
 
