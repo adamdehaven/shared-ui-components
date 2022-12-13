@@ -74,7 +74,7 @@ export default {
     align-items:center;
     width: 100%;
     height: 45px;
-    padding: 0 1rem 0 5px;
+    padding: 0 16px 0 5px;
     background-color: var(--grey-100);
     border-bottom: 1px solid #eee;
     cursor: pointer;
@@ -93,7 +93,7 @@ export default {
     overflow: hidden;
     transition: all .5s;
     i:hover { color: #c9302c; }
-    .vue-form-generator { padding: 1rem; }
+    .vue-form-generator { padding: 16px; }
   }
   &.active .title i { transform: rotate(135deg); }
 }

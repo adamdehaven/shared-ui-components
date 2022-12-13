@@ -216,6 +216,12 @@ In order to prevent component styles from leaking out into the consuming applica
     </style>
     ```
 
+#### Relative units
+
+Styles should **never** use relative font units; specifically, do not use `rem` or `em` units.
+
+We cannot control the `html` base font size and therefore these relative units are not predictable within a host application. Use `px` (pixels) or a similar unit instead.
+
 #### CSS Variables
 
 If your component exposes any CSS variables, they **must** be prefixed with your package name `--kong-ui-{package-name}`

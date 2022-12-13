@@ -35,6 +35,6 @@ export default {
 .label-hint {
   font-weight: 300;
   text-align: center;
-  padding: 0.5rem;
+  padding: 8px;
 }
 </style>

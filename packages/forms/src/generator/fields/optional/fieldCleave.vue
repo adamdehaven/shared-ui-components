@@ -73,8 +73,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-.vue-form-generator .field-cleave {
-}
-</style>

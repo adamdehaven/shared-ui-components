@@ -28,6 +28,8 @@
     "preview": "cross-env USE_SANDBOX=true run-s build:package preview:package",
     "lint": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../.eslintignore'",
     "lint:fix": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../.eslintignore' --fix",
+    "stylelint": "stylelint --allow-empty-input './src/**/*.{css,scss,sass,less,styl,vue}'",
+    "stylelint:fix": "stylelint --allow-empty-input './src/**/*.{css,scss,sass,less,styl,vue}' --fix",
     "typecheck": "vue-tsc -p './tsconfig.build.json' --noEmit",
     "test:unit": "cross-env FORCE_COLOR=1 vitest run",
     "test:unit:open": "cross-env FORCE_COLOR=1 vitest --ui"

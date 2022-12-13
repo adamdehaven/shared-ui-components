@@ -66,6 +66,3 @@ const finalSchema = computed((): Object => {
   return final
 })
 </script>
-
-<style lang="scss">
-</style>

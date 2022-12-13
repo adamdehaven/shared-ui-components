@@ -39,7 +39,7 @@ export default {
   align-items: center;
   text-decoration: none;
   svg {
-    margin-left: .5rem;
+    margin-left: 8px;
     path {
       fill: currentColor;
       fill-opacity: .5;

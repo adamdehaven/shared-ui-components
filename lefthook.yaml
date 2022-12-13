@@ -3,6 +3,8 @@
 
 pre-push:
   commands:
+    stylelint:
+      run: pnpm run stylelint
     eslint:
       run: pnpm run lint
 

@@ -199,7 +199,7 @@ export default {
   }
 
   .helper {
-    margin: auto 0.5em;
+    margin: auto 7px;
   }
 }
 </style>

@@ -108,18 +108,18 @@ export default {
   }
   .control-help {
     width: 100%;
-    margin-left:2rem;
+    margin-left: 32px;
     font-weight: normal;
     color: rgba(0,0,0,.45);
   }
   .form-check-input {
-    margin-right: .5rem;
-    margin-bottom: .5rem;
+    margin-right: 8px;
+    margin-bottom: 8px;
   }
   .option-field {
-    margin-top: 1rem;
+    margin-top: 16px;
     .form-group {
-      margin-bottom: 1rem;
+      margin-bottom: 16px;
     }
   }
 }

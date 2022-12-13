@@ -130,7 +130,7 @@ export default {
       }
 
       input {
-        margin-right: 0.3em;
+        margin-right: 4px;
       }
     }
   }
@@ -167,7 +167,6 @@ export default {
 
     .dropList {
       transition: height 0.5s;
-      //margin-top: 0.5em;
     }
   }
 }

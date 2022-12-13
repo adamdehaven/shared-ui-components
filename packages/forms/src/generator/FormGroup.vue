@@ -193,9 +193,7 @@ $errorColor: #f00;
 .form-group {
   display: inline-block;
   vertical-align: top;
-  // width: 100%;
-  // margin: 0.5rem 0.26rem;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 
   label {
     font-weight: 400;
@@ -219,8 +217,8 @@ $errorColor: #f00;
       font-weight: normal;
       color: Red;
       // position: absolute;
-      padding-left: 0.2em;
-      font-size: 1em;
+      padding-left: 3px;
+      font-size: 14px;
     }
   }
 
@@ -241,14 +239,14 @@ $errorColor: #f00;
 
     .errors {
       color: $errorColor;
-      font-size: 0.8em;
+      font-size: 12px;
       span {
         display: block;
         background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAiklEQVR4Xt2TMQoCQQxF3xdhu72MpZU3GU/meBFLOztPYrVWsQmEWSaMsIXgK8P8RyYkMjO2sAN+K9gTIAmDAlzoUzE7p4IFytvDCQWJKSStYB2efcAvqZFM0BcstMx5naSDYFzfLhh/4SmRM+6Agw/xIX0tKEDFufeDNRUc4XqLRz3qabVIf3BMHwl6Ktexn3nmAAAAAElFTkSuQmCC");
         background-repeat: no-repeat;
         padding-left: 17px;
-        padding-top: 0px;
-        margin-top: 0.2em;
+        padding-top: 0;
+        margin-top: 3px;
         font-weight: 600;
       }
     }

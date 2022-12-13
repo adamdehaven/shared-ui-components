@@ -223,10 +223,10 @@ export default {
   }
 
   .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 24px;
 
     &:last-child {
-      margin-bottom: 2rem;
+      margin-bottom: 32px;
     }
     &.hide-label > label {
       display: none;
@@ -237,11 +237,11 @@ export default {
   }
 
   .field-advanced {
-    margin-top: -0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: -8px;
+    margin-bottom: 8px;
 
     .form-group:last-child {
-      margin-bottom: 1rem;
+      margin-bottom: 16px;
     }
   }
 
@@ -268,7 +268,7 @@ export default {
   } // .form-control
 
   div.help {
-    margin-left: 0.3em;
+    margin-left: 4px;
     position: relative;
 
     .icon {
@@ -336,7 +336,7 @@ export default {
 
   .hint {
     font-style: italic;
-    font-size: 0.8em;
+    font-size: 12px;
   } // .hint
 
 /* Toggle Switch
@@ -390,11 +390,12 @@ export default {
   }
 } // fieldset
 
+// stylelint-disable no-duplicate-selectors
 .vue-form-generator div.help {
   .icon {
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiI+ICA8cGF0aCBmaWxsPSIjMDA4NkU2IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02IDExYy0yLjc2MSAwLTUtMi4yMzktNS01czIuMjM5LTUgNS01IDUgMi4yMzkgNSA1LTIuMjM5IDUtNSA1TTYgMEMyLjY4NiAwIDAgMi42ODYgMCA2czIuNjg2IDYgNiA2IDYtMi42ODYgNi02LTIuNjg2LTYtNi02bTAgM2MtMS4xMDUgMC0yIC44OTUtMiAyaDFjMC0uNTUyLjQ0OC0xIDEtMXMxIC40NDggMSAxLS40NDggMS0xIDEtMSAuNDQ4LTEgMWgxYzEuMTA1IDAgMi0uODk1IDItMnMtLjg5NS0yLTItMnpNNSA5aDJWOEg1djF6Ii8+PC9zdmc+);
-    width: 0.75rem;
-    height: 0.75rem;
+    width: 12px;
+    height: 12px;
   }
 }
 

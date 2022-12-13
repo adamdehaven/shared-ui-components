@@ -100,8 +100,11 @@ jobs:
       - name: Setup PNPM with Dependencies
         uses: ./.github/actions/setup-pnpm-with-dependencies/
 
+      - name: Stylelint Packages
+        run: pnpm --stream --filter "${{needs.install-dependencies.outputs.filter}}" run stylelint
+
       - name: Lint Packages
-        run: pnpm  --stream --filter "${{needs.install-dependencies.outputs.filter}}" run lint
+        run: pnpm --stream --filter "${{needs.install-dependencies.outputs.filter}}" run lint
 
       - name: Build Packages
         # The `...` syntax tells pnpm to include dependent packages

@@ -92,11 +92,11 @@ export default {
       width: 16px;
       height: 16px;
 
-      font-size: 1.2em;
+      font-size: 16px;
 
       position: absolute;
-      right: 0.2em;
-      bottom: 0.2em;
+      right: 3px;
+      bottom: 3px;
       opacity: 0.7;
 
       &:hover {

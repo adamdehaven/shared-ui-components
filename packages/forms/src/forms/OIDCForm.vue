@@ -295,7 +295,7 @@ export default {
 .general-settings {
   .k-input-label {
     margin-bottom: 8px;
-    margin-top: 1.5rem;
+    margin-top: 24px;
   }
 
   .auth-method-container {
@@ -315,7 +315,7 @@ export default {
 
 .advanced-field-dropdown {
   &.closed {
-     margin-bottom: 2rem;
+     margin-bottom: 32px;
   }
 
   &.open {

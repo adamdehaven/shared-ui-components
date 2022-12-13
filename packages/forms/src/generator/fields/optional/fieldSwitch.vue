@@ -66,7 +66,7 @@ $field-switch-height: 30px;
     .label:after {
         position: absolute;
         top: 50%;
-        margin-top: -0.5em;
+        margin-top: -7px;
         line-height: 1;
         -webkit-transition: inherit;
         -moz-transition: inherit;

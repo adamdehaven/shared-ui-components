@@ -272,7 +272,7 @@ export default {
   border: none!important;
 
   .autosuggest__results_message {
-    padding: .5rem 0;
+    padding: 8px 0;
     text-align: center;
     font-size: 14px;
     color: rgba(0, 0, 0, 0.7);

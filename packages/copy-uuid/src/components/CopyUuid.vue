@@ -102,7 +102,7 @@ const copyIdToClipboard = (executeCopy: (prop: string) => boolean) => {
 
   .uuid-container {
     white-space: nowrap;
-    margin-right: 0.75rem;
+    margin-right: 12px;
   }
 
   .truncated-uuid {

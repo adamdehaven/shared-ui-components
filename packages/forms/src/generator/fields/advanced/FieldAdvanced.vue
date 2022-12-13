@@ -64,8 +64,8 @@ export default {
 
 <style lang="scss" scoped>
 .field-advanced {
-  margin-top: -1rem;
-  margin-bottom: 2rem !important;
+  margin-top: -16px;
+  margin-bottom: 32px !important;
 }
 .advanced-field-dropdown-wrapper {
   width: 100%;
@@ -74,7 +74,7 @@ export default {
   .advanced-field-title {
     display: flex;
     align-items: center;
-    margin-top: 1rem;
+    margin-top: 16px;
     color: #0077cc;
     cursor: pointer;
     order: 2;
@@ -82,7 +82,7 @@ export default {
     font-size: inherit;
     i {
       color: #0077cc;
-      font-size: 1rem;
+      font-size: 16px;
     }
     &:hover span {
       color: #0077cc;

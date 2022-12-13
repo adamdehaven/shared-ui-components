@@ -21,7 +21,3 @@ export default {
   mixins: [abstractField],
 }
 </script>
-
-<style lang="scss">
-
-</style>
