@@ -15,7 +15,6 @@
         class="sidebar-item-link"
         :class="{ 'sidebar-item-external-link': openInNewWindow, 'router-link': !useAnchorTag }"
         :href="useAnchorTag ? String(item.to || '#') : slotProps?.href"
-        :tabindex="useAnchorTag ? undefined : '0'"
         :target="openInNewWindow ? '_blank' : undefined"
         @click="navigate($event, item, slotProps?.navigate)"
         @keypress.enter="navigate($event, item, slotProps?.navigate)"
