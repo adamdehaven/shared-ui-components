@@ -19,6 +19,7 @@ module.exports = {
   },
   rules: {
     indent: 'off',
+    semi: ['error', 'never'],
     'space-before-function-paren': 'off',
     quotes: ['error', 'single', { avoidEscape: true }],
     'no-multi-spaces': 'error',
