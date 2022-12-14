@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.5.1...@kong-ui/konnect-app-shell@0.6.0) (2022-12-14)
+
+
+### ✨ Features
+
+* **konnect-app-shell:** add hidden props ([3b9035b](https://github.com/Kong/kong-ui-shared-components/commit/3b9035b238bb6308c2efd4edaa841de5b0b6dc2e))
+
+
+
+
+
 ## [0.5.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.5.0...@kong-ui/konnect-app-shell@0.5.1) (2022-12-14)
 
 
