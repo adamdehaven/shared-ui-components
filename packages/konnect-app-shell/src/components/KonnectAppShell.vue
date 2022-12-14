@@ -59,6 +59,12 @@ const props = defineProps({
         return false
       }
 
+      // If sidebarItems.items is undefined or empty, object is valid
+      if (!sidebarItems.items || !sidebarItems.items.length) {
+        return true
+      }
+
+      // Otherwise, ensure all items have a `name` and `to` property
       return !!sidebarItems.items?.every((item: SidebarSecondaryItem) => item.name && item.to)
     },
     required: false,
