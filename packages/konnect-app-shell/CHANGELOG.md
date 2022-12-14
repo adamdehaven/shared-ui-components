@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.5.0...@kong-ui/konnect-app-shell@0.5.1) (2022-12-14)
+
+
+### 🐛 Bug Fixes
+
+* **konnect-app-shell:** prop validator ([c7bba7d](https://github.com/Kong/kong-ui-shared-components/commit/c7bba7dd45a2799c37adce17b327d89502fcc712))
+
+
+
+
+
 # [0.5.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.4.9...@kong-ui/konnect-app-shell@0.5.0) (2022-12-13)
 
 
