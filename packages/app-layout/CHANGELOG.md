@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/app-layout@0.2.0...@kong-ui/app-layout@0.2.1) (2022-12-14)
+
+
+### 🐛 Bug Fixes
+
+* **app-layout:** sidebar href and tabindex ([8a6ea63](https://github.com/Kong/kong-ui-shared-components/commit/8a6ea63f8dde630c1717bd1e38616a06139927ec))
+
+
+### 🗑 Reverts
+
+* **app-layout:** sidebar tabindex ([95813eb](https://github.com/Kong/kong-ui-shared-components/commit/95813eb48ec775235dfa121f34f7adff167400b3))
+
+
+
+
+
 # [0.2.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/app-layout@0.1.4...@kong-ui/app-layout@0.2.0) (2022-12-13)
 
 
