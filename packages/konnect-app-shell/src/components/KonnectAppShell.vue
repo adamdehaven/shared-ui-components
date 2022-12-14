@@ -1,8 +1,11 @@
 <template>
   <AppLayout
+    :hide-default-slot="hideDefaultSlot"
+    :navbar-hidden="navbarHidden"
     :sidebar-bottom-items="bottomItems"
+    :sidebar-hidden="sidebarHidden"
     :sidebar-profile-items="profileItems"
-    sidebar-profile-name="Adam"
+    sidebar-profile-name="App User"
     :sidebar-top-items="topItems"
   >
     <template #notification>
@@ -68,6 +71,18 @@ const props = defineProps({
       return !!sidebarItems.items?.every((item: SidebarSecondaryItem) => item.name && item.to)
     },
     required: false,
+  },
+  hideDefaultSlot: {
+    type: Boolean,
+    default: false,
+  },
+  navbarHidden: {
+    type: Boolean,
+    default: false,
+  },
+  sidebarHidden: {
+    type: Boolean,
+    default: false,
   },
 })
 
