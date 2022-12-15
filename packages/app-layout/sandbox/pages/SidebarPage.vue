@@ -40,6 +40,10 @@
     </AppSidebar>
     <main>
       <p>This is the SIDEBAR page.</p>
+      <br>
+      <KButton>
+        Focusable button
+      </KButton>
     </main>
   </div>
 </template>
@@ -353,5 +357,15 @@ main {
       display: none;
     }
   }
+}
+</style>
+
+<style lang="scss">
+main {
+  width: 100%;
+}
+
+.k-button {
+  float: right;
 }
 </style>
