@@ -44,7 +44,7 @@ importers:
       jsdom: ^20.0.3
       lerna: ^6.1.0
       nanospinner: ^1.1.0
-      netlify-cli: ^12.3.0
+      netlify-cli: ^12.4.0
       node-emoji: ^1.11.0
       npm-run-all: ^4.1.5
       picocolors: ^1.0.0
@@ -108,7 +108,7 @@ importers:
       jsdom: 20.0.3
       lerna: 6.1.0
       nanospinner: 1.1.0
-      netlify-cli: 12.3.0_@types+node@18.11.15
+      netlify-cli: 12.4.0_@types+node@18.11.15
       node-emoji: 1.11.0
       npm-run-all: 4.1.5
       picocolors: 1.0.0
@@ -10801,8 +10801,8 @@ packages:
     resolution: {integrity: sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==}
     dev: true
 
-  /netlify-cli/12.3.0_@types+node@18.11.15:
-    resolution: {integrity: sha512-CPg1hi/21qwZP+pnyHIXOEzWgNRFAvFQ4uMvH/k2vPIS1LOAdFn31Y8J8ISOKLF1zUArbTawanpEhDjqMutCfg==}
+  /netlify-cli/12.4.0_@types+node@18.11.15:
+    resolution: {integrity: sha512-psSL2L548C7bBr4JJQjmnqWQIuu/O2ZeL9FIrJd7dm6VTt3vKDMM1/eQluwUuXcBqVmYKNFh4UeMnVC/gqh4qg==}
     engines: {node: ^14.16.0 || >=16.0.0}
     hasBin: true
     requiresBuild: true
