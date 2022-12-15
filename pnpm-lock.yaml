@@ -137,11 +137,11 @@ importers:
       '@kong/kongponents': ^8.12.0
       '@types/lodash.clonedeep': ^4.5.7
       focus-trap: ^7.2.0
-      focus-trap-vue: ^3.3.1
+      focus-trap-vue: ^3.4.0
       lodash.clonedeep: ^4.5.0
     dependencies:
       focus-trap: 7.2.0
-      focus-trap-vue: 3.3.1_focus-trap@7.2.0
+      focus-trap-vue: 3.4.0_focus-trap@7.2.0
       lodash.clonedeep: 4.5.0
     devDependencies:
       '@kong/kongponents': 8.12.0
@@ -801,7 +801,7 @@ packages:
       date-fns: 2.29.3
       date-fns-tz: 1.3.7_date-fns@2.29.3
       focus-trap: 7.2.0
-      focus-trap-vue: 3.3.1_focus-trap@7.2.0
+      focus-trap-vue: 3.4.0_focus-trap@7.2.0
       popper.js: 1.16.1
       sortablejs: 1.15.0
       swrv: 1.0.0
@@ -823,7 +823,7 @@ packages:
       date-fns: 2.29.3
       date-fns-tz: 1.3.7_date-fns@2.29.3
       focus-trap: 7.2.0
-      focus-trap-vue: 3.3.1_nn2zg2o47bujavotzgw5cgkzcu
+      focus-trap-vue: 3.4.0_nn2zg2o47bujavotzgw5cgkzcu
       popper.js: 1.16.1
       sortablejs: 1.15.0
       swrv: 1.0.0_vue@3.2.45
@@ -7470,16 +7470,16 @@ packages:
     resolution: {integrity: sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==}
     dev: true
 
-  /focus-trap-vue/3.3.1_focus-trap@7.2.0:
-    resolution: {integrity: sha512-bsZXt0//ZpdvVbcR4KYq/n73XF57a31mHmiKT6FBdv9osqSAYmjbwmdxlytWO786nv8wbCxKZw+t87nYVstB4g==}
+  /focus-trap-vue/3.4.0_focus-trap@7.2.0:
+    resolution: {integrity: sha512-VAI4gJgsjC8KcjDH+h4j2SxFY2XrXmm47a1EXti8gx311abybzqVhkS32Um7i+00J8RQD7hqL1Kfc26WpsMx0w==}
     peerDependencies:
       focus-trap: ^6.7.0
       vue: ^3.0.0-rc.13
     dependencies:
       focus-trap: 7.2.0
 
-  /focus-trap-vue/3.3.1_nn2zg2o47bujavotzgw5cgkzcu:
-    resolution: {integrity: sha512-bsZXt0//ZpdvVbcR4KYq/n73XF57a31mHmiKT6FBdv9osqSAYmjbwmdxlytWO786nv8wbCxKZw+t87nYVstB4g==}
+  /focus-trap-vue/3.4.0_nn2zg2o47bujavotzgw5cgkzcu:
+    resolution: {integrity: sha512-VAI4gJgsjC8KcjDH+h4j2SxFY2XrXmm47a1EXti8gx311abybzqVhkS32Um7i+00J8RQD7hqL1Kfc26WpsMx0w==}
     peerDependencies:
       focus-trap: ^6.7.0
       vue: ^3.0.0-rc.13
