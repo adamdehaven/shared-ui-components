@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/app-layout@0.2.1...@kong-ui/app-layout@0.2.2) (2022-12-15)
+
+
+### 🐛 Bug Fixes
+
+* **deps:** update dependency focus-trap-vue to ^3.4.0 ([#285](https://github.com/Kong/kong-ui-shared-components/issues/285)) ([1678e6d](https://github.com/Kong/kong-ui-shared-components/commit/1678e6d85758c5cbfccf6c5dd7ca8709a22f299a))
+
+
+
+
+
 ## [0.2.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/app-layout@0.2.0...@kong-ui/app-layout@0.2.1) (2022-12-14)
 
 
