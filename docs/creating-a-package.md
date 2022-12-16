@@ -28,7 +28,7 @@
 
 ## Required: Use the provided CLI to scaffold your new package
 
-After running `pnpm install` to ensure your project is up-to-date, you **must** use the provided CLI to create a new package.
+After running `pnpm install` to ensure your project is up-to-date and `pnpm run build` to make sure all dependent packages are available, you **must** use the provided CLI to create a new package.
 
 ```sh
 pnpm run create-package

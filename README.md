@@ -9,6 +9,7 @@ Monorepo for internally-published Vue components
 - [What goes here](#what-goes-here)
 - [Creating a package](#creating-a-package)
 - [Development](#development)
+  - [Setup](#setup)
   - [Dev Server](#dev-server)
   - [ESLint](#eslint)
   - [Type Checking](#type-checking)
@@ -16,7 +17,6 @@ Monorepo for internally-published Vue components
   - [Preview sandbox build](#preview-sandbox-build)
   - [Build for production](#build-for-production)
   - [Requirements](#requirements)
-  - [Setup](#setup)
   - [Committing Changes](#committing-changes)
 - [Preview components](#preview-components)
 - [Running consuming application with local copy of the package](#running-consuming-application-with-local-copy-of-the-package)
@@ -37,6 +37,22 @@ Here are some criteria to help figure out if your code belongs to this mono-repo
 ## Development
 
 All packages must be created utilizing the `pnpm run create-package` CLI. [See here for more details.](./docs/creating-a-package.md#required-use-the-provided-cli-to-scaffold-your-new-package)
+
+### Setup
+
+To get started, install dependencies
+
+```sh
+pnpm install
+```
+
+Next, make sure all dependent packages (from the monorepo itself) are built and available
+
+```sh
+pnpm run build
+```
+
+You can also run `pnpm install-autocomplete` to integrate `pnpm` autocompletion into your command line tools.
 
 ### Dev Server
 
@@ -105,14 +121,6 @@ pnpm --filter "@kong-ui/{package-name}" run build
 - Kong npm registry token available as `NPM_TOKEN` in your shell environment ([_More info_](./docs/kong-npm-token-setup.md))
 
 It is recommended to also _globally_ install [`lerna`](https://lerna.js.org/) with `pnpm` (though not absolutely required)
-
-### Setup
-
-1. Install Dependencies
-
-```sh
-pnpm install
-```
 
 ### Committing Changes
 
