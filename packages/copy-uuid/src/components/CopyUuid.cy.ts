@@ -25,6 +25,9 @@ describe('<CopyUuid />', () => {
 
     cy.get(container).find('[data-testid="copy-to-clipboard"]').should('be.visible')
     cy.get(container).find('.uuid-icon').should('be.visible')
+
+    cy.get(container).find('.uuid-icon path')
+      .should('have.attr', 'fill', 'var(--black-45, rgba(0, 0, 0, 0.45))')
   })
 
   it('renders with `truncated` set to false', () => {
@@ -155,5 +158,21 @@ describe('<CopyUuid />', () => {
     cy.wait(100).then(() => {
       expect(spy).to.be.calledWith(`"${uuid.substring(0, 15)}..." copied to clipboard`)
     })
+  })
+
+  it('renders with `iconColor` set to var(--purple-400, #473cfb)', () => {
+    cy.mount(CopyUuid, {
+      props: {
+        uuid,
+        iconColor: 'var(--purple-400, #473cfb)',
+      },
+    })
+
+    cy.get(container).should('be.visible')
+    cy.get(container).find('.uuid-icon').should('be.visible')
+    cy.get(container).find('[data-testid="copy-to-clipboard"]').should('be.visible')
+
+    cy.get(container).find('.uuid-icon path')
+      .should('have.attr', 'fill', 'var(--purple-400, #473cfb)')
   })
 })

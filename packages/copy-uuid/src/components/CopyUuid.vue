@@ -24,7 +24,7 @@
         >
           <KIcon
             class="uuid-icon"
-            color="var(--black-45)"
+            :color="iconColor"
             icon="copy"
             size="16"
             :title="t('iconTitle')"
@@ -65,6 +65,10 @@ const props = defineProps({
   notify: {
     type: Function as PropType<(param: CopyUuidNotifyParam) => void>,
     default: undefined,
+  },
+  iconColor: {
+    type: String,
+    default: 'var(--black-45, rgba(0, 0, 0, 0.45))',
   },
 })
 

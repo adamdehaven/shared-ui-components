@@ -15,6 +15,7 @@ A Kong UI component for displaying uuid and copying it to clipboard.
   - [`useMono`](#usemono)
   - [`isHidden`](#ishidden)
   - [`notify`](#notify)
+  - [`iconColor`](#iconcolor)
 
 ## Features
 
@@ -168,3 +169,11 @@ An indicator of whether the UUID string is replaced with asterisks.
 A function that will be called when the copy button is clicked. The function will receive a `CopyUuidNotifyParam` object as its only argument. The `CopyUuidNotifyParam` object has the following properties:
 - `type`: `success` | `error`, indicating whether the copy operation is successful
 - `message`: `string`, the message to be displayed to the end user
+
+### `iconColor`
+
+- type: `String`
+- required: `false`
+- default: `'var(--black-45, rgba(0, 0, 0, 0.45))'`
+
+The color of the `copy` icon.

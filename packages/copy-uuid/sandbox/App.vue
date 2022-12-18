@@ -26,6 +26,13 @@
           :uuid="uuid"
         />
       </div>
+      <div>
+        <h3>icon-color=var(--purple-400, #473cfb)</h3>
+        <CopyUuid
+          icon-color="var(--purple-400, #473cfb)"
+          :uuid="uuid"
+        />
+      </div>
     </main>
   </div>
 </template>
