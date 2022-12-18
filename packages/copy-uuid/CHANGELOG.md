@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/copy-uuid@0.4.6...@kong-ui/copy-uuid@0.5.0) (2022-12-18)
+
+
+### ✨ Features
+
+* **copy-uuid:** add iconColor prop ([#293](https://github.com/Kong/kong-ui-shared-components/issues/293)) ([93ab79b](https://github.com/Kong/kong-ui-shared-components/commit/93ab79b9b35a81b41e879ae966b25be55b0fe17e))
+
+
+
+
+
 ## [0.4.6](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/copy-uuid@0.4.5...@kong-ui/copy-uuid@0.4.6) (2022-12-16)
 
 
