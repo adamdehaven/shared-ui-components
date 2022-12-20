@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.7.2...@kong-ui/konnect-app-shell@0.8.0) (2022-12-20)
+
+
+### ✨ Features
+
+* setup initial data fetching ([#307](https://github.com/Kong/kong-ui-shared-components/issues/307)) ([1283f1a](https://github.com/Kong/kong-ui-shared-components/commit/1283f1ac1d3ec96e3e2bd4d0840ad12c98013d7a))
+
+
+
+
+
 ## [0.7.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.7.1...@kong-ui/konnect-app-shell@0.7.2) (2022-12-20)
 
 
