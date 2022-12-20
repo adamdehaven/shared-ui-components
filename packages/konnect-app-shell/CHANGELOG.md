@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.7.0...@kong-ui/konnect-app-shell@0.7.1) (2022-12-20)
+
+
+### ♻️ Chores
+
+* configuring proxy redirects for konnect-app-shell sandbox [KHCP-5656] ([#304](https://github.com/Kong/kong-ui-shared-components/issues/304)) ([6ecaf9f](https://github.com/Kong/kong-ui-shared-components/commit/6ecaf9f8a1df9081933fc6c2515eb861c1a34a8f))
+
+
+
+
+
 # [0.7.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.6.6...@kong-ui/konnect-app-shell@0.7.0) (2022-12-20)
 
 
