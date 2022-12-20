@@ -1,6 +1,6 @@
 {
   "name": "@kong-ui/konnect-app-shell",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "type": "module",
   "main": "./dist/konnect-app-shell.umd.js",
   "module": "./dist/konnect-app-shell.es.js",
@@ -48,7 +48,7 @@
     "vue-router": "^4.1.6"
   },
   "dependencies": {
-    "@kong-ui/app-layout": "workspace:^0.3.0",
+    "@kong-ui/app-layout": "workspace:^0.3.1",
     "@kong-ui/core": "workspace:^0.6.3",
     "uuid": "^9.0.0"
   },
