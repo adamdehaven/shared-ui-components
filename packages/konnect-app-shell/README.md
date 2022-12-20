@@ -90,7 +90,7 @@ The content of this component **must** define a `prop` of `activeGeo` so that it
 </template>
 
 <script setup lang="ts">
-  defineProps({
+defineProps({
   activeGeo: {
     type: Object as PropType<Geo | undefined>,
     default: undefined,

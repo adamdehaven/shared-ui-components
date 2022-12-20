@@ -13,5 +13,11 @@
       "region_select_placeholder": "Select a region",
       "submit": "Continue"
     }
+  },
+  "errors": {
+    "app_config": {
+      "header": "Could not fetch the app config",
+      "text": "Please reload the page to try again"
+    }
   }
 }

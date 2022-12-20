@@ -41,8 +41,15 @@
     <KSkeleton
       v-if="state.loading"
       data-testid="global-loading-skeleton"
+      hide-progress
       :style="{ zIndex: 1 }"
       type="fullscreen-kong"
+    />
+
+    <GlobalError
+      v-if="state.error"
+      :header="state.errorMessage.header"
+      :text="state.errorMessage.text"
     />
 
     <GeoSelectForm
@@ -60,11 +67,13 @@
 import { computed, reactive, ref, watch, watchEffect, PropType, onBeforeMount, nextTick } from 'vue'
 import { AppLayout, GruceLogo, KonnectLogo } from '@kong-ui/app-layout'
 import type { SidebarSecondaryItem } from '@kong-ui/app-layout'
-import { useWindow } from '@kong-ui/core'
-import { useAppSidebar, useGeo } from '../composables'
+import { useWindow, createI18n } from '@kong-ui/core'
+import { useAppConfig, useSession, useAppSidebar, useGeo } from '../composables'
 import { AVAILABLE_GEOS } from '../constants'
 import type { KonnectAppShellSidebarItem, Geo, KonnectAppShellState } from '../types'
 import GeoSelectForm from './forms/GeoSelectForm.vue'
+import GlobalError from './errors/GlobalError.vue'
+import english from '../locales/en.json'
 import '@kong-ui/app-layout/dist/style.css'
 
 const props = defineProps({
@@ -104,18 +113,36 @@ const props = defineProps({
 const emit = defineEmits<{
   (e: 'update:active-geo', geo: Geo | undefined): void,
   (e: 'update:loading', isLoading: boolean): void,
+  (e: 'update:error', hasError: boolean): void,
   (e: 'ready'): void,
 }>()
 
+const { t } = createI18n('en-us', english)
+
 const state: KonnectAppShellState = reactive({
   loading: true, // Show the global loader. Initial value should be `true`
+  error: false,
+  errorMessage: {
+    header: '',
+    text: '',
+  },
   activeGeo: undefined,
-  hideNavbar: computed((): boolean => props.navbarHidden || state.loading || !state.activeGeo),
-  hideSidebar: computed((): boolean => props.sidebarHidden || state.loading || !state.activeGeo),
+  hideNavbar: computed((): boolean => (props.navbarHidden || state.loading || !state.activeGeo) && !state.error),
+  hideSidebar: computed((): boolean => {
+    if (props.sidebarHidden || state.loading || !state.activeGeo) {
+      return true
+    }
+
+    if (state.activeGeo?.code && state.error) {
+      return false
+    }
+
+    return false
+  }),
 })
 
 // Determine if the default slot should be hidden
-const hideDefaultSlot = computed((): boolean => state.loading)
+const hideDefaultSlot = computed((): boolean => state.loading || state.error)
 
 const win = useWindow()
 const { topItems, bottomItems, profileItems, update: updateSidebarItems } = useAppSidebar()
@@ -155,6 +182,11 @@ watch(() => state.loading, (isLoading: boolean) => {
   emit('update:loading', isLoading)
 })
 
+// Emit the loading state from the component whenever it is updated
+watch(() => state.error, (hasError: boolean) => {
+  emit('update:error', hasError)
+})
+
 // Set the active geo
 const geoSelected = (geo: Geo): void => {
   state.activeGeo = geo
@@ -180,7 +212,28 @@ const geoSelected = (geo: Geo): void => {
   win.setLocationHref(`/${state.activeGeo?.code}${currentPath}`)
 }
 
+const { fetch: fetchAppConfig } = useAppConfig()
+
 onBeforeMount(async () => {
+  // Always first: fetch the app config
+  const { config, error: appConfigError } = await fetchAppConfig()
+
+  // If there is an error fetching the app config, show the error UI
+  if (appConfigError.value) {
+    state.errorMessage.header = t('errors.app_config.header')
+    state.errorMessage.text = t('errors.app_config.text')
+    state.error = true
+    state.loading = false
+
+    return
+  }
+
+  const { fetch: fetchSessionData } = useSession(config.value.api.v1.kauth)
+
+  // @ts-ignore
+  const { session } = await fetchSessionData()
+  console.log('session', session.value)
+
   // You must always first set the array of available geos from the API
   // TODO: This should be replaced by the response from via `/organizations/me/entitlements`
   setAllGeos(AVAILABLE_GEOS)
