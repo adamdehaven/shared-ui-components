@@ -1,6 +1,17 @@
 {
-  "header": {
-    "title": "Title of the header",
-    "content": "Content of the header"
+  "geo": {
+    "available_geos": {
+      "us": "US (North America)",
+      "eu": "EU (Europe)"
+    },
+    "global": "Global",
+    "global_disabled_tooltip": "The current data view and its configuration apply globally across the system and all regions for your organization.",
+    "region_label": "Region",
+    "selection": {
+      "instruction_text": "Select a region to continue to your Konnect platform.",
+      "region_select_label": "Region",
+      "region_select_placeholder": "Select a region",
+      "submit": "Continue"
+    }
   }
 }

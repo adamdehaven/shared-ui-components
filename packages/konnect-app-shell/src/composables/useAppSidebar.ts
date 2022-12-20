@@ -1,69 +1,67 @@
-import { ref, computed, inject, ComputedRef } from 'vue'
+import { ref, computed, ComputedRef } from 'vue'
 import { GLOBAL_GEO_PATH } from '../constants'
-import { KonnectAppShellSidebarItem, SidebarPrimaryItemKeys, Geo } from '../types'
-import symbolInjectionKeys from '../symbol-injection-keys'
+import { KonnectAppShellSidebarItem, KonnectAppShellSidebarPrimaryItem, Geo } from '../types'
 import type { SidebarPrimaryItem, SidebarProfileItem } from '@kong-ui/app-layout'
 
 export default function useAppSidebar() {
   const hostAppSidebarItem = ref<KonnectAppShellSidebarItem>()
-  const { konnectAppShellActiveGeo } = symbolInjectionKeys
   // Get the activeGeo; always fallback to 'us`
-  const activeGeo: ComputedRef<Geo> = inject(konnectAppShellActiveGeo, computed((): Geo => ({
+  const activeGeo: ComputedRef<Geo> = computed((): Geo => ({
     code: 'us',
     name: 'US (North America)', // TODO: should come from i18n
     userCanSelect: true,
     isActive: true,
     isActiveOverride: false,
-  })))
+  }))
 
   const activeGeoPath = computed((): string => `/${activeGeo.value.code}/`)
 
   /**
    * All top-level items must:
-   * - utilize a value from the `SidebarPrimaryItemKeys` enum for the `key` property
+   * - utilize a value from the `KonnectPrimaryRouteKey` interface for the `key` property
    * - set `external` to true
    * - define the `to` property as a string with a trailing slash
    * - -- Example: `${activeGeoPath.value}runtime-manager/`
    */
-  const sidebarTopPrimaryItems = computed((): SidebarPrimaryItem[] => ([
+  const sidebarTopPrimaryItems = computed((): KonnectAppShellSidebarPrimaryItem[] => ([
     {
       name: 'Overview',
-      key: SidebarPrimaryItemKeys.OVERVIEW,
-      to: `${activeGeoPath.value}`, // No trailing slash since this is the root route
+      key: 'overview',
+      to: `${activeGeoPath.value}overview/`, // No trailing slash since this is the root route
       icon: 'sharedConfig',
       external: true,
     },
     {
       name: 'Runtime Manager',
-      key: SidebarPrimaryItemKeys.RUNTIME_MANAGER,
+      key: 'runtime-manager',
       to: `${activeGeoPath.value}runtime-manager/`,
       icon: 'runtimes',
       external: true,
     },
     {
       name: 'Mesh Manager',
-      key: SidebarPrimaryItemKeys.MESH_MANAGER,
+      key: 'mesh-manager',
       to: `${activeGeoPath.value}mesh-manager/`,
       icon: 'brain',
       external: true,
     },
     {
       name: 'Service Hub',
-      key: SidebarPrimaryItemKeys.SERVICE_HUB,
+      key: 'servicehub',
       to: `${activeGeoPath.value}servicehub/`,
       icon: 'serviceHub',
       external: true,
     },
     {
       name: 'Dev Portal',
-      key: SidebarPrimaryItemKeys.DEV_PORTAL,
+      key: 'portal',
       to: `${activeGeoPath.value}portal/`,
       icon: 'devPortal',
       external: true,
     },
     {
       name: 'Analytics',
-      key: SidebarPrimaryItemKeys.ANALYTICS,
+      key: 'analytics',
       to: `${activeGeoPath.value}analytics/`,
       icon: 'vitalsChart',
       external: true,
@@ -72,22 +70,22 @@ export default function useAppSidebar() {
 
   /**
    * All top-level items must:
-   * - utilize a value from the `SidebarPrimaryItemKeys` enum for the `key` property
+   * - utilize a value from the `KonnectPrimaryRouteKey` interface for the `key` property
    * - set `external` to true
    * - define the `to` property as a string with a trailing slash
    * - -- Example: `${GLOBAL_GEO_PATH.value}organization/`
    */
-  const sidebarBottomPrimaryItems = computed((): SidebarPrimaryItem[] => ([
+  const sidebarBottomPrimaryItems = computed((): KonnectAppShellSidebarPrimaryItem[] => ([
     {
       name: 'Organization',
-      key: SidebarPrimaryItemKeys.ORGANIZATION,
+      key: 'organization',
       to: `${GLOBAL_GEO_PATH}organization/`,
       icon: 'organizations',
       external: true,
     },
     {
       name: 'Settings',
-      key: SidebarPrimaryItemKeys.SETTINGS,
+      key: 'settings',
       to: `${GLOBAL_GEO_PATH}settings/`,
       icon: 'cogwheel',
       external: true,

@@ -191,9 +191,11 @@ importers:
       '@kong-ui/app-layout': workspace:^0.2.6
       '@kong-ui/core': workspace:^0.6.3
       '@kong/kongponents': ^8.13.1
+      uuid: ^9.0.0
     dependencies:
       '@kong-ui/app-layout': link:../app-layout
       '@kong-ui/core': link:../core
+      uuid: 9.0.0
     devDependencies:
       '@kong/kongponents': 8.13.1
 
@@ -14876,7 +14878,6 @@ packages:
   /uuid/9.0.0:
     resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
     hasBin: true
-    dev: true
 
   /v-calendar/3.0.0-alpha.8:
     resolution: {integrity: sha512-T23H5UbK0EomrwArlF/jrT2LFbV/lu+Bp9JroZ1paN6rPoaMyvE+HrLxvAmUgi+pODrdTURDMzM3+WPgeFKEBQ==}

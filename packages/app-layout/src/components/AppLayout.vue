@@ -53,7 +53,7 @@
         <div id="kong-ui-app-layout-teleport-default-slot" />
         <slot name="app-error" />
         <slot
-          v-if="!hideDefaultSlot"
+          v-if="!defaultSlotIsHidden"
           name="default"
         />
       </div>
@@ -117,7 +117,7 @@ const props = defineProps({
 
 // Evaluate variables from injected symbols; fallback to prop values.
 // Must wrap the prop values in a computed so that they remain reactive.
-const hideDefaultSlot = computed(() => props.hideDefaultSlot)
+const defaultSlotIsHidden = computed(() => props.hideDefaultSlot)
 const navbar = reactive({
   hidden: computed(() => props.navbarHidden),
 })

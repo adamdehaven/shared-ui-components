@@ -1,6 +1,5 @@
 import type { App } from 'vue'
 import KonnectAppShell from './components/KonnectAppShell.vue'
-import symbolInjectionKeys from './symbol-injection-keys'
 import type { SidebarPrimaryItem, SidebarSecondaryItem, SidebarProfileItem } from '@kong-ui/app-layout'
 
 // Export Vue plugin as the default
@@ -13,8 +12,7 @@ export default {
   },
 }
 
-export { symbolInjectionKeys }
-
+export * from './utilities'
 export * from './types'
 // Export types from '@kong-ui/app-layout'
 export type {

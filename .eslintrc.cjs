@@ -24,6 +24,7 @@ module.exports = {
     quotes: ['error', 'single', { avoidEscape: true }],
     'no-multi-spaces': 'error',
     'no-trailing-spaces': 'error',
+    'padded-blocks': 'off',
     'comma-dangle': ['error', 'always-multiline'],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
@@ -42,6 +43,8 @@ module.exports = {
     }],
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/indent': ['error', 2],
+    // Ensures ESLint understands that `defineEmits<{ ... }>()` does _not_ fail this rule.
+    'func-call-spacing': 'off',
     '@typescript-eslint/func-call-spacing': ['error', 'never'],
     'vue/attributes-order': ['error', {
       alphabetical: true,

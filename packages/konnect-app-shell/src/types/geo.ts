@@ -7,3 +7,9 @@ export interface Geo {
 }
 
 export const KHCP_GEO_LOCAL_STORAGE_KEY = 'khcp-region'
+
+export interface GeoSelectOptionItem {
+  label: string
+  value: string
+  selected?: boolean
+}

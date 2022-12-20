@@ -49,7 +49,8 @@
   },
   "dependencies": {
     "@kong-ui/app-layout": "workspace:^0.2.6",
-    "@kong-ui/core": "workspace:^0.6.3"
+    "@kong-ui/core": "workspace:^0.6.3",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@kong/kongponents": "^8.13.1"

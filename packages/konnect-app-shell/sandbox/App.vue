@@ -1,22 +1,17 @@
 <template>
   <KonnectAppShell
     :sidebar-items="sidebarItems"
-    :sidebar-profile-items="[{ name: 'Logout', to: '/logout'}]"
-    sidebar-profile-name="Shell App User"
-  >
-    <router-view />
-  </KonnectAppShell>
+    @ready="appShellReady"
+  />
 </template>
 
 <script setup lang="ts">
-import { ref, computed, provide } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { SidebarPrimaryItemKeys, Geo } from '../src/types'
-import { symbolInjectionKeys } from '../src/index'
+import { KonnectAppShellSidebarItem } from '../src/types'
 
 const route = useRoute()
-const { konnectAppShellActiveGeo } = symbolInjectionKeys
-const sidebarItems = computed(() => {
+const sidebarItems = computed((): KonnectAppShellSidebarItem | null => {
   // Determine if the sidebar item is active if any matched route.name evaluates to the `routeName` string passed
   const active = (routeName: string): boolean => !!route?.matched.some(({ name }) => name === routeName)
 
@@ -24,20 +19,11 @@ const sidebarItems = computed(() => {
   // In a real host app, only one of these entries would be needed.
   if (active('mesh-manager')) {
     return {
-      parentKey: SidebarPrimaryItemKeys.MESH_MANAGER,
+      parentKey: 'mesh-manager',
       items: [{
         name: 'Child page',
         to: { name: 'mesh-manager-child' },
         active: active('mesh-manager-child'),
-      }],
-    }
-  } else if (active('service-hub')) {
-    return {
-      parentKey: SidebarPrimaryItemKeys.SERVICE_HUB,
-      items: [{
-        name: 'Child page',
-        to: { name: 'service-hub-child' },
-        active: active('service-hub-child'),
       }],
     }
   }
@@ -45,13 +31,7 @@ const sidebarItems = computed(() => {
   return null
 })
 
-// Set the active geo
-// TODO: This would actually be done by the KonnectAppShell when it fetches the /organizations/me/entitlements
-provide(konnectAppShellActiveGeo, ref<Geo>({
-  code: 'eu',
-  name: 'EU (Europe)', // TODO: should come from i18n
-  userCanSelect: true,
-  isActive: true,
-  isActiveOverride: false,
-}))
+const appShellReady = (): void => {
+  console.log('Konnect App Shell @ready event fired')
+}
 </script>
