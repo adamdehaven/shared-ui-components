@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.6.6...@kong-ui/konnect-app-shell@0.7.0) (2022-12-20)
+
+
+### ✨ Features
+
+* **konnect-app-shell:** multi-geo [KHCP-5636, KHCP-5493, KHCP-5632] ([#290](https://github.com/Kong/kong-ui-shared-components/issues/290)) ([7e28145](https://github.com/Kong/kong-ui-shared-components/commit/7e2814508a95c872f374d6f70dc3e35bbf533c69))
+
+
+
+
+
 ## [0.6.6](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.6.5...@kong-ui/konnect-app-shell@0.6.6) (2022-12-16)
 
 
