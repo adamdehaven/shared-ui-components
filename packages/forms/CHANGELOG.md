@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.8](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.7...@kong-ui/forms@0.6.8) (2022-12-21)
+
+
+### ♻️ Chores
+
+* fix types and stylelint ([53f7ed1](https://github.com/Kong/kong-ui-shared-components/commit/53f7ed1668ba6055f3aea2f357e26a6e7d6aa8f4))
+
+
+
+
+
 ## [0.6.7](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.6...@kong-ui/forms@0.6.7) (2022-12-20)
 
 

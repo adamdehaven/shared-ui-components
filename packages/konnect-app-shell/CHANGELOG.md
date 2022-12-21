@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.8.1...@kong-ui/konnect-app-shell@0.8.2) (2022-12-21)
+
+
+### 🐛 Bug Fixes
+
+* type error ([e01aaf0](https://github.com/Kong/kong-ui-shared-components/commit/e01aaf0696509df8c892df986a264178fce06041))
+
+
+### ♻️ Chores
+
+* fix types and stylelint ([53f7ed1](https://github.com/Kong/kong-ui-shared-components/commit/53f7ed1668ba6055f3aea2f357e26a6e7d6aa8f4))
+
+
+
+
+
 ## [0.8.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.8.0...@kong-ui/konnect-app-shell@0.8.1) (2022-12-21)
 
 
