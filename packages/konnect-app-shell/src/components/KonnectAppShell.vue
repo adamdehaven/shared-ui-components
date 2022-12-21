@@ -58,7 +58,7 @@
     />
 
     <template v-if="!hideDefaultSlot">
-      <router-view :active-geo="state.activeGeo" />
+      <router-view />
     </template>
   </AppLayout>
 </template>
@@ -142,7 +142,11 @@ const state: KonnectAppShellState = reactive({
 })
 
 // Determine if the default slot should be hidden
-const hideDefaultSlot = computed((): boolean => state.loading || state.error)
+// The default slot should always be hidden if any of the following are true:
+// - state.loading is true
+// - state.error is true
+// - state.activeGeo has not been determined
+const hideDefaultSlot = computed((): boolean => state.loading || state.error || !state.activeGeo)
 
 const win = useWindow()
 const { topItems, bottomItems, profileItems, update: updateSidebarItems } = useAppSidebar()

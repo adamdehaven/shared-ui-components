@@ -78,57 +78,42 @@ The host application's router configuration **must** utilize the provided `gener
 
 It **must** wrap all routes in a route with path of `path: ''` and initialize a component with its own `<router-view />`
 
-The content of this component **must** define a `prop` of `activeGeo` so that it can hide all default content until the active geo is set:
-
 ```html
 <template>
-  <template v-if="activeGeo && activeGeo.code">
-    <!-- Host App code -->
-  </template>
+  <!-- Host App code -->
 </template>
-
-<script setup lang="ts">
-defineProps({
-  activeGeo: {
-    type: Object as PropType<Geo | undefined>,
-    default: undefined,
-    required: true,
-  },
-})
-</script>
-
 ```
 
 
 ```ts
 const routes: RouteRecordRaw[] = [
-    {
-      path: '',
-      name: 'app-root',
-      component: () => import('@/app/RootView.vue'), // Must contain router-view
-      children: [
-        {
-          path: '',
-          name: 'home',
-          meta: {
-            title: 'Overview',
-          },
-          component: () => import('@/app/main-overview/views/MainOverviewView.vue'),
+  {
+    path: '',
+    name: 'app-root',
+    component: () => import('@/app/RootView.vue'), // Must contain router-view
+    children: [
+      {
+        path: '',
+        name: 'home',
+        meta: {
+          title: 'Overview',
         },
-        {
-          path: 'diagnostics',
-          name: 'diagnostics',
-          meta: {
-            title: 'Diagnostics',
-          },
-          component: () => import('@/app/diagnostics/views/DiagnosticsView.vue'),
+        component: () => import('@/app/main-overview/views/MainOverviewView.vue'),
+      },
+      {
+        path: 'diagnostics',
+        name: 'diagnostics',
+        meta: {
+          title: 'Diagnostics',
         },
-      ],
-    },
-  ]
+        component: () => import('@/app/diagnostics/views/DiagnosticsView.vue'),
+      },
+    ],
+  },
+]
 
-  const router = createVueRouter({
-    history: createWebHistory(baseGuiPath),
-    routes: generateRoutes('mesh-manager', routes, 'home'),
-  })
+const router = createVueRouter({
+  history: createWebHistory(baseGuiPath),f
+  routes: generateRoutes('mesh-manager', routes, 'home'),
+})
 ```
