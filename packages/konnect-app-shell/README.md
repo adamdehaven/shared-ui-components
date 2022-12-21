@@ -29,8 +29,6 @@ If any `<router-link>` elements are utilized inside any of the template slots pr
         Navbar example link
       </router-link>
     </template>
-
-    <router-view />
   </KonnectAppShell>
 </template>
 
