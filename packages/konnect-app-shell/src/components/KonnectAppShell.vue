@@ -228,7 +228,7 @@ onBeforeMount(async () => {
     return
   }
 
-  const { fetch: fetchSessionData } = useSession(config.value.api.v1.kauth)
+  const { fetch: fetchSessionData } = useSession(config.value?.api.v1.kauth)
 
   // @ts-ignore
   const { session } = await fetchSessionData()

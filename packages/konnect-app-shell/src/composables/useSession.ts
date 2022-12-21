@@ -5,7 +5,7 @@ const session = ref()
 const loading = ref<boolean>(false)
 const error = ref<boolean>(false)
 
-export default function useSession(kauthUrl: string) {
+export default function useSession(kauthUrl: string = '') {
 
   // TODO: Add return type
   const fetch = async (): Promise<any> => {
