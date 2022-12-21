@@ -10,7 +10,7 @@
 
 ### Root App component
 
-The host application **must** only include the `KonnectAppShell.vue` inside the `App.vue` root component with a single `<router-view />` child element in the default slot (other than other component-provided template slots).
+The host application **must** only include the `KonnectAppShell.vue` inside the `App.vue` root component. A single `<router-view />` child element is **already included** in the component. No other content should be added as a child of the component (other than other component-provided template slots).
 
 If any `<router-link>` elements are utilized inside any of the template slots provided by the `KonnectAppShell.vue` component, they **must** pass along the active geo as a route param and be wrapped in `v-if` logic that prevents them from rending until the active geo has been determined.
 
