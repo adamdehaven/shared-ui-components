@@ -339,7 +339,7 @@ export default {
     font-size: 12px;
   } // .hint
 
-/* Toggle Switch
+  /* Toggle Switch
 ========================================================================== */
   .field-switch {
     .field-wrap {
@@ -417,28 +417,28 @@ export default {
 }
 
 .vue-form-generator .field-checkbox {
-    display: flex;
-    align-items: center;
-  }
+  display: flex;
+  align-items: center;
+}
 
-  .vue-form-generator .field-checkbox label {
-    order: 1;
-    margin: 0;
-  }
+.vue-form-generator .field-checkbox label {
+  order: 1;
+  margin: 0;
+}
 
-  .vue-form-generator .field-checkbox input {
-    margin-left: 0;
-    margin-right: 12px;
-  }
+.vue-form-generator .field-checkbox input {
+  margin-left: 0;
+  margin-right: 12px;
+}
 
-  .vue-form-generator .field-radios .radio-list label input[type=radio] {
-    margin-right: 10px;
-  }
+.vue-form-generator .field-radios .radio-list label input[type=radio] {
+  margin-right: 10px;
+}
 
-  .vue-form-generator label {
-    font-weight: 500;
-  }
-  .vue-form-generator .form-group input[type=radio] {
-    display: inline-flex;
-  }
+.vue-form-generator label {
+  font-weight: 500;
+}
+.vue-form-generator .form-group input[type=radio] {
+  display: inline-flex;
+}
 </style>

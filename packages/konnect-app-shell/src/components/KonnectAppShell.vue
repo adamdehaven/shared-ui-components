@@ -68,7 +68,7 @@ import { computed, reactive, ref, watch, watchEffect, PropType, onBeforeMount, n
 import { AppLayout, GruceLogo, KonnectLogo } from '@kong-ui/app-layout'
 import type { SidebarSecondaryItem } from '@kong-ui/app-layout'
 import { useWindow, createI18n } from '@kong-ui/core'
-import { useAppConfig, useSession, useAppSidebar, useGeo } from '../composables'
+import { useAppShellConfig, useSession, useAppSidebar, useGeo } from '../composables'
 import { AVAILABLE_GEOS } from '../constants'
 import type { KonnectAppShellSidebarItem, Geo, KonnectAppShellState } from '../types'
 import GeoSelectForm from './forms/GeoSelectForm.vue'
@@ -212,11 +212,11 @@ const geoSelected = (geo: Geo): void => {
   win.setLocationHref(`/${state.activeGeo?.code}${currentPath}`)
 }
 
-const { fetch: fetchAppConfig } = useAppConfig()
+const { fetch: fetchAppShellConfig } = useAppShellConfig()
 
 onBeforeMount(async () => {
   // Always first: fetch the app config
-  const { config, error: appConfigError } = await fetchAppConfig()
+  const { config, error: appConfigError } = await fetchAppShellConfig()
 
   // If there is an error fetching the app config, show the error UI
   if (appConfigError.value) {

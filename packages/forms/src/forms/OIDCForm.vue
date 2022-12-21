@@ -315,7 +315,7 @@ export default {
 
 .advanced-field-dropdown {
   &.closed {
-     margin-bottom: 32px;
+    margin-bottom: 32px;
   }
 
   &.open {

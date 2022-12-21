@@ -1,15 +1,15 @@
 import { ref } from 'vue'
 import axios from 'axios'
-import { AppConfig } from '../types'
+import { AppShellConfig, KongUiConfig } from '../types'
 
-const config = ref()
+const config = ref<KongUiConfig>()
 const loading = ref<boolean>(false)
 const error = ref<boolean>(false)
 
-export default function useAppConfig() {
+export default function useAppShellConfig() {
 
   // TODO: Add return type
-  const fetch = async (): Promise<AppConfig> => {
+  const fetch = async (): Promise<AppShellConfig> => {
     try {
       // Reset the state
       loading.value = true

@@ -15,6 +15,9 @@ module.exports = {
       rules: {
         // Disallow relative font units
         'unit-disallowed-list': ['rem', 'em'],
+        indentation: [2, {
+          baseIndentLevel: 0,
+        }],
         // Disable the following rules
         'custom-property-no-missing-var-function': null,
         'no-descending-specificity': null,
