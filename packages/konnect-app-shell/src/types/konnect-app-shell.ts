@@ -2,12 +2,11 @@ import type { Geo } from './geo'
 
 export interface KonnectAppShellState {
   loading: boolean
-  error: boolean
-  errorMessage: {
+  error: {
+    show: boolean
     header: string
     text: string
   }
+  hideSidebarItems: boolean
   activeGeo: Geo | undefined
-  hideNavbar: boolean
-  hideSidebar: boolean
 }

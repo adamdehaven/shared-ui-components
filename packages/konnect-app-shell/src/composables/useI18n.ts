@@ -6,6 +6,6 @@ export default function usei18n() {
 
   return {
     i18n,
-    i18nT: Translation,
+    i18nT: Translation, // Translation component <i18n-t>
   }
 }

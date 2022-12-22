@@ -1,22 +1,22 @@
 import { ref } from 'vue'
+import type { Ref } from 'vue'
 import axios from 'axios'
 import { SessionData, Tier } from '../types'
 import { useWindow } from '@kong-ui/core'
 
 const session = ref<SessionData>()
-const loading = ref<boolean>(false)
-const error = ref<boolean>(false)
 
 export default function useSession(kauthUrl: string = '') {
   const win = useWindow()
+  const error = ref<boolean>(false)
+  const forceAuthentication = ref<boolean>(false)
 
-  // TODO: Add return type
-  const fetchSessionData = async (): Promise<any> => {
+  const fetchSessionData = async (): Promise<{
+    session: Ref<SessionData | undefined>,
+    error: Ref<boolean>,
+    forceAuthentication?: Ref<boolean>,
+  }> => {
     try {
-      // Reset the state
-      loading.value = true
-      error.value = false
-
       // TODO: Replace these calls with SDK
       const [userMe, organizationMe, organizationEntitlements] = await Promise.all([
         await axios.get(`${kauthUrl}/api/v1/users/me`),
@@ -55,14 +55,14 @@ export default function useSession(kauthUrl: string = '') {
       return {
         session,
         error,
-        loading,
       }
     } catch (err: any) {
       // TODO: write to localStorage to capture the path the user was trying to visit
 
       // TODO: This redirect should actually be done with an interceptor
       // If 401, redirect to /login
-      if (err.response.status === 401) {
+      if (err.response?.status === 401) {
+        forceAuthentication.value = true
         win.setLocationHref('/login?logout=true')
       } else {
         error.value = true
@@ -72,10 +72,8 @@ export default function useSession(kauthUrl: string = '') {
       return {
         session,
         error,
-        loading,
+        forceAuthentication,
       }
-    } finally {
-      loading.value = false
     }
   }
 

@@ -1,20 +1,19 @@
 import { ref } from 'vue'
+import type { Ref } from 'vue'
 import axios from 'axios'
-import { AppShellConfig, KongUiConfig } from '../types'
+import { KongUiConfig } from '../types'
 
+// Initialize the config ref outside the function for persistence
 const config = ref<KongUiConfig>()
-const loading = ref<boolean>(false)
-const error = ref<boolean>(false)
 
 export default function useAppShellConfig() {
+  const error = ref<boolean>(false)
 
-  // TODO: Add return type
-  const fetch = async (): Promise<AppShellConfig> => {
+  const fetchAppShellConfig = async (): Promise<{
+    config: Ref<KongUiConfig | undefined>
+    error: Ref<boolean>
+  }> => {
     try {
-      // Reset the state
-      loading.value = true
-      error.value = false
-
       // Fetch the config
       const { data } = await axios.get('/kong-ui/config')
 
@@ -25,29 +24,23 @@ export default function useAppShellConfig() {
       // Store the config data
       config.value = data
 
-      // Reset loading state
-      loading.value = false
-
       return {
         config,
         error,
-        loading,
       }
     } catch (err) {
       error.value = true
-      loading.value = false
 
       console.error(err)
 
       return {
         config,
         error,
-        loading,
       }
     }
   }
 
   return {
-    fetch,
+    fetchAppShellConfig,
   }
 }

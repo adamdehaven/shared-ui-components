@@ -1,11 +1,11 @@
 <template>
   <AppLayout
-    :navbar-hidden="state.hideNavbar"
-    :sidebar-bottom-items="!state.hideSidebar ? bottomItems : undefined"
-    :sidebar-hidden="state.hideSidebar"
-    :sidebar-profile-items="!state.hideSidebar ? profileItems : undefined"
-    :sidebar-profile-name="!state.hideSidebar ? 'App User' : undefined"
-    :sidebar-top-items="!state.hideSidebar ? topItems : undefined"
+    :navbar-hidden="hideNavbar"
+    :sidebar-bottom-items="!hideSidebar ? bottomItems : undefined"
+    :sidebar-hidden="hideSidebar"
+    :sidebar-profile-items="!hideSidebar ? profileItems : undefined"
+    :sidebar-profile-name="!hideSidebar ? 'App User' : undefined"
+    :sidebar-top-items="!hideSidebar ? topItems : undefined"
     @sidebar-click="clearErrorState"
   >
     <template #notification>
@@ -14,12 +14,25 @@
     <template #navbar-mobile-logo>
       <a href="/">
         <GruceLogo />
-        <div class="logo-title">
+        <div
+          class="logo-title"
+          :class="{ 'sidebar-is-hidden': hideSidebar }"
+        >
           <KonnectLogo theme="light" />
         </div>
       </a>
     </template>
     <template #navbar>
+      <a
+        v-if="hideSidebar"
+        class="navbar-full-logo"
+        href="/"
+      >
+        <GruceLogo />
+        <div class="logo-title">
+          <KonnectLogo theme="light" />
+        </div>
+      </a>
       <slot name="navbar" />
     </template>
     <template #sidebar-header>
@@ -48,9 +61,9 @@
     />
 
     <GlobalError
-      v-if="state.error"
-      :header="state.errorMessage.header"
-      :text="state.errorMessage.text"
+      v-if="state.error.show"
+      :header="state.error.header"
+      :text="state.error.text"
     />
 
     <GeoSelectForm
@@ -121,37 +134,43 @@ const { i18n: { t } } = useI18n()
 
 const state: KonnectAppShellState = reactive({
   loading: true, // Show the global loader UI. Initial value should be `true`
-  error: false, // Show the global error UI. Initial value should be `false`
-  errorMessage: {
+  error: {
+    show: false, // Show the global error UI. Initial value should be `false`
     header: '',
     text: '',
   },
+  hideSidebarItems: false, // Hide just the items in the sidebar
   activeGeo: undefined,
-  hideNavbar: computed((): boolean => (props.navbarHidden || state.loading || !state.activeGeo) && !state.error),
-  hideSidebar: computed((): boolean => {
-    if (props.sidebarHidden || state.loading || !state.activeGeo) {
-      return true
-    }
-
-    if (state.activeGeo?.code && state.error) {
-      return false
-    }
-
-    return false
-  }),
 })
 
-const clearErrorState = ():void => {
-  state.errorMessage.header = ''
-  state.errorMessage.text = ''
-  state.error = false
+const hideNavbar = computed((): boolean => (props.navbarHidden || state.loading || !state.activeGeo) && !state.error.show)
+const hideSidebar = computed((): boolean => {
+  if (props.sidebarHidden || state.loading || !state.activeGeo) {
+    return true
+  }
+
+  if (state.activeGeo?.code && state.error.show) {
+    return false
+  }
+
+  return false
+})
+
+const toggleErrorState = (show: boolean, header: string, text?: string): void => {
+  state.error.header = header
+  state.error.text = text || ''
+  state.error.show = show
+}
+
+const clearErrorState = (): void => {
+  toggleErrorState(false, '', '')
 }
 
 // Determine if the app content should be hidden if any of the following are true:
 // - state.loading is true
-// - state.error is true
+// - state.error.show is true
 // - state.activeGeo has not been determined
-const hideAppContent = computed((): boolean => state.loading || state.error || !state.activeGeo)
+const hideAppContent = computed((): boolean => state.loading || state.error.show || !state.activeGeo)
 
 const win = useWindow()
 const { topItems, bottomItems, profileItems, update: updateSidebarItems } = useAppSidebar()
@@ -192,7 +211,7 @@ watch(() => state.loading, (isLoading: boolean) => {
 })
 
 // Emit the loading state from the component whenever it is updated
-watch(() => state.error, (hasError: boolean) => {
+watch(() => state.error.show, (hasError: boolean) => {
   emit('update:error', hasError)
 })
 
@@ -233,7 +252,7 @@ const geoSelected = (geo: Geo): void => {
   win.setLocationHref(`/${state.activeGeo?.code}${currentPath}`)
 }
 
-const { fetch: fetchAppShellConfig } = useAppShellConfig()
+const { fetchAppShellConfig } = useAppShellConfig()
 
 onBeforeMount(async () => {
   // Always first: fetch the app config
@@ -241,29 +260,30 @@ onBeforeMount(async () => {
 
   // If there is an error fetching the app config, show the error UI
   if (appConfigError.value) {
-    state.errorMessage.header = t('errors.app_config.header')
-    state.errorMessage.text = t('errors.app_config.text')
-    state.error = true
+    toggleErrorState(true, t('errors.app_config.header'), t('errors.app_config.text'))
     state.loading = false
 
     return
   }
 
   const { fetchSessionData } = useSession(config.value?.api.v1.kauth)
-  const { session, error: fetchSessionDataError } = await fetchSessionData()
-  console.log('session', session.value)
+  const { session, error: fetchSessionDataError, forceAuthentication } = await fetchSessionData()
 
-  watch(fetchSessionDataError, (hasError: boolean) => {
-    if (hasError) {
-      state.error = true
-      // TODO: Place in actual error messaging
-      state.errorMessage.header = 'Could not fetch session data'
-      state.errorMessage.text = 'More error text...'
-    }
-  }, { immediate: true })
+  if (forceAuthentication?.value) {
+    // App is redirecting to `/login?logout=true`, exit early
+    return
+  }
+
+  // If there is an error fetching the session data, show the error UI
+  if (fetchSessionDataError.value) {
+    toggleErrorState(true, t('errors.session.data.header'), t('errors.session.data.text'))
+    state.loading = false
+
+    return
+  }
 
   // You must always first set the array of available geos from the API
-  // TODO: This should be replaced by the response from via `/organizations/me/entitlements`
+  // TODO: Remove the fallback value
   setAllGeos(session.value?.organization?.entitlements?.regions || AVAILABLE_GEOS)
 
   // Try to initialize the active region (do not pass any param values here, the function will try to determine the region)
@@ -326,6 +346,10 @@ export default {
   display: none;
   padding-left: 16px;
 
+  &.sidebar-is-hidden {
+    display: flex;
+  }
+
   @media (min-width: $viewport-sm) {
     display: flex;
   }
@@ -347,6 +371,16 @@ export default {
       display: flex;
       padding-left: 16px;
     }
+  }
+}
+
+// This logo only displays when the sidebar is hidden because of an error
+.navbar-full-logo {
+  display: none;
+  align-items: center;
+
+  @media (min-width: $viewport-md) {
+    display: flex;
   }
 }
 </style>

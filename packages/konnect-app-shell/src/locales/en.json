@@ -19,6 +19,12 @@
       "header": "Could not fetch the app config",
       "text": "Please reload the page to try again"
     },
+    "session": {
+      "data": {
+        "header": "Could not fetch user session data",
+        "text": "Please reload the page to try again"
+      }
+    },
     "not_found": {
       "header": "404: Page not found",
       "text": "We can't find the page you are looking for. <br>Go back to the previous page or return home."
