@@ -1,18 +1,6 @@
 /* eslint-disable no-unused-vars */
 import type { SidebarPrimaryItem, SidebarSecondaryItem } from '@kong-ui/app-layout'
-
-/**
- * The Konnect top-level navigation item keys
- */
-export type KonnectPrimaryRouteKey =
-  'overview' |
-  'runtime-manager' |
-  'mesh-manager' |
-  'servicehub' |
-  'portal' |
-  'analytics' |
-  'organization' |
-  'settings'
+import { KonnectPrimaryRouteKey } from './routes'
 
 /**
  * The KonnectAppShell sidebar top-level navigation items

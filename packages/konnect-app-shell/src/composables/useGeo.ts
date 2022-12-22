@@ -8,6 +8,8 @@ import english from '../locales/en.json'
 const geos = ref<Geo[]>([])
 
 export default function useGeo() {
+  // This computed variable will NOT respect an active override
+  const activeGeo = computed((): Geo | undefined => geos.value.find((geo: Geo) => geo.isActive === true) || undefined)
   // Must return null if no override is defined
   const activeGeoOverride = computed((): Geo | null => geos.value.find((geo: Geo) => geo.isActiveOverride === true) || null)
 
@@ -35,16 +37,13 @@ export default function useGeo() {
    * @returns {Geo} The currently active geo, based on the allowOverride param
    */
   const getActiveGeo = ({ allowOverride = false }: { allowOverride: boolean }): Geo | undefined => {
-    // First, determine the regularly active geo
-    const activeGeo = geos.value.find((geo: Geo) => geo.isActive === true)
-
     if (allowOverride === true) {
       // Return active override if set, otherwise return active geo
-      return activeGeoOverride.value || activeGeo
+      return activeGeoOverride.value || activeGeo.value
     }
 
     // allowOverride is false, so return the actual active geo
-    return activeGeo
+    return activeGeo.value
   }
 
   /**
@@ -81,38 +80,38 @@ export default function useGeo() {
 
     try {
       // On app hydration this will be undefined and will init the active geo on load
-      let activeGeo = geoCode
+      let newGeo = geoCode
 
-      if (!activeGeo) {
+      if (!newGeo) {
         // grab from path
         const pathArray = win.getLocationPathname()?.split('/')
         if (pathArray.length > 1 && geoExists(pathArray[1])) {
-          activeGeo = pathArray[1]
+          newGeo = pathArray[1]
         }
       }
 
-      if (!activeGeo) {
+      if (!newGeo) {
         // grab from localStorage and see if still valid
         const localStorageGeo: string = localStorage.getItem(geoLocalStorageKey.value) || ''
         if (geoExists(localStorageGeo)) {
-          activeGeo = localStorageGeo
+          newGeo = localStorageGeo
         }
       }
 
-      // Still no activeGeo. If the organization entitlements only have one region, set it as active
-      if (!activeGeo && geos.value.length === 1) {
-        activeGeo = geos.value[0].code
+      // Still no newGeo. If the organization entitlements only have one region, set it as active
+      if (!newGeo && geos.value.length === 1) {
+        newGeo = geos.value[0].code
       }
 
-      // If activeGeo now has a value, store it in localStorage and the Vue store
-      if (activeGeo) {
+      // If newGeo now has a value, store it in localStorage and the Vue store
+      if (newGeo) {
         // save to ref
         geos.value.forEach((geo: Geo) => {
-          geo.isActive = geo.code === activeGeo
+          geo.isActive = geo.code === newGeo
         })
 
         // Save to localStorage
-        localStorage.setItem(geoLocalStorageKey.value, activeGeo)
+        localStorage.setItem(geoLocalStorageKey.value, newGeo)
       }
     } catch (err) {
       // Failed setting the active geo, likely because no session.data.user.id or session.data.organization.id are set, which causes the `uuidv5` generation to fail
@@ -139,8 +138,9 @@ export default function useGeo() {
 
   return {
     geos,
-    getActiveGeo,
+    activeGeo,
     activeGeoOverride,
+    getActiveGeo,
     setAllGeos,
     setActiveGeo,
     setActiveGeoOverride,

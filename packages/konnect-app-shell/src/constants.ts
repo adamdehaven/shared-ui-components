@@ -1,3 +1,4 @@
+export const GLOBAL_GEO_NAME = 'global'
 export const GLOBAL_GEO_PATH = '/global/'
 
 /**

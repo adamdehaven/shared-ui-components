@@ -1,4 +1,5 @@
-export * from './kong-ui-config'
+export * from './config'
 export * from './geo'
 export * from './konnect-app-shell'
+export * from './routes'
 export * from './sidebar'

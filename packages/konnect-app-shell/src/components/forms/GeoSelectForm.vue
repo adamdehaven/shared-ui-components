@@ -62,7 +62,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import { useGeo } from '../../composables'
 import type { GeoSelectOptionItem, Geo } from '../../types'
 import { createI18n } from '@kong-ui/core'
@@ -75,7 +75,7 @@ const emit = defineEmits<{
 
 const { t } = createI18n('en-us', english)
 const { geos, setActiveGeo, getActiveGeo } = useGeo()
-const loading = ref(false)
+const loading = ref<boolean>(false)
 
 const regionOptions = computed((): GeoSelectOptionItem[] => {
   // Loop through all available regions from the store
@@ -88,8 +88,16 @@ const regionOptions = computed((): GeoSelectOptionItem[] => {
   })
 })
 
+const selectedGeoCode = ref<string>()
+
 // Set the selected option to the selected geo or fallback to the first item in the array
-const selectedGeoCode = ref(regionOptions.value.find((geoItem: GeoSelectOptionItem) => geoItem.selected)?.value || regionOptions.value[0]?.value)
+watchEffect(() => {
+  if (selectedGeoCode.value) {
+    return
+  }
+
+  selectedGeoCode.value = regionOptions.value.find((geoItem: GeoSelectOptionItem) => geoItem.selected)?.value || regionOptions.value[0]?.value
+})
 
 const onRegionSelected = (item: GeoSelectOptionItem) => {
   selectedGeoCode.value = item.value
@@ -101,7 +109,7 @@ const submitForm = async (): Promise<void> => {
   // Store the selected region
   setActiveGeo(selectedGeoCode.value)
 
-  const activeGeo = getActiveGeo({ allowOverride: false }) as Geo
+  const activeGeo: Geo = getActiveGeo({ allowOverride: false }) as Geo
 
   // Emit the selected geo
   emit('select', activeGeo)

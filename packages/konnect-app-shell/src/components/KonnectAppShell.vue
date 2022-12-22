@@ -57,7 +57,7 @@
       @select="geoSelected"
     />
 
-    <template v-if="!hideDefaultSlot">
+    <template v-if="!hideAppContent">
       <router-view />
     </template>
   </AppLayout>
@@ -69,7 +69,7 @@ import { AppLayout, GruceLogo, KonnectLogo } from '@kong-ui/app-layout'
 import type { SidebarSecondaryItem } from '@kong-ui/app-layout'
 import { useWindow, createI18n } from '@kong-ui/core'
 import { useAppShellConfig, useSession, useAppSidebar, useGeo } from '../composables'
-import { AVAILABLE_GEOS } from '../constants'
+import { AVAILABLE_GEOS, GLOBAL_GEO_NAME } from '../constants'
 import type { KonnectAppShellSidebarItem, Geo, KonnectAppShellState } from '../types'
 import GeoSelectForm from './forms/GeoSelectForm.vue'
 import GlobalError from './errors/GlobalError.vue'
@@ -141,12 +141,11 @@ const state: KonnectAppShellState = reactive({
   }),
 })
 
-// Determine if the default slot should be hidden
-// The default slot should always be hidden if any of the following are true:
+// Determine if the app content should be hidden if any of the following are true:
 // - state.loading is true
 // - state.error is true
 // - state.activeGeo has not been determined
-const hideDefaultSlot = computed((): boolean => state.loading || state.error || !state.activeGeo)
+const hideAppContent = computed((): boolean => state.loading || state.error || !state.activeGeo)
 
 const win = useWindow()
 const { topItems, bottomItems, profileItems, update: updateSidebarItems } = useAppSidebar()
@@ -193,12 +192,24 @@ watch(() => state.error, (hasError: boolean) => {
 
 // Set the active geo
 const geoSelected = (geo: Geo): void => {
+  // Initialize loader
+  state.loading = true
+
+  // Set the state.activeGeo
   state.activeGeo = geo
+
   // Store the activeGeo in localStorage
   setActiveGeo(state.activeGeo?.code)
 
   let currentPath = win.getLocationPathname()
   const potentialGeoCode = currentPath.split('/')[1]
+
+  // If the "geo" is set to global, just disable the loader and exit early
+  if (potentialGeoCode === GLOBAL_GEO_NAME) {
+    state.loading = false
+
+    return
+  }
 
   // If the geo is already in the URL (unlikely) just refresh the page
   if (potentialGeoCode === state.activeGeo.code) {
@@ -233,8 +244,6 @@ onBeforeMount(async () => {
   }
 
   const { fetch: fetchSessionData } = useSession(config.value?.api.v1.kauth)
-
-  // @ts-ignore
   const { session } = await fetchSessionData()
   console.log('session', session.value)
 
@@ -262,8 +271,8 @@ onBeforeMount(async () => {
   // Check if the known geo is in the URL; if not, take existing path and add the geo, then redirect
   const currentPath = win.getLocationPathname()
   const pathArray = currentPath?.split('/')
-  // If the activeGeo is not in the URL, redirect the user to the root active geo with the existing path
-  if (pathArray.length > 1 && state.activeGeo?.code && pathArray[1] !== state.activeGeo.code) {
+  // If the activeGeo or `global` is not in the URL, redirect the user to the root active geo with the existing path
+  if (pathArray.length > 1 && state.activeGeo?.code && (pathArray[1] !== state.activeGeo.code && pathArray[1] !== GLOBAL_GEO_NAME)) {
     win.setLocationHref(`/${state.activeGeo.code}${currentPath}`)
 
     // We sent the user to a new page; exit early

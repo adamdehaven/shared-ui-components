@@ -20,7 +20,7 @@ const config = mergeConfig(sharedViteConfig, defineConfig({
   server: {
     proxy: {
       // TODO when KHCP-5497 consume this from the helper function
-      '^/(?!([a-z]{2}/)?(index.ts|App.vue|router.ts|pages|sandbox|mesh-manager|src|node_modules|@vite|@id|@fs))': {
+      '^/(?!(([a-z]{2}|global)/)?(index.ts|App.vue|router.ts|pages|sandbox|mesh-manager|src|node_modules|@vite|@id|@fs))': {
         // TODO when PR-3589 merged to main in khcp-ui this needs to be replaced to https://cloud.konghq.tech/
         target: 'https://pr-deploy-preview-3589--konnect-client-dev.netlify.app/',
         changeOrigin: true,
