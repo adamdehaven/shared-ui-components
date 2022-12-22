@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.8.4...@kong-ui/konnect-app-shell@0.9.0) (2022-12-22)
+
+
+### ✨ Features
+
+* **routes:** geo or global routes; pick one ([#313](https://github.com/Kong/kong-ui-shared-components/issues/313)) ([9b98272](https://github.com/Kong/kong-ui-shared-components/commit/9b98272f06260347fc0cf974d5a950f924e9af6d))
+
+
+
+
+
 ## [0.8.4](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.8.3...@kong-ui/konnect-app-shell@0.8.4) (2022-12-21)
 
 **Note:** Version bump only for package @kong-ui/konnect-app-shell
