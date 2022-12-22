@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.10.0...@kong-ui/konnect-app-shell@0.10.1) (2022-12-22)
+
+
+### 📦 Code Refactoring
+
+* error state ([#314](https://github.com/Kong/kong-ui-shared-components/issues/314)) ([854d283](https://github.com/Kong/kong-ui-shared-components/commit/854d28333902c158a17de2f3a4569268a1929794))
+
+
+
+
+
 # [0.10.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.9.1...@kong-ui/konnect-app-shell@0.10.0) (2022-12-22)
 
 
