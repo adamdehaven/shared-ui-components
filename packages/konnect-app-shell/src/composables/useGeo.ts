@@ -1,13 +1,16 @@
 import { ref, computed } from 'vue'
-import { Geo, KHCP_GEO_LOCAL_STORAGE_KEY } from '../types'
+import useSession from './useSession'
+import { KHCP_GEO_LOCAL_STORAGE_KEY } from '../constants'
+import { Geo } from '../types'
 import { createI18n, useWindow } from '@kong-ui/core'
 import english from '../locales/en.json'
-// import { v5 as uuidv5 } from 'uuid'
+import { v5 as uuidv5 } from 'uuid'
 
 // Define the `geos` ref outside of the composable so that they persist across `useGeo` imports
 const geos = ref<Geo[]>([])
 
 export default function useGeo() {
+  const { session } = useSession()
   // This computed variable will NOT respect an active override
   const activeGeo = computed((): Geo | undefined => geos.value.find((geo: Geo) => geo.isActive === true) || undefined)
   // Must return null if no override is defined
@@ -15,11 +18,9 @@ export default function useGeo() {
 
   // Generate a localStorage key based on the user's org and user id
   const geoLocalStorageKey = computed((): string => {
-    // TODO: Integrate with the active user session data
-    // const sessionStore = useSessionStore()
-    // const { orgId, userId } = storeToRefs(sessionStore)
-
-    // return `${KHCP_GEO_LOCAL_STORAGE_KEY}-${uuidv5(orgId.value, userId.value)}`
+    if (session.value?.organization?.id && session.value?.user?.id) {
+      return `${KHCP_GEO_LOCAL_STORAGE_KEY}-${uuidv5(session.value.organization.id, session.value.user.id)}`
+    }
 
     return KHCP_GEO_LOCAL_STORAGE_KEY
   })

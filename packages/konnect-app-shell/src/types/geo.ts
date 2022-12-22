@@ -6,8 +6,6 @@ export interface Geo {
   isActiveOverride: boolean // default to false
 }
 
-export const KHCP_GEO_LOCAL_STORAGE_KEY = 'khcp-region'
-
 export interface GeoSelectOptionItem {
   label: string
   value: string

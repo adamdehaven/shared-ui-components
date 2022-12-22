@@ -249,13 +249,22 @@ onBeforeMount(async () => {
     return
   }
 
-  const { fetch: fetchSessionData } = useSession(config.value?.api.v1.kauth)
-  const { session } = await fetchSessionData()
+  const { fetchSessionData } = useSession(config.value?.api.v1.kauth)
+  const { session, error: fetchSessionDataError } = await fetchSessionData()
   console.log('session', session.value)
+
+  watch(fetchSessionDataError, (hasError: boolean) => {
+    if (hasError) {
+      state.error = true
+      // TODO: Place in actual error messaging
+      state.errorMessage.header = 'Could not fetch session data'
+      state.errorMessage.text = 'More error text...'
+    }
+  }, { immediate: true })
 
   // You must always first set the array of available geos from the API
   // TODO: This should be replaced by the response from via `/organizations/me/entitlements`
-  setAllGeos(AVAILABLE_GEOS)
+  setAllGeos(session.value?.organization?.entitlements?.regions || AVAILABLE_GEOS)
 
   // Try to initialize the active region (do not pass any param values here, the function will try to determine the region)
   setActiveGeo()

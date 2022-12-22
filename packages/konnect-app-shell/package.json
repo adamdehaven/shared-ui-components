@@ -55,6 +55,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@kong/kongponents": "^8.13.4"
+    "@kong/kongponents": "^8.13.4",
+    "@types/uuid": "^9.0.0"
   }
 }
