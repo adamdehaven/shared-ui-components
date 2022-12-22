@@ -41,6 +41,7 @@
       :profile-name="sidebar.profileName"
       :top-items="sidebar.topItems"
       :top-offset="notificationHeight"
+      @click="sidebarItemClicked"
       @toggle="sidebarToggled"
     >
       <template #header>
@@ -66,7 +67,7 @@ import { ref, reactive, computed, watchEffect, onMounted, onBeforeUnmount, PropT
 import AppNavbar from './navbar/AppNavbar.vue'
 import AppSidebar from './sidebar/AppSidebar.vue'
 import SidebarToggle from './sidebar/SidebarToggle.vue'
-import type { SidebarPrimaryItem, SidebarProfileItem } from '../types'
+import type { SidebarPrimaryItem, SidebarProfileItem, SidebarSecondaryItem } from '../types'
 import { useDebounce } from '../composables'
 
 interface AppSidebarProperties {
@@ -115,6 +116,8 @@ const props = defineProps({
   },
 })
 
+const emit = defineEmits(['sidebar-click'])
+
 // Evaluate variables from injected symbols; fallback to prop values.
 // Must wrap the prop values in a computed so that they remain reactive.
 const defaultSlotIsHidden = computed(() => props.hideDefaultSlot)
@@ -129,6 +132,10 @@ const sidebar: AppSidebarProperties = reactive({
   open: computed(() => props.sidebarOpen),
   hidden: computed(() => props.sidebarHidden),
 })
+
+const sidebarItemClicked = (item: SidebarPrimaryItem | SidebarSecondaryItem | SidebarProfileItem) => {
+  emit('sidebar-click', item)
+}
 
 const mobileSidebarOpen = ref<boolean>(false)
 const sidebarToggled = (isOpen: boolean): void => {

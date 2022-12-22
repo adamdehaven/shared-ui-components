@@ -6,6 +6,7 @@
     :sidebar-profile-items="!state.hideSidebar ? profileItems : undefined"
     :sidebar-profile-name="!state.hideSidebar ? 'App User' : undefined"
     :sidebar-top-items="!state.hideSidebar ? topItems : undefined"
+    @sidebar-click="clearErrorState"
   >
     <template #notification>
       <slot name="notification" />
@@ -67,13 +68,12 @@
 import { computed, reactive, ref, watch, watchEffect, PropType, onBeforeMount, nextTick } from 'vue'
 import { AppLayout, GruceLogo, KonnectLogo } from '@kong-ui/app-layout'
 import type { SidebarSecondaryItem } from '@kong-ui/app-layout'
-import { useWindow, createI18n } from '@kong-ui/core'
-import { useAppShellConfig, useSession, useAppSidebar, useGeo } from '../composables'
+import { useWindow } from '@kong-ui/core'
+import { useAppShellConfig, useSession, useAppSidebar, useGeo, useI18n } from '../composables'
 import { AVAILABLE_GEOS, GLOBAL_GEO_NAME } from '../constants'
 import type { KonnectAppShellSidebarItem, Geo, KonnectAppShellState } from '../types'
 import GeoSelectForm from './forms/GeoSelectForm.vue'
 import GlobalError from './errors/GlobalError.vue'
-import english from '../locales/en.json'
 import '@kong-ui/app-layout/dist/style.css'
 
 const props = defineProps({
@@ -117,11 +117,11 @@ const emit = defineEmits<{
   (e: 'ready'): void,
 }>()
 
-const { t } = createI18n('en-us', english)
+const { i18n: { t } } = useI18n()
 
 const state: KonnectAppShellState = reactive({
-  loading: true, // Show the global loader. Initial value should be `true`
-  error: false,
+  loading: true, // Show the global loader UI. Initial value should be `true`
+  error: false, // Show the global error UI. Initial value should be `false`
   errorMessage: {
     header: '',
     text: '',
@@ -140,6 +140,12 @@ const state: KonnectAppShellState = reactive({
     return false
   }),
 })
+
+const clearErrorState = ():void => {
+  state.errorMessage.header = ''
+  state.errorMessage.text = ''
+  state.error = false
+}
 
 // Determine if the app content should be hidden if any of the following are true:
 // - state.loading is true

@@ -1,7 +1,8 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <AppError>
-    <h2>{{ header }}</h2>
-    <p>{{ text }}</p>
+    <h2 v-html="header" />
+    <p v-html="text" />
   </AppError>
 </template>
 
