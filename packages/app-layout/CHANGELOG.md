@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/app-layout@0.3.3...@kong-ui/app-layout@0.4.0) (2022-12-23)
+
+
+### ✨ Features
+
+* **session:** track session data ([#316](https://github.com/Kong/kong-ui-shared-components/issues/316)) ([45c4014](https://github.com/Kong/kong-ui-shared-components/commit/45c401441ea542e6ed1a300541376887adc7efc3))
+
+
+
+
+
 ## [0.3.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/app-layout@0.3.2...@kong-ui/app-layout@0.3.3) (2022-12-22)
 
 
