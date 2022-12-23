@@ -9,7 +9,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { KonnectAppShellSidebarItem, Geo } from '../src/types'
+import type { KonnectAppShellSidebarItem, Geo } from '../src/types'
 
 const route = useRoute()
 const activeGeo = ref()

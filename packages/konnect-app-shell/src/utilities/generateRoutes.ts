@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router'
-import { GenerateRoutesParams } from '../types'
+import type { GenerateRoutesParams } from '../types'
 
 /**
  * Generate the vue-router:routes object with the required KonnectAppShell root and geo routes.

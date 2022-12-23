@@ -11,17 +11,6 @@
     <template #notification>
       <slot name="notification" />
     </template>
-    <template #navbar-mobile-logo>
-      <a href="/">
-        <GruceLogo />
-        <div
-          class="logo-title"
-          :class="{ 'sidebar-is-hidden': hideSidebar }"
-        >
-          <KonnectLogo theme="light" />
-        </div>
-      </a>
-    </template>
     <template #navbar>
       <a
         v-if="hideSidebar"
@@ -34,6 +23,17 @@
         </div>
       </a>
       <slot name="navbar" />
+    </template>
+    <template #navbar-mobile-logo>
+      <a href="/">
+        <GruceLogo />
+        <div
+          class="logo-title"
+          :class="{ 'sidebar-is-hidden': hideSidebar }"
+        >
+          <KonnectLogo theme="light" />
+        </div>
+      </a>
     </template>
     <template #sidebar-header>
       <div
@@ -83,8 +83,8 @@ import { AppLayout, GruceLogo, KonnectLogo } from '@kong-ui/app-layout'
 import type { SidebarSecondaryItem } from '@kong-ui/app-layout'
 import { useWindow } from '@kong-ui/core'
 import { useAppShellConfig, useSession, useAppSidebar, useGeo, useI18n } from '../composables'
-import { AVAILABLE_GEOS, GLOBAL_GEO_NAME } from '../constants'
-import type { KonnectAppShellSidebarItem, Geo, KonnectAppShellState } from '../types'
+import { GLOBAL_GEO_NAME } from '../constants'
+import type { KonnectAppShellSidebarItem, Geo, KonnectAppShellState, SessionData } from '../types'
 import GeoSelectForm from './forms/GeoSelectForm.vue'
 import GlobalError from './errors/GlobalError.vue'
 import '@kong-ui/app-layout/dist/style.css'
@@ -125,6 +125,7 @@ const props = defineProps({
 
 const emit = defineEmits<{
   (e: 'update:active-geo', geo: Geo | undefined): void,
+  (e: 'update:session', session: SessionData | undefined): void,
   (e: 'update:loading', isLoading: boolean): void,
   (e: 'update:error', hasError: boolean): void,
   (e: 'ready'): void,
@@ -253,10 +254,16 @@ const geoSelected = (geo: Geo): void => {
 }
 
 const { fetchAppShellConfig } = useAppShellConfig()
+const { initializeSession, session } = useSession()
+
+watch(session, () => {
+  emit('update:session', session.value)
+})
 
 onBeforeMount(async () => {
-  // Always first: fetch the app config
-  const { config, error: appConfigError } = await fetchAppShellConfig()
+  console.log('onBeforeMount')
+  // Must always fetch the appShellConfig first
+  const { error: appConfigError } = await fetchAppShellConfig()
 
   // If there is an error fetching the app config, show the error UI
   if (appConfigError.value) {
@@ -266,8 +273,9 @@ onBeforeMount(async () => {
     return
   }
 
-  const { fetchSessionData } = useSession(config.value?.api.v1.kauth)
-  const { session, error: fetchSessionDataError, forceAuthentication } = await fetchSessionData()
+  // Attempt to init the session data.
+  // This should ONLY be called once, within the onBeforeMount hook
+  const { forceAuthentication, error: sessionError } = await initializeSession()
 
   if (forceAuthentication?.value) {
     // App is redirecting to `/login?logout=true`, exit early
@@ -275,7 +283,7 @@ onBeforeMount(async () => {
   }
 
   // If there is an error fetching the session data, show the error UI
-  if (fetchSessionDataError.value) {
+  if (sessionError.value) {
     toggleErrorState(true, t('errors.session.data.header'), t('errors.session.data.text'))
     state.loading = false
 
@@ -283,8 +291,7 @@ onBeforeMount(async () => {
   }
 
   // You must always first set the array of available geos from the API
-  // TODO: Remove the fallback value
-  setAllGeos(session.value?.organization?.entitlements?.regions || AVAILABLE_GEOS)
+  setAllGeos(session.value?.organization?.entitlements?.regions || [])
 
   // Try to initialize the active region (do not pass any param values here, the function will try to determine the region)
   setActiveGeo()

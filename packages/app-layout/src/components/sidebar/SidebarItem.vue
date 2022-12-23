@@ -87,7 +87,7 @@
 
 <script setup lang="ts">
 import { PropType, computed } from 'vue'
-import { SidebarPrimaryItem, SidebarSecondaryItem } from '../../types'
+import type { SidebarPrimaryItem, SidebarSecondaryItem } from '../../types'
 import ItemBadge from './ItemBadge.vue'
 import { KIcon, KTooltip } from '@kong/kongponents'
 

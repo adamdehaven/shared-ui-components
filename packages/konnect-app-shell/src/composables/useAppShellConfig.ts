@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import type { Ref } from 'vue'
 import axios from 'axios'
-import { KongUiConfig } from '../types'
+import type { KongUiConfig } from '../types'
 
 // Initialize the config ref outside the function for persistence
 const config = ref<KongUiConfig>()
@@ -41,6 +41,7 @@ export default function useAppShellConfig() {
   }
 
   return {
+    config,
     fetchAppShellConfig,
   }
 }

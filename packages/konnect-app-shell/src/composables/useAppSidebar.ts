@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue'
 import { GLOBAL_GEO_PATH } from '../constants'
 import useGeo from './useGeo'
-import { KonnectAppShellSidebarItem, KonnectAppShellSidebarPrimaryItem } from '../types'
+import type { KonnectAppShellSidebarItem, KonnectAppShellSidebarPrimaryItem } from '../types'
 import type { SidebarPrimaryItem, SidebarProfileItem } from '@kong-ui/app-layout'
 
 export default function useAppSidebar() {

@@ -99,7 +99,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch, useSlots, PropType, onMounted, onBeforeUnmount, nextTick } from 'vue'
-import { SidebarPrimaryItem, SidebarProfileItem } from '../../types'
+import type { SidebarPrimaryItem, SidebarProfileItem } from '../../types'
 import SidebarItem from '../sidebar/SidebarItem.vue'
 import SidebarFooter from './SidebarFooter.vue'
 import { KDropdownItem, KIcon } from '@kong/kongponents'

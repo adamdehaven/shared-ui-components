@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue'
 import useSession from './useSession'
 import { KHCP_GEO_LOCAL_STORAGE_KEY } from '../constants'
-import { Geo } from '../types'
+import type { Geo } from '../types'
 import { createI18n, useWindow } from '@kong-ui/core'
 import english from '../locales/en.json'
 import { v5 as uuidv5 } from 'uuid'

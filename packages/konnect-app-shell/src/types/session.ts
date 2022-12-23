@@ -35,5 +35,5 @@ export interface SessionOrganization {
 export interface SessionData {
   user?: SessionUser | null
   organization?: SessionOrganization | null
-  to?: RouteLocationNormalized | string
+  to?: Partial<RouteLocationNormalized> | string
 }

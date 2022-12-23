@@ -28,6 +28,7 @@
     "not_found": {
       "header": "404: Page not found",
       "text": "We can't find the page you are looking for. <br>Go back to the previous page or return home."
-    }
+    },
+    "network": "Network connection lost. Check your internet connection and then try refreshing the page."
   }
 }

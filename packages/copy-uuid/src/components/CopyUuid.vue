@@ -41,7 +41,7 @@ import { createI18n } from '@kong-ui/core'
 import english from '../locales/en.json'
 import { KClipboardProvider, KIcon } from '@kong/kongponents'
 import { COPY_UUID_NOTIFY_KEY } from '../const'
-import { CopyUuidNotifyParam } from '../types'
+import type { CopyUuidNotifyParam } from '../types'
 
 const { t } = createI18n('en-us', english)
 
