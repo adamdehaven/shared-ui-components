@@ -52,7 +52,7 @@ Next, make sure all dependent packages (from the monorepo itself) are built and 
 pnpm run build
 ```
 
-You can also run `pnpm install-autocomplete` to integrate `pnpm` autocompletion into your command line tools.
+You can also run `pnpm install-completion` to integrate `pnpm` autocompletion into your command line tools.
 
 ### Dev Server
 
