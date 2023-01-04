@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.9](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.8...@kong-ui/forms@0.6.9) (2023-01-04)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency vue to ^3.2.45 ([#324](https://github.com/Kong/kong-ui-shared-components/issues/324)) ([e3cbff8](https://github.com/Kong/kong-ui-shared-components/commit/e3cbff8ea746237f2290d705201ad95305cd614b))
+
+
+
+
+
 ## [0.6.8](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.7...@kong-ui/forms@0.6.8) (2022-12-21)
 
 
