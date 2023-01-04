@@ -11,4 +11,8 @@ export interface KongUiConfig {
       [api: string]: any
     }
   }
+  launchDarkly: {
+    key: string
+    platform_id: string
+  }
 }
