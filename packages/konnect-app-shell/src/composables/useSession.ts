@@ -1,8 +1,7 @@
 import { ref, computed, readonly } from 'vue'
 import type { Ref } from 'vue'
 import { RouteLocationNormalized } from 'vue-router'
-import axios from 'axios'
-import useAppShellConfig from './useAppShellConfig'
+import { useKAuthApi } from './index'
 import { SESSION_NAME, CYPRESS_USER_SESSION_EXISTS } from '../constants'
 import type { SessionData, Tier } from '../types'
 import { useWindow } from '@kong-ui/core'
@@ -13,9 +12,7 @@ export default function useSession() {
   const isRefreshing = ref<boolean>(false)
   const isLoggingOut = ref<boolean>(false)
 
-  const { config } = useAppShellConfig()
-  // Set baseUrl to a computed variable
-  const baseUrl = computed((): string => config.value?.api?.v1?.kauth || '')
+  const { kAuthApi } = useKAuthApi()
   const win = useWindow()
 
   const fetchSessionData = async (): Promise<{
@@ -29,21 +26,25 @@ export default function useSession() {
       // Reset the error state
       error.value = false
 
-      // TODO: Replace these calls with SDK
       const [userMe, organizationMe, organizationEntitlements] = await Promise.all([
-        await axios.get(`${baseUrl.value}/api/v1/users/me`),
-        await axios.get(`${baseUrl.value}/api/v1/organizations/me`),
-        await axios.get(`${baseUrl.value}/api/v1/organizations/me/entitlements`),
+        await kAuthApi.value.users.userAPIRetrieveMe(),
+        await kAuthApi.value.organization.organizationAPIRetrieveCurrentOrganization(),
+        await kAuthApi.value.entitlement.entitlementAPIRetrieveCurrentEntitlement(),
       ])
+
+      // User id and Org id are required, so error if they are missing
+      if (!userMe?.data?.id || !organizationMe?.data?.id) {
+        throw new Error('Could not fetch session data')
+      }
 
       const userSessionData: SessionData = {
         user: {
-          id: userMe?.data?.id,
-          email: userMe?.data?.email,
+          id: userMe?.data?.id || '',
+          email: userMe?.data?.email || '',
           full_name: userMe?.data?.full_name || '',
           preferred_name: userMe?.data?.preferred_name || '',
           is_owner: !!userMe?.data?.id && (userMe?.data?.id === organizationMe?.data?.owner_id),
-          feature_set: userMe?.data?.feature_set,
+          feature_set: userMe?.data?.feature_set || '',
         },
         organization: {
           id: organizationMe?.data?.id || '',
@@ -54,12 +55,12 @@ export default function useSession() {
             runtime_group_limit: organizationEntitlements?.data?.runtime_group_limit || 0,
             regions: organizationEntitlements?.data?.regions || [],
             tier: {
-              name: (organizationEntitlements.data.tier.name) as Tier,
+              name: (organizationEntitlements?.data?.tier?.name) as Tier || '',
               trial_expires_at: organizationEntitlements?.data?.tier?.trial_expires_at || null,
             },
           },
-          created_at: organizationMe?.data?.created_at,
-          updated_at: organizationMe?.data?.updated_at,
+          created_at: organizationMe?.data?.created_at || '',
+          updated_at: organizationMe?.data?.updated_at || '',
         },
       }
 
@@ -80,18 +81,14 @@ export default function useSession() {
        * interceptors are bound to the API client in order to retrieve the Konnect regions
        * enabled for the organization, meaning if it fails, it has to be handled here.
        */
-      forceAuthentication.value = true
-      await destroy(win.getLocationPathname())
-
-      // TODO: This redirect should actually be done with an interceptor
-      // If 401, redirect to /login
-      // if (err.response?.status === 401) {
-      //   forceAuthentication.value = true
-      //   win.setLocationHref('/login?logout=true')
-      // } else {
-      //   error.value = true
-      //   console.error(err)
-      // }
+      // TODO: Ensure you only want to destroy if 401 error
+      if ([401, 403].includes(err.response?.status)) {
+        forceAuthentication.value = true
+        await destroy(win.getLocationPathname())
+      } else {
+        error.value = true
+        console.error(err)
+      }
 
       return {
         error: readonly(error),
@@ -146,9 +143,13 @@ export default function useSession() {
    * @return {(Promise<SessionData | undefined>)} Stored session data
    */
   const fetchLocalStorageData = async (): Promise<SessionData | undefined> => {
-    const sessionDataRaw = localStorage?.getItem(SESSION_NAME) || encode(session.value) || encode({})
-
     try {
+      const sessionDataRaw = localStorage?.getItem(SESSION_NAME) || encode(session.value) || encode({})
+
+      if (!sessionDataRaw) {
+        return
+      }
+
       session.value = decode(sessionDataRaw)
 
       return session.value
@@ -168,7 +169,7 @@ export default function useSession() {
 
     // only set the session to local if specifying to force save,
     // or if the session doesn't exist and force is false.
-    if (force || (!force && !exists())) {
+    if (force || (!force && !exists.value)) {
       if (objectIsEmpty(session.value)) {
         localStorage?.removeItem(SESSION_NAME)
       } else {
@@ -184,27 +185,28 @@ export default function useSession() {
   const refresh = async (): Promise<boolean> => {
     try {
       // Trigger auth refresh
-      const response = await axios.get(`${baseUrl.value}/api/v1/refresh`)
+      const response = await kAuthApi.value.authentication.refresh({})
 
-      if (response.status === 200) {
+      if (response?.status === 200) {
         // refresh data
-        // @ts-ignore
         await saveSessionData(await fetchLocalStorageData())
+
+        console.log('here', await fetchLocalStorageData())
 
         // Successful refresh, session did not expire
         return false
+      } else {
+        // Fallback to failure
+        return true
       }
     } catch (err) {
       return true
     }
-
-    // Fallback to failure
-    return true
   }
 
   const getCookieValue = (name: string): string => document.cookie.match(`(^|;)\\s*${name}\\s*=\\s*([^;]+)`)?.pop() || ''
 
-  const exists = (): boolean => {
+  const exists = computed((): boolean => {
     // Return true if the session.value.data.user.id has a value
     // We also return true here for a cookie value so that Cypress tests do not automatically get logged out. This should never be set for an actual user.
     let userShouldHaveSession = false
@@ -220,7 +222,7 @@ export default function useSession() {
     }
 
     return !!session.value?.user?.id || userShouldHaveSession === true || !!getCookieValue(CYPRESS_USER_SESSION_EXISTS)
-  }
+  })
 
   /**
    * Destroy the user's session and log them out via KAuth
@@ -235,7 +237,7 @@ export default function useSession() {
     isLoggingOut.value = true
 
     // Store the 'to' route if not login or logout or undefined
-    const toRoute: Partial<RouteLocationNormalized> = {
+    const toRoute: { path: string, name?: string, [key: string]: any } = {
       path: '',
       name: '',
     }
@@ -254,7 +256,7 @@ export default function useSession() {
         saveSessionData({ to: toRoute }, true)
       }
 
-      const { data: { loginPath } } = await axios.post(`${baseUrl.value}/api/v1/logout`)
+      const { data: { loginPath } } = await kAuthApi.value.authentication.logout()
 
       // Get the login path with IdP loginPath if configured, otherwise just the login path
       const loginPagePath = loginPath ? `login/${loginPath}` : 'login'
@@ -269,7 +271,7 @@ export default function useSession() {
       logoutUrl.searchParams.append('logout', 'true')
 
       // Redirect user to logout
-      win.setLocationHref(logoutUrl.href)
+      win.setLocationAssign(logoutUrl.href)
     } catch (err) {
       // Always clear the session data
       session.value = undefined
@@ -277,7 +279,7 @@ export default function useSession() {
       document.cookie = `${CYPRESS_USER_SESSION_EXISTS}=; Max-Age=-1`
 
       // Redirect user to logout
-      win.setLocationHref(`${window.location.origin}/login?logout=true`)
+      win.setLocationAssign(`${window.location.origin}/login?logout=true`)
     } finally {
       isLoggingOut.value = false
     }
@@ -300,10 +302,12 @@ export default function useSession() {
   }
 
   return {
-    session,
+    session: readonly(session), // do not allow mutating the session
     isRefreshing,
     // methods
     initializeSession,
+    exists,
     refresh,
+    destroy,
   }
 }

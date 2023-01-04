@@ -15,19 +15,27 @@
     }
   },
   "errors": {
+    "unexpected": {
+      "header": "An unexpected error has occurred",
+      "text": "Go back to the previous page or <a href=\"/\">return home</a>."
+    },
     "app_config": {
       "header": "Could not fetch the app config",
-      "text": "Please reload the page to try again"
+      "text": "Please reload the page to try again."
     },
     "session": {
       "data": {
         "header": "Could not fetch user session data",
-        "text": "Please reload the page to try again"
+        "text": "Please reload the page to try again."
       }
     },
     "not_found": {
-      "header": "404: Page not found",
-      "text": "We can't find the page you are looking for. <br>Go back to the previous page or return home."
+      "header": "404: Not found",
+      "text": "We can't find the page or resource you are looking for. <br>Go back to the previous page or return home."
+    },
+    "unauthorized": {
+      "header": "You don't have permissions to access this resource.",
+      "text": "Please contact your account administrator for access."
     },
     "network": "Network connection lost. Check your internet connection and then try refreshing the page."
   }

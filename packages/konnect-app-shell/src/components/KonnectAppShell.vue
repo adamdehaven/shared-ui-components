@@ -48,9 +48,6 @@
         </a>
       </div>
     </template>
-    <template #app-error>
-      <slot name="app-error" />
-    </template>
 
     <KSkeleton
       v-if="state.loading"
@@ -64,7 +61,9 @@
       v-if="state.error.show"
       :header="state.error.header"
       :text="state.error.text"
-    />
+    >
+      <slot name="error" />
+    </GlobalError>
 
     <GeoSelectForm
       v-else-if="!state.activeGeo"
@@ -82,9 +81,9 @@ import { computed, reactive, ref, watch, watchEffect, PropType, onBeforeMount, n
 import { AppLayout, GruceLogo, KonnectLogo } from '@kong-ui/app-layout'
 import type { SidebarSecondaryItem } from '@kong-ui/app-layout'
 import { useWindow } from '@kong-ui/core'
-import { useAppShellConfig, useSession, useAppSidebar, useGeo, useI18n } from '../composables'
+import { useSession, useAppSidebar, useGeo, useI18n, useKAuthApi } from '../composables'
 import { GLOBAL_GEO_NAME } from '../constants'
-import type { KonnectAppShellSidebarItem, Geo, KonnectAppShellState, SessionData } from '../types'
+import type { KonnectAppShellSidebarItem, Geo, KonnectAppShellState, SessionData, ErrorProp } from '../types'
 import GeoSelectForm from './forms/GeoSelectForm.vue'
 import GlobalError from './errors/GlobalError.vue'
 import '@kong-ui/app-layout/dist/style.css'
@@ -117,32 +116,41 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  // Show or hide the fullscreen loading state
   loading: {
     type: Boolean,
     default: false,
   },
+  // Show or hide the error state
+  error: {
+    type: Object as PropType<ErrorProp>,
+    default: (): ErrorProp => ({
+      show: false,
+      header: '',
+      text: '',
+    }),
+  },
 })
 
 const emit = defineEmits<{
-  (e: 'update:active-geo', geo: Geo | undefined): void,
-  (e: 'update:session', session: SessionData | undefined): void,
-  (e: 'update:loading', isLoading: boolean): void,
-  (e: 'update:error', hasError: boolean): void,
   (e: 'ready'): void,
+  (e: 'update:active-geo', geo: Geo | undefined): void,
+  (e: 'update:error', error: { show: boolean, header?: string, text?: string }): void,
+  (e: 'update:loading', isLoading: boolean): void,
+  (e: 'update:session', session: SessionData | undefined): void,
 }>()
 
-const { i18n: { t } } = useI18n()
-
 const state: KonnectAppShellState = reactive({
+  activeGeo: undefined,
   loading: true, // Show the global loader UI. Initial value should be `true`
   error: {
     show: false, // Show the global error UI. Initial value should be `false`
     header: '',
     text: '',
   },
-  hideSidebarItems: false, // Hide just the items in the sidebar
-  activeGeo: undefined,
 })
+
+const { i18n: { t } } = useI18n()
 
 const hideNavbar = computed((): boolean => (props.navbarHidden || state.loading || !state.activeGeo) && !state.error.show)
 const hideSidebar = computed((): boolean => {
@@ -189,22 +197,29 @@ watch(() => state.activeGeo, (activeGeo: Geo | undefined) => {
   emit('update:active-geo', activeGeo)
 }, { deep: true })
 
-// Create a ref that when true, allows the component prop to override the loading state.
+// Create a ref that when true, allows component props to override the local state.
 // Should not be set to true until the internal component logic has completed.
-const allowLoadingOverride = ref(false)
+const allowPropOverrides = ref(false)
 
-// If allowLoadingOverride changes to true, check the default prop value
-watch(allowLoadingOverride, (allowed: boolean) => {
-  if (allowed && props.loading) {
-    state.loading = props.loading
+// If allowPropOverrides changes to true, check the default prop values
+watch(allowPropOverrides, (allowed: boolean) => {
+  if (allowed) {
+    if (props.loading) {
+      state.loading = props.loading
+    }
+    if (props.error.show && props.error.header && props.error.text) {
+      state.error = props.error
+    }
   }
 })
 
-watch(() => props.loading, (isLoading: boolean) => {
-  if (allowLoadingOverride.value) {
-    state.loading = isLoading
+// Watch the prop values and update the internal state when changed, only if `allowPropOverrides` is true
+watchEffect(() => {
+  if (allowPropOverrides.value) {
+    state.loading = props.loading
+    state.error = props.error
   }
-}, { immediate: true })
+})
 
 // Emit the loading state from the component whenever it is updated
 watch(() => state.loading, (isLoading: boolean) => {
@@ -212,9 +227,9 @@ watch(() => state.loading, (isLoading: boolean) => {
 })
 
 // Emit the loading state from the component whenever it is updated
-watch(() => state.error.show, (hasError: boolean) => {
-  emit('update:error', hasError)
-})
+watch(() => state.error, () => {
+  emit('update:error', state.error)
+}, { deep: true })
 
 // Set the active geo
 const geoSelected = (geo: Geo): void => {
@@ -239,7 +254,7 @@ const geoSelected = (geo: Geo): void => {
 
   // If the geo is already in the URL (unlikely) just refresh the page
   if (potentialGeoCode === state.activeGeo.code) {
-    win.setLocationHref(currentPath)
+    win.setLocationReplace(currentPath)
 
     return
   }
@@ -250,23 +265,25 @@ const geoSelected = (geo: Geo): void => {
   }
 
   // Redirect the user
-  win.setLocationHref(`/${state.activeGeo?.code}${currentPath}`)
+  win.setLocationReplace(`/${state.activeGeo?.code}${currentPath}`)
 }
 
-const { fetchAppShellConfig } = useAppShellConfig()
+const { init: initializeKAuth, error: kauthInitError } = useKAuthApi()
 const { initializeSession, session } = useSession()
 
-watch(session, () => {
-  emit('update:session', session.value)
+watch(session, (sessionData: SessionData | undefined) => {
+  if (sessionData) {
+    emit('update:session', sessionData)
+  }
 })
 
 onBeforeMount(async () => {
-  console.log('onBeforeMount')
-  // Must always fetch the appShellConfig first
-  const { error: appConfigError } = await fetchAppShellConfig()
+  // Initialize the KAuth client. This must be done before ALL other requests.
+  // This will also fetch the `kong-ui/config`
+  await initializeKAuth()
 
   // If there is an error fetching the app config, show the error UI
-  if (appConfigError.value) {
+  if (kauthInitError.value) {
     toggleErrorState(true, t('errors.app_config.header'), t('errors.app_config.text'))
     state.loading = false
 
@@ -298,13 +315,13 @@ onBeforeMount(async () => {
   // Try to retrieve the activeGeo
   state.activeGeo = getActiveGeo({ allowOverride: false })
 
+  // If geo not set, show region selection UI from Konnect App Shell
   if (!state.activeGeo?.code) {
-    console.log('Geo not set, show region selection UI from Konnect App Shell')
     // Clear the loading state which will display the geo selection form by default if state.activeGeo is not set
     state.loading = false
 
     // Allow the component props to now override the loading state, if needed
-    allowLoadingOverride.value = true
+    allowPropOverrides.value = true
 
     // Exit early
     return
@@ -315,24 +332,22 @@ onBeforeMount(async () => {
   const pathArray = currentPath?.split('/')
   // If the activeGeo or `global` is not in the URL, redirect the user to the root active geo with the existing path
   if (pathArray.length > 1 && state.activeGeo?.code && (pathArray[1] !== state.activeGeo.code && pathArray[1] !== GLOBAL_GEO_NAME)) {
-    win.setLocationHref(`/${state.activeGeo.code}${currentPath}`)
+    win.setLocationReplace(`/${state.activeGeo.code}${currentPath}`)
 
     // We sent the user to a new page; exit early
     return
   }
 
-  // Clear the loading state to allow showing the default slot content
+  // Allow the component props to now override the local state, if needed
+  allowPropOverrides.value = true
+
+  // Clear the local loading state to allow showing the default slot content (unless a prop value is overriding)
   state.loading = false
 
   // Await a tick to allow for a DOM refresh
   await nextTick()
 
   await new Promise((resolve) => setTimeout(resolve, 500))
-
-  // Allow the component props to now override the loading state, if needed
-  allowLoadingOverride.value = true
-
-  console.log('konnect app shell ready')
 
   // Emit a ready event - this should ALWAYS be last
   emit('ready')

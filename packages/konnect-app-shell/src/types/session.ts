@@ -1,5 +1,3 @@
-import { RouteLocationNormalized } from 'vue-router'
-
 export interface SessionUser {
   id: string
   email: string
@@ -35,5 +33,5 @@ export interface SessionOrganization {
 export interface SessionData {
   user?: SessionUser | null
   organization?: SessionOrganization | null
-  to?: Partial<RouteLocationNormalized> | string
+  to?: string | { path: string, name?: string, [key: string]: any }
 }

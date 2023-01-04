@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import sharedViteConfig from '../../vite.config.shared'
 import { resolve } from 'path'
 import { defineConfig, mergeConfig } from 'vite'

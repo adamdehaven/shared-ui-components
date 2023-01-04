@@ -1,12 +1,4 @@
-export interface WindowComposable {
-  getLocationHostname: () => string,
-  getLocationHref: () => string,
-  getLocationOrigin: () => string,
-  getLocationPathname: () => string,
-  getLocationSearch: () => string,
-  getUrlSearchParams: () => URLSearchParams,
-  setLocationHref: (url: string) => void
-}
+import type { WindowComposable } from './types'
 
 // Using a function to retrieve window.location properties so it can be stubbed in Cypress
 export default function useWindow(): WindowComposable {
@@ -26,6 +18,14 @@ export default function useWindow(): WindowComposable {
     window.location.href = url
   }
 
+  const setLocationAssign = (url: string): void => {
+    window.location.assign(url)
+  }
+
+  const setLocationReplace = (url: string): void => {
+    window.location.replace(url)
+  }
+
   return {
     getLocationSearch,
     getLocationHostname,
@@ -34,5 +34,7 @@ export default function useWindow(): WindowComposable {
     getLocationOrigin,
     getUrlSearchParams,
     setLocationHref,
+    setLocationAssign,
+    setLocationReplace,
   }
 }

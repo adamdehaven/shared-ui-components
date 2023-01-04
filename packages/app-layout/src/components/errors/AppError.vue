@@ -44,8 +44,13 @@ import BananaSplit from '../icons/BananaSplit.vue'
   }
 
   .kong-ui-app-error-content {
+    padding: 0 16px;
     opacity: 0;
     animation: .75s cubic-bezier(.785, .135, .15, .86) forwards fadeIn;
+
+    @media (min-width: $viewport-md) {
+      padding: 0 36px;
+    }
 
     @media (prefers-reduced-motion) {
       animation: none;

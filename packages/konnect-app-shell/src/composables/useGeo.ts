@@ -1,9 +1,8 @@
-import { ref, computed } from 'vue'
-import useSession from './useSession'
+import { ref, computed, readonly } from 'vue'
+import { useSession, useI18n } from './index'
 import { KHCP_GEO_LOCAL_STORAGE_KEY } from '../constants'
 import type { Geo } from '../types'
-import { createI18n, useWindow } from '@kong-ui/core'
-import english from '../locales/en.json'
+import { useWindow } from '@kong-ui/core'
 import { v5 as uuidv5 } from 'uuid'
 
 // Define the `geos` ref outside of the composable so that they persist across `useGeo` imports
@@ -51,12 +50,12 @@ export default function useGeo() {
    * Set the available geos
    * @param {string[]} geoCodes Array of two letter geo code strings
    */
-  const setAllGeos = (geoCodes: string[]): void => {
+  const setAllGeos = (geoCodes: string[] | readonly string[]): void => {
     if (typeof geoCodes === 'undefined') {
       return
     }
 
-    const i18n = createI18n('en-us', english)
+    const { i18n } = useI18n()
 
     const geoOptions = geoCodes.map((geoCode: string) => {
       return {
@@ -119,7 +118,7 @@ export default function useGeo() {
       // If the user is on the /login page, remove the query params and reload the page
       const currentPath = win.getLocationPathname()
       if (currentPath.includes('/login') && win.getLocationSearch().includes('loginSuccess')) {
-        win.setLocationHref(currentPath)
+        win.setLocationReplace(currentPath)
       } else {
         // Log to the console so DataDog will alert on the error
         console.error(err)
@@ -138,12 +137,13 @@ export default function useGeo() {
   }
 
   return {
-    geos,
+    geos: readonly(geos),
     activeGeo,
     activeGeoOverride,
     getActiveGeo,
     setAllGeos,
     setActiveGeo,
     setActiveGeoOverride,
+    geoLocalStorageKey,
   }
 }
