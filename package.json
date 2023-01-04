@@ -49,7 +49,7 @@
     "commitizen": "^4.2.6",
     "conventional-changelog-metahub": "^4.0.1",
     "cross-env": "^7.0.3",
-    "cypress": "^12.2.0",
+    "cypress": "^12.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.30.0",
     "eslint-plugin-cypress": "^2.12.1",
