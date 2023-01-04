@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.11.0...@kong-ui/konnect-app-shell@0.12.0) (2023-01-04)
+
+
+### ✨ Features
+
+* **konnect-app-shell:** kauth sdk ([#317](https://github.com/Kong/kong-ui-shared-components/issues/317)) ([302c339](https://github.com/Kong/kong-ui-shared-components/commit/302c33972c67e00605e56c76650726348f357fc4))
+
+
+### ♻️ Chores
+
+* missing coma in renovate.json config ([a438801](https://github.com/Kong/kong-ui-shared-components/commit/a4388019483d829acc42fe85c04aea59748c8530))
+* remove acidentaly committed changes ([a18b1aa](https://github.com/Kong/kong-ui-shared-components/commit/a18b1aaa143832fca98ed3873678fad5ce2e8472))
+
+
+
+
+
 # [0.11.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.10.1...@kong-ui/konnect-app-shell@0.11.0) (2022-12-23)
 
 

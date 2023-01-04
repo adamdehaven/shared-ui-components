@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.6.3...@kong-ui/core@0.7.0) (2023-01-04)
+
+
+### ✨ Features
+
+* **konnect-app-shell:** kauth sdk ([#317](https://github.com/Kong/kong-ui-shared-components/issues/317)) ([302c339](https://github.com/Kong/kong-ui-shared-components/commit/302c33972c67e00605e56c76650726348f357fc4))
+
+
+
+
+
 ## [0.6.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.6.2...@kong-ui/core@0.6.3) (2022-12-13)
 
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.10](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.9...@kong-ui/forms@0.6.10) (2023-01-04)
+
+**Note:** Version bump only for package @kong-ui/forms
+
+
+
+
+
 ## [0.6.9](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.8...@kong-ui/forms@0.6.9) (2023-01-04)
 
 
