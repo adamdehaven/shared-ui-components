@@ -190,7 +190,7 @@ importers:
     specifiers:
       '@kong-ui/app-layout': workspace:^0.5.1
       '@kong-ui/core': workspace:^0.7.0
-      '@kong/kauth-client-typescript-axios': ^0.1650.0
+      '@kong/kauth-client-typescript-axios': ^0.1685.0
       '@kong/kongponents': ^8.14.2
       '@types/uuid': ^9.0.0
       axios: ^1.2.2
@@ -198,7 +198,7 @@ importers:
     dependencies:
       '@kong-ui/app-layout': link:../app-layout
       '@kong-ui/core': link:../core
-      '@kong/kauth-client-typescript-axios': 0.1650.0
+      '@kong/kauth-client-typescript-axios': 0.1685.0
       axios: 1.2.2
       uuid: 9.0.0
     devDependencies:
@@ -980,8 +980,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@kong/kauth-client-typescript-axios/0.1650.0:
-    resolution: {integrity: sha512-NTFwzqxRiWsrK61LKccmTyWcBW0FRVvDlyMw1gTUxVkfv/MZVuhu1UiQoB6PUa8UDXmN31gtP7Rn7u+OgAYdGg==}
+  /@kong/kauth-client-typescript-axios/0.1685.0:
+    resolution: {integrity: sha512-gEU3dCP0rtPu4IllkmjY6vcTZ06QmD8ng/N/cZdxbihD7ZeUTlb3EajzPeGK0zITi4iRKG4lz3OdRkcFf3RN3g==}
     dev: false
 
   /@kong/kongponents/8.14.2:
