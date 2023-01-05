@@ -10,7 +10,7 @@ importers:
       '@datadog/datadog-ci': ^2.2.0
       '@digitalroute/cz-conventional-changelog-for-jira': ^7.5.1
       '@evilmartians/lefthook': ^1.2.6
-      '@kong/kongponents': ^8.14.2
+      '@kong/kongponents': ^8.14.3
       '@rushstack/eslint-patch': ^1.2.0
       '@types/flat': ^5.0.2
       '@types/inquirer': ^9.0.3
@@ -74,7 +74,7 @@ importers:
       '@datadog/datadog-ci': 2.2.0
       '@digitalroute/cz-conventional-changelog-for-jira': 7.5.1_@types+node@18.11.18
       '@evilmartians/lefthook': 1.2.6
-      '@kong/kongponents': 8.14.2_vue@3.2.45
+      '@kong/kongponents': 8.14.3_vue@3.2.45
       '@rushstack/eslint-patch': 1.2.0
       '@types/flat': 5.0.2
       '@types/inquirer': 9.0.3
@@ -134,7 +134,7 @@ importers:
 
   packages/app-layout:
     specifiers:
-      '@kong/kongponents': ^8.14.2
+      '@kong/kongponents': ^8.14.3
       '@types/lodash.clonedeep': ^4.5.7
       focus-trap: ^7.2.0
       focus-trap-vue: ^4.0.1
@@ -144,7 +144,7 @@ importers:
       focus-trap-vue: 4.0.1_focus-trap@7.2.0
       lodash.clonedeep: 4.5.0
     devDependencies:
-      '@kong/kongponents': 8.14.2
+      '@kong/kongponents': 8.14.3
       '@types/lodash.clonedeep': 4.5.7
 
   packages/cli:
@@ -153,11 +153,11 @@ importers:
   packages/copy-uuid:
     specifiers:
       '@kong-ui/core': workspace:^0.7.0
-      '@kong/kongponents': ^8.14.2
+      '@kong/kongponents': ^8.14.3
     dependencies:
       '@kong-ui/core': link:../core
     devDependencies:
-      '@kong/kongponents': 8.14.2
+      '@kong/kongponents': 8.14.3
 
   packages/core:
     specifiers:
@@ -191,7 +191,7 @@ importers:
       '@kong-ui/app-layout': workspace:^0.5.1
       '@kong-ui/core': workspace:^0.7.0
       '@kong/kauth-client-typescript-axios': ^0.1685.0
-      '@kong/kongponents': ^8.14.2
+      '@kong/kongponents': ^8.14.3
       '@types/uuid': ^9.0.0
       axios: ^1.2.2
       uuid: ^9.0.0
@@ -202,7 +202,7 @@ importers:
       axios: 1.2.2
       uuid: 9.0.0
     devDependencies:
-      '@kong/kongponents': 8.14.2
+      '@kong/kongponents': 8.14.3
       '@types/uuid': 9.0.0
 
 packages:
@@ -984,8 +984,8 @@ packages:
     resolution: {integrity: sha512-gEU3dCP0rtPu4IllkmjY6vcTZ06QmD8ng/N/cZdxbihD7ZeUTlb3EajzPeGK0zITi4iRKG4lz3OdRkcFf3RN3g==}
     dev: false
 
-  /@kong/kongponents/8.14.2:
-    resolution: {integrity: sha512-+HByTts0vlCKNvgHi7qA1PChhYHXc1RYAghy2QbrvUaESu0vrn9El3Mw0Cf28mA6rO7TytnltFfEjsGmA3VtVA==}
+  /@kong/kongponents/8.14.3:
+    resolution: {integrity: sha512-vCuLti0e77vx0qjTyAtBSDvx+7AK2wQwxkl+EubkAfFIVr0qHdaczyAjslmMdhxDapTg49pAqaDPn3mZQNGbcg==}
     engines: {node: '>=18.12.1 < 19'}
     peerDependencies:
       vue: '>= 3.2.37'
@@ -1005,8 +1005,8 @@ packages:
       - debug
     dev: true
 
-  /@kong/kongponents/8.14.2_vue@3.2.45:
-    resolution: {integrity: sha512-+HByTts0vlCKNvgHi7qA1PChhYHXc1RYAghy2QbrvUaESu0vrn9El3Mw0Cf28mA6rO7TytnltFfEjsGmA3VtVA==}
+  /@kong/kongponents/8.14.3_vue@3.2.45:
+    resolution: {integrity: sha512-vCuLti0e77vx0qjTyAtBSDvx+7AK2wQwxkl+EubkAfFIVr0qHdaczyAjslmMdhxDapTg49pAqaDPn3mZQNGbcg==}
     engines: {node: '>=18.12.1 < 19'}
     peerDependencies:
       vue: '>= 3.2.37'
