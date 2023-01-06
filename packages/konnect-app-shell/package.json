@@ -43,7 +43,7 @@
     "extends": "../../package.json"
   },
   "peerDependencies": {
-    "@kong/kongponents": "^8.15.0",
+    "@kong/kongponents": "^8.15.1",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
@@ -55,7 +55,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@kong/kongponents": "^8.15.0",
+    "@kong/kongponents": "^8.15.1",
     "@types/uuid": "^9.0.0"
   }
 }
