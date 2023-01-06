@@ -1,6 +1,7 @@
-export { default as useAppShellConfig } from './useAppShellConfig'
+export { default as useAppConfig } from './useAppConfig'
 export { default as useAppSidebar } from './useAppSidebar'
 export { default as useGeo } from './useGeo'
 export { default as useI18n } from './useI18n'
 export { default as useKAuthApi } from './useKAuthApi'
+export { default as useLaunchDarkly } from './useLaunchDarkly'
 export { default as useSession } from './useSession'

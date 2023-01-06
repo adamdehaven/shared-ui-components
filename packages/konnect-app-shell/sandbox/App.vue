@@ -11,6 +11,7 @@
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import type { KonnectAppShellSidebarItem, Geo, SessionData } from '../src/types'
+import { evaluateFeatureFlag } from '../src'
 
 const route = useRoute()
 const activeGeo = ref()
@@ -51,5 +52,7 @@ const sidebarItems = computed((): KonnectAppShellSidebarItem | null => {
 
 const appShellReady = (): void => {
   console.log('Konnect App Shell @ready event fired')
+
+  console.log('evaluateFeatureFlag', evaluateFeatureFlag('kp-14-multi-geo'))
 }
 </script>

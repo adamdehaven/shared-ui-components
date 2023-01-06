@@ -15,7 +15,7 @@ describe('useSession', async () => {
   const windowLocationSpy: SpyInstance<[], Partial<Location>> = vi.spyOn(window, 'location', 'get')
 
   beforeAll(() => {
-    const { config } = composables.useAppShellConfig()
+    const { config } = composables.useAppConfig()
     const configSpy = vi.spyOn(config, 'value', 'get')
     configSpy.mockReturnValue({
       env: 'production',
@@ -26,6 +26,10 @@ describe('useSession', async () => {
         v2: {
           global: '',
         },
+      },
+      launchDarkly: {
+        key: '',
+        platform_id: '',
       },
     })
 

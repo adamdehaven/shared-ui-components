@@ -52,6 +52,7 @@
     "@kong-ui/core": "workspace:^0.7.0",
     "@kong/kauth-client-typescript-axios": "^0.1688.0",
     "axios": "^1.2.2",
+    "launchdarkly-js-client-sdk": "^2.24.2",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

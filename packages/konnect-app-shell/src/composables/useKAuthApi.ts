@@ -2,14 +2,14 @@ import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { KAuthApi } from '../services'
 import type { KAuthApi as KAuthApiType } from '../services'
-import { useAppShellConfig } from './index'
+import { useAppConfig } from './index'
 
 // Initialize the kAuthApi ref outside the function for persistence
 const kAuthApi = ref<KAuthApiType>()
 
 export default function useKAuthApi() {
   const error = ref<boolean>(false)
-  const { config, error: appShellConfigError, fetchAppShellConfig } = useAppShellConfig()
+  const { config, error: appShellConfigError, fetchAppShellConfig } = useAppConfig()
 
   // This init function should only be called once; preferrably in the KonnectAppShell `onBeforeMount` hook.
   const init = async (): Promise<void> => {

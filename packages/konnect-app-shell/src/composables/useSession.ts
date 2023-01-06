@@ -1,7 +1,7 @@
 import { ref, computed, readonly } from 'vue'
 import type { Ref } from 'vue'
 import { RouteLocationNormalized } from 'vue-router'
-import { useKAuthApi } from './index'
+import { useKAuthApi, useLaunchDarkly } from './index'
 import { SESSION_NAME, CYPRESS_USER_SESSION_EXISTS } from '../constants'
 import type { SessionData, Tier } from '../types'
 import { useWindow } from '@kong-ui/core'
@@ -68,6 +68,18 @@ export default function useSession() {
       session.value = { ...(session.value || {}), ...userSessionData }
 
       await saveSessionData(session.value)
+
+      // Initialize DataDog with the actual user id
+      globalThis.DD_RUM && globalThis.DD_RUM.onReady(() => {
+        globalThis.DD_RUM.setUser({
+          id: session.value?.user?.id,
+          orgId: session.value?.organization?.id,
+        })
+      })
+
+      // Init Launch Darkly with session user before calling segment
+      const { initialize: initLaunchDarkly } = useLaunchDarkly()
+      await initLaunchDarkly()
 
       return {
         error: readonly(error),
@@ -147,7 +159,7 @@ export default function useSession() {
       const sessionDataRaw = localStorage?.getItem(SESSION_NAME) || encode(session.value) || encode({})
 
       if (!sessionDataRaw) {
-        return
+        return session.value
       }
 
       session.value = decode(sessionDataRaw)

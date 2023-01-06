@@ -5,7 +5,7 @@ import type { KongUiConfig } from '../types'
 // Initialize the config ref outside the function for persistence
 const config = ref<KongUiConfig>()
 
-export default function useAppShellConfig() {
+export default function useAppConfig() {
   const error = ref<Error>()
 
   const fetchAppShellConfig = async (): Promise<void> => {

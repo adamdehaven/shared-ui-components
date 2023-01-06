@@ -1,4 +1,5 @@
 export * from './config'
+export * from './feature-flags'
 export * from './geo'
 export * from './konnect-app-shell'
 export * from './routes'
