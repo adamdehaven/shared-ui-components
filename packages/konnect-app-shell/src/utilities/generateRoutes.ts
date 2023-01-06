@@ -1,5 +1,7 @@
-import { RouteRecordRaw } from 'vue-router'
+import { computed } from 'vue'
+import type { RouteRecordRaw } from 'vue-router'
 import type { GenerateRoutesParams } from '../types'
+import { useI18n } from '../composables'
 
 /**
  * Generate the vue-router:routes object with the required KonnectAppShell root and geo routes.
@@ -16,15 +18,33 @@ export default function generateRoutes({
   defaultHomeRouteName,
 }: GenerateRoutesParams): RouteRecordRaw[] {
   const routeType: string = type && ['geo', 'global'].includes(type) ? type : 'geo'
-  const rootRedirectRouteName: string = defaultHomeRouteName || String(routes[0]?.name || 'app-root')
+  const rootRedirectRoute = computed((): Partial<RouteRecordRaw> => {
+    const redirectRouteName = defaultHomeRouteName || String(routes[0]?.name || '')
+
+    if (redirectRouteName) {
+      return {
+        name: defaultHomeRouteName || String(routes[0]?.name || ''),
+      }
+    }
+
+    return {
+      path: routes[0]?.path,
+    }
+  })
+
+  const { i18n: { t } } = useI18n()
 
   // Create a variable to store the route.path that has an error
-  let routeWithError = ''
+  const routeWithError = {
+    name: '',
+    path: '',
+  }
   // Check all routes (and nested routes) to ensure none start with a slash. If so, throw error
   const routesAreValid = (appRoutes: RouteRecordRaw[]): boolean => {
     return appRoutes.every((r: RouteRecordRaw): boolean => {
       if (r.path.startsWith('/')) {
-        routeWithError = r.path
+        routeWithError.name = String(r.name || '')
+        routeWithError.path = r.path || ''
         return false
       }
 
@@ -38,7 +58,7 @@ export default function generateRoutes({
 
   // Throw an error if there is an invalid route
   if (!routesAreValid(routes)) {
-    throw new Error(`generateRoutes('${routeWithError}'): Route paths should not begin with a leading slash.`)
+    throw new Error(`${t('errors.routes.invalidPath')} generateRoutes({ name: '${routeWithError.name}', path: '${routeWithError.path}' })`)
   }
 
   const appRouteConfig: RouteRecordRaw[] = [
@@ -49,17 +69,30 @@ export default function generateRoutes({
         {
           path: routeType === 'geo' ? '/:geo([a-z]{2})' : '/global',
           name: routeType === 'geo' ? 'geo' : 'global',
-          redirect: { name: rootRedirectRouteName }, // Redirect to app home/landing page
+          redirect: rootRedirectRoute.value, // Redirect to app home/landing page
           children: [
             {
               path: konnectPrimaryRouteKey, // Must be a child of geo route and match the top-level root app path, e.g. 'mesh-manager'
               name: konnectPrimaryRouteKey,
-              redirect: { name: rootRedirectRouteName },
+              redirect: rootRedirectRoute.value, // Redirect to app home/landing page
               children: [
                 {
                   path: '',
                   name: 'konnect-app-shell-app-root',
-                  children: routes,
+                  redirect: rootRedirectRoute.value, // Redirect to app home/landing page
+                  children: [
+                    ...routes,
+                    {
+                      path: '404',
+                      name: 'not-found',
+                      alias: ':pathMatch(.*)*',
+                      component: () => import('../components/errors/GlobalError.vue'),
+                      props: {
+                        header: t('errors.not_found.header'),
+                        text: t('errors.not_found.text'),
+                      },
+                    },
+                  ],
                 },
               ],
             },

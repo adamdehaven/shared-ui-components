@@ -15,6 +15,9 @@
     }
   },
   "errors": {
+    "routes": {
+      "invalidPath": "Route paths should not begin with a leading slash."
+    },
     "unexpected": {
       "header": "An unexpected error has occurred",
       "text": "Go back to the previous page or <a href=\"/\">return home</a>."
@@ -31,7 +34,7 @@
     },
     "not_found": {
       "header": "404: Not found",
-      "text": "We can't find the page or resource you are looking for. <br>Go back to the previous page or return home."
+      "text": "We can't find the page or resource you are looking for. <br>Go back to the previous page or <a href=\"/\">return home</a>."
     },
     "unauthorized": {
       "header": "You don't have permissions to access this resource.",
