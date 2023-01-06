@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.12.11...@kong-ui/konnect-app-shell@0.13.0) (2023-01-06)
+
+
+### ✨ Features
+
+* **launch-darkly:** retrieve launch darkly flags [KHCP-5706] ([#335](https://github.com/Kong/kong-ui-shared-components/issues/335)) ([ec3e069](https://github.com/Kong/kong-ui-shared-components/commit/ec3e06913f3b0f84cfbcb2ad838817e04e26d357))
+
+
+
+
+
 ## [0.12.11](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.12.10...@kong-ui/konnect-app-shell@0.12.11) (2023-01-06)
 
 
