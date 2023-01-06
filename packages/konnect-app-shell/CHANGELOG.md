@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.10](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.12.9...@kong-ui/konnect-app-shell@0.12.10) (2023-01-06)
+
+
+### 🐛 Bug Fixes
+
+* **konnect-app-shell:** handle 404 routes [KHCP-5715] ([#344](https://github.com/Kong/kong-ui-shared-components/issues/344)) ([8d1a054](https://github.com/Kong/kong-ui-shared-components/commit/8d1a0545f91606e59e9c25c1261b910c889ed616))
+
+
+
+
+
 ## [0.12.9](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.12.8...@kong-ui/konnect-app-shell@0.12.9) (2023-01-06)
 
 
