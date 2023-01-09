@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/app-layout@0.5.5...@kong-ui/app-layout@0.6.0) (2023-01-09)
+
+
+### ✨ Features
+
+* **konnect-app-shell:** add trace id ([#359](https://github.com/Kong/kong-ui-shared-components/issues/359)) ([c06c8c9](https://github.com/Kong/kong-ui-shared-components/commit/c06c8c9b8697e9872124c8df8823f1bc0b4e219f))
+
+
+
+
+
 ## [0.5.5](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/app-layout@0.5.4...@kong-ui/app-layout@0.5.5) (2023-01-06)
 
 
