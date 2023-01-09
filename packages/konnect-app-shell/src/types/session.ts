@@ -2,9 +2,12 @@ export interface SessionUser {
   id: string
   email: string
   full_name: string
-  preferred_name: string,
-  is_owner: boolean,
-  feature_set: string,
+  preferred_name: string
+  is_owner: boolean
+  active: boolean
+  feature_set: string
+  created_at: string
+  updated_at: string
 }
 
 export type Tier = 'free' | 'plus' | 'enterprise' | '' | null
@@ -26,6 +29,9 @@ export interface SessionOrganization {
   billing_email: string
   owner_id: string
   entitlements: OrganizationEntitlements
+  isEnterprise: boolean
+  isPlus: boolean
+  isFree: boolean
   created_at: string
   updated_at: string
 }
@@ -33,5 +39,9 @@ export interface SessionOrganization {
 export interface SessionData {
   user?: SessionUser | null
   organization?: SessionOrganization | null
-  to?: string | { path: string, name?: string, [key: string]: any }
+  to?: string | {
+    path: string
+    name?: string
+    [key: string]: any
+  }
 }

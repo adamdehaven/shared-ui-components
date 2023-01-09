@@ -44,7 +44,10 @@ export default function useSession() {
           full_name: userMe?.data?.full_name || '',
           preferred_name: userMe?.data?.preferred_name || '',
           is_owner: !!userMe?.data?.id && (userMe?.data?.id === organizationMe?.data?.owner_id),
+          active: userMe?.data?.active,
           feature_set: userMe?.data?.feature_set || '',
+          created_at: userMe?.data?.created_at || '',
+          updated_at: userMe?.data?.updated_at || '',
         },
         organization: {
           id: organizationMe?.data?.id || '',
@@ -61,6 +64,11 @@ export default function useSession() {
           },
           created_at: organizationMe?.data?.created_at || '',
           updated_at: organizationMe?.data?.updated_at || '',
+          // Helpers
+          isEnterprise: organizationEntitlements?.data?.tier?.name === 'enterprise',
+          isPlus: organizationEntitlements?.data?.tier?.name === 'plus',
+          // Fallback to free tier if no tier can be determined
+          isFree: organizationEntitlements?.data?.tier?.name === 'free' || (organizationEntitlements?.data?.tier?.name !== 'enterprise' && organizationEntitlements?.data?.tier?.name !== 'plus'),
         },
       }
 
