@@ -14,6 +14,11 @@
       "submit": "Continue"
     }
   },
+  "copyTraceId": {
+    "traceId": "Trace ID",
+    "tooltipText": "Click to copy",
+    "success": "Copied!"
+  },
   "errors": {
     "routes": {
       "invalidPath": "Route paths should not begin with a leading slash."

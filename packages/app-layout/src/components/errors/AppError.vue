@@ -82,7 +82,7 @@ import BananaSplit from '../icons/BananaSplit.vue'
     h1, h2, h3, h4 {
       color: var(--black-500, #0b172d);
       margin-top: 0;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       font-size: 32px;
       font-weight: 600;
     }

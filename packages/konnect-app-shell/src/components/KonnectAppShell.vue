@@ -6,7 +6,6 @@
     :sidebar-profile-items="!hideSidebar ? profileItems : undefined"
     :sidebar-profile-name="!hideSidebar ? 'App User' : undefined"
     :sidebar-top-items="!hideSidebar ? topItems : undefined"
-    @sidebar-click="clearErrorState"
   >
     <template #notification>
       <slot name="notification" />
@@ -61,6 +60,7 @@
       v-if="state.error.show"
       :header="state.error.header"
       :text="state.error.text"
+      :trace-id="state.error.traceId"
     >
       <slot name="error" />
     </GlobalError>
@@ -124,10 +124,12 @@ const props = defineProps({
   // Show or hide the error state
   error: {
     type: Object as PropType<ErrorProp>,
+    // Should always default to show = false and empty values
     default: (): ErrorProp => ({
       show: false,
       header: '',
       text: '',
+      traceId: '',
     }),
   },
 })
@@ -147,6 +149,7 @@ const state: KonnectAppShellState = reactive({
     show: false, // Show the global error UI. Initial value should be `false`
     header: '',
     text: '',
+    traceId: '',
   },
 })
 
@@ -165,14 +168,11 @@ const hideSidebar = computed((): boolean => {
   return false
 })
 
-const toggleErrorState = (show: boolean, header: string, text?: string): void => {
+const toggleErrorState = (show: boolean, header: string, text?: string, traceId?: string): void => {
   state.error.header = header
   state.error.text = text || ''
+  state.error.traceId = traceId || ''
   state.error.show = show
-}
-
-const clearErrorState = (): void => {
-  toggleErrorState(false, '', '')
 }
 
 // Determine if the app content should be hidden if any of the following are true:
