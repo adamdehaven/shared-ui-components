@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.14.2...@kong-ui/konnect-app-shell@0.15.0) (2023-01-10)
+
+
+### ✨ Features
+
+* extracting GeoSwitcher from khcp-ui [KHCP-5516] ([#349](https://github.com/Kong/kong-ui-shared-components/issues/349)) ([20b8428](https://github.com/Kong/kong-ui-shared-components/commit/20b84286fd889ef66499a5c51c13f4102d870f33))
+
+
+
+
+
 ## [0.14.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.14.1...@kong-ui/konnect-app-shell@0.14.2) (2023-01-10)
 
 

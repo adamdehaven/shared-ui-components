@@ -152,7 +152,7 @@ importers:
 
   packages/copy-uuid:
     specifiers:
-      '@kong-ui/core': workspace:^0.7.0
+      '@kong-ui/core': workspace:^0.8.0
       '@kong/kongponents': ^8.16.0
     dependencies:
       '@kong-ui/core': link:../core
@@ -171,8 +171,8 @@ importers:
 
   packages/forms:
     specifiers:
-      '@kong-ui/app-layout': workspace:^0.6.1
-      '@kong-ui/core': workspace:^0.7.0
+      '@kong-ui/app-layout': workspace:^0.7.0
+      '@kong-ui/core': workspace:^0.8.0
       '@types/lodash': ^4.14.191
       fecha: ^4.2.3
       lodash: ^4.17.21
@@ -190,8 +190,8 @@ importers:
 
   packages/konnect-app-shell:
     specifiers:
-      '@kong-ui/app-layout': workspace:^0.6.1
-      '@kong-ui/core': workspace:^0.7.0
+      '@kong-ui/app-layout': workspace:^0.7.0
+      '@kong-ui/core': workspace:^0.8.0
       '@kong/kauth-client-typescript-axios': ^0.1692.0
       '@kong/kongponents': ^8.16.0
       '@types/uuid': ^9.0.0

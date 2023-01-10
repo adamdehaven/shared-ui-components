@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/app-layout@0.6.1...@kong-ui/app-layout@0.7.0) (2023-01-10)
+
+
+### ✨ Features
+
+* extracting GeoSwitcher from khcp-ui [KHCP-5516] ([#349](https://github.com/Kong/kong-ui-shared-components/issues/349)) ([20b8428](https://github.com/Kong/kong-ui-shared-components/commit/20b84286fd889ef66499a5c51c13f4102d870f33))
+
+
+
+
+
 ## [0.6.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/app-layout@0.6.0...@kong-ui/app-layout@0.6.1) (2023-01-10)
 
 
