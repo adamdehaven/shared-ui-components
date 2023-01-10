@@ -61,6 +61,7 @@ describe('GeoSwitcher component', () => {
 
   const { useGeo } = composables
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const mountComponent = async ({ global, geos = [], activeGeo = '', activeGeoOverride, path = '', tier = 'enterprise', ldFeatureFlags = [] }: GeoSwitcherMountOptions) => {
     const geoStore = useGeo()
 
