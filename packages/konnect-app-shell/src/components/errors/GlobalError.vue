@@ -15,10 +15,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { AppError } from '@kong-ui/app-layout'
+import composables from '../../composables'
 import CopyTraceId from './CopyTraceId.vue'
-import { useI18n } from '../../composables'
 
-const { i18n: { t } } = useI18n()
+const { i18n: { t } } = composables.useI18n()
 
 const props = defineProps({
   header: {

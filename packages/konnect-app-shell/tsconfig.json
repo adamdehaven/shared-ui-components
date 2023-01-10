@@ -12,7 +12,7 @@
   },
   "include": [
     "src/**/*",
-    "sandbox/**/*"
+    "sandbox/**/*",
   ],
   "exclude": [
     "node_modules",

@@ -8,7 +8,7 @@ import {
   OrganizationAPIApi,
   UserAPIApi,
 } from '@kong/kauth-client-typescript-axios'
-import { useI18n, useSession } from '../composables'
+import composables from '../composables'
 import { AUTH_ROUTES } from '../constants'
 import { useWindow } from '@kong-ui/core'
 
@@ -30,8 +30,8 @@ export default class KongAuthApi {
   users: UserAPIApi
 
   constructor(baseUrl: string = '/kauth') {
-    const { i18n: { t } } = useI18n()
-    const { exists, refresh, isRefreshing, destroy } = useSession()
+    const { i18n: { t } } = composables.useI18n()
+    const { exists, refresh, isRefreshing, destroy } = composables.useSession()
     const win = useWindow()
 
     this.baseUrl = baseUrl || ''

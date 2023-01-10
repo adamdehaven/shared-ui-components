@@ -14,10 +14,6 @@ export default function useWindow(): WindowComposable {
 
   const getUrlSearchParams = (): URLSearchParams => new URLSearchParams(getLocationSearch())
 
-  const setLocationHref = (url: string): void => {
-    window.location.href = url
-  }
-
   const setLocationAssign = (url: string): void => {
     window.location.assign(url)
   }
@@ -33,7 +29,6 @@ export default function useWindow(): WindowComposable {
     getLocationPathname,
     getLocationOrigin,
     getUrlSearchParams,
-    setLocationHref,
     setLocationAssign,
     setLocationReplace,
   }

@@ -1,13 +1,13 @@
 import { ref, computed } from 'vue'
 import { GLOBAL_GEO_PATH } from '../constants'
-import { useGeo } from './index'
+import composables from './'
 import type { KonnectAppShellSidebarItem, KonnectAppShellSidebarPrimaryItem } from '../types'
 import type { SidebarPrimaryItem, SidebarProfileItem } from '@kong-ui/app-layout'
 
 export default function useAppSidebar() {
   const hostAppSidebarItem = ref<KonnectAppShellSidebarItem>()
   // activeGeo may be undefined at first, but everything in this function is reactive so they should update
-  const { activeGeo } = useGeo()
+  const { activeGeo } = composables.useGeo()
   // Default to a leading-slash so the KonnectAppShell will redirect accordingly as a fallback
   const activeGeoPath = computed((): string => activeGeo.value ? `/${activeGeo.value.code}/` : '/')
 

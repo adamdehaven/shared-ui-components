@@ -1,5 +1,5 @@
 import { ref, computed, readonly } from 'vue'
-import { useSession, useI18n } from './index'
+import composables from './'
 import { KHCP_GEO_LOCAL_STORAGE_KEY } from '../constants'
 import type { Geo } from '../types'
 import { useWindow } from '@kong-ui/core'
@@ -9,7 +9,7 @@ import { v5 as uuidv5 } from 'uuid'
 const geos = ref<Geo[]>([])
 
 export default function useGeo() {
-  const { session } = useSession()
+  const { session } = composables.useSession()
   // This computed variable will NOT respect an active override
   const activeGeo = computed((): Geo | undefined => geos.value.find((geo: Geo) => geo.isActive === true) || undefined)
   // Must return null if no override is defined
@@ -55,7 +55,7 @@ export default function useGeo() {
       return
     }
 
-    const { i18n } = useI18n()
+    const { i18n } = composables.useI18n()
 
     const geoOptions = geoCodes.map((geoCode: string) => {
       return {

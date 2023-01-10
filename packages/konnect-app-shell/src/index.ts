@@ -1,5 +1,6 @@
 import type { App } from 'vue'
 import KonnectAppShell from './components/KonnectAppShell.vue'
+import GeoSwitcher from './components/GeoSwitcher.vue'
 import type { SidebarPrimaryItem, SidebarSecondaryItem, SidebarProfileItem } from '@kong-ui/app-layout'
 
 // Export Vue plugin as the default
@@ -14,6 +15,8 @@ export default {
 
 export * from './utilities'
 export * from './types'
+export { GeoSwitcher }
+
 // Export types from '@kong-ui/app-layout'
 export type {
   SidebarPrimaryItem,

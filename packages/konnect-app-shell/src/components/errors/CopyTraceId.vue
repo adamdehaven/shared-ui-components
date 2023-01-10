@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useI18n } from '../../composables'
+import composables from '../../composables'
 
 const props = defineProps({
   traceId: {
@@ -31,7 +31,7 @@ const props = defineProps({
   },
 })
 
-const { i18n: { t } } = useI18n()
+const { i18n: { t } } = composables.useI18n()
 const tooltipText = ref(t('copyTraceId.tooltipText'))
 
 const onCopyTraceId = async (copyToClipboard: (str: string) => Promise<boolean>): Promise<void> => {

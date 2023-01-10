@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach, beforeAll, SpyInstance } from 'vitest'
-import * as composables from '../index'
+import composables from '../index'
 import { KHCP_GEO_LOCAL_STORAGE_KEY } from '../../constants'
 import { v4 as uuidv4, v5 as uuidv5 } from 'uuid'
 

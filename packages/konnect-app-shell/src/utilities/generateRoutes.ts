@@ -1,7 +1,7 @@
 import { computed } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
 import type { GenerateRoutesParams } from '../types'
-import { useI18n } from '../composables'
+import composables from '../composables'
 
 /**
  * Generate the vue-router:routes object with the required KonnectAppShell root and geo routes.
@@ -32,7 +32,7 @@ export default function generateRoutes({
     }
   })
 
-  const { i18n: { t } } = useI18n()
+  const { i18n: { t } } = composables.useI18n()
 
   // Create a variable to store the route.path that has an error
   const routeWithError = {

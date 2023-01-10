@@ -63,7 +63,7 @@
 
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue'
-import { useGeo, useI18n } from '../../composables'
+import composables from '../../composables'
 import type { GeoSelectOptionItem, Geo } from '../../types'
 import { KonnectLogo } from '@kong-ui/app-layout'
 
@@ -71,8 +71,8 @@ const emit = defineEmits<{
   (e: 'select', geo: Geo): void,
 }>()
 
-const { i18n: { t } } = useI18n()
-const { geos, setActiveGeo, getActiveGeo } = useGeo()
+const { i18n: { t } } = composables.useI18n()
+const { geos, setActiveGeo, getActiveGeo } = composables.useGeo()
 const loading = ref<boolean>(false)
 
 const regionOptions = computed((): GeoSelectOptionItem[] => {

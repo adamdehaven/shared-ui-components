@@ -1,7 +1,7 @@
 import { ref, computed, readonly } from 'vue'
 import type { Ref } from 'vue'
 import { RouteLocationNormalized } from 'vue-router'
-import { useKAuthApi, useLaunchDarkly } from './index'
+import composables from './'
 import { SESSION_NAME, CYPRESS_USER_SESSION_EXISTS } from '../constants'
 import type { SessionData, Tier } from '../types'
 import { useWindow } from '@kong-ui/core'
@@ -12,7 +12,7 @@ export default function useSession() {
   const isRefreshing = ref<boolean>(false)
   const isLoggingOut = ref<boolean>(false)
 
-  const { kAuthApi } = useKAuthApi()
+  const { kAuthApi } = composables.useKAuthApi()
   const win = useWindow()
 
   const fetchSessionData = async (): Promise<{
@@ -86,7 +86,7 @@ export default function useSession() {
       })
 
       // Init Launch Darkly with session user before calling segment
-      const { initialize: initLaunchDarkly } = useLaunchDarkly()
+      const { initialize: initLaunchDarkly } = composables.useLaunchDarkly()
       await initLaunchDarkly()
 
       return {
@@ -210,8 +210,6 @@ export default function useSession() {
       if (response?.status === 200) {
         // refresh data
         await saveSessionData(await fetchLocalStorageData())
-
-        console.log('here', await fetchLocalStorageData())
 
         // Successful refresh, session did not expire
         return false

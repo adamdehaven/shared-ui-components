@@ -1,10 +1,12 @@
-import { ref } from 'vue'
+import { ref, readonly } from 'vue'
 import * as ld from 'launchdarkly-js-client-sdk'
 import type { LDClient, LDUser, LDFlagValue } from 'launchdarkly-js-client-sdk'
-import { useSession, useAppConfig } from './index'
+import composables from './'
 import type { FeatureFlags } from '../types'
 
+// Keep these refs outside the function for persistence
 const ldClient = ref<LDClient>()
+const isInitialized = ref(false)
 
 /**
  * Evaluate the provided Launch Darkly feature flag
@@ -16,13 +18,12 @@ export const evaluateFeatureFlag = (key: FeatureFlags | string, defaultValue: LD
   if (!ldClient.value) {
     return defaultValue
   }
-
   return ldClient.value?.variation(key, defaultValue)
 }
 
 export default function useLaunchDarkly() {
-  const { session, exists: sessionExists } = useSession()
-  const { config } = useAppConfig()
+  const { session, exists: sessionExists } = composables.useSession()
+  const { config } = composables.useAppConfig()
 
   /**
    * Returns an LDUser object for either the active user, or an anonymous user if no session exists
@@ -82,11 +83,14 @@ export default function useLaunchDarkly() {
       )
 
       await ldClient.value.waitUntilReady()
+
+      isInitialized.value = true
     }
   }
 
   return {
     initialize,
+    isInitialized: readonly(isInitialized),
     ldClient,
     evaluateFeatureFlag,
   }

@@ -7,6 +7,7 @@
     "global": "Global",
     "global_disabled_tooltip": "The current data view and its configuration apply globally across the system and all regions for your organization.",
     "region_label": "Region",
+    "more_regions": "More regions",
     "selection": {
       "instruction_text": "Select a region to continue to your Konnect platform.",
       "region_select_label": "Region",

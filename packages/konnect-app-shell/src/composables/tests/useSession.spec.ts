@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach, beforeAll, SpyInstance } from 'vitest'
-import * as composables from '../index'
+import composables from '../index'
 import { SESSION_NAME } from '../../constants'
 import { SessionData } from '../../types'
 import { v4 as uuidv4 } from 'uuid'

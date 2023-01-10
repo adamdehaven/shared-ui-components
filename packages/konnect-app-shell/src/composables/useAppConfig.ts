@@ -21,6 +21,7 @@ export default function useAppConfig() {
       // Store the config data
       config.value = data
     } catch (err: any) {
+      console.log(err)
       error.value = err
     }
   }

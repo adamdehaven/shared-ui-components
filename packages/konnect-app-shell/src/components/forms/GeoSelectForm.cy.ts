@@ -1,13 +1,13 @@
 // Cypress component test spec file
 
 import GeoSelectForm from './GeoSelectForm.vue'
-import { useGeo, useI18n } from '../../composables'
+import composables from '../../composables'
 
 describe('<GeoSelectForm />', () => {
-  const { i18n: { t } } = useI18n()
+  const { i18n: { t } } = composables.useI18n()
 
   before(() => {
-    const { setAllGeos } = useGeo()
+    const { setAllGeos } = composables.useGeo()
 
     // Set available geos
     setAllGeos(['us', 'eu'])

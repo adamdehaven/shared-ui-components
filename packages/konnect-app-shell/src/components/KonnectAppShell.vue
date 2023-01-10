@@ -22,6 +22,12 @@
         </div>
       </a>
       <slot name="navbar" />
+      &nbsp;
+      <div class="top-right-container">
+        <GeoSwitcher
+          global
+        />
+      </div>
     </template>
     <template #navbar-mobile-logo>
       <a href="/">
@@ -81,13 +87,15 @@ import { computed, reactive, ref, watch, watchEffect, PropType, onBeforeMount, n
 import { AppLayout, GruceLogo, KonnectLogo } from '@kong-ui/app-layout'
 import type { SidebarSecondaryItem } from '@kong-ui/app-layout'
 import { useWindow } from '@kong-ui/core'
-import { useSession, useAppSidebar, useGeo, useI18n, useKAuthApi } from '../composables'
+import composables from '../composables'
 import { GLOBAL_GEO_NAME } from '../constants'
 import type { KonnectAppShellSidebarItem, Geo, KonnectAppShellState, SessionData, ErrorProp } from '../types'
 import GeoSelectForm from './forms/GeoSelectForm.vue'
 import GlobalError from './errors/GlobalError.vue'
 import '@kong-ui/app-layout/dist/style.css'
+import GeoSwitcher from './GeoSwitcher.vue'
 
+const { useSession, useAppSidebar, useGeo, useI18n, useKAuthApi } = composables
 const props = defineProps({
   // Provide the secondary sidebar items that should be injected into the top-level primary item with the corresponding `parentKey`
   sidebarItems: {
@@ -404,5 +412,9 @@ export default {
   @media (min-width: $viewport-md) {
     display: flex;
   }
+}
+.top-right-container {
+  display: flex;
+  align-items: center;
 }
 </style>
