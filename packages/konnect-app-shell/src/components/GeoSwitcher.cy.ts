@@ -61,7 +61,7 @@ describe('GeoSwitcher component', () => {
 
   const { useGeo } = composables
 
-  const mountComponent = async ({ global, geos = [], activeGeo = '', activeGeoOverride = null, path = '', tier = 'enterprise', ldFeatureFlags = [] }: GeoSwitcherMountOptions) => {
+  const mountComponent = async ({ global, geos = [], activeGeo = '', activeGeoOverride, path = '', tier = 'enterprise', ldFeatureFlags = [] }: GeoSwitcherMountOptions) => {
     const geoStore = useGeo()
 
     // Stub feature flags
@@ -88,7 +88,9 @@ describe('GeoSwitcher component', () => {
     geoStore.setActiveGeo(activeGeo)
     // Set the active geo override
 
-    geoStore.setActiveGeoOverride(activeGeoOverride)
+    if (activeGeoOverride) {
+      geoStore.setActiveGeoOverride(activeGeoOverride)
+    }
 
     cy.viewport(600, 400)
 
@@ -182,7 +184,7 @@ describe('GeoSwitcher component', () => {
     })
 
     it('should reload the page when geo changed', () => {
-      let called
+      let called: string
 
       cy.stub(composables, 'useWindow').returns({
         getLocationOrigin: () => 'https://origin',
