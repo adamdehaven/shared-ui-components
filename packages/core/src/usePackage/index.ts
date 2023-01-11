@@ -20,7 +20,7 @@ export default function usePackage({ script, styles, onReady }: ImportParams): {
 
     // Import ES Module(s)
     if (importType === 'es') {
-      await import(/* @vite-ignore */ url)
+      await import(/* @vite-ignore */ /* webpackIgnore: true */ url)
 
       // Call onReady function now that package is imported
       if (typeof onReady === 'function') {
