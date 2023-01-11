@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.8.0...@kong-ui/core@0.8.1) (2023-01-11)
+
+
+### 🐛 Bug Fixes
+
+* **core:** dynamic import vite error ([#378](https://github.com/Kong/kong-ui-shared-components/issues/378)) ([3b1199f](https://github.com/Kong/kong-ui-shared-components/commit/3b1199f75bfba77fb8800de79e5482ed8445c150))
+
+
+
+
+
 # [0.8.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/core@0.7.0...@kong-ui/core@0.8.0) (2023-01-10)
 
 
