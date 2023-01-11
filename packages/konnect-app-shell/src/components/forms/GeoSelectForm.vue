@@ -65,7 +65,7 @@
 import { computed, ref, watchEffect } from 'vue'
 import composables from '../../composables'
 import type { GeoSelectOptionItem, Geo } from '../../types'
-import { KonnectLogo } from '@kong-ui/app-layout'
+import { KonnectLogo } from '../icons'
 
 const emit = defineEmits<{
   (e: 'select', geo: Geo): void,

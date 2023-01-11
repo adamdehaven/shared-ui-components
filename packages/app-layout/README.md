@@ -38,8 +38,6 @@ A Kong UI application layout component that provides a responsive navbar, sideba
 - `AppNavbar.vue`
 - `AppSidebar.vue`
 - `AppError.vue`
-- `GruceLogo.vue`
-- `KonnectLogo.vue`
 
 Reference the [individual component docs](#individual-component-documentation) for more info.
 

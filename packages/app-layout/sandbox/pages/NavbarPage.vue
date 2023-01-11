@@ -5,9 +5,9 @@
         class="navbar-logo-link"
         href="/"
       >
-        <GruceLogo />
+        <AppGruceLogo />
         <div class="logo-title">
-          <KonnectLogo theme="light" />
+          <AppLogo theme="light" />
         </div>
       </a>
     </template>
@@ -21,7 +21,8 @@
 </template>
 
 <script setup lang="ts">
-import { AppNavbar, GruceLogo, KonnectLogo } from '../../src'
+import { AppNavbar } from '../../src'
+import { AppLogo, AppGruceLogo } from '../components/icons'
 // Sandbox only
 import NavLinks from '../components/NavLinks.vue'
 </script>

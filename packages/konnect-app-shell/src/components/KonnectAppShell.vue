@@ -84,7 +84,8 @@
 
 <script setup lang="ts">
 import { computed, reactive, ref, watch, watchEffect, PropType, onBeforeMount, nextTick } from 'vue'
-import { AppLayout, GruceLogo, KonnectLogo } from '@kong-ui/app-layout'
+import { AppLayout } from '@kong-ui/app-layout'
+import { GruceLogo, KonnectLogo } from './icons'
 import type { SidebarSecondaryItem } from '@kong-ui/app-layout'
 import { useWindow } from '@kong-ui/core'
 import composables from '../composables'

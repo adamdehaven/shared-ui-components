@@ -30,9 +30,9 @@
             class="d-flex align-items-center w-100"
             to="/"
           >
-            <GruceLogo />
+            <AppGruceLogo />
             <div class="d-flex pl-4 konnect-header-title">
-              <KonnectLogo theme="dark" />
+              <AppLogo theme="dark" />
             </div>
           </router-link>
         </div>
@@ -51,8 +51,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { AppSidebar, SidebarToggle, SidebarPrimaryItem, SidebarProfileItem, SidebarSecondaryItem } from '../../src'
-import GruceLogo from '../../src/components/icons/GruceLogo.vue'
-import KonnectLogo from '../../src/components/icons/KonnectLogo.vue'
+import { AppLogo, AppGruceLogo } from '../components/icons'
 import '@kong/kongponents/dist/style.css'
 // Sandbox only
 import NavLinks from '../components/NavLinks.vue'

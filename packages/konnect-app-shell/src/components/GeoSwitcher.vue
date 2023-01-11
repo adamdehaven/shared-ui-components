@@ -76,7 +76,9 @@ import composables from '../composables'
 import type { Geo } from '../types'
 
 import type { NavbarDropdownMenuItem } from '@kong-ui/app-layout'
-import { ExternalLink, NavbarDropdownMenu, KonnectEnterpriseLogo } from '@kong-ui/app-layout'
+import { ExternalLink, NavbarDropdownMenu } from '@kong-ui/app-layout'
+import { KonnectEnterpriseLogo } from './icons'
+
 import { FeatureFlags } from '../types'
 
 const props = defineProps({

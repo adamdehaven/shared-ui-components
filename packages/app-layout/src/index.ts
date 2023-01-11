@@ -6,9 +6,6 @@ import NavbarDropdownMenu from './components/navbar/NavbarDropdownMenu.vue'
 import AppSidebar from './components/sidebar/AppSidebar.vue'
 import SidebarToggle from './components/sidebar/SidebarToggle.vue'
 import AppError from './components/errors/AppError.vue'
-import GruceLogo from './components/icons/GruceLogo.vue'
-import KonnectLogo from './components/icons/KonnectLogo.vue'
-import KonnectEnterpriseLogo from './components/icons/KonnectEnterpriseLogo.vue'
 import ExternalLink from './components/ExternalLink.vue'
 
 // Export Vue plugin as the default
@@ -28,9 +25,6 @@ export {
   AppSidebar,
   SidebarToggle,
   AppError,
-  GruceLogo,
-  KonnectLogo,
-  KonnectEnterpriseLogo,
   ExternalLink,
   NavbarDropdownMenu,
 }
