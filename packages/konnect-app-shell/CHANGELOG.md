@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.16.1...@kong-ui/konnect-app-shell@0.16.2) (2023-01-11)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.18.1 ([#376](https://github.com/Kong/kong-ui-shared-components/issues/376)) ([8cf2286](https://github.com/Kong/kong-ui-shared-components/commit/8cf22860b76205766eee3b397b12bba5c545895a))
+
+
+
+
+
 ## [0.16.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.16.0...@kong-ui/konnect-app-shell@0.16.1) (2023-01-11)
 
 

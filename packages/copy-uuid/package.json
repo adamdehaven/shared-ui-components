@@ -1,6 +1,6 @@
 {
   "name": "@kong-ui/copy-uuid",
-  "version": "0.6.10",
+  "version": "0.6.11",
   "type": "module",
   "main": "./dist/copy-uuid.umd.js",
   "module": "./dist/copy-uuid.es.js",
