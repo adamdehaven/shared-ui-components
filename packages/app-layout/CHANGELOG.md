@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/app-layout@0.7.1...@kong-ui/app-layout@0.8.0) (2023-01-11)
+
+
+### 📦 Code Refactoring
+
+* move KonnectLogos app-layout > konnect-app-shell [KHCP-5746] ([#369](https://github.com/Kong/kong-ui-shared-components/issues/369)) ([17bd66a](https://github.com/Kong/kong-ui-shared-components/commit/17bd66a247f54034d4362770a4e940e42da93009))
+
+
+### Breaking changes
+
+* move KonnectLogos from app-layout package to konnect-app-shell package
+
+
+
+
+
 ## [0.7.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/app-layout@0.7.0...@kong-ui/app-layout@0.7.1) (2023-01-11)
 
 
