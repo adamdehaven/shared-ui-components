@@ -27,7 +27,7 @@ Here are some criteria to help figure out if your code belongs to this mono-repo
 
 - You are creating component(s) that may have some business domain-specific logic or internal Kong/Konnect look-and-feel, and you do not want to expose in our public [Kongponents component library](https://github.com/Kong/kongponents).
 - You are writing component/code that is to be used in multiple applications (e.g. Konnect and Konnect Admin, or Konnect and Mesh, etc.).
-- Your code is about UI. If you are wring the code to be used on the backend, then [shared-js](https://github.com/Kong/shared-js) is the better choice.
+- Your code is about UI. If you are writing code to be used on the backend, then [shared-js](https://github.com/Kong/shared-js) is the better choice.
 
 
 ## Creating a package
