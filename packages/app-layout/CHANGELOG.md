@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/app-layout@0.8.2...@kong-ui/app-layout@0.8.3) (2023-01-12)
+
+
+### 🐛 Bug Fixes
+
+* **app-layout:** prep for kong manager integration [KHCP-5749] ([#371](https://github.com/Kong/kong-ui-shared-components/issues/371)) ([7a00e2f](https://github.com/Kong/kong-ui-shared-components/commit/7a00e2ffe8472f15c94c2fa52e2be0694614317e))
+
+
+
+
+
 ## [0.8.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/app-layout@0.8.1...@kong-ui/app-layout@0.8.2) (2023-01-11)
 
 
