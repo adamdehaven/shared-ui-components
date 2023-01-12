@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.16.8...@kong-ui/konnect-app-shell@0.17.0) (2023-01-12)
+
+
+### ✨ Features
+
+* [KHCP-5530] introducing HelpDropdown ([#375](https://github.com/Kong/kong-ui-shared-components/issues/375)) ([3b9f731](https://github.com/Kong/kong-ui-shared-components/commit/3b9f731118f72029cdd7fef4a03a78937971af42))
+
+
+
+
+
 ## [0.16.8](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/konnect-app-shell@0.16.7...@kong-ui/konnect-app-shell@0.16.8) (2023-01-12)
 
 
