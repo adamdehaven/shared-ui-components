@@ -1,4 +1,14 @@
 {
+  "navbar": {
+    "help_menu": {
+      "documentation_link": "Documentation",
+      "status_link": "Platform Status",
+      "support_link": "Support Portal",
+      "goto_quick_start": "Quick Start",
+      "copy_orgid_tooltip": "Copy Organization ID",
+      "copy_orgid_success": "Organization ID copied to clipboard"
+    }
+  },
   "geo": {
     "available_geos": {
       "us": "US (North America)",

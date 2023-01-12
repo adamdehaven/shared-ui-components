@@ -32,7 +32,7 @@
           class="width-100"
           data-testid="geo-switcher-global-more-regions-option-link"
           hide-icon
-          :href="pricingURL"
+          :href="externalLinks.pricing"
         >
           <div class="display-block">
             <div>{{ t('geo.more_regions') }}</div>
@@ -80,6 +80,7 @@ import { ExternalLink, NavbarDropdownMenu } from '@kong-ui/app-layout'
 import { KonnectEnterpriseLogo } from './icons'
 
 import { FeatureFlags } from '../types'
+import externalLinks from '../external-links'
 
 const props = defineProps({
   /**
@@ -185,8 +186,6 @@ const onGeoChange = (item: NavbarDropdownMenuItem): void => {
   // Emit the new value for non-global usage
   emit('change', geos.value.filter((geo: Geo) => geo.code === item.value)[0])
 }
-
-const pricingURL = 'https://konghq.com/pricing'
 
 </script>
 

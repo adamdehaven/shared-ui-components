@@ -27,6 +27,7 @@
         <GeoSwitcher
           global
         />
+        <HelpDropdown />
       </div>
     </template>
     <template #navbar-mobile-logo>
@@ -95,6 +96,7 @@ import GeoSelectForm from './forms/GeoSelectForm.vue'
 import GlobalError from './errors/GlobalError.vue'
 import '@kong-ui/app-layout/dist/style.css'
 import GeoSwitcher from './GeoSwitcher.vue'
+import HelpDropdown from './HelpDropdown.vue'
 
 const { useSession, useAppSidebar, useGeo, useI18n, useKAuthApi } = composables
 const props = defineProps({
