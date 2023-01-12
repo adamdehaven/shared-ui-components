@@ -20,7 +20,7 @@ A Kong UI application layout component that provides a responsive navbar, sideba
 
 - Responsive navbar component ([see the navbar docs for more info](docs/navbar.md))
 - Responsive sidebar component ([see the sidebar docs for more info](docs/sidebar.md))
-- Main content slot with pre-configured CSS reset, styles, etc.
+- Main content slot with pre-configured styles, etc.
 - Ability to takeover the default slot content for displaying global error states or other content
 
 ## Requirements
@@ -36,7 +36,9 @@ A Kong UI application layout component that provides a responsive navbar, sideba
 
 - `AppLayout.vue`
 - `AppNavbar.vue`
+- `NavbarDropdownMenu.vue`
 - `AppSidebar.vue`
+- `SidebarToggle.vue`
 - `AppError.vue`
 
 Reference the [individual component docs](#individual-component-documentation) for more info.
@@ -72,8 +74,9 @@ Alternatively, import the component within your application's root component.
 import { AppLayout } from '@kong-ui/app-layout'
 ```
 
-
 ## Usage
+
+> **Note**: TODO - for now, you can reference the sandbox app `pnpm --filter "@kong-ui/app-layout" run dev`
 
 ### Props
 

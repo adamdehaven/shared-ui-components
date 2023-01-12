@@ -67,7 +67,7 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
   return [
     {
       name: 'Overview',
-      to: '/?overview',
+      to: '/sidebar/?overview',
       // external: true,
       newWindow: true,
       key: 'overview',
@@ -77,7 +77,7 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
     },
     {
       name: 'Runtime Manager',
-      to: '/?runtime-manager',
+      to: '/sidebar/?runtime-manager',
       label: 'retail-sandbox-rg', // runtime group name
       key: 'runtime-manager',
       active: (activeItem.value as SidebarPrimaryItem)?.key === 'runtime-manager',
@@ -87,42 +87,42 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
       items: [
         {
           name: 'Runtime Instances',
-          to: '/?runtime-instances',
+          to: '/sidebar/?runtime-instances',
           active: activeItem.value?.name === 'Runtime Instances',
         },
         {
           name: 'Gateway Services',
-          to: '/?gateway-services',
+          to: '/sidebar/?gateway-services',
           active: activeItem.value?.name === 'Gateway Services',
         },
         {
           name: 'Routes',
-          to: '/?routes',
+          to: '/sidebar/?routes',
           active: activeItem.value?.name === 'Routes',
         },
         {
           name: 'Consumers',
-          to: '/?consumers',
+          to: '/sidebar/?consumers',
           active: activeItem.value?.name === 'Consumers',
         },
         {
           name: 'Plugins',
-          to: '/?plugins',
+          to: '/sidebar/?plugins',
           active: activeItem.value?.name === 'Plugins',
         },
         {
           name: 'Upstreams',
-          to: '/?upstreams',
+          to: '/sidebar/?upstreams',
           active: activeItem.value?.name === 'Upstreams',
         },
         {
           name: 'Certificates',
-          to: '/?certificates',
+          to: '/sidebar/?certificates',
           active: activeItem.value?.name === 'Certificates',
         },
         {
           name: 'SNIs',
-          to: '/?snis',
+          to: '/sidebar/?snis',
           active: activeItem.value?.name === 'SNIs',
         },
       ],
@@ -130,7 +130,7 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
     {
       name: 'Service Hub',
       key: 'servicehub',
-      to: '/?servicehub',
+      to: '/sidebar/?servicehub',
       label: 'Deloreans',
       active: (activeItem.value as SidebarPrimaryItem)?.key === 'servicehub',
       // TODO: actually when you click on Service Hub it would not expand until the user picks a service
@@ -139,12 +139,12 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
       items: [
         {
           name: 'Overview',
-          to: '/?service-overview',
+          to: '/sidebar/?service-overview',
           active: activeItem.value?.name === 'Overview',
         },
         {
           name: 'Versions',
-          to: '/?service-versions',
+          to: '/sidebar/?service-versions',
           active: activeItem.value?.name === 'Versions',
         },
       ],
@@ -152,7 +152,7 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
     {
       name: 'Dev Portal',
       key: 'dev-portal',
-      to: '/?dev-portal',
+      to: '/sidebar/?dev-portal',
       active: (activeItem.value as SidebarPrimaryItem)?.key === 'dev-portal',
       // This item can always show the subnav
       expanded: (activeItem.value as SidebarPrimaryItem)?.key === 'dev-portal' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'dev-portal',
@@ -160,33 +160,33 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
       items: [
         {
           name: 'Published Services',
-          to: '/?published-services',
+          to: '/sidebar/?published-services',
           active: activeItem.value?.name === 'Published Services',
         },
         {
           name: 'Appearance',
-          to: '/?appearance',
+          to: '/sidebar/?appearance',
           active: activeItem.value?.name === 'Appearance',
         },
         {
           name: 'Access Requests',
-          to: '/?access-requests',
+          to: '/sidebar/?access-requests',
           active: activeItem.value?.name === 'Access Requests',
           badgeCount: 100,
         },
         {
           name: 'Developers',
-          to: '/?developers',
+          to: '/sidebar/?developers',
           active: activeItem.value?.name === 'Developers',
         },
         {
           name: 'Applications',
-          to: '/?applications',
+          to: '/sidebar/?applications',
           active: activeItem.value?.name === 'Applications',
         },
         {
           name: 'Settings',
-          to: '/?settings',
+          to: '/sidebar/?settings',
           active: activeItem.value?.name === 'Settings',
         },
       ],
@@ -194,7 +194,7 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
     {
       name: 'Analytics',
       key: 'analytics',
-      to: '/?analytics',
+      to: '/sidebar/?analytics',
       active: (activeItem.value as SidebarPrimaryItem)?.key === 'analytics',
       // This item can always show the subnav
       expanded: (activeItem.value as SidebarPrimaryItem)?.key === 'analytics' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'analytics',
@@ -202,12 +202,12 @@ const sidebarItemsTop = computed((): SidebarPrimaryItem[] => {
       items: [
         {
           name: 'Overview',
-          to: '/?overview',
+          to: '/sidebar/?overview',
           active: activeItem.value?.name === 'Overview',
         },
         {
           name: 'Reports',
-          to: '/?reports',
+          to: '/sidebar/?reports',
           active: activeItem.value?.name === 'Reports',
         },
       ],
@@ -220,7 +220,7 @@ const sidebarItemsBottom = computed((): SidebarPrimaryItem[] => {
     {
       name: 'Organization',
       key: 'organization',
-      to: '/?organization',
+      to: '/sidebar/?organization',
       active: (activeItem.value as SidebarPrimaryItem)?.key === 'organization',
       // This item can always show the subnav
       expanded: (activeItem.value as SidebarPrimaryItem)?.key === 'organization' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'organization',
@@ -228,12 +228,12 @@ const sidebarItemsBottom = computed((): SidebarPrimaryItem[] => {
       items: [
         {
           name: 'Teams',
-          to: '/?teams',
+          to: '/sidebar/?teams',
           active: activeItem.value?.name === 'Teams',
         },
         {
           name: 'Users',
-          to: '/?users',
+          to: '/sidebar/?users',
           active: activeItem.value?.name === 'Users',
         },
       ],
@@ -241,7 +241,7 @@ const sidebarItemsBottom = computed((): SidebarPrimaryItem[] => {
     {
       name: 'Settings',
       key: 'settings',
-      to: '/?settings',
+      to: '/sidebar/?settings',
       active: (activeItem.value as SidebarPrimaryItem)?.key === 'settings',
       // This item can always show the subnav
       expanded: (activeItem.value as SidebarPrimaryItem)?.key === 'settings' || (activeItem.value as SidebarSecondaryItem)?.parentKey === 'settings',
@@ -249,12 +249,12 @@ const sidebarItemsBottom = computed((): SidebarPrimaryItem[] => {
       items: [
         {
           name: 'Billing and Usage',
-          to: '/?billing-and-usage',
+          to: '/sidebar/?billing-and-usage',
           active: activeItem.value?.name === 'Billing and Usage',
         },
         {
           name: 'Auth Settings',
-          to: '/?auth-settings',
+          to: '/sidebar/?auth-settings',
           active: activeItem.value?.name === 'Auth Settings',
         },
       ],
@@ -266,7 +266,7 @@ const sidebarItemsProfile = computed((): SidebarProfileItem[] => {
   return [
     {
       name: 'Personal access tokens',
-      to: '/?personal-access-tokens',
+      to: '/sidebar/?personal-access-tokens',
     },
     {
       name: 'External',
@@ -275,7 +275,7 @@ const sidebarItemsProfile = computed((): SidebarProfileItem[] => {
     },
     {
       name: 'Logout',
-      to: '/?logout',
+      to: '/sidebar/?logout',
       hasDivider: true,
     },
   ]
@@ -330,6 +330,7 @@ main {
   background: #eee;
 
   @media (min-width: 768px) {
+    width: calc(100% - 240px);
     left: 240px;
   }
 
@@ -342,10 +343,6 @@ main {
     max-width: 100%;
     padding: 0 24px;
     color: var(--black-500);
-
-    @media (min-width: 768px) {
-      width: calc(100% - 240px); // $sidebar-width
-    }
   }
 
   .mobile-logo {

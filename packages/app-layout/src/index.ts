@@ -19,7 +19,7 @@ export default {
 }
 
 export {
-  // Components
+  // Individual Components
   AppLayout,
   AppNavbar,
   AppSidebar,

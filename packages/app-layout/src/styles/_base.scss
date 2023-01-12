@@ -18,8 +18,10 @@ html,
 body {
   margin: 0;
   padding: 0;
+  width: 100%;
   height: 100%;
   height: 100vh;
+  overflow: hidden;
 }
 
 body {
@@ -35,20 +37,6 @@ body {
 
 #app {
   height: 100%;
-}
-
-a {
-  color: var(--blue-500);
-  text-decoration: none;
-
-  &:hover,
-  &:focus {
-    text-decoration: underline;
-  }
-
-  &:visited {
-    color: var(--blue-500);
-  }
 }
 
 // Kong Auth Elements overrides

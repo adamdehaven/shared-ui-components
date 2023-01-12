@@ -555,7 +555,7 @@ describe('<AppSidebar />', () => {
 
         // Slots
         describe('slots', () => {
-        // Header slot
+          // Header slot
           describe('header', () => {
             it('renders header slot content', () => {
               const headerSlotText = 'This is my logo'
@@ -590,6 +590,29 @@ describe('<AppSidebar />', () => {
               })
 
               cy.get('.sidebar-header').invoke('outerHeight').should('eq', height)
+            })
+          })
+
+          describe('top', () => {
+            it('renders top slot content', () => {
+              const headerSlotText = 'This is my logo'
+              const topSlotText = 'Top slot content'
+
+              cy.mount(AppSidebar, {
+                props: {
+                  open: ['mobile', 'tablet'].includes(viewportName), // force mobile sidebar to be open
+                  mobileEnabled: true,
+                  mobileHeaderVisible: ['mobile', 'tablet'].includes(viewportName), // force mobile header to be visible
+                  headerHeight: 100,
+                },
+                slots: {
+                  header: () => h('div', {}, headerSlotText),
+                  top: () => h('div', {}, topSlotText),
+                },
+              })
+
+              cy.get('.sidebar-header').should('contain.text', headerSlotText)
+              cy.get('.sidebar-top').should('contain.text', topSlotText)
             })
           })
         })

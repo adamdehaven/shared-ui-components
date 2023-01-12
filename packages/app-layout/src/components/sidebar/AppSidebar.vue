@@ -27,40 +27,49 @@
       >
         <slot name="header" />
       </div>
-      <nav
-        aria-label="Main menu"
-        class="sidebar-nav"
-      >
-        <ul
-          v-if="topNavItems.length"
-          class="level-primary top-items"
-        >
-          <SidebarItem
-            v-for="item in topNavItems"
-            :key="item.name"
-            :item="item"
-            @click="itemClick"
-          />
-        </ul>
 
+      <div class="sidebar-content-container">
         <div
-          v-if="topNavItems.length && bottomNavItems.length"
-          class="sidebar-level-divider"
-          role="separator"
-        />
-
-        <ul
-          v-if="bottomNavItems.length"
-          class="level-primary bottom-items"
+          v-if="hasTopContent"
+          class="sidebar-top"
         >
-          <SidebarItem
-            v-for="item in bottomNavItems"
-            :key="item.name"
-            :item="item"
-            @click="itemClick"
+          <slot name="top" />
+        </div>
+        <nav
+          aria-label="Main menu"
+          class="sidebar-nav"
+        >
+          <ul
+            v-if="topNavItems.length"
+            class="level-primary top-items"
+          >
+            <SidebarItem
+              v-for="item in topNavItems"
+              :key="item.name"
+              :item="item"
+              @click="itemClick"
+            />
+          </ul>
+
+          <div
+            v-if="topNavItems.length && bottomNavItems.length"
+            class="sidebar-level-divider"
+            role="separator"
           />
-        </ul>
-      </nav>
+
+          <ul
+            v-if="bottomNavItems.length"
+            class="level-primary bottom-items"
+          >
+            <SidebarItem
+              v-for="item in bottomNavItems"
+              :key="item.name"
+              :item="item"
+              @click="itemClick"
+            />
+          </ul>
+        </nav>
+      </div>
 
       <SidebarFooter
         v-if="profileName || profileItems.length"
@@ -175,11 +184,13 @@ const props = defineProps({
 
 const slots = useSlots()
 const hasHeader = computed(() => !!slots.header)
+const hasTopContent = computed(() => !!slots.top)
 
 const sidebarContainerStyles = computed(() => ({
-  top: props.topOffset ? `${props.topOffset}px` : '0',
   mobileTop: props.mobileTopOffset && props.mobileEnabled ? `${props.mobileTopOffset}px` : props.topOffset ? `${props.topOffset}px` : '0',
-  height: props.mobileTopOffset && props.mobileEnabled ? `calc(100% - ${props.mobileTopOffset}px)` : '100%',
+  top: props.topOffset ? `${props.topOffset}px` : '0',
+  mobileHeight: props.mobileTopOffset && props.mobileEnabled ? `calc(100% - ${props.mobileTopOffset}px)` : '100%',
+  height: props.topOffset ? `calc(100% - ${props.topOffset}px)` : '100%',
 }))
 
 const headerContainerStyles = computed(() => ({
@@ -347,7 +358,7 @@ onBeforeUnmount(() => {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: v-bind('sidebarContainerStyles.height');
+  height: v-bind('sidebarContainerStyles.mobileHeight');
   background: $sidebar-background;
   left: -100%;
   z-index: v-bind(zIndex);
@@ -360,7 +371,7 @@ onBeforeUnmount(() => {
   }
 
   @media (min-width: $viewport-md) {
-    height: 100%;
+    height: v-bind('sidebarContainerStyles.height');
     top: v-bind('sidebarContainerStyles.top');
     left: 0;
   }
@@ -380,7 +391,7 @@ onBeforeUnmount(() => {
     transition: none !important;
   }
 
-  nav.sidebar-nav {
+  .sidebar-content-container {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -470,6 +481,15 @@ onBeforeUnmount(() => {
     z-index: 1;
     width: 100%;
   }
+}
+
+.sidebar-top {
+  display: flex;
+  align-items: center;
+  margin: 0 0 16px;
+  padding: 0 8px;
+  color: #fff;
+  user-select: none;
 }
 
 .external-profile-dropdown-link {

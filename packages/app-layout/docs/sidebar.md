@@ -217,7 +217,11 @@ Close the mobile sidebar when a user clicks on the sidebar overlay.
 
 #### `header`
 
-Utilize the `header` slot to inject your application's logo into the top of the sidebar, above the `topItems`.
+Utilize the `header` slot to inject your application's logo into the top of the sidebar, likely aligned with the nav, above the `top` slot.
+
+#### `top`
+
+Utilize the `top` slot to inject additional UI into the top of the sidebar, below the `header` slot, above the `topItems`.
 
 ### Events
 

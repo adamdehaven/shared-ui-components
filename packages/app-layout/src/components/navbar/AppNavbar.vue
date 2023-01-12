@@ -43,7 +43,7 @@ const headerStyles = computed(() => ({
   top: v-bind('headerStyles.top');
   left: 0;
   right: 0;
-  background-color: #fff;
+  background-color: var(--kong-ui-app-navbar-background-color, #fff);
   border-bottom: $navbar-border;
   z-index: v-bind('headerStyles.zIndex');
 
@@ -58,7 +58,6 @@ const headerStyles = computed(() => ({
     gap: $header-item-gap;
     height: $navbar-height;
     padding: 0 16px;
-    border-bottom: $navbar-border;
   }
 
   .mobile-header-left {

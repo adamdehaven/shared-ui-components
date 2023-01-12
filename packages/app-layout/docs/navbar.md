@@ -9,6 +9,8 @@ A Kong UI dynamic navbar component.
 - [Features](#features)
 - [Requirements](#requirements)
 - [Install](#install)
+- [CSS Variables](#css-variables)
+  - [CSS variable example](#css-variable-example)
 
 ## Features
 
@@ -24,6 +26,22 @@ A Kong UI dynamic navbar component.
 ## Install
 
 [See instructions for installing the `@kong-ui/app-layout` package.](../README.md#install)
+
+## CSS Variables
+
+You can customize some of the navbar CSS by adding CSS variables to your app. In most use-cases, this shouldn't be necessary.
+
+Variable | Description | Default
+---------|----------|---------
+`--kong-ui-app-navbar-background-color` | The `background-color` of the navbar | `#fff`
+
+### CSS variable example
+
+```scss
+.your-custom-navbar-class {
+  --kong-ui-app-navbar-background-color: var(--blue-500, #1155cb);
+}
+```
 
 ---
 

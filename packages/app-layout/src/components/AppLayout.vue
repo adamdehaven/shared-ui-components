@@ -21,7 +21,10 @@
           @toggle="sidebarToggled"
         />
       </template>
-      <template #mobile-logo>
+      <template
+        v-if="slotContent.navbarMobileLogo"
+        #mobile-logo
+      >
         <div class="mobile-logo">
           <slot name="navbar-mobile-logo" />
         </div>
@@ -44,8 +47,17 @@
       @click="sidebarItemClicked"
       @toggle="sidebarToggled"
     >
-      <template #header>
+      <template
+        v-if="slotContent.sidebarHeader"
+        #header
+      >
         <slot name="sidebar-header" />
+      </template>
+      <template
+        v-if="slotContent.sidebarTop"
+        #top
+      >
+        <slot name="sidebar-top" />
       </template>
     </AppSidebar>
 
@@ -63,7 +75,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed, watchEffect, onMounted, onBeforeUnmount, PropType, toRef } from 'vue'
+import { ref, reactive, computed, watchEffect, onMounted, onBeforeUnmount, PropType, toRef, useSlots } from 'vue'
 import AppNavbar from './navbar/AppNavbar.vue'
 import AppSidebar from './sidebar/AppSidebar.vue'
 import SidebarToggle from './sidebar/SidebarToggle.vue'
@@ -118,6 +130,13 @@ const props = defineProps({
 
 const emit = defineEmits(['sidebar-click'])
 
+const slots = useSlots()
+const slotContent = reactive({
+  navbarMobileLogo: computed((): boolean => !!slots['navbar-mobile-logo']),
+  sidebarHeader: computed((): boolean => !!slots['sidebar-header']),
+  sidebarTop: computed((): boolean => !!slots['sidebar-top']),
+})
+
 // Evaluate variables from injected symbols; fallback to prop values.
 // Must wrap the prop values in a computed so that they remain reactive.
 const defaultSlotIsHidden = computed(() => props.hideDefaultSlot)
@@ -157,6 +176,7 @@ const sidebarMobileTopOffset = computed((): number => {
 
   return navbarHeight.value + notificationHeight.value
 })
+const layoutMainMarginTop = computed((): string => `${sidebarMobileTopOffset.value}px`)
 
 const { debounce } = useDebounce()
 const debouncedSetNotificationHeight = debounce((force = false): void => {
@@ -219,9 +239,12 @@ onBeforeUnmount(() => {
 .kong-ui-app-layout {
   display: flex;
   flex-direction: column;
+  width: 100%;
   height: 100%;
   position: relative;
   font-family: $font-family-base;
+  background-color: $sidebar-background-gradient-start;
+  overflow: hidden;
 
   :deep(.kong-ui-app-navbar) {
     .mobile-logo {
@@ -245,10 +268,17 @@ onBeforeUnmount(() => {
 
   .kong-ui-app-layout-main {
     display: flex;
+    align-items: flex-start;
     flex-grow: 1;
-    margin-top: $navbar-height;
+    width: 100%;
+    height: 100%;
+    margin-top: v-bind('layoutMainMarginTop');
+    background-color: var(--grey-100, #f8f8fa);
+    // border-top-left-radius: 16px; // TODO: Enable when Neon layout is enabled
+    overflow: auto;
 
     @media (min-width: $viewport-md) {
+      width: calc(100% - #{$sidebar-width});
       margin-left: $sidebar-width;
     }
 
@@ -263,14 +293,6 @@ onBeforeUnmount(() => {
     }
   }
 
-  // Must keep this as an `id` because we are utilizing as a <Teleport /> container
-  #kong-ui-app-layout-notification {
-    // Modify KAlert styles
-    :deep(.k-alert) {
-      border-radius: 0 !important;
-    }
-  }
-
   // Style overrides if AppNavbar is hidden
   &.navbar-hidden {
     .kong-ui-app-layout-main {
@@ -281,7 +303,22 @@ onBeforeUnmount(() => {
   // Style overrides if AppSidebar is hidden
   &.sidebar-hidden {
     .kong-ui-app-layout-main {
+      width: 100%;
       margin-left: 0;
+    }
+  }
+
+  // Must keep this as an `id` because we are utilizing as a <Teleport /> container
+  #kong-ui-app-layout-notification {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
+    // Modify KAlert styles
+    :deep(.k-alert) {
+      border-radius: 0 !important;
     }
   }
 }
