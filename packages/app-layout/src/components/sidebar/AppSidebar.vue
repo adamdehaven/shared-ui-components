@@ -35,10 +35,7 @@
         >
           <slot name="top" />
         </div>
-        <nav
-          aria-label="Main menu"
-          class="sidebar-nav"
-        >
+        <nav aria-label="Main menu">
           <ul
             v-if="topNavItems.length"
             class="level-primary top-items"
@@ -419,8 +416,8 @@ onBeforeUnmount(() => {
 }
 
 // Remove the top margin if `props.mobileHeaderVisible` is false, or if no header slot is present
-.mobile-header-hidden .sidebar-nav,
-.no-sidebar-header .sidebar-nav {
+.mobile-header-hidden .sidebar-content-container,
+.no-sidebar-header .sidebar-content-container {
   @media (max-width: ($viewport-md - 1px)) {
     margin-top: 0 !important;
   }
