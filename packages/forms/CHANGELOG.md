@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.8](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.7.7...@kong-ui/forms@0.7.8) (2023-01-13)
+
+
+### 🐛 Bug Fixes
+
+* **forms:** hide hint and help text when translation does not exist ([#372](https://github.com/Kong/kong-ui-shared-components/issues/372)) ([b82c1b1](https://github.com/Kong/kong-ui-shared-components/commit/b82c1b1cbc1a7b005dbc277fe55df8d20c9c1b6c))
+
+
+
+
+
 ## [0.7.7](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.7.6...@kong-ui/forms@0.7.7) (2023-01-12)
 
 **Note:** Version bump only for package @kong-ui/forms
