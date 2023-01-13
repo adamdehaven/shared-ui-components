@@ -12,9 +12,10 @@
     "typecheck": "cross-env FORCE_COLOR=1 pnpm -r run typecheck",
     "test:component": "BABEL_ENV=cypress pnpm -r run test:component",
     "test:component:open": "BABEL_ENV=cypress cypress open --component -b chrome",
-    "test:component:ci": "BABEL_ENV=cypress cypress run --component -b chrome",
+    "test:component:ci": "BABEL_ENV=cypress VITE_COVERAGE=true cypress run --component -b chrome",
     "test:unit": "cross-env FORCE_COLOR=1 pnpm -r run test:unit",
     "test:unit:open": "cross-env FORCE_COLOR=1 pnpm -r run test:unit:open",
+    "test:unit:coverage": "cross-env FORCE_COLOR=1 pnpm -r run test:unit --coverage",
     "commit": "cz",
     "create-package": "pnpm --filter \"@kong-ui/cli\" run create-package"
   },
@@ -22,11 +23,13 @@
     "@babel/types": "^7.20.7",
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
+    "@cypress/code-coverage": "^3.10.0",
     "@datadog/datadog-ci": "^2.3.0",
     "@digitalroute/cz-conventional-changelog-for-jira": "^7.5.1",
     "@evilmartians/lefthook": "^1.2.7",
     "@kong/kongponents": "^8.18.2",
     "@rushstack/eslint-patch": "^1.2.0",
+    "@types/cypress__code-coverage": "^3.10.0",
     "@types/flat": "^5.0.2",
     "@types/inquirer": "^9.0.3",
     "@types/js-yaml": "^4.0.5",
@@ -36,6 +39,7 @@
     "@typescript-eslint/eslint-plugin": "^5.48.1",
     "@typescript-eslint/parser": "^5.48.1",
     "@vitejs/plugin-vue": "^4.0.0",
+    "@vitest/coverage-istanbul": "^0.27.1",
     "@vitest/ui": "^0.27.1",
     "@vue/eslint-config-standard": "^8.0.1",
     "@vue/eslint-config-typescript": "^11.0.2",
@@ -78,6 +82,7 @@
     "typescript": "~4.9.4",
     "vite": "^4.0.4",
     "vite-plugin-externals": "^0.5.1",
+    "vite-plugin-istanbul": "^4.0.0",
     "vitest": "^0.27.1",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6",
@@ -106,5 +111,10 @@
   },
   "volta": {
     "node": "18.12.1"
+  },
+  "nyc": {
+    "reporter": [
+      "lcovonly"
+    ]
   }
 }

@@ -32,3 +32,4 @@ cypress/screenshots/
 .netlify
 # cli bin
 packages/cli/bin
+.nyc_output/out.json

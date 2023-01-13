@@ -1,7 +1,7 @@
 name: CI
 # concurrency:
-  # group: ${{ github.ref }}
-  # cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+# group: ${{ github.ref }}
+# cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 on:
   push:
     branches:
@@ -11,18 +11,17 @@ on:
       - main
 
 jobs:
-
   install-dependencies:
     name: Install Dependencies
     runs-on: ubuntu-latest
     env:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     outputs:
+      targets: ${{steps.changed_packages.outputs.targets}}
       filter: ${{steps.changed_packages.outputs.filter}}
       spec: ${{steps.changed_packages.outputs.spec}}
 
     steps:
-
       - name: Remove preview consumption comment
         uses: marocchino/sticky-pull-request-comment@v2
         with:
@@ -57,12 +56,12 @@ jobs:
 
           echo "lernaCommand: ${lernaCommand}"
 
-          filter="{packages/("
+          targets=""
           specPackages=""
           packageIndex=0
           for pkg in $(lerna ${lernaCommand})
           do
-            filter=${filter}$(echo "${pkg}" | sed 's/@kong-ui\///g')"|"
+            targets=${targets}$(echo "${pkg}" | sed 's/@kong-ui\///g')"|"
 
             cPkg=$(echo "${pkg}" | sed 's/@kong-ui/packages/g')
             findRes=$(find "${cPkg}" -name "*.cy.ts" || true)
@@ -76,7 +75,10 @@ jobs:
             packageIndex=$((packageIndex + 1))
           done
 
-          filter=$(echo "${filter}" | sed 's/|$//')")}"
+          targets=$(echo ${targets} | sed 's/|$//')
+          echo "targets=$(echo ${targets} | jq -R . | jq -cM 'split("|")')" >> $GITHUB_OUTPUT
+
+          filter="{packages/(${targets})}"
           echo "filter=${filter}" >> $GITHUB_OUTPUT
 
           if [[ -n "$specPackages" ]]; then
@@ -111,12 +113,11 @@ jobs:
         run: pnpm --stream --filter "...${{needs.install-dependencies.outputs.filter}}..." run build
 
       - name: Run Unit Tests
-        run: pnpm --stream --filter "${{needs.install-dependencies.outputs.filter}}" run test:unit
+        run: pnpm --stream --filter "${{needs.install-dependencies.outputs.filter}}" run test:unit --coverage
 
       - name: Prepare Cypress
         if: ${{ needs.install-dependencies.outputs.spec != '' }}
         run: pnpm cypress install
-
 
       - name: Run Component Tests
         if: ${{ needs.install-dependencies.outputs.spec != '' }}
@@ -125,7 +126,24 @@ jobs:
           install: false
           command: pnpm run test:component:ci ${{ needs.install-dependencies.outputs.spec }}
 
-      - name: Upload Component Tests Results
+      - name: Report Component to Coveralls
+        uses: coverallsapp/github-action@master
+        continue-on-error: true
+        if: ${{ needs.install-dependencies.outputs.spec != '' }}
+        with:
+          github-token: ${{ secrets.github_token }}
+          flag-name: component
+          parallel: true
+
+      - name: Upload Unit Test LCOV Reports
+        uses: actions/upload-artifact@v3
+        continue-on-error: true
+        if: ${{ needs.install-dependencies.outputs.targets != '[]' }}
+        with:
+          name: unit-test-coverage
+          path: packages/*/coverage/lcov.info
+
+      - name: Upload Component Test Results
         uses: actions/upload-artifact@v3
         continue-on-error: true
         if: failure()
@@ -135,7 +153,6 @@ jobs:
             cypress/videos/
             cypress/screenshots/
 
-
       - name: Save Build Artifacts
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         uses: actions/upload-artifact@v3
@@ -143,13 +160,59 @@ jobs:
           name: package-dist-artifacts
           path: packages/*/dist
 
-      - name: Publish previews
+      - name: Publish Previews
         if: github.event_name == 'pull_request'
         uses: ./.github/actions/publish-previews/
         with:
           filter: ${{needs.install-dependencies.outputs.filter}}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           netlify-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+  report-unit-coverage:
+    name: Report Unit Coverage
+    needs: [install-dependencies, build]
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    if: ${{ needs.install-dependencies.outputs.targets != '[]' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        container: ${{ fromJSON(needs.install-dependencies.outputs.targets) }}
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v3
+
+      - name: Download Unit Test LCOV Reports
+        uses: actions/download-artifact@v3
+        # ** remove when copy-uuid package has unit tests **
+        if: ${{ matrix.container != 'copy-uuid' }}
+        with:
+          name: unit-test-coverage
+          path: coverage
+
+      - name: Report Unit to Coveralls
+        uses: coverallsapp/github-action@master
+        # ** remove when copy-uuid package has unit tests **
+        if: ${{ matrix.container != 'copy-uuid' }}
+        with:
+          github-token: ${{ secrets.github_token }}
+          path-to-lcov: coverage/${{ matrix.container }}/coverage/lcov.info
+          base-path: packages/${{ matrix.container }}
+          flag-name: ${{ matrix.container }}
+          parallel: true
+
+  finish-coverage:
+    name: Finish Coverage
+    needs: [install-dependencies, report-unit-coverage]
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    if: ${{ needs.install-dependencies.outputs.targets != '[]' || needs.install-dependencies.outputs.spec != '' }}
+    steps:
+      - name: Finish Coveralls Report
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.github_token }}
+          parallel-finished: true
 
   publish:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
@@ -196,7 +259,6 @@ jobs:
               -H  'Content-Type: application/json' \
               -H 'Authorization: token ${{ secrets.KONGPONENTS_BOT_PAT }}' \
               --data '{"event_type": "webhook"}' https://api.github.com/repos/Kong/package-publisher/dispatches
-
 
       - name: Push JS Map files
         id: push-js-maps

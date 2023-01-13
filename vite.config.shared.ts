@@ -59,12 +59,21 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: [],
     coverage: {
-      reporter: ['text', 'json', 'html'],
+      provider: 'istanbul',
+      reporter: ['text', 'lcovonly'],
+      exclude: [
+        'cypress/**',
+        '**/__template__/**/*.spec.ts',
+      ],
     },
     deps: {
       registerNodeLoader: true, // Ensure modules are imported properly
     },
     include: ['**/src/**/*.spec.ts'],
-    exclude: ['**/__template__/**/*.spec.ts'],
+    exclude: [
+      '**/dist/**',
+      '**/__template__/**',
+      'packages/cli/**',
+    ],
   },
 })
