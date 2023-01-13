@@ -51,7 +51,7 @@ importers:
       postcss: ^8.4.21
       postcss-custom-properties: ^12.1.11
       postcss-html: ^1.5.0
-      rimraf: ^3.0.2
+      rimraf: ^4.0.4
       sass: ^1.57.1
       stylelint: ^14.16.1
       stylelint-config-html: ^1.1.0
@@ -115,7 +115,7 @@ importers:
       postcss: 8.4.21
       postcss-custom-properties: 12.1.11_postcss@8.4.21
       postcss-html: 1.5.0
-      rimraf: 3.0.2
+      rimraf: 4.0.4
       sass: 1.57.1
       stylelint: 14.16.1
       stylelint-config-html: 1.1.0_kbto3rg3njmczth2rrsgfnlsqa
@@ -13351,6 +13351,12 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
+    dev: true
+
+  /rimraf/4.0.4:
+    resolution: {integrity: sha512-R0hoVr9xTwemarQjoWlNt/nb5dEGVTBhVdkRmEX2zEkT8T6onH0XKiGjuaC7rNNj/gYzY2p4NVRJ3sjO1ascHQ==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   /rollup-pluginutils/2.8.2:
