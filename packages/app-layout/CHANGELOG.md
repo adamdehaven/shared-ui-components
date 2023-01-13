@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.6](https://github.com/Kong/shared-ui-components/compare/@kong-ui/app-layout@0.8.5...@kong-ui/app-layout@0.8.6) (2023-01-13)
+
+
+### 🐛 Bug Fixes
+
+* **app-layout:** sidebar css selector ([#392](https://github.com/Kong/shared-ui-components/issues/392)) ([a7bb71c](https://github.com/Kong/shared-ui-components/commit/a7bb71c530a92f3c5b92922e48c4feec9b247082))
+
+
+
+
+
 ## [0.8.5](https://github.com/Kong/shared-ui-components/compare/@kong-ui/app-layout@0.8.4...@kong-ui/app-layout@0.8.5) (2023-01-13)
 
 
