@@ -38,7 +38,7 @@ runs:
                 echo "${hashedTarBall}"
                 mv "${tarBall}"  "${hashedTarBall}"
                 fNTarBall=$(echo ${hashedTarBall} | sed 's/^.*_public\///')
-                npm_instructions="${npm_instructions}yarn add \"${pkgName}@https://pr-${{ github.event.number }}--ui-shared-components.netlify.app/${fNTarBall}\""$'\r'$'\n'
+                npm_instructions="${npm_instructions}yarn add \"${pkgName}@https://pr-${{ github.event.number }}--shared-ui-components.netlify.app/${fNTarBall}\""$'\r'$'\n'
                 cd ../../
             fi
         done

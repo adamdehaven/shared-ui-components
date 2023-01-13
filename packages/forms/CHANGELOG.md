@@ -3,37 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.7.9](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.7.8...@kong-ui/forms@0.7.9) (2023-01-13)
+## [0.7.9](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.7.8...@kong-ui/forms@0.7.9) (2023-01-13)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.18.2 ([#388](https://github.com/Kong/kong-ui-shared-components/issues/388)) ([07b0fd8](https://github.com/Kong/kong-ui-shared-components/commit/07b0fd8183267ec8b98c8b7126e52e60201fb10e))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.18.2 ([#388](https://github.com/Kong/shared-ui-components/issues/388)) ([07b0fd8](https://github.com/Kong/shared-ui-components/commit/07b0fd8183267ec8b98c8b7126e52e60201fb10e))
 
 
 
 
 
-## [0.7.8](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.7.7...@kong-ui/forms@0.7.8) (2023-01-13)
+## [0.7.8](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.7.7...@kong-ui/forms@0.7.8) (2023-01-13)
 
 
 ### 🐛 Bug Fixes
 
-* **forms:** hide hint and help text when translation does not exist ([#372](https://github.com/Kong/kong-ui-shared-components/issues/372)) ([b82c1b1](https://github.com/Kong/kong-ui-shared-components/commit/b82c1b1cbc1a7b005dbc277fe55df8d20c9c1b6c))
+* **forms:** hide hint and help text when translation does not exist ([#372](https://github.com/Kong/shared-ui-components/issues/372)) ([b82c1b1](https://github.com/Kong/shared-ui-components/commit/b82c1b1cbc1a7b005dbc277fe55df8d20c9c1b6c))
 
 
 
 
 
-## [0.7.7](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.7.6...@kong-ui/forms@0.7.7) (2023-01-12)
-
-**Note:** Version bump only for package @kong-ui/forms
-
-
-
-
-
-## [0.7.6](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.7.5...@kong-ui/forms@0.7.6) (2023-01-11)
+## [0.7.7](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.7.6...@kong-ui/forms@0.7.7) (2023-01-12)
 
 **Note:** Version bump only for package @kong-ui/forms
 
@@ -41,7 +33,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.7.5](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.7.4...@kong-ui/forms@0.7.5) (2023-01-11)
+## [0.7.6](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.7.5...@kong-ui/forms@0.7.6) (2023-01-11)
 
 **Note:** Version bump only for package @kong-ui/forms
 
@@ -49,29 +41,37 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.7.4](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.7.3...@kong-ui/forms@0.7.4) (2023-01-11)
+## [0.7.5](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.7.4...@kong-ui/forms@0.7.5) (2023-01-11)
+
+**Note:** Version bump only for package @kong-ui/forms
+
+
+
+
+
+## [0.7.4](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.7.3...@kong-ui/forms@0.7.4) (2023-01-11)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.18.1 ([#376](https://github.com/Kong/kong-ui-shared-components/issues/376)) ([8cf2286](https://github.com/Kong/kong-ui-shared-components/commit/8cf22860b76205766eee3b397b12bba5c545895a))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.18.1 ([#376](https://github.com/Kong/shared-ui-components/issues/376)) ([8cf2286](https://github.com/Kong/shared-ui-components/commit/8cf22860b76205766eee3b397b12bba5c545895a))
 
 
 
 
 
-## [0.7.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.7.2...@kong-ui/forms@0.7.3) (2023-01-11)
+## [0.7.3](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.7.2...@kong-ui/forms@0.7.3) (2023-01-11)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.18.0 ([#370](https://github.com/Kong/kong-ui-shared-components/issues/370)) ([cdd33c0](https://github.com/Kong/kong-ui-shared-components/commit/cdd33c0e9340e9b89e48e9a45e2e9d4855e85b24))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.18.0 ([#370](https://github.com/Kong/shared-ui-components/issues/370)) ([cdd33c0](https://github.com/Kong/shared-ui-components/commit/cdd33c0e9340e9b89e48e9a45e2e9d4855e85b24))
 
 
 
 
 
-## [0.7.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.7.1...@kong-ui/forms@0.7.2) (2023-01-11)
+## [0.7.2](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.7.1...@kong-ui/forms@0.7.2) (2023-01-11)
 
 **Note:** Version bump only for package @kong-ui/forms
 
@@ -79,95 +79,95 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.7.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.7.0...@kong-ui/forms@0.7.1) (2023-01-11)
+## [0.7.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.7.0...@kong-ui/forms@0.7.1) (2023-01-11)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.17.0 ([#367](https://github.com/Kong/kong-ui-shared-components/issues/367)) ([f39ae30](https://github.com/Kong/kong-ui-shared-components/commit/f39ae3060b1d864c8130ab9b7868afc1cc6bd919))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.17.0 ([#367](https://github.com/Kong/shared-ui-components/issues/367)) ([f39ae30](https://github.com/Kong/shared-ui-components/commit/f39ae3060b1d864c8130ab9b7868afc1cc6bd919))
 
 
 
 
 
-# [0.7.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.16...@kong-ui/forms@0.7.0) (2023-01-10)
+# [0.7.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.6.16...@kong-ui/forms@0.7.0) (2023-01-10)
 
 
 ### ✨ Features
 
-* extracting GeoSwitcher from khcp-ui [KHCP-5516] ([#349](https://github.com/Kong/kong-ui-shared-components/issues/349)) ([20b8428](https://github.com/Kong/kong-ui-shared-components/commit/20b84286fd889ef66499a5c51c13f4102d870f33))
+* extracting GeoSwitcher from khcp-ui [KHCP-5516] ([#349](https://github.com/Kong/shared-ui-components/issues/349)) ([20b8428](https://github.com/Kong/shared-ui-components/commit/20b84286fd889ef66499a5c51c13f4102d870f33))
 
 
 
 
 
-## [0.6.16](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.15...@kong-ui/forms@0.6.16) (2023-01-10)
-
-
-### ♻️ Chores
-
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.16.0 ([#362](https://github.com/Kong/kong-ui-shared-components/issues/362)) ([a3cddaf](https://github.com/Kong/kong-ui-shared-components/commit/a3cddafb8b5ff733551eb66f995300478f5d7f71))
-
-
-
-
-
-## [0.6.15](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.14...@kong-ui/forms@0.6.15) (2023-01-06)
+## [0.6.16](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.6.15...@kong-ui/forms@0.6.16) (2023-01-10)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.15.2 ([#350](https://github.com/Kong/kong-ui-shared-components/issues/350)) ([18149d7](https://github.com/Kong/kong-ui-shared-components/commit/18149d70c566a3a6c3c7e29dd8a0dc6ba7a1b06c))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.16.0 ([#362](https://github.com/Kong/shared-ui-components/issues/362)) ([a3cddaf](https://github.com/Kong/shared-ui-components/commit/a3cddafb8b5ff733551eb66f995300478f5d7f71))
 
 
 
 
 
-## [0.6.14](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.13...@kong-ui/forms@0.6.14) (2023-01-06)
-
-
-### ♻️ Chores
-
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.15.1 ([#348](https://github.com/Kong/kong-ui-shared-components/issues/348)) ([0cdbc20](https://github.com/Kong/kong-ui-shared-components/commit/0cdbc20a60b39d93b3aa803096fe24218e4c9161))
-
-
-
-
-
-## [0.6.13](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.12...@kong-ui/forms@0.6.13) (2023-01-06)
+## [0.6.15](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.6.14...@kong-ui/forms@0.6.15) (2023-01-06)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.15.0 ([#347](https://github.com/Kong/kong-ui-shared-components/issues/347)) ([6855b30](https://github.com/Kong/kong-ui-shared-components/commit/6855b3088f2dca88f7d0165eb881654a212e88cc))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.15.2 ([#350](https://github.com/Kong/shared-ui-components/issues/350)) ([18149d7](https://github.com/Kong/shared-ui-components/commit/18149d70c566a3a6c3c7e29dd8a0dc6ba7a1b06c))
 
 
 
 
 
-## [0.6.12](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.11...@kong-ui/forms@0.6.12) (2023-01-05)
-
-
-### ♻️ Chores
-
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.14.3 ([#341](https://github.com/Kong/kong-ui-shared-components/issues/341)) ([b025911](https://github.com/Kong/kong-ui-shared-components/commit/b02591147bea43a1f1ecba8e660473c32ea3083c))
-
-
-
-
-
-## [0.6.11](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.10...@kong-ui/forms@0.6.11) (2023-01-04)
+## [0.6.14](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.6.13...@kong-ui/forms@0.6.14) (2023-01-06)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.14.2 ([#331](https://github.com/Kong/kong-ui-shared-components/issues/331)) ([0d57bac](https://github.com/Kong/kong-ui-shared-components/commit/0d57bac6c0fa3d1fd962bf630db0669851960c1e))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.15.1 ([#348](https://github.com/Kong/shared-ui-components/issues/348)) ([0cdbc20](https://github.com/Kong/shared-ui-components/commit/0cdbc20a60b39d93b3aa803096fe24218e4c9161))
 
 
 
 
 
-## [0.6.10](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.9...@kong-ui/forms@0.6.10) (2023-01-04)
+## [0.6.13](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.6.12...@kong-ui/forms@0.6.13) (2023-01-06)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.15.0 ([#347](https://github.com/Kong/shared-ui-components/issues/347)) ([6855b30](https://github.com/Kong/shared-ui-components/commit/6855b3088f2dca88f7d0165eb881654a212e88cc))
+
+
+
+
+
+## [0.6.12](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.6.11...@kong-ui/forms@0.6.12) (2023-01-05)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.14.3 ([#341](https://github.com/Kong/shared-ui-components/issues/341)) ([b025911](https://github.com/Kong/shared-ui-components/commit/b02591147bea43a1f1ecba8e660473c32ea3083c))
+
+
+
+
+
+## [0.6.11](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.6.10...@kong-ui/forms@0.6.11) (2023-01-04)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.14.2 ([#331](https://github.com/Kong/shared-ui-components/issues/331)) ([0d57bac](https://github.com/Kong/shared-ui-components/commit/0d57bac6c0fa3d1fd962bf630db0669851960c1e))
+
+
+
+
+
+## [0.6.10](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.6.9...@kong-ui/forms@0.6.10) (2023-01-04)
 
 **Note:** Version bump only for package @kong-ui/forms
 
@@ -175,147 +175,117 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.6.9](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.8...@kong-ui/forms@0.6.9) (2023-01-04)
+## [0.6.9](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.6.8...@kong-ui/forms@0.6.9) (2023-01-04)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency vue to ^3.2.45 ([#324](https://github.com/Kong/kong-ui-shared-components/issues/324)) ([e3cbff8](https://github.com/Kong/kong-ui-shared-components/commit/e3cbff8ea746237f2290d705201ad95305cd614b))
+* **deps:** update dependency vue to ^3.2.45 ([#324](https://github.com/Kong/shared-ui-components/issues/324)) ([e3cbff8](https://github.com/Kong/shared-ui-components/commit/e3cbff8ea746237f2290d705201ad95305cd614b))
 
 
 
 
 
-## [0.6.8](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.7...@kong-ui/forms@0.6.8) (2022-12-21)
-
-
-### ♻️ Chores
-
-* fix types and stylelint ([53f7ed1](https://github.com/Kong/kong-ui-shared-components/commit/53f7ed1668ba6055f3aea2f357e26a6e7d6aa8f4))
-
-
-
-
-
-## [0.6.7](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.6...@kong-ui/forms@0.6.7) (2022-12-20)
+## [0.6.8](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.6.7...@kong-ui/forms@0.6.8) (2022-12-21)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.13.4 ([#305](https://github.com/Kong/kong-ui-shared-components/issues/305)) ([47366bb](https://github.com/Kong/kong-ui-shared-components/commit/47366bbf979bc9a8204be08e2bd9d5d794ec70ce))
+* fix types and stylelint ([53f7ed1](https://github.com/Kong/shared-ui-components/commit/53f7ed1668ba6055f3aea2f357e26a6e7d6aa8f4))
 
 
 
 
 
-## [0.6.6](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.5...@kong-ui/forms@0.6.6) (2022-12-16)
-
-
-### ♻️ Chores
-
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.13.1 ([#291](https://github.com/Kong/kong-ui-shared-components/issues/291)) ([9ab294c](https://github.com/Kong/kong-ui-shared-components/commit/9ab294c186b59b684738b0c2bd9117d17d15219d))
-
-
-
-
-
-## [0.6.5](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.4...@kong-ui/forms@0.6.5) (2022-12-16)
+## [0.6.7](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.6.6...@kong-ui/forms@0.6.7) (2022-12-20)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.13.0 ([#289](https://github.com/Kong/kong-ui-shared-components/issues/289)) ([951bd63](https://github.com/Kong/kong-ui-shared-components/commit/951bd63fc3bf935a2065e0ba151c26e1a4b80ba0))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.13.4 ([#305](https://github.com/Kong/shared-ui-components/issues/305)) ([47366bb](https://github.com/Kong/shared-ui-components/commit/47366bbf979bc9a8204be08e2bd9d5d794ec70ce))
 
 
 
 
 
-## [0.6.4](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.3...@kong-ui/forms@0.6.4) (2022-12-15)
-
-
-### ♻️ Chores
-
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.12.2 ([#288](https://github.com/Kong/kong-ui-shared-components/issues/288)) ([d91d644](https://github.com/Kong/kong-ui-shared-components/commit/d91d644d845916b5f3095f1d71a215742a085c28))
-
-
-
-
-
-## [0.6.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.2...@kong-ui/forms@0.6.3) (2022-12-13)
+## [0.6.6](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.6.5...@kong-ui/forms@0.6.6) (2022-12-16)
 
 
 ### ♻️ Chores
 
-* add stylelint ([#274](https://github.com/Kong/kong-ui-shared-components/issues/274)) ([83ed3a6](https://github.com/Kong/kong-ui-shared-components/commit/83ed3a6bedecd0b14f26c9ef219fa56c246e9228))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.13.1 ([#291](https://github.com/Kong/shared-ui-components/issues/291)) ([9ab294c](https://github.com/Kong/shared-ui-components/commit/9ab294c186b59b684738b0c2bd9117d17d15219d))
 
 
 
 
 
-## [0.6.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.1...@kong-ui/forms@0.6.2) (2022-12-12)
-
-
-### ♻️ Chores
-
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.12.0 ([#273](https://github.com/Kong/kong-ui-shared-components/issues/273)) ([d9e8861](https://github.com/Kong/kong-ui-shared-components/commit/d9e88618c41b070429958d7f37c1d3eec2df8dc0))
-
-
-
-
-
-## [0.6.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.6.0...@kong-ui/forms@0.6.1) (2022-12-09)
+## [0.6.5](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.6.4...@kong-ui/forms@0.6.5) (2022-12-16)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.11.1 ([#252](https://github.com/Kong/kong-ui-shared-components/issues/252)) ([9087c72](https://github.com/Kong/kong-ui-shared-components/commit/9087c72f12301d585e80f0aad7918931225f1ab5))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.13.0 ([#289](https://github.com/Kong/shared-ui-components/issues/289)) ([951bd63](https://github.com/Kong/shared-ui-components/commit/951bd63fc3bf935a2065e0ba151c26e1a4b80ba0))
 
 
 
 
 
-# [0.6.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.5.4...@kong-ui/forms@0.6.0) (2022-12-09)
+## [0.6.4](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.6.3...@kong-ui/forms@0.6.4) (2022-12-15)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.12.2 ([#288](https://github.com/Kong/shared-ui-components/issues/288)) ([d91d644](https://github.com/Kong/shared-ui-components/commit/d91d644d845916b5f3095f1d71a215742a085c28))
+
+
+
+
+
+## [0.6.3](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.6.2...@kong-ui/forms@0.6.3) (2022-12-13)
+
+
+### ♻️ Chores
+
+* add stylelint ([#274](https://github.com/Kong/shared-ui-components/issues/274)) ([83ed3a6](https://github.com/Kong/shared-ui-components/commit/83ed3a6bedecd0b14f26c9ef219fa56c246e9228))
+
+
+
+
+
+## [0.6.2](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.6.1...@kong-ui/forms@0.6.2) (2022-12-12)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.12.0 ([#273](https://github.com/Kong/shared-ui-components/issues/273)) ([d9e8861](https://github.com/Kong/shared-ui-components/commit/d9e88618c41b070429958d7f37c1d3eec2df8dc0))
+
+
+
+
+
+## [0.6.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.6.0...@kong-ui/forms@0.6.1) (2022-12-09)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.11.1 ([#252](https://github.com/Kong/shared-ui-components/issues/252)) ([9087c72](https://github.com/Kong/shared-ui-components/commit/9087c72f12301d585e80f0aad7918931225f1ab5))
+
+
+
+
+
+# [0.6.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.5.4...@kong-ui/forms@0.6.0) (2022-12-09)
 
 
 ### ✨ Features
 
-* **app-layout:** consolidate packages and refactor usage ([#262](https://github.com/Kong/kong-ui-shared-components/issues/262)) ([f4b2edf](https://github.com/Kong/kong-ui-shared-components/commit/f4b2edf120b26479b297440e562081b5bb554213))
+* **app-layout:** consolidate packages and refactor usage ([#262](https://github.com/Kong/shared-ui-components/issues/262)) ([f4b2edf](https://github.com/Kong/shared-ui-components/commit/f4b2edf120b26479b297440e562081b5bb554213))
 
 
 
 
 
-## [0.5.4](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.5.3...@kong-ui/forms@0.5.4) (2022-12-07)
-
-**Note:** Version bump only for package @kong-ui/forms
-
-
-
-
-
-## [0.5.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.5.2...@kong-ui/forms@0.5.3) (2022-12-05)
-
-
-### ♻️ Chores
-
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.9.1 ([#239](https://github.com/Kong/kong-ui-shared-components/issues/239)) ([f0ee583](https://github.com/Kong/kong-ui-shared-components/commit/f0ee58351333a3b556f32e5e9660d7563755e125))
-
-
-
-
-
-## [0.5.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.5.1...@kong-ui/forms@0.5.2) (2022-12-05)
-
-
-### ♻️ Chores
-
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.9.0 ([#237](https://github.com/Kong/kong-ui-shared-components/issues/237)) ([a1105bb](https://github.com/Kong/kong-ui-shared-components/commit/a1105bbf47ae7c292c805fdb47eab1e826e0823e))
-
-
-
-
-
-## [0.5.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.5.0...@kong-ui/forms@0.5.1) (2022-12-02)
+## [0.5.4](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.5.3...@kong-ui/forms@0.5.4) (2022-12-07)
 
 **Note:** Version bump only for package @kong-ui/forms
 
@@ -323,95 +293,125 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.5.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.4.12...@kong-ui/forms@0.5.0) (2022-12-02)
+## [0.5.3](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.5.2...@kong-ui/forms@0.5.3) (2022-12-05)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.9.1 ([#239](https://github.com/Kong/shared-ui-components/issues/239)) ([f0ee583](https://github.com/Kong/shared-ui-components/commit/f0ee58351333a3b556f32e5e9660d7563755e125))
+
+
+
+
+
+## [0.5.2](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.5.1...@kong-ui/forms@0.5.2) (2022-12-05)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.9.0 ([#237](https://github.com/Kong/shared-ui-components/issues/237)) ([a1105bb](https://github.com/Kong/shared-ui-components/commit/a1105bbf47ae7c292c805fdb47eab1e826e0823e))
+
+
+
+
+
+## [0.5.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.5.0...@kong-ui/forms@0.5.1) (2022-12-02)
+
+**Note:** Version bump only for package @kong-ui/forms
+
+
+
+
+
+# [0.5.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.4.12...@kong-ui/forms@0.5.0) (2022-12-02)
 
 
 ### ✨ Features
 
-* **sidebar:** responsive and mobile ([#209](https://github.com/Kong/kong-ui-shared-components/issues/209)) ([caf5077](https://github.com/Kong/kong-ui-shared-components/commit/caf5077bf5c217505904f6959be01653e3a8e53e))
+* **sidebar:** responsive and mobile ([#209](https://github.com/Kong/shared-ui-components/issues/209)) ([caf5077](https://github.com/Kong/shared-ui-components/commit/caf5077bf5c217505904f6959be01653e3a8e53e))
 
 
 
 
 
-## [0.4.12](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.4.11...@kong-ui/forms@0.4.12) (2022-12-02)
+## [0.4.12](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.4.11...@kong-ui/forms@0.4.12) (2022-12-02)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.8.1 ([#230](https://github.com/Kong/kong-ui-shared-components/issues/230)) ([4389d5d](https://github.com/Kong/kong-ui-shared-components/commit/4389d5db284de5ff58d8bc2cebe5ae7951c004f0))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.8.1 ([#230](https://github.com/Kong/shared-ui-components/issues/230)) ([4389d5d](https://github.com/Kong/shared-ui-components/commit/4389d5db284de5ff58d8bc2cebe5ae7951c004f0))
 
 
 
 
 
-## [0.4.11](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.4.10...@kong-ui/forms@0.4.11) (2022-12-02)
+## [0.4.11](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.4.10...@kong-ui/forms@0.4.11) (2022-12-02)
 
 
 ### 🐛 Bug Fixes
 
-* **forms:** adjust btn-link KButton styles ([#228](https://github.com/Kong/kong-ui-shared-components/issues/228)) ([8ac1be9](https://github.com/Kong/kong-ui-shared-components/commit/8ac1be94fcec095d787c1b3c9827118943eb22c8))
+* **forms:** adjust btn-link KButton styles ([#228](https://github.com/Kong/shared-ui-components/issues/228)) ([8ac1be9](https://github.com/Kong/shared-ui-components/commit/8ac1be94fcec095d787c1b3c9827118943eb22c8))
 
 
 
 
 
-## [0.4.10](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.4.9...@kong-ui/forms@0.4.10) (2022-12-02)
-
-
-### ♻️ Chores
-
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.8.0 ([#227](https://github.com/Kong/kong-ui-shared-components/issues/227)) ([2ba7e59](https://github.com/Kong/kong-ui-shared-components/commit/2ba7e59f62a53e41007c2d7a147a9e4614c70c13))
-
-
-
-
-
-## [0.4.9](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.4.8...@kong-ui/forms@0.4.9) (2022-12-01)
+## [0.4.10](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.4.9...@kong-ui/forms@0.4.10) (2022-12-02)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.7.2 ([#226](https://github.com/Kong/kong-ui-shared-components/issues/226)) ([d00f95d](https://github.com/Kong/kong-ui-shared-components/commit/d00f95df7afcb37e06925b8515f7ca57b3ff4f81))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.8.0 ([#227](https://github.com/Kong/shared-ui-components/issues/227)) ([2ba7e59](https://github.com/Kong/shared-ui-components/commit/2ba7e59f62a53e41007c2d7a147a9e4614c70c13))
 
 
 
 
 
-## [0.4.8](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.4.7...@kong-ui/forms@0.4.8) (2022-12-01)
-
-
-### ♻️ Chores
-
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.7.1 ([#221](https://github.com/Kong/kong-ui-shared-components/issues/221)) ([26ce681](https://github.com/Kong/kong-ui-shared-components/commit/26ce6812a93117fcfe9cae980b57e77a1cea8de9))
-
-
-
-
-
-## [0.4.7](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.4.6...@kong-ui/forms@0.4.7) (2022-11-30)
+## [0.4.9](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.4.8...@kong-ui/forms@0.4.9) (2022-12-01)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@types](https://github.com/types)/lodash to ^4.14.191 ([#219](https://github.com/Kong/kong-ui-shared-components/issues/219)) ([2c5f5fb](https://github.com/Kong/kong-ui-shared-components/commit/2c5f5fb7d49842735380be54f4bd7495951f6205))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.7.2 ([#226](https://github.com/Kong/shared-ui-components/issues/226)) ([d00f95d](https://github.com/Kong/shared-ui-components/commit/d00f95df7afcb37e06925b8515f7ca57b3ff4f81))
 
 
 
 
 
-## [0.4.6](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.4.5...@kong-ui/forms@0.4.6) (2022-11-30)
+## [0.4.8](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.4.7...@kong-ui/forms@0.4.8) (2022-12-01)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.7.0 ([#215](https://github.com/Kong/kong-ui-shared-components/issues/215)) ([a01e55b](https://github.com/Kong/kong-ui-shared-components/commit/a01e55b78b4325b14326585064531ef0ffe2588e))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.7.1 ([#221](https://github.com/Kong/shared-ui-components/issues/221)) ([26ce681](https://github.com/Kong/shared-ui-components/commit/26ce6812a93117fcfe9cae980b57e77a1cea8de9))
 
 
 
 
 
-## [0.4.5](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.4.4...@kong-ui/forms@0.4.5) (2022-11-29)
+## [0.4.7](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.4.6...@kong-ui/forms@0.4.7) (2022-11-30)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@types](https://github.com/types)/lodash to ^4.14.191 ([#219](https://github.com/Kong/shared-ui-components/issues/219)) ([2c5f5fb](https://github.com/Kong/shared-ui-components/commit/2c5f5fb7d49842735380be54f4bd7495951f6205))
+
+
+
+
+
+## [0.4.6](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.4.5...@kong-ui/forms@0.4.6) (2022-11-30)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.7.0 ([#215](https://github.com/Kong/shared-ui-components/issues/215)) ([a01e55b](https://github.com/Kong/shared-ui-components/commit/a01e55b78b4325b14326585064531ef0ffe2588e))
+
+
+
+
+
+## [0.4.5](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.4.4...@kong-ui/forms@0.4.5) (2022-11-29)
 
 **Note:** Version bump only for package @kong-ui/forms
 
@@ -419,7 +419,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.4.4](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.4.3...@kong-ui/forms@0.4.4) (2022-11-29)
+## [0.4.4](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.4.3...@kong-ui/forms@0.4.4) (2022-11-29)
 
 **Note:** Version bump only for package @kong-ui/forms
 
@@ -427,62 +427,62 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.4.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.4.2...@kong-ui/forms@0.4.3) (2022-11-29)
+## [0.4.3](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.4.2...@kong-ui/forms@0.4.3) (2022-11-29)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.6.4 ([#210](https://github.com/Kong/kong-ui-shared-components/issues/210)) ([b2e16cc](https://github.com/Kong/kong-ui-shared-components/commit/b2e16cc428f554e4d059c06ef2447378773bfdbc))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.6.4 ([#210](https://github.com/Kong/shared-ui-components/issues/210)) ([b2e16cc](https://github.com/Kong/shared-ui-components/commit/b2e16cc428f554e4d059c06ef2447378773bfdbc))
 
 
 
 
 
-## [0.4.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.4.1...@kong-ui/forms@0.4.2) (2022-11-29)
+## [0.4.2](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.4.1...@kong-ui/forms@0.4.2) (2022-11-29)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.6.3 ([#207](https://github.com/Kong/kong-ui-shared-components/issues/207)) ([51ae798](https://github.com/Kong/kong-ui-shared-components/commit/51ae7980b584cb82cf479cece20747b81f3a1630))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.6.3 ([#207](https://github.com/Kong/shared-ui-components/issues/207)) ([51ae798](https://github.com/Kong/shared-ui-components/commit/51ae7980b584cb82cf479cece20747b81f3a1630))
 
 
 
 
 
-## [0.4.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.4.0...@kong-ui/forms@0.4.1) (2022-11-29)
+## [0.4.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.4.0...@kong-ui/forms@0.4.1) (2022-11-29)
 
 
 ### 🐛 Bug Fixes
 
-* **forms:** style of advance field trigger ([#206](https://github.com/Kong/kong-ui-shared-components/issues/206)) ([c0a98d7](https://github.com/Kong/kong-ui-shared-components/commit/c0a98d7ed7451b1dc8a6e38bf782d107cd7c617d))
+* **forms:** style of advance field trigger ([#206](https://github.com/Kong/shared-ui-components/issues/206)) ([c0a98d7](https://github.com/Kong/shared-ui-components/commit/c0a98d7ed7451b1dc8a6e38bf782d107cd7c617d))
 
 
 
 
 
-# [0.4.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.15...@kong-ui/forms@0.4.0) (2022-11-29)
+# [0.4.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.3.15...@kong-ui/forms@0.4.0) (2022-11-29)
 
 
 ### ✨ Features
 
-* **forms:** improve a11y for advance field trigger ([#203](https://github.com/Kong/kong-ui-shared-components/issues/203)) ([e3e2616](https://github.com/Kong/kong-ui-shared-components/commit/e3e2616e8edb3803dbb1fcc18fa864ce1731ff7a))
+* **forms:** improve a11y for advance field trigger ([#203](https://github.com/Kong/shared-ui-components/issues/203)) ([e3e2616](https://github.com/Kong/shared-ui-components/commit/e3e2616e8edb3803dbb1fcc18fa864ce1731ff7a))
 
 
 
 
 
-## [0.3.15](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.14...@kong-ui/forms@0.3.15) (2022-11-24)
+## [0.3.15](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.3.14...@kong-ui/forms@0.3.15) (2022-11-24)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.6.2 ([#204](https://github.com/Kong/kong-ui-shared-components/issues/204)) ([56a1e36](https://github.com/Kong/kong-ui-shared-components/commit/56a1e3666a5c8f77c4b0e6c3f3c307806b9fa765))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.6.2 ([#204](https://github.com/Kong/shared-ui-components/issues/204)) ([56a1e36](https://github.com/Kong/shared-ui-components/commit/56a1e3666a5c8f77c4b0e6c3f3c307806b9fa765))
 
 
 
 
 
-## [0.3.14](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.13...@kong-ui/forms@0.3.14) (2022-11-23)
+## [0.3.14](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.3.13...@kong-ui/forms@0.3.14) (2022-11-23)
 
 **Note:** Version bump only for package @kong-ui/forms
 
@@ -490,73 +490,73 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.3.13](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.12...@kong-ui/forms@0.3.13) (2022-11-23)
+## [0.3.13](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.3.12...@kong-ui/forms@0.3.13) (2022-11-23)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@types](https://github.com/types)/lodash to ^4.14.190 ([#200](https://github.com/Kong/kong-ui-shared-components/issues/200)) ([2b152fb](https://github.com/Kong/kong-ui-shared-components/commit/2b152fb9d61e36484a808dba0f87989e9ded2e86))
+* **deps:** update dependency [@types](https://github.com/types)/lodash to ^4.14.190 ([#200](https://github.com/Kong/shared-ui-components/issues/200)) ([2b152fb](https://github.com/Kong/shared-ui-components/commit/2b152fb9d61e36484a808dba0f87989e9ded2e86))
 
 
 
 
 
-## [0.3.12](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.11...@kong-ui/forms@0.3.12) (2022-11-22)
+## [0.3.12](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.3.11...@kong-ui/forms@0.3.12) (2022-11-22)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.6.1 ([#195](https://github.com/Kong/kong-ui-shared-components/issues/195)) ([ce05854](https://github.com/Kong/kong-ui-shared-components/commit/ce05854573da6c2a5fb03e64b556e10bb11b8d09))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.6.1 ([#195](https://github.com/Kong/shared-ui-components/issues/195)) ([ce05854](https://github.com/Kong/shared-ui-components/commit/ce05854573da6c2a5fb03e64b556e10bb11b8d09))
 
 
 
 
 
-## [0.3.11](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.10...@kong-ui/forms@0.3.11) (2022-11-22)
+## [0.3.11](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.3.10...@kong-ui/forms@0.3.11) (2022-11-22)
 
 
 ### 🐛 Bug Fixes
 
-* **forms:** remove the redundant parenthesis ([#193](https://github.com/Kong/kong-ui-shared-components/issues/193)) ([ce6dfe7](https://github.com/Kong/kong-ui-shared-components/commit/ce6dfe797994dbb54075b910e09413f7d156f04c))
+* **forms:** remove the redundant parenthesis ([#193](https://github.com/Kong/shared-ui-components/issues/193)) ([ce6dfe7](https://github.com/Kong/shared-ui-components/commit/ce6dfe797994dbb54075b910e09413f7d156f04c))
 
 
 
 
 
-## [0.3.10](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.9...@kong-ui/forms@0.3.10) (2022-11-22)
+## [0.3.10](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.3.9...@kong-ui/forms@0.3.10) (2022-11-22)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.6.0 ([#194](https://github.com/Kong/kong-ui-shared-components/issues/194)) ([c1bf0b5](https://github.com/Kong/kong-ui-shared-components/commit/c1bf0b51f40cb52e63263edd36614b05e4c1ee46))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.6.0 ([#194](https://github.com/Kong/shared-ui-components/issues/194)) ([c1bf0b5](https://github.com/Kong/shared-ui-components/commit/c1bf0b51f40cb52e63263edd36614b05e4c1ee46))
 
 
 
 
 
-## [0.3.9](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.8...@kong-ui/forms@0.3.9) (2022-11-22)
+## [0.3.9](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.3.8...@kong-ui/forms@0.3.9) (2022-11-22)
 
 
 ### 🐛 Bug Fixes
 
-* **styles:** scope external link styles ([f117510](https://github.com/Kong/kong-ui-shared-components/commit/f11751036d224163f734993126f75b48d052b213))
+* **styles:** scope external link styles ([f117510](https://github.com/Kong/shared-ui-components/commit/f11751036d224163f734993126f75b48d052b213))
 
 
 
 
 
-## [0.3.8](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.7...@kong-ui/forms@0.3.8) (2022-11-22)
+## [0.3.8](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.3.7...@kong-ui/forms@0.3.8) (2022-11-22)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.5.8 ([#192](https://github.com/Kong/kong-ui-shared-components/issues/192)) ([2210419](https://github.com/Kong/kong-ui-shared-components/commit/221041930a493bea617f53e463fd0f3918396b32))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.5.8 ([#192](https://github.com/Kong/shared-ui-components/issues/192)) ([2210419](https://github.com/Kong/shared-ui-components/commit/221041930a493bea617f53e463fd0f3918396b32))
 
 
 
 
 
-## [0.3.7](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.6...@kong-ui/forms@0.3.7) (2022-11-22)
+## [0.3.7](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.3.6...@kong-ui/forms@0.3.7) (2022-11-22)
 
 **Note:** Version bump only for package @kong-ui/forms
 
@@ -564,134 +564,134 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.3.6](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.5...@kong-ui/forms@0.3.6) (2022-11-22)
+## [0.3.6](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.3.5...@kong-ui/forms@0.3.6) (2022-11-22)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.5.7 ([#190](https://github.com/Kong/kong-ui-shared-components/issues/190)) ([6c4e65b](https://github.com/Kong/kong-ui-shared-components/commit/6c4e65b863045bccb70555104f81a8e8fa266d48))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.5.7 ([#190](https://github.com/Kong/shared-ui-components/issues/190)) ([6c4e65b](https://github.com/Kong/shared-ui-components/commit/6c4e65b863045bccb70555104f81a8e8fa266d48))
 
 
 
 
 
-## [0.3.5](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.4...@kong-ui/forms@0.3.5) (2022-11-22)
+## [0.3.5](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.3.4...@kong-ui/forms@0.3.5) (2022-11-22)
 
 
 ### 🐛 Bug Fixes
 
-* **forms:** update OIDC plugin config labels ([#187](https://github.com/Kong/kong-ui-shared-components/issues/187)) ([b67b945](https://github.com/Kong/kong-ui-shared-components/commit/b67b9452a57f980ed173a8310b7d26fc022f7c3c))
+* **forms:** update OIDC plugin config labels ([#187](https://github.com/Kong/shared-ui-components/issues/187)) ([b67b945](https://github.com/Kong/shared-ui-components/commit/b67b9452a57f980ed173a8310b7d26fc022f7c3c))
 
 
 
 
 
-## [0.3.4](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.3...@kong-ui/forms@0.3.4) (2022-11-22)
-
-
-### ♻️ Chores
-
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.5.6 ([#188](https://github.com/Kong/kong-ui-shared-components/issues/188)) ([f12aadc](https://github.com/Kong/kong-ui-shared-components/commit/f12aadc0294c153e6941969b2bbd31aa5f5cc4f2))
-
-
-
-
-
-## [0.3.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.2...@kong-ui/forms@0.3.3) (2022-11-22)
+## [0.3.4](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.3.3...@kong-ui/forms@0.3.4) (2022-11-22)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.5.5 ([#186](https://github.com/Kong/kong-ui-shared-components/issues/186)) ([554a12f](https://github.com/Kong/kong-ui-shared-components/commit/554a12fd293ae133aa936b841aad3386bffcc6d3))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.5.6 ([#188](https://github.com/Kong/shared-ui-components/issues/188)) ([f12aadc](https://github.com/Kong/shared-ui-components/commit/f12aadc0294c153e6941969b2bbd31aa5f5cc4f2))
 
 
 
 
 
-## [0.3.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.1...@kong-ui/forms@0.3.2) (2022-11-18)
-
-
-### ♻️ Chores
-
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.5.4 ([#177](https://github.com/Kong/kong-ui-shared-components/issues/177)) ([fd9adc8](https://github.com/Kong/kong-ui-shared-components/commit/fd9adc8efb4650ed30d27f4c97bacda761c8ced1))
-
-
-
-
-
-## [0.3.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.3.0...@kong-ui/forms@0.3.1) (2022-11-18)
+## [0.3.3](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.3.2...@kong-ui/forms@0.3.3) (2022-11-22)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.5.3 ([#176](https://github.com/Kong/kong-ui-shared-components/issues/176)) ([a593f97](https://github.com/Kong/kong-ui-shared-components/commit/a593f9765bfad533e182a05dd7357ac738137542))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.5.5 ([#186](https://github.com/Kong/shared-ui-components/issues/186)) ([554a12f](https://github.com/Kong/shared-ui-components/commit/554a12fd293ae133aa936b841aad3386bffcc6d3))
 
 
 
 
 
-# [0.3.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.2.1...@kong-ui/forms@0.3.0) (2022-11-18)
+## [0.3.2](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.3.1...@kong-ui/forms@0.3.2) (2022-11-18)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.5.4 ([#177](https://github.com/Kong/shared-ui-components/issues/177)) ([fd9adc8](https://github.com/Kong/shared-ui-components/commit/fd9adc8efb4650ed30d27f4c97bacda761c8ced1))
+
+
+
+
+
+## [0.3.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.3.0...@kong-ui/forms@0.3.1) (2022-11-18)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.5.3 ([#176](https://github.com/Kong/shared-ui-components/issues/176)) ([a593f97](https://github.com/Kong/shared-ui-components/commit/a593f9765bfad533e182a05dd7357ac738137542))
+
+
+
+
+
+# [0.3.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.2.1...@kong-ui/forms@0.3.0) (2022-11-18)
 
 
 ### ✨ Features
 
-* **forms:** html tooltip text support ([#174](https://github.com/Kong/kong-ui-shared-components/issues/174)) ([9606b85](https://github.com/Kong/kong-ui-shared-components/commit/9606b853888824f23518c0e9e143029d8796d195))
+* **forms:** html tooltip text support ([#174](https://github.com/Kong/shared-ui-components/issues/174)) ([9606b85](https://github.com/Kong/shared-ui-components/commit/9606b853888824f23518c0e9e143029d8796d195))
 
 
 
 
 
-## [0.2.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.2.0...@kong-ui/forms@0.2.1) (2022-11-17)
+## [0.2.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.2.0...@kong-ui/forms@0.2.1) (2022-11-17)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.5.2 ([#172](https://github.com/Kong/kong-ui-shared-components/issues/172)) ([0983f9e](https://github.com/Kong/kong-ui-shared-components/commit/0983f9e2989431167479e06417a7da6545dc4204))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.5.2 ([#172](https://github.com/Kong/shared-ui-components/issues/172)) ([0983f9e](https://github.com/Kong/shared-ui-components/commit/0983f9e2989431167479e06417a7da6545dc4204))
 
 
 
 
 
-# [0.2.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.1.3...@kong-ui/forms@0.2.0) (2022-11-17)
+# [0.2.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.1.3...@kong-ui/forms@0.2.0) (2022-11-17)
 
 
 ### ✨ Features
 
-* using formatJS for useI18n wrapper in core package [KHCP-5228] ([#118](https://github.com/Kong/kong-ui-shared-components/issues/118)) ([cbf4f85](https://github.com/Kong/kong-ui-shared-components/commit/cbf4f858c9fe9cc2152a88ff265f8b9642434b96))
+* using formatJS for useI18n wrapper in core package [KHCP-5228] ([#118](https://github.com/Kong/shared-ui-components/issues/118)) ([cbf4f85](https://github.com/Kong/shared-ui-components/commit/cbf4f858c9fe9cc2152a88ff265f8b9642434b96))
 
 
 
 
 
-## [0.1.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.1.2...@kong-ui/forms@0.1.3) (2022-11-16)
-
-
-### ♻️ Chores
-
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.5.1 ([#167](https://github.com/Kong/kong-ui-shared-components/issues/167)) ([db1697d](https://github.com/Kong/kong-ui-shared-components/commit/db1697da1697ff742a5fe311bff08324707a5043))
-
-
-
-
-
-## [0.1.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.1.1...@kong-ui/forms@0.1.2) (2022-11-16)
+## [0.1.3](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.1.2...@kong-ui/forms@0.1.3) (2022-11-16)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.5.0 ([#166](https://github.com/Kong/kong-ui-shared-components/issues/166)) ([31ad386](https://github.com/Kong/kong-ui-shared-components/commit/31ad38615283eba284ab94112994793c195b7922))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.5.1 ([#167](https://github.com/Kong/shared-ui-components/issues/167)) ([db1697d](https://github.com/Kong/shared-ui-components/commit/db1697da1697ff742a5fe311bff08324707a5043))
 
 
 
 
 
-## [0.1.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/forms@0.1.0...@kong-ui/forms@0.1.1) (2022-11-15)
+## [0.1.2](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.1.1...@kong-ui/forms@0.1.2) (2022-11-16)
 
 
 ### ♻️ Chores
 
-* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.4.3 ([#165](https://github.com/Kong/kong-ui-shared-components/issues/165)) ([62f2c13](https://github.com/Kong/kong-ui-shared-components/commit/62f2c134c06ba29b58edeb40e0f35524fcae3be3))
-* **deps:** update dependency [@types](https://github.com/types)/lodash to ^4.14.189 ([#164](https://github.com/Kong/kong-ui-shared-components/issues/164)) ([d8c2360](https://github.com/Kong/kong-ui-shared-components/commit/d8c2360c9017d31d786dbf5b88477c1a1b848d5b))
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.5.0 ([#166](https://github.com/Kong/shared-ui-components/issues/166)) ([31ad386](https://github.com/Kong/shared-ui-components/commit/31ad38615283eba284ab94112994793c195b7922))
+
+
+
+
+
+## [0.1.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.1.0...@kong-ui/forms@0.1.1) (2022-11-15)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.4.3 ([#165](https://github.com/Kong/shared-ui-components/issues/165)) ([62f2c13](https://github.com/Kong/shared-ui-components/commit/62f2c134c06ba29b58edeb40e0f35524fcae3be3))
+* **deps:** update dependency [@types](https://github.com/types)/lodash to ^4.14.189 ([#164](https://github.com/Kong/shared-ui-components/issues/164)) ([d8c2360](https://github.com/Kong/shared-ui-components/commit/d8c2360c9017d31d786dbf5b88477c1a1b848d5b))
 
 
 
@@ -702,4 +702,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### ✨ Features
 
-* KHCP-4862 @Kong-ui/forms shared package. ([#27](https://github.com/Kong/kong-ui-shared-components/issues/27)) ([9570e3c](https://github.com/Kong/kong-ui-shared-components/commit/9570e3c04fd6d42107232bb8c972bd2aa6e58ab9))
+* KHCP-4862 @Kong-ui/forms shared package. ([#27](https://github.com/Kong/shared-ui-components/issues/27)) ([9570e3c](https://github.com/Kong/shared-ui-components/commit/9570e3c04fd6d42107232bb8c972bd2aa6e58ab9))

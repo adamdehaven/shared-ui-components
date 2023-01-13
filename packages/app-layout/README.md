@@ -96,7 +96,7 @@ import { AppLayout } from '@kong-ui/app-layout'
 
 ## TypeScript interfaces
 
-TypeScript interfaces [are available here](https://github.com/Kong/ui-shared-components/blob/main/packages/app-layout/src/types/) and can be directly imported into your host application.
+TypeScript interfaces [are available here](https://github.com/Kong/shared-ui-components/blob/main/packages/app-layout/src/types/) and can be directly imported into your host application.
 
 ## Individual component documentation
 

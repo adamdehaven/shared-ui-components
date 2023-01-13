@@ -4,7 +4,7 @@ environments:
     branch: main
     mode: pull-request
 apps:
-  - name: ui-shared-components
+  - name: shared-ui-components
     path: ""
     text-resources:
       - path: packages/**/src/locales/*.json

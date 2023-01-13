@@ -1,4 +1,4 @@
-# ui-shared-components
+# shared-ui-components
 
 > **Note**: Docs are a work in-progress
 
@@ -154,7 +154,7 @@ Preview components from this PR in consuming application
 
 In consuming application project install preview versions of shared packages by running following commands:
 
-yarn add "@kong-ui/forms@https://pr-212--ui-shared-components.netlify.app/kong-ui-forms-0.4.5-395a8bc.tgz"
+yarn add "@kong-ui/forms@https://pr-212--shared-ui-components.netlify.app/kong-ui-forms-0.4.5-395a8bc.tgz"
 
 ```
 
@@ -163,15 +163,15 @@ install the tarball version of the package using command provided in the PR in c
 
 ## Running consuming application with local copy of the package
 
-You are developing shared component (let's say `@kong-ui/forms`) and you need to run consuming application `khcp-ui` with the current version of the code you have locally in your ui-shared-components/packages/forms branch. Here is how to do it:
+You are developing shared component (let's say `@kong-ui/forms`) and you need to run consuming application `khcp-ui` with the current version of the code you have locally in your shared-ui-components/packages/forms branch. Here is how to do it:
 
-1. in the folder `ui-shared-components/packages/forms` run
+1. in the folder `shared-ui-components/packages/forms` run
 
     ```sh
     yarn link
     ```
 
-1. make sure your package is getting build in watch mode, for this in in the folder `ui-shared-components/packages/forms` run:
+1. make sure your package is getting build in watch mode, for this in in the folder `shared-ui-components/packages/forms` run:
 
     ```sh
     pnpm build:package --watch
@@ -210,9 +210,9 @@ In some cases HMR (hot module reloading) is not working out of the box in this c
 
     _Please do not commit these changes_
 
-    And finally, when you done working with local (linked copy) of youe ui-shared package, unlink it:
+    And finally, when you done working with local (linked copy) of your `shared-ui-components` package, unlink it:
 
-1. In the folder `ui-shared-components/packages/forms` run
+1. In the folder `shared-ui-components/packages/forms` run
 
     ```sh
     yarn unlink

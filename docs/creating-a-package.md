@@ -77,7 +77,7 @@ Make sure to include all explicitly versioned runtime dependencies within this s
 
 #### Depedencies on packages also managed within this monorepo
 
-Add the dependency to your `package.json` file by package name using the _latest_ package version (as defined in its own `package.json` file). For example, if you are developing `@kong-ui/new-component` and `@kong-ui/demo-component` already exists as a package within `ui-shared-components`, add the following to the `package.json` file of `@kong-ui/new-component`:
+Add the dependency to your `package.json` file by package name using the _latest_ package version (as defined in its own `package.json` file). For example, if you are developing `@kong-ui/new-component` and `@kong-ui/demo-component` already exists as a package within `shared-ui-components`, add the following to the `package.json` file of `@kong-ui/new-component`:
 
 ```json
 "dependencies": {
@@ -85,7 +85,7 @@ Add the dependency to your `package.json` file by package name using the _latest
 }
 ```
 
-where `1.6.2` is the version that's currently listed in the `package.json` file of `@kong-ui/demo-component` within the `ui-shared-components` repo.
+where `1.6.2` is the version that's currently listed in the `package.json` file of `@kong-ui/demo-component` within the `shared-ui-components` repo.
 
 During local development, the local version of `@kong-ui/demo-component` will be symlinked and used within `@kong-ui/new-component`.
 During our release automation, Lerna will ensure that the version of `@kong-ui/demo-component` required in the `package.json` of `@kong-ui/new-component` is kept up-to-date. That is, when a new version of `@kong-ui/demo-component` is released the `package.json` file of `@kong-ui/new-component` is also updated and thus a new version of `@kong-ui/new-component` is released.
@@ -96,10 +96,18 @@ Include loosely bounded (SemVer-wise) peer deps, i.e. `vue` or `vue-router`
 
 ### `devDependencies`
 
-`devDependencies` should be empty or not defined at all within your package's `package.json` (with some exception). Please define `devDependencies` within the monorepo root `package.json` file, for example:
+Common or shared `devDependencies` should be added within the monorepo root `package.json` file. `devDependencies` added within your specific package's `package.json` should only include `devDependencies` that only apply to your specific package.
+
+To add common or shared `devDependencies`:
 
 ```bash
  pnpm add -wD @types/foo
+```
+
+To add package-specific `devDependencies`:
+
+```bash
+ pnpm --fiter="@kong-ui/demo-component" add -D @types/foo
 ```
 
 ### `scripts`

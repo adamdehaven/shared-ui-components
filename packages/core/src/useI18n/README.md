@@ -40,7 +40,7 @@ const i18n = useI18n()
 
 ## Use in shared component
 
-When used in [shared component](https://github.com/Kong/ui-shared-components/pull/118/files#diff-f296a0775f650cac9ecd4b5d7ccef015ca73587be833b40eeae1e396426b0f4fR45) (outside of application code),  we need `Intl` that is local to that component, so that it is using component's own localization strings:
+When used in [shared component](https://github.com/Kong/shared-ui-components/pull/118/files#diff-f296a0775f650cac9ecd4b5d7ccef015ca73587be833b40eeae1e396426b0f4fR45) (outside of application code),  we need `Intl` that is local to that component, so that it is using component's own localization strings:
 
 ```html
 <template>
@@ -237,8 +237,8 @@ And then, anywhere in application code where `i18n` is needed
 This comes for free from FormatJS, and documentation on those methods can be found there: [FormatJS](https://formatjs.io/docs/intl)
 
 Unit tests for I18n wrapper in kong-ui/core also has view examples as a references for those.
-[FormatDate](https://github.com/Kong/ui-shared-components/blob/4a1f99d5cee2d4409f4370a9bce2377450a6429d/packages/core/src/useI18n/i18n.spec.ts#L81)
-[FormatNumber](https://github.com/Kong/ui-shared-components/blob/4a1f99d5cee2d4409f4370a9bce2377450a6429d/packages/core/src/useI18n/i18n.spec.ts#L68)
+[FormatDate](https://github.com/Kong/shared-ui-components/blob/4a1f99d5cee2d4409f4370a9bce2377450a6429d/packages/core/src/useI18n/i18n.spec.ts#L81)
+[FormatNumber](https://github.com/Kong/shared-ui-components/blob/4a1f99d5cee2d4409f4370a9bce2377450a6429d/packages/core/src/useI18n/i18n.spec.ts#L68)
 
 Every single method listed in [FormatJS](https://formatjs.io/docs/intl) is exposed and available in i18n wrapper.
 

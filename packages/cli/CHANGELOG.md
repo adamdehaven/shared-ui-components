@@ -3,73 +3,73 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.7.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.7.0...@kong-ui/cli@0.7.1) (2022-12-13)
+## [0.7.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.7.0...@kong-ui/cli@0.7.1) (2022-12-13)
 
 
 ### ♻️ Chores
 
-* add stylelint ([#274](https://github.com/Kong/kong-ui-shared-components/issues/274)) ([83ed3a6](https://github.com/Kong/kong-ui-shared-components/commit/83ed3a6bedecd0b14f26c9ef219fa56c246e9228))
+* add stylelint ([#274](https://github.com/Kong/shared-ui-components/issues/274)) ([83ed3a6](https://github.com/Kong/shared-ui-components/commit/83ed3a6bedecd0b14f26c9ef219fa56c246e9228))
 
 
 
 
 
-# [0.7.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.6.0...@kong-ui/cli@0.7.0) (2022-12-05)
-
-
-### ✨ Features
-
-* **app:** create konnect app shell [KHCP-5489, KHCP-5488] ([#241](https://github.com/Kong/kong-ui-shared-components/issues/241)) ([d35395d](https://github.com/Kong/kong-ui-shared-components/commit/d35395dd329f883de8a9990f2f22f4a645ad78f9))
-
-
-
-
-
-# [0.6.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.5.1...@kong-ui/cli@0.6.0) (2022-12-02)
+# [0.7.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.6.0...@kong-ui/cli@0.7.0) (2022-12-05)
 
 
 ### ✨ Features
 
-* **sidebar:** responsive and mobile ([#209](https://github.com/Kong/kong-ui-shared-components/issues/209)) ([caf5077](https://github.com/Kong/kong-ui-shared-components/commit/caf5077bf5c217505904f6959be01653e3a8e53e))
+* **app:** create konnect app shell [KHCP-5489, KHCP-5488] ([#241](https://github.com/Kong/shared-ui-components/issues/241)) ([d35395d](https://github.com/Kong/shared-ui-components/commit/d35395dd329f883de8a9990f2f22f4a645ad78f9))
 
 
 
 
 
-## [0.5.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.5.0...@kong-ui/cli@0.5.1) (2022-11-15)
+# [0.6.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.5.1...@kong-ui/cli@0.6.0) (2022-12-02)
+
+
+### ✨ Features
+
+* **sidebar:** responsive and mobile ([#209](https://github.com/Kong/shared-ui-components/issues/209)) ([caf5077](https://github.com/Kong/shared-ui-components/commit/caf5077bf5c217505904f6959be01653e3a8e53e))
+
+
+
+
+
+## [0.5.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.5.0...@kong-ui/cli@0.5.1) (2022-11-15)
 
 
 ### 🐛 Bug Fixes
 
-* fix sandbox preview ([#155](https://github.com/Kong/kong-ui-shared-components/issues/155)) ([d565758](https://github.com/Kong/kong-ui-shared-components/commit/d565758d7ad3d072d8f14df2d79d123f80333726))
+* fix sandbox preview ([#155](https://github.com/Kong/shared-ui-components/issues/155)) ([d565758](https://github.com/Kong/shared-ui-components/commit/d565758d7ad3d072d8f14df2d79d123f80333726))
 
 
 
 
 
-# [0.5.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.4.6...@kong-ui/cli@0.5.0) (2022-11-01)
+# [0.5.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.4.6...@kong-ui/cli@0.5.0) (2022-11-01)
 
 
 ### ✨ Features
 
-* **sidebar:** dynamic sidebar [KHCP-5152] ([#96](https://github.com/Kong/kong-ui-shared-components/issues/96)) ([0bc5848](https://github.com/Kong/kong-ui-shared-components/commit/0bc5848de494225091c651de04d850db0bb7c071))
+* **sidebar:** dynamic sidebar [KHCP-5152] ([#96](https://github.com/Kong/shared-ui-components/issues/96)) ([0bc5848](https://github.com/Kong/shared-ui-components/commit/0bc5848de494225091c651de04d850db0bb7c071))
 
 
 
 
 
-## [0.4.6](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.4.5...@kong-ui/cli@0.4.6) (2022-10-31)
+## [0.4.6](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.4.5...@kong-ui/cli@0.4.6) (2022-10-31)
 
 
 ### ♻️ Chores
 
-* update template json ([ef6cab1](https://github.com/Kong/kong-ui-shared-components/commit/ef6cab19224b8b0661fb159e605b9ed35196d1b9))
+* update template json ([ef6cab1](https://github.com/Kong/shared-ui-components/commit/ef6cab19224b8b0661fb159e605b9ed35196d1b9))
 
 
 
 
 
-## [0.4.5](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.4.4...@kong-ui/cli@0.4.5) (2022-10-25)
+## [0.4.5](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.4.4...@kong-ui/cli@0.4.5) (2022-10-25)
 
 **Note:** Version bump only for package @kong-ui/cli
 
@@ -77,118 +77,118 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.4.4](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.4.3...@kong-ui/cli@0.4.4) (2022-10-21)
+## [0.4.4](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.4.3...@kong-ui/cli@0.4.4) (2022-10-21)
 
 
 ### 🐛 Bug Fixes
 
-* **i18n:** typing ([6744242](https://github.com/Kong/kong-ui-shared-components/commit/6744242af747c7044689e57466c7b3578a510656))
+* **i18n:** typing ([6744242](https://github.com/Kong/shared-ui-components/commit/6744242af747c7044689e57466c7b3578a510656))
 
 
 
 
 
-## [0.4.3](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.4.2...@kong-ui/cli@0.4.3) (2022-10-21)
+## [0.4.3](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.4.2...@kong-ui/cli@0.4.3) (2022-10-21)
 
 
 ### 📦 Code Refactoring
 
-* update cli and readme ([5a7e909](https://github.com/Kong/kong-ui-shared-components/commit/5a7e9094833455d73df819d5804d54a82d8d09e9))
+* update cli and readme ([5a7e909](https://github.com/Kong/shared-ui-components/commit/5a7e9094833455d73df819d5804d54a82d8d09e9))
 
 
 
 
 
-## [0.4.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.4.1...@kong-ui/cli@0.4.2) (2022-10-19)
+## [0.4.2](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.4.1...@kong-ui/cli@0.4.2) (2022-10-19)
 
 
 ### ♻️ Chores
 
-* enable commitlint and pre-push lint ([#32](https://github.com/Kong/kong-ui-shared-components/issues/32)) ([87f03d2](https://github.com/Kong/kong-ui-shared-components/commit/87f03d2deb195d5e297863687eb9e832b78a5357))
+* enable commitlint and pre-push lint ([#32](https://github.com/Kong/shared-ui-components/issues/32)) ([87f03d2](https://github.com/Kong/shared-ui-components/commit/87f03d2deb195d5e297863687eb9e832b78a5357))
 
 
 
 
 
-## [0.4.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.4.0...@kong-ui/cli@0.4.1) (2022-10-19)
+## [0.4.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.4.0...@kong-ui/cli@0.4.1) (2022-10-19)
 
 
 ### 📚 Documentation
 
-* update documentation ([#31](https://github.com/Kong/kong-ui-shared-components/issues/31)) ([c89caa7](https://github.com/Kong/kong-ui-shared-components/commit/c89caa785cfdb702dfd9691a60823e34bcbea481))
+* update documentation ([#31](https://github.com/Kong/shared-ui-components/issues/31)) ([c89caa7](https://github.com/Kong/shared-ui-components/commit/c89caa785cfdb702dfd9691a60823e34bcbea481))
 
 
 
 
 
-# [0.4.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.3.1...@kong-ui/cli@0.4.0) (2022-10-18)
-
-
-### ✨ Features
-
-* **sidebar:** dynamic sidebar poc ([#28](https://github.com/Kong/kong-ui-shared-components/issues/28)) ([86c9eea](https://github.com/Kong/kong-ui-shared-components/commit/86c9eea52cf7820fb6a40fc00ed86d32ee32dbaf))
-
-
-### 🐛 Bug Fixes
-
-* lint and unit test to work out-of-the-box on new package generated by cli. ([#26](https://github.com/Kong/kong-ui-shared-components/issues/26)) ([e787a4c](https://github.com/Kong/kong-ui-shared-components/commit/e787a4c5eb15d3d179957e63f2a2e6befd38890d))
-
-
-
-
-
-## [0.3.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.3.0...@kong-ui/cli@0.3.1) (2022-10-13)
-
-
-### 🐛 Bug Fixes
-
-* **cli:** update cli templates ([59c9e32](https://github.com/Kong/kong-ui-shared-components/commit/59c9e326a6804b14160aace72d0666b292aae811))
-* **template:** start version at 0.0.0 ([8162d52](https://github.com/Kong/kong-ui-shared-components/commit/8162d52568c572862b2cde1a9b4b1bca0717ec03))
-* **template:** update sandbox app template ([a2203bf](https://github.com/Kong/kong-ui-shared-components/commit/a2203bf4e92656c9836593a7cf1dd6704035190f))
-
-
-
-
-
-# [0.3.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.2.2...@kong-ui/cli@0.3.0) (2022-10-03)
+# [0.4.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.3.1...@kong-ui/cli@0.4.0) (2022-10-18)
 
 
 ### ✨ Features
 
-* external component imports ([#19](https://github.com/Kong/kong-ui-shared-components/issues/19)) ([e0b50d4](https://github.com/Kong/kong-ui-shared-components/commit/e0b50d42b383870f6274ef2f92eb0520902ba840))
+* **sidebar:** dynamic sidebar poc ([#28](https://github.com/Kong/shared-ui-components/issues/28)) ([86c9eea](https://github.com/Kong/shared-ui-components/commit/86c9eea52cf7820fb6a40fc00ed86d32ee32dbaf))
+
+
+### 🐛 Bug Fixes
+
+* lint and unit test to work out-of-the-box on new package generated by cli. ([#26](https://github.com/Kong/shared-ui-components/issues/26)) ([e787a4c](https://github.com/Kong/shared-ui-components/commit/e787a4c5eb15d3d179957e63f2a2e6befd38890d))
 
 
 
 
 
-## [0.2.2](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.2.1...@kong-ui/cli@0.2.2) (2022-09-29)
+## [0.3.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.3.0...@kong-ui/cli@0.3.1) (2022-10-13)
+
+
+### 🐛 Bug Fixes
+
+* **cli:** update cli templates ([59c9e32](https://github.com/Kong/shared-ui-components/commit/59c9e326a6804b14160aace72d0666b292aae811))
+* **template:** start version at 0.0.0 ([8162d52](https://github.com/Kong/shared-ui-components/commit/8162d52568c572862b2cde1a9b4b1bca0717ec03))
+* **template:** update sandbox app template ([a2203bf](https://github.com/Kong/shared-ui-components/commit/a2203bf4e92656c9836593a7cf1dd6704035190f))
+
+
+
+
+
+# [0.3.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.2.2...@kong-ui/cli@0.3.0) (2022-10-03)
+
+
+### ✨ Features
+
+* external component imports ([#19](https://github.com/Kong/shared-ui-components/issues/19)) ([e0b50d4](https://github.com/Kong/shared-ui-components/commit/e0b50d42b383870f6274ef2f92eb0520902ba840))
+
+
+
+
+
+## [0.2.2](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.2.1...@kong-ui/cli@0.2.2) (2022-09-29)
 
 
 ### 📦 Code Refactoring
 
-* import package script ([#18](https://github.com/Kong/kong-ui-shared-components/issues/18)) ([aeb6ffc](https://github.com/Kong/kong-ui-shared-components/commit/aeb6ffc081a3b606c7c4f0fcab3b463ffa463a3f))
+* import package script ([#18](https://github.com/Kong/shared-ui-components/issues/18)) ([aeb6ffc](https://github.com/Kong/shared-ui-components/commit/aeb6ffc081a3b606c7c4f0fcab3b463ffa463a3f))
 
 
 
 
 
-## [0.2.1](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.2.0...@kong-ui/cli@0.2.1) (2022-09-28)
+## [0.2.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.2.0...@kong-ui/cli@0.2.1) (2022-09-28)
 
 
 ### ♻️ Chores
 
-* give global var proper name ([880e889](https://github.com/Kong/kong-ui-shared-components/commit/880e889cb3225c076508f009e54e4f67ece0c4a5))
+* give global var proper name ([880e889](https://github.com/Kong/shared-ui-components/commit/880e889cb3225c076508f009e54e4f67ece0c4a5))
 
 
 
 
 
-# [0.2.0](https://github.com/Kong/kong-ui-shared-components/compare/@kong-ui/cli@0.1.0...@kong-ui/cli@0.2.0) (2022-09-27)
+# [0.2.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.1.0...@kong-ui/cli@0.2.0) (2022-09-27)
 
 
 ### ✨ Features
 
-* [@kong-ui](https://github.com/kong-ui)/demo-core ([#16](https://github.com/Kong/kong-ui-shared-components/issues/16)) ([15248eb](https://github.com/Kong/kong-ui-shared-components/commit/15248eb1cd52b9a24818dd73dbbfe24f43ae3ff5))
+* [@kong-ui](https://github.com/kong-ui)/demo-core ([#16](https://github.com/Kong/shared-ui-components/issues/16)) ([15248eb](https://github.com/Kong/shared-ui-components/commit/15248eb1cd52b9a24818dd73dbbfe24f43ae3ff5))
 
 
 
@@ -199,14 +199,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### ✨ Features
 
-* **cli:** add new package cli ([#8](https://github.com/Kong/kong-ui-shared-components/issues/8)) ([d4fffc0](https://github.com/Kong/kong-ui-shared-components/commit/d4fffc0b9e022655105fa1c3dd229e1b238efeaf))
+* **cli:** add new package cli ([#8](https://github.com/Kong/shared-ui-components/issues/8)) ([d4fffc0](https://github.com/Kong/shared-ui-components/commit/d4fffc0b9e022655105fa1c3dd229e1b238efeaf))
 
 
 ### 🐛 Bug Fixes
 
-* add missing template file ([bb2a107](https://github.com/Kong/kong-ui-shared-components/commit/bb2a1076ec89dd19d9d0e679a9aa702f6022a9bf))
+* add missing template file ([bb2a107](https://github.com/Kong/shared-ui-components/commit/bb2a1076ec89dd19d9d0e679a9aa702f6022a9bf))
 
 
 ### 🚨 Tests
 
-* update test configs ([#11](https://github.com/Kong/kong-ui-shared-components/issues/11)) ([740c2bd](https://github.com/Kong/kong-ui-shared-components/commit/740c2bd8257412b9cdea7041cb5bc935803e27bd))
+* update test configs ([#11](https://github.com/Kong/shared-ui-components/issues/11)) ([740c2bd](https://github.com/Kong/shared-ui-components/commit/740c2bd8257412b9cdea7041cb5bc935803e27bd))

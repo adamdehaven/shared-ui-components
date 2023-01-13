@@ -5,5 +5,5 @@ module.exports = {
   rules: {
     'header-max-length': [2, 'always', 108],
   },
-  helpUrl: 'https://github.com/Kong/ui-shared-components#committing-changes',
+  helpUrl: 'https://github.com/Kong/shared-ui-components#committing-changes',
 }

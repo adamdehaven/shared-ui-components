@@ -35,7 +35,7 @@
     "test:unit": "cross-env FORCE_COLOR=1 vitest run",
     "test:unit:open": "cross-env FORCE_COLOR=1 vitest --ui"
   },
-  "repository": "https://github.com/Kong/kong-ui-shared-components/tree/main/packages/copy-uuid",
+  "repository": "https://github.com/Kong/shared-ui-components/tree/main/packages/copy-uuid",
   "author": "Kong, Inc.",
   "license": "UNLICENSED",
   "volta": {

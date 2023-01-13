@@ -12,7 +12,7 @@
     "lint": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../.eslintignore'",
     "lint:fix": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../.eslintignore' --fix"
   },
-  "repository": "https://github.com/Kong/kong-ui-shared-components/tree/main/packages/cli",
+  "repository": "https://github.com/Kong/shared-ui-components/tree/main/packages/cli",
   "author": "Kong, Inc.",
   "license": "UNLICENSED",
   "volta": {
