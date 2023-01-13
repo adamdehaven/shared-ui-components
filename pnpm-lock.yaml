@@ -38,7 +38,7 @@ importers:
       eslint-plugin-import: ^2.27.4
       eslint-plugin-node: ^11.1.0
       eslint-plugin-promise: ^6.1.1
-      eslint-plugin-vue: ^9.8.0
+      eslint-plugin-vue: ^9.9.0
       inquirer: ^9.1.4
       js-yaml: ^4.1.0
       jsdom: ^20.0.3
@@ -86,8 +86,8 @@ importers:
       '@typescript-eslint/parser': 5.48.1_iukboom6ndih5an6iafl45j2fe
       '@vitejs/plugin-vue': 4.0.0_vite@4.0.4+vue@3.2.45
       '@vitest/ui': 0.27.1
-      '@vue/eslint-config-standard': 8.0.1_esccqlug2xx3n5l6ptijctqcia
-      '@vue/eslint-config-typescript': 11.0.2_6bpdc6aekjtktp4whh3ygv32oi
+      '@vue/eslint-config-standard': 8.0.1_fb7ff5ca3f62taqlftfernegkm
+      '@vue/eslint-config-typescript': 11.0.2_r2ofcm3a3mosf6mtxm5d53nciq
       '@vue/test-utils': 2.2.7_vue@3.2.45
       '@vue/tsconfig': 0.1.3_@types+node@18.11.18
       boxen: 7.0.1
@@ -102,7 +102,7 @@ importers:
       eslint-plugin-import: 2.27.4_qdjeohovcytra7xto5vgmxssaq
       eslint-plugin-node: 11.1.0_eslint@8.31.0
       eslint-plugin-promise: 6.1.1_eslint@8.31.0
-      eslint-plugin-vue: 9.8.0_eslint@8.31.0
+      eslint-plugin-vue: 9.9.0_eslint@8.31.0
       inquirer: 9.1.4
       js-yaml: 4.1.0
       jsdom: 20.0.3
@@ -3523,7 +3523,7 @@ packages:
     resolution: {integrity: sha512-JD5fcdIuFxU4fQyXUu3w2KpAJHzTVdN+p4iOX2lMWSHMOoQdMAcpFLZzm9Z/2nmsoZ1a96QEhZ26e50xLBsgOQ==}
     dev: true
 
-  /@vue/eslint-config-standard/8.0.1_esccqlug2xx3n5l6ptijctqcia:
+  /@vue/eslint-config-standard/8.0.1_fb7ff5ca3f62taqlftfernegkm:
     resolution: {integrity: sha512-+FsTb8kOf2GSbXXTwbigRBRRur/byMbwL6Ijii2JoXW4hsLB4arl9lbgV54OUOV5o20INLHDmBVONO16rP/a1g==}
     peerDependencies:
       eslint: ^8.0.1
@@ -3536,7 +3536,7 @@ packages:
       eslint-plugin-import: 2.27.4_qdjeohovcytra7xto5vgmxssaq
       eslint-plugin-n: 15.2.5_eslint@8.31.0
       eslint-plugin-promise: 6.1.1_eslint@8.31.0
-      eslint-plugin-vue: 9.8.0_eslint@8.31.0
+      eslint-plugin-vue: 9.9.0_eslint@8.31.0
     transitivePeerDependencies:
       - '@typescript-eslint/parser'
       - eslint-import-resolver-typescript
@@ -3544,7 +3544,7 @@ packages:
       - supports-color
     dev: true
 
-  /@vue/eslint-config-typescript/11.0.2_6bpdc6aekjtktp4whh3ygv32oi:
+  /@vue/eslint-config-typescript/11.0.2_r2ofcm3a3mosf6mtxm5d53nciq:
     resolution: {integrity: sha512-EiKud1NqlWmSapBFkeSrE994qpKx7/27uCGnhdqzllYDpQZroyX/O6bwjEpeuyKamvLbsGdO6PMR2faIf+zFnw==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -3558,7 +3558,7 @@ packages:
       '@typescript-eslint/eslint-plugin': 5.48.1_3jon24igvnqaqexgwtxk6nkpse
       '@typescript-eslint/parser': 5.48.1_iukboom6ndih5an6iafl45j2fe
       eslint: 8.31.0
-      eslint-plugin-vue: 9.8.0_eslint@8.31.0
+      eslint-plugin-vue: 9.9.0_eslint@8.31.0
       typescript: 4.9.4
       vue-eslint-parser: 9.1.0_eslint@8.31.0
     transitivePeerDependencies:
@@ -6869,8 +6869,8 @@ packages:
       eslint: 8.31.0
     dev: true
 
-  /eslint-plugin-vue/9.8.0_eslint@8.31.0:
-    resolution: {integrity: sha512-E/AXwcTzunyzM83C2QqDHxepMzvI2y6x+mmeYHbVDQlKFqmKYvRrhaVixEeeG27uI44p9oKDFiyCRw4XxgtfHA==}
+  /eslint-plugin-vue/9.9.0_eslint@8.31.0:
+    resolution: {integrity: sha512-YbubS7eK0J7DCf0U2LxvVP7LMfs6rC6UltihIgval3azO3gyDwEGVgsCMe1TmDiEkl6GdMKfRpaME6QxIYtzDQ==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
@@ -6879,8 +6879,8 @@ packages:
       eslint-utils: 3.0.0_eslint@8.31.0
       natural-compare: 1.4.0
       nth-check: 2.1.1
-      postcss-selector-parser: 6.0.10
-      semver: 7.3.7
+      postcss-selector-parser: 6.0.11
+      semver: 7.3.8
       vue-eslint-parser: 9.1.0_eslint@8.31.0
       xml-name-validator: 4.0.0
     transitivePeerDependencies:
@@ -12483,14 +12483,6 @@ packages:
       postcss: ^8.4.19
     dependencies:
       postcss: 8.4.21
-    dev: true
-
-  /postcss-selector-parser/6.0.10:
-    resolution: {integrity: sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==}
-    engines: {node: '>=4'}
-    dependencies:
-      cssesc: 3.0.0
-      util-deprecate: 1.0.2
     dev: true
 
   /postcss-selector-parser/6.0.11:
