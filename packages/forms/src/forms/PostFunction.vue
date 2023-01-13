@@ -14,7 +14,7 @@ import { createI18n } from '@kong-ui/core'
 import english from '../locales/en.json'
 import VueFormGenerator from '../generator/FormGenerator.vue'
 
-const { t } = createI18n('en-us', english)
+const { t, te } = createI18n('en-us', english)
 
 const props = defineProps({
   formModel: {
@@ -48,8 +48,8 @@ const finalSchema = computed((): Object => {
 
   final.fields.map((f:any) => {
     const stringKey = `post-function.${f.model}`
-    f.hint = t(`${stringKey}.hint`) || f.hint
-    f.help = t(`${stringKey}.help`) || f.help
+    f.hint = (te(`${stringKey}.hint`) && t(`${stringKey}.hint`)) || f.hint
+    f.help = (te(`${stringKey}.help`) && t(`${stringKey}.help`)) || f.help
 
     f.newElementButtonLabel = (t(`${stringKey}.newElementButtonLabel`) || f.newElementButtonLabel)
 
