@@ -50,7 +50,7 @@
   "dependencies": {
     "@kong-ui/app-layout": "workspace:^0.8.4",
     "@kong-ui/core": "workspace:^0.8.2",
-    "@kong/kauth-client-typescript-axios": "^0.1698.0",
+    "@kong/kauth-client-typescript-axios": "^0.1700.0",
     "axios": "^1.2.2",
     "launchdarkly-js-client-sdk": "^2.24.2",
     "uuid": "^9.0.0"
