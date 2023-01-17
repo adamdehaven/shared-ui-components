@@ -1,4 +1,5 @@
-.kong-ui-app-layout,
+.kong-ui-app-layout-html,
+.kong-ui-app-layout-body,
 .kong-ui-app-sidebar,
 .kong-ui-app-navbar {
   --font-family-sans: $font-family-base;
@@ -9,15 +10,15 @@
   --KongAuthFontWeight: 400;
 }
 
-html {
+html.kong-ui-app-layout-html {
   font-size: 10px;
   -ms-overflow-style: scrollbar;
   // Changes the default tap highlight to be completely transparent in iOS.
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-html,
-body {
+html.kong-ui-app-layout-html,
+body.kong-ui-app-layout-body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -26,7 +27,7 @@ body {
   overflow: hidden;
 }
 
-body {
+body.kong-ui-app-layout-body {
   background-color: var(--grey-100, #f8f8fa);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -193,6 +193,10 @@ const debouncedSetNotificationHeight = debounce((force = false): void => {
 const resizeObserver = ref<ResizeObserver>()
 
 onMounted(() => {
+  // Add classes to the `html` and `body` elements to scope styles
+  document?.body?.classList.add('kong-ui-app-layout-body')
+  document?.documentElement?.classList.add('kong-ui-app-layout-html')
+
   // Set the window width once the component mounts
   windowWidth.value = window?.innerWidth
 
