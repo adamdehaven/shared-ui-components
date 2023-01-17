@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.7](https://github.com/Kong/shared-ui-components/compare/@kong-ui/app-layout@0.8.6...@kong-ui/app-layout@0.8.7) (2023-01-17)
+
+
+### 💎 Styles
+
+* scope app-layout variables ([bc9174f](https://github.com/Kong/shared-ui-components/commit/bc9174f67ca3875e898a0ce77bb28ced39f6a4e5))
+
+
+
+
+
 ## [0.8.6](https://github.com/Kong/shared-ui-components/compare/@kong-ui/app-layout@0.8.5...@kong-ui/app-layout@0.8.6) (2023-01-13)
 
 
