@@ -8,7 +8,7 @@ importers:
       '@commitlint/cli': ^17.4.2
       '@commitlint/config-conventional': ^17.4.2
       '@cypress/code-coverage': ^3.10.0
-      '@datadog/datadog-ci': ^2.3.0
+      '@datadog/datadog-ci': ^2.3.1
       '@digitalroute/cz-conventional-changelog-for-jira': ^7.5.1
       '@evilmartians/lefthook': ^1.2.7
       '@kong/kongponents': ^8.18.2
@@ -76,7 +76,7 @@ importers:
       '@commitlint/cli': 17.4.2
       '@commitlint/config-conventional': 17.4.2
       '@cypress/code-coverage': 3.10.0_cypress@12.3.0
-      '@datadog/datadog-ci': 2.3.0
+      '@datadog/datadog-ci': 2.3.1
       '@digitalroute/cz-conventional-changelog-for-jira': 7.5.1
       '@evilmartians/lefthook': 1.2.7
       '@kong/kongponents': 8.18.2_vue@3.2.45
@@ -754,8 +754,8 @@ packages:
       kuler: 2.0.0
     dev: true
 
-  /@datadog/datadog-ci/2.3.0:
-    resolution: {integrity: sha512-QFOgPEE65ey1D9Rbuv2IE8rEF2T+yTb40BC2e8cKCgN70IdLT2SVAeya2LxKe7sj2bSdCtxHXCenVabMHwJK7w==}
+  /@datadog/datadog-ci/2.3.1:
+    resolution: {integrity: sha512-WGduhFb0/w+r2ovlps21aN3UZU0nlOHDRfoJdZjP1s8Yda9K4DKIKZN8ATkjFI/OZXUt7rOpT3xA3xo+uSgdpQ==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
