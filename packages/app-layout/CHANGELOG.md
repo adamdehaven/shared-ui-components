@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.8](https://github.com/Kong/shared-ui-components/compare/@kong-ui/app-layout@0.8.7...@kong-ui/app-layout@0.8.8) (2023-01-17)
+
+
+### 🐛 Bug Fixes
+
+* **app-layout:** ensure body styles are scoped ([#401](https://github.com/Kong/shared-ui-components/issues/401)) ([aba9424](https://github.com/Kong/shared-ui-components/commit/aba94247ab53bdc4f2483beadaae7ab6deb72d37))
+
+
+
+
+
 ## [0.8.7](https://github.com/Kong/shared-ui-components/compare/@kong-ui/app-layout@0.8.6...@kong-ui/app-layout@0.8.7) (2023-01-17)
 
 

@@ -179,7 +179,7 @@ importers:
 
   packages/forms:
     specifiers:
-      '@kong-ui/app-layout': workspace:^0.8.7
+      '@kong-ui/app-layout': workspace:^0.8.8
       '@kong-ui/core': workspace:^0.8.3
       '@types/lodash': ^4.14.191
       fecha: ^4.2.3
@@ -198,7 +198,7 @@ importers:
 
   packages/konnect-app-shell:
     specifiers:
-      '@kong-ui/app-layout': workspace:^0.8.7
+      '@kong-ui/app-layout': workspace:^0.8.8
       '@kong-ui/core': workspace:^0.8.3
       '@kong/kauth-client-typescript-axios': ^0.1702.0
       '@kong/kongponents': ^8.18.2
