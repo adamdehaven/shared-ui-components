@@ -1,4 +1,6 @@
-:root {
+.kong-ui-app-layout,
+.kong-ui-app-sidebar,
+.kong-ui-app-navbar {
   --font-family-sans: $font-family-base;
   --font-family-mono: $font-family-mono;
   --font-weight-normal: 400;
