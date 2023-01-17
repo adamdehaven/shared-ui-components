@@ -11,6 +11,6 @@
 
 <style lang="scss" scoped>
 .kong-ui-{%%PACKAGE_NAME%%} {
-
+  // Add component styles as needed
 }
 </style>
