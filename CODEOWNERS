@@ -9,19 +9,19 @@
 * @adamdehaven @ValeryG @jillztom
 
 # Component CLI
-/packages/cli @adamdehaven
+/packages/cli/ @adamdehaven
 
 # Packages
 # ================================================
 
 # Core UI Team
-/packages/core @adamdehaven @ValeryG @jillztom
-/packages/app-layout @adamdehaven @ValeryG @jillztom
-/packages/konnect-app-shell @adamdehaven @ValeryG @jillztom
+/packages/core/ @adamdehaven @ValeryG @jillztom
+/packages/app-layout/ @adamdehaven @ValeryG @jillztom
+/packages/konnect-app-shell/ @adamdehaven @ValeryG @jillztom
 
 # Kong Manager Team
-/packages/copy-uuid @Leopoldthecoder
-/packages/forms @Leopoldthecoder @sumimakito
+/packages/copy-uuid/ @Leopoldthecoder
+/packages/forms/ @Leopoldthecoder @sumimakito
 
 # ================================================
 # Renovate Bot approvals
