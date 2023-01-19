@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/copy-uuid@0.6.16...@kong-ui/copy-uuid@0.7.0) (2023-01-19)
+
+
+### 📦 Code Refactoring
+
+* **i18n:** 18n code is moved to its own public pkg [KHCP-5770]  ([#406](https://github.com/Kong/shared-ui-components/issues/406)) ([98216f7](https://github.com/Kong/shared-ui-components/commit/98216f720ff0632b8c772145d5564cb147832bee))
+
+
+### Breaking changes
+
+* **i18n:** i18n core is moved to
+https://github.com/Kong/public-ui-components/tree/main/packages/core/i18n and no longer available in
+@kong-ui/core
+
+
+
+
+
 ## [0.6.16](https://github.com/Kong/shared-ui-components/compare/@kong-ui/copy-uuid@0.6.15...@kong-ui/copy-uuid@0.6.16) (2023-01-19)
 
 
