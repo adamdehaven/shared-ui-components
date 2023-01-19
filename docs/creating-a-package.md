@@ -62,7 +62,7 @@ This monorepo comes pre-configured with config files and other settings that :sp
 - A `vite.config.ts` that extends (via `mergeConfig`) the root `vite.config.shared.ts`
 - All code **must** be contained within the `{package-name}/src` directory
 - A file at `src/index.ts` that exports all of the package exports.
-- If utilizing **any** text strings, your package **must** utilize a `src/locales/{lang}.json` file for the text strings and incorporate the `useI18n` helper from `@kong-ui/core`
+- If utilizing **any** text strings, your package **must** utilize a `src/locales/{lang}.json` file for the text strings and incorporate the `useI18n` helper from `@kong-ui/core-i18n`
 - All packages are initialized with their own fully-functional Vue sandbox.
 
 ## Include a `package.json` file

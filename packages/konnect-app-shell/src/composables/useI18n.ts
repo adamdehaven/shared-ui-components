@@ -1,4 +1,4 @@
-import { createI18n, Translation } from '@kong-ui/core'
+import { createI18n, Translation } from '@kong-ui/core-i18n'
 import english from '../locales/en.json'
 
 export default function usei18n() {

@@ -1,10 +1,8 @@
 # @kong-ui/core
 
-- [usePackage](#usepackage)
-
-## useI18n
-
-[useI18n docs](./src/useI18n/README.md)
+- [@kong-ui/core](#kong-uicore)
+  - [useWindow](#usewindow)
+  - [usePackage](#usepackage)
 
 ## useWindow
 
@@ -13,4 +11,3 @@
 ## usePackage
 
 [usePackage docs](./src/usePackage/README.md)
-

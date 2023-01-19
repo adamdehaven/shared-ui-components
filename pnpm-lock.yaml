@@ -162,26 +162,22 @@ importers:
   packages/copy-uuid:
     specifiers:
       '@kong-ui/core': workspace:^0.8.3
+      '@kong-ui/core-i18n': ^0.1.0
       '@kong/kongponents': ^8.18.3
     dependencies:
       '@kong-ui/core': link:../core
+      '@kong-ui/core-i18n': 0.1.0
     devDependencies:
       '@kong/kongponents': 8.18.3
 
   packages/core:
-    specifiers:
-      '@formatjs/intl': ^2.6.3
-      flat: ^5.0.2
-      intl-messageformat: ^10.2.5
-    dependencies:
-      '@formatjs/intl': 2.6.3
-      flat: 5.0.2
-      intl-messageformat: 10.2.5
+    specifiers: {}
 
   packages/forms:
     specifiers:
       '@kong-ui/app-layout': workspace:^0.8.9
       '@kong-ui/core': workspace:^0.8.3
+      '@kong-ui/core-i18n': ^0.1.0
       '@types/lodash': ^4.14.191
       fecha: ^4.2.3
       lodash: ^4.17.21
@@ -190,6 +186,7 @@ importers:
     dependencies:
       '@kong-ui/app-layout': link:../app-layout
       '@kong-ui/core': link:../core
+      '@kong-ui/core-i18n': 0.1.0
       fecha: 4.2.3
       lodash: 4.17.21
       lodash.debounce: 4.0.8
@@ -201,6 +198,7 @@ importers:
     specifiers:
       '@kong-ui/app-layout': workspace:^0.8.9
       '@kong-ui/core': workspace:^0.8.3
+      '@kong-ui/core-i18n': ^0.1.0
       '@kong/kauth-client-typescript-axios': ^0.1703.0
       '@kong/kongponents': ^8.18.3
       '@types/uuid': ^9.0.0
@@ -210,6 +208,7 @@ importers:
     dependencies:
       '@kong-ui/app-layout': link:../app-layout
       '@kong-ui/core': link:../core
+      '@kong-ui/core-i18n': 0.1.0
       '@kong/kauth-client-typescript-axios': 0.1703.0
       axios: 1.2.3
       launchdarkly-js-client-sdk: 2.24.2
@@ -1268,6 +1267,18 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
+
+  /@kong-ui/core-i18n/0.1.0:
+    resolution: {integrity: sha512-yIKBkUwdBQKyEFf0zF2a90mJEw08NPL1DYhGYZpw7Tn5MM+ajvAIEaxQ4igiaXoohE+wPXQMAN6f0PHvbAgzrA==}
+    peerDependencies:
+      vue: ^3.2.45
+    dependencies:
+      '@formatjs/intl': 2.6.3
+      flat: 5.0.2
+      intl-messageformat: 10.2.5
+    transitivePeerDependencies:
+      - typescript
+    dev: false
 
   /@kong/kauth-client-typescript-axios/0.1703.0:
     resolution: {integrity: sha512-VDPVe0TtQ1/N1kePk+vfoWV9G+v/CNDu0yC7eMNupRgqvV5KIm6zz+82P+G5nmjS/chhuEIGVADeB9IFX+FUbQ==}
