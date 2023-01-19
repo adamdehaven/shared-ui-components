@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.16](https://github.com/Kong/shared-ui-components/compare/@kong-ui/copy-uuid@0.6.15...@kong-ui/copy-uuid@0.6.16) (2023-01-19)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.18.3 ([#407](https://github.com/Kong/shared-ui-components/issues/407)) ([243da87](https://github.com/Kong/shared-ui-components/commit/243da8768dd391e76bd326e261e9bcc3f62a5937))
+
+
+
+
+
 ## [0.6.15](https://github.com/Kong/shared-ui-components/compare/@kong-ui/copy-uuid@0.6.14...@kong-ui/copy-uuid@0.6.15) (2023-01-13)
 
 

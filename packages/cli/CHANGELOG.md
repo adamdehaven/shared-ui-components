@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.4](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.7.3...@kong-ui/cli@0.7.4) (2023-01-19)
+
+
+### 🐛 Bug Fixes
+
+* **cli:** allow numbers ([37269b2](https://github.com/Kong/shared-ui-components/commit/37269b2005c678a15316641f0809dd824893288c))
+
+
+
+
+
 ## [0.7.3](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.7.2...@kong-ui/cli@0.7.3) (2023-01-17)
 
 
