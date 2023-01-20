@@ -1,5 +1,5 @@
 {
-  "name": "@kong/shared-ui-components",
+  "name": "@kong-ui/shared-ui-components",
   "version": "0.0.0-development",
   "private": true,
   "scripts": {
