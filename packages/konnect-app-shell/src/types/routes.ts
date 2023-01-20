@@ -2,7 +2,7 @@ import { RouteRecordRaw } from 'vue-router'
 
 /**
  * The Konnect top-level navigation item keys
- * Should match the interface of `KONNECT_PRIMARY_ROUTE_KEYS` in `packages/konnect-app-shell/src/constants.ts`
+ * Should match the interface of `KONNECT_PRIMARY_ROUTE_KEYS` in `github.com/Kong/konnect-ui-apps/apps/_cli/src/core/app.ts`
  */
 export type KonnectPrimaryRouteKey =
   'overview' |

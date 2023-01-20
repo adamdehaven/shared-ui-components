@@ -18,15 +18,3 @@ export const AUTH_ROUTES = [
   'registration',
   'reset-password',
 ]
-
-/** Should match the interface of `KonnectPrimaryRouteKey` in `packages/konnect-app-shell/src/types/routes.ts` */
-export const KONNECT_PRIMARY_ROUTE_KEYS = [
-  'overview',
-  'runtime-manager',
-  'mesh-manager',
-  'servicehub',
-  'portal',
-  'analytics',
-  'organization',
-  'settings',
-]
