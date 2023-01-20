@@ -19,6 +19,8 @@
   "publishConfig": {
     "access": "restricted"
   },
+  "peerDependencies": {},
+  "devDependencies": {},
   "scripts": {
     "dev": "cross-env USE_SANDBOX=true vite",
     "build": "run-s typecheck build:package build:types",
@@ -41,8 +43,5 @@
   "license": "UNLICENSED",
   "volta": {
     "extends": "../../package.json"
-  },
-  "peerDependencies": {
-    "vue": "^3.2.38"
   }
 }
