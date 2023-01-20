@@ -94,6 +94,10 @@ During our release automation, Lerna will ensure that the version of `@kong-ui/d
 
 Include loosely bounded (SemVer-wise) peer deps, i.e. `vue` or `vue-router`
 
+```sh
+pnpm --filter="@kong-ui/core-demo-component" add --save-peer vue@latest
+```
+
 ### `devDependencies`
 
 Common or shared `devDependencies` should be added within the monorepo root `package.json` file. `devDependencies` added within your specific package's `package.json` should only include `devDependencies` that only apply to your specific package.
