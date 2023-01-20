@@ -1,6 +1,6 @@
 {
   "name": "@kong-ui/konnect-app-shell",
-  "version": "0.18.7",
+  "version": "0.18.8",
   "type": "module",
   "main": "./dist/konnect-app-shell.umd.js",
   "module": "./dist/konnect-app-shell.es.js",
@@ -48,7 +48,7 @@
     "vue-router": "^4.1.6"
   },
   "dependencies": {
-    "@kong-ui/app-layout": "workspace:^0.8.11",
+    "@kong-ui/app-layout": "workspace:^0.8.12",
     "@kong-ui/core": "workspace:^0.9.1",
     "@kong-ui/core-i18n": "^0.1.4",
     "@kong/kauth-client-typescript-axios": "^0.1706.0",

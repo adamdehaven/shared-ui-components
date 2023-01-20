@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.7](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.7.6...@kong-ui/cli@0.7.7) (2023-01-20)
+
+
+### ♻️ Chores
+
+* **cli:** install deps ([97c70a7](https://github.com/Kong/shared-ui-components/commit/97c70a778044abb3ba06010747989d19aed32a34))
+
+
+
+
+
 ## [0.7.6](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.7.5...@kong-ui/cli@0.7.6) (2023-01-20)
 
 
