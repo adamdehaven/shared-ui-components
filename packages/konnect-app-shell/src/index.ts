@@ -16,6 +16,13 @@ export default {
 
 export * from './utilities'
 export * from './types'
+
+// Constants
+export {
+  KONNECT_PRIMARY_ROUTE_KEYS,
+} from './constants'
+
+// Components
 export {
   GeoSwitcher,
   GruceLogo,
