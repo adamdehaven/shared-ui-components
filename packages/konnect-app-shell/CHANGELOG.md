@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.6](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.18.5...@kong-ui/konnect-app-shell@0.18.6) (2023-01-20)
+
+
+### ♻️ Chores
+
+* **konnect-app-shell:** add const ([3af0ad9](https://github.com/Kong/shared-ui-components/commit/3af0ad92c4fb6f4388e8b13783bc92914c66c0e4))
+
+
+
+
+
 ## [0.18.5](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.18.4...@kong-ui/konnect-app-shell@0.18.5) (2023-01-20)
 
 
