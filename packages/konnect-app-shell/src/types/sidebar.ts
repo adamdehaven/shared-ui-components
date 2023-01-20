@@ -12,5 +12,8 @@ export interface KonnectAppShellSidebarPrimaryItem extends SidebarPrimaryItem {
 export interface KonnectAppShellSidebarItem {
   /** Unique key (string) of the secondary item's top-level navigation parent item */
   parentKey: KonnectPrimaryRouteKey
+  /** Label to show under the name when the item is expanded */
+  label?: string
+  /** Nested sidebar items (children) without icons */
   items?: SidebarSecondaryItem[]
 }

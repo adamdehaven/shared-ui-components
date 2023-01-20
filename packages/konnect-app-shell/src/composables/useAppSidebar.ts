@@ -22,44 +22,38 @@ export default function useAppSidebar() {
     {
       name: 'Overview',
       key: 'overview',
-      to: `${activeGeoPath.value}overview/`, // No trailing slash since this is the root route
+      to: `${activeGeoPath.value}overview/`,
       icon: 'sharedConfig',
-      external: true,
     },
     {
       name: 'Runtime Manager',
       key: 'runtime-manager',
       to: `${activeGeoPath.value}runtime-manager/`,
       icon: 'runtimes',
-      external: true,
     },
     {
       name: 'Mesh Manager',
       key: 'mesh-manager',
       to: `${activeGeoPath.value}mesh-manager/`,
       icon: 'brain',
-      external: true,
     },
     {
       name: 'Service Hub',
       key: 'servicehub',
       to: `${activeGeoPath.value}servicehub/`,
       icon: 'serviceHub',
-      external: true,
     },
     {
       name: 'Dev Portal',
       key: 'portal',
       to: `${activeGeoPath.value}portal/`,
       icon: 'devPortal',
-      external: true,
     },
     {
       name: 'Analytics',
       key: 'analytics',
       to: `${activeGeoPath.value}analytics/`,
       icon: 'vitalsChart',
-      external: true,
     },
   ]))
 
@@ -76,14 +70,12 @@ export default function useAppSidebar() {
       key: 'organization',
       to: `${GLOBAL_GEO_PATH}organization/`,
       icon: 'organizations',
-      external: true,
     },
     {
       name: 'Settings',
       key: 'settings',
       to: `${GLOBAL_GEO_PATH}settings/`,
       icon: 'cogwheel',
-      external: true,
     },
   ]))
 
@@ -117,38 +109,46 @@ export default function useAppSidebar() {
    * @param {SidebarPrimaryItem[]} items The sidebar items
    * @returns {SidebarPrimaryItem[]}
    */
-  const prepareSidebarPrimaryItems = (items: SidebarPrimaryItem[]): SidebarPrimaryItem[] => {
-    if (!items || !items.length) {
+  const prepareSidebarPrimaryItems = (primaryItems: SidebarPrimaryItem[]): SidebarPrimaryItem[] => {
+    if (!primaryItems || !primaryItems.length) {
       return []
     }
 
-    if (!hostAppSidebarItem.value || !hostAppSidebarItem.value.parentKey) {
-      return items
+    if (!hostAppSidebarItem.value?.parentKey) {
+      return primaryItems
     }
 
-    return items.map((item: SidebarPrimaryItem) => {
-      // Treat all top-level nav items as external
-      item.external = true
+    return primaryItems.map((item: SidebarPrimaryItem) => {
+      // Create a copy of the original for mutation
+      // This is required to trigger reactivity
+      const primaryItem: SidebarPrimaryItem = { ...item }
 
-      // If the item.key equals the hostAppSidebarItem.value.parentKey
-      if (item.key && item.key === hostAppSidebarItem.value?.parentKey) {
+      // Treat all top-level nav items as external by default
+      primaryItem.external = true
+
+      // If the item.key equals the hostAppItem.parentKey
+      if (primaryItem.key && primaryItem.key === hostAppSidebarItem.value?.parentKey) {
+        // Since this link exists in the host app, set external to false so it renders a router-link instead
+        primaryItem.external = false
         // Set active state
-        item.active = true
+        primaryItem.active = true
 
         // If secondary sidebar items are present
-        if (hostAppSidebarItem.value.items?.length) {
+        if (hostAppSidebarItem.value?.items?.length) {
+          // Set the primary item label, if present
+          primaryItem.label = hostAppSidebarItem.value?.label
           // Set secondary items
-          item.items = hostAppSidebarItem.value.items
+          primaryItem.items = hostAppSidebarItem.value?.items || []
           // Set expanded state
-          item.expanded = true
+          primaryItem.expanded = true
         }
       } else {
         // Set active and expanded to false since the parentKey doesn't match
-        item.active = false
-        item.expanded = false
+        primaryItem.active = false
+        primaryItem.expanded = false
       }
 
-      return item
+      return primaryItem
     })
   }
 
