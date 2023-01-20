@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.6](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.7.5...@kong-ui/cli@0.7.6) (2023-01-20)
+
+
+### 🐛 Bug Fixes
+
+* **konnect-app-shell:** pass in sidebar item label ([#411](https://github.com/Kong/shared-ui-components/issues/411)) ([1524031](https://github.com/Kong/shared-ui-components/commit/152403174bcc24577eef5b365fd1715a24c6f7f0))
+
+
+
+
+
 ## [0.7.5](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.7.4...@kong-ui/cli@0.7.5) (2023-01-19)
 
 

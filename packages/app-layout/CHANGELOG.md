@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.11](https://github.com/Kong/shared-ui-components/compare/@kong-ui/app-layout@0.8.10...@kong-ui/app-layout@0.8.11) (2023-01-20)
+
+
+### 🐛 Bug Fixes
+
+* **konnect-app-shell:** pass in sidebar item label ([#411](https://github.com/Kong/shared-ui-components/issues/411)) ([1524031](https://github.com/Kong/shared-ui-components/commit/152403174bcc24577eef5b365fd1715a24c6f7f0))
+
+
+
+
+
 ## [0.8.10](https://github.com/Kong/shared-ui-components/compare/@kong-ui/app-layout@0.8.9...@kong-ui/app-layout@0.8.10) (2023-01-19)
 
 
