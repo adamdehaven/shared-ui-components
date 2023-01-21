@@ -11,7 +11,7 @@ importers:
       '@datadog/datadog-ci': ^2.3.2
       '@digitalroute/cz-conventional-changelog-for-jira': ^7.5.1
       '@evilmartians/lefthook': ^1.2.7
-      '@kong/kongponents': ^8.18.5
+      '@kong/kongponents': ^8.18.6
       '@rushstack/eslint-patch': ^1.2.0
       '@types/cypress__code-coverage': ^3.10.0
       '@types/flat': ^5.0.2
@@ -48,6 +48,7 @@ importers:
       postcss-custom-properties: ^12.1.11
       postcss-html: ^1.5.0
       rimraf: ^4.1.1
+      rollup-plugin-visualizer: ^5.9.0
       sass: ^1.57.1
       stylelint: ^14.16.1
       stylelint-config-html: ^1.1.0
@@ -72,7 +73,7 @@ importers:
       '@datadog/datadog-ci': 2.3.2
       '@digitalroute/cz-conventional-changelog-for-jira': 7.5.1
       '@evilmartians/lefthook': 1.2.7
-      '@kong/kongponents': 8.18.5_vue@3.2.45
+      '@kong/kongponents': 8.18.6_vue@3.2.45
       '@rushstack/eslint-patch': 1.2.0
       '@types/cypress__code-coverage': 3.10.0
       '@types/flat': 5.0.2
@@ -109,6 +110,7 @@ importers:
       postcss-custom-properties: 12.1.11_postcss@8.4.21
       postcss-html: 1.5.0
       rimraf: 4.1.1
+      rollup-plugin-visualizer: 5.9.0
       sass: 1.57.1
       stylelint: 14.16.1
       stylelint-config-html: 1.1.0_kbto3rg3njmczth2rrsgfnlsqa
@@ -128,7 +130,7 @@ importers:
 
   packages/app-layout:
     specifiers:
-      '@kong/kongponents': ^8.18.5
+      '@kong/kongponents': ^8.18.6
       '@types/lodash.clonedeep': ^4.5.7
       focus-trap: ^7.2.0
       focus-trap-vue: ^4.0.1
@@ -138,7 +140,7 @@ importers:
       focus-trap-vue: 4.0.1_focus-trap@7.2.0
       lodash.clonedeep: 4.5.0
     devDependencies:
-      '@kong/kongponents': 8.18.5
+      '@kong/kongponents': 8.18.6
       '@types/lodash.clonedeep': 4.5.7
 
   packages/cli:
@@ -163,12 +165,12 @@ importers:
     specifiers:
       '@kong-ui/core': workspace:^0.9.1
       '@kong-ui/core-i18n': ^0.1.4
-      '@kong/kongponents': ^8.18.5
+      '@kong/kongponents': ^8.18.6
     dependencies:
       '@kong-ui/core': link:../core
       '@kong-ui/core-i18n': 0.1.4
     devDependencies:
-      '@kong/kongponents': 8.18.5
+      '@kong/kongponents': 8.18.6
 
   packages/core:
     specifiers: {}
@@ -178,6 +180,7 @@ importers:
       '@kong-ui/app-layout': workspace:^0.8.12
       '@kong-ui/core': workspace:^0.9.1
       '@kong-ui/core-i18n': ^0.1.4
+      '@kong/kongponents': ^8.18.6
       '@types/lodash': ^4.14.191
       fecha: ^4.2.3
       lodash: ^4.17.21
@@ -191,6 +194,7 @@ importers:
       lodash: 4.17.21
       lodash.debounce: 4.0.8
     devDependencies:
+      '@kong/kongponents': 8.18.6
       '@types/lodash': 4.14.191
       pug: 3.0.2
 
@@ -200,7 +204,7 @@ importers:
       '@kong-ui/core': workspace:^0.9.1
       '@kong-ui/core-i18n': ^0.1.4
       '@kong/kauth-client-typescript-axios': ^0.1706.0
-      '@kong/kongponents': ^8.18.5
+      '@kong/kongponents': ^8.18.6
       '@types/uuid': ^9.0.0
       axios: ^1.2.3
       launchdarkly-js-client-sdk: ^2.24.2
@@ -214,7 +218,7 @@ importers:
       launchdarkly-js-client-sdk: 2.24.2
       uuid: 9.0.0
     devDependencies:
-      '@kong/kongponents': 8.18.5
+      '@kong/kongponents': 8.18.6_axios@1.2.3
       '@types/uuid': 9.0.0
 
 packages:
@@ -1284,8 +1288,8 @@ packages:
     resolution: {integrity: sha512-qUsgDxnHlcuB50eyWv23568t4I8NcxCie/Ws74LODo6ylUq38Qnva/blJyYfoRvdcNrcfQYCTGf3LiY9Ucl3sw==}
     dev: false
 
-  /@kong/kongponents/8.18.5:
-    resolution: {integrity: sha512-zqnEJX82Qjr5uRkVh4oNcaFtLiA4Tpf47Vm/uUnTuK8OP4vEPSzFpL5gLAN6ClPcZ/b7oEKil1+r3R6ewh0APw==}
+  /@kong/kongponents/8.18.6:
+    resolution: {integrity: sha512-o4BgndkDJJ2I/lZhGIvDeZXFvMRDl3gstqSArf4NiC65dnifi8/HO+bDpY27qOeIHSgAZ108FVA+CCHAAZqjMQ==}
     engines: {node: '>=18.12.1 < 19'}
     peerDependencies:
       vue: '>= 3.2.37'
@@ -1305,8 +1309,28 @@ packages:
       - debug
     dev: true
 
-  /@kong/kongponents/8.18.5_vue@3.2.45:
-    resolution: {integrity: sha512-zqnEJX82Qjr5uRkVh4oNcaFtLiA4Tpf47Vm/uUnTuK8OP4vEPSzFpL5gLAN6ClPcZ/b7oEKil1+r3R6ewh0APw==}
+  /@kong/kongponents/8.18.6_axios@1.2.3:
+    resolution: {integrity: sha512-o4BgndkDJJ2I/lZhGIvDeZXFvMRDl3gstqSArf4NiC65dnifi8/HO+bDpY27qOeIHSgAZ108FVA+CCHAAZqjMQ==}
+    engines: {node: '>=18.12.1 < 19'}
+    peerDependencies:
+      axios: ^0.27.2
+      vue: '>= 3.2.37'
+    dependencies:
+      axios: 1.2.3
+      date-fns: 2.29.3
+      date-fns-tz: 1.3.7_date-fns@2.29.3
+      focus-trap: 7.2.0
+      focus-trap-vue: 3.4.0_focus-trap@7.2.0
+      popper.js: 1.16.1
+      sortablejs: 1.15.0
+      swrv: 1.0.0
+      uuid: 8.3.2
+      v-calendar: 3.0.0-alpha.8
+      vue-draggable-next: 2.1.1_sortablejs@1.15.0
+    dev: true
+
+  /@kong/kongponents/8.18.6_vue@3.2.45:
+    resolution: {integrity: sha512-o4BgndkDJJ2I/lZhGIvDeZXFvMRDl3gstqSArf4NiC65dnifi8/HO+bDpY27qOeIHSgAZ108FVA+CCHAAZqjMQ==}
     engines: {node: '>=18.12.1 < 19'}
     peerDependencies:
       vue: '>= 3.2.37'
@@ -4532,7 +4556,7 @@ packages:
   /axios/0.21.4:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
     dependencies:
-      follow-redirects: 1.15.2
+      follow-redirects: 1.15.2_debug@4.3.4
     transitivePeerDependencies:
       - debug
     dev: true
@@ -8115,6 +8139,18 @@ packages:
       debug:
         optional: true
 
+  /follow-redirects/1.15.2_debug@4.3.4:
+    resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dependencies:
+      debug: 4.3.4
+    dev: true
+
   /for-each/0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
     dependencies:
@@ -9134,7 +9170,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.15.2
+      follow-redirects: 1.15.2_debug@4.3.4
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
@@ -13903,6 +13939,22 @@ packages:
     hasBin: true
     dev: true
 
+  /rollup-plugin-visualizer/5.9.0:
+    resolution: {integrity: sha512-bbDOv47+Bw4C/cgs0czZqfm8L82xOZssk4ayZjG40y9zbXclNk7YikrZTDao6p7+HDiGxrN0b65SgZiVm9k1Cg==}
+    engines: {node: '>=14'}
+    hasBin: true
+    peerDependencies:
+      rollup: 2.x || 3.x
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      open: 8.4.0
+      picomatch: 2.3.1
+      source-map: 0.7.4
+      yargs: 17.6.2
+    dev: true
+
   /rollup-pluginutils/2.8.2:
     resolution: {integrity: sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==}
     dependencies:
@@ -14411,6 +14463,11 @@ packages:
   /source-map/0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /source-map/0.7.4:
+    resolution: {integrity: sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==}
+    engines: {node: '>= 8'}
     dev: true
 
   /sourcemap-codec/1.4.8:

@@ -24,6 +24,7 @@
     "build": "run-s typecheck build:package build:types",
     "build:package": "vite build",
     "build:types": "vue-tsc -p './tsconfig.build.json' --emitDeclarationOnly && tsc-alias -p './tsconfig.build.json'",
+    "build:visualize": "BUILD_VISUALIZER='app-layout' vite build -m production",
     "preview:package": "vite preview --port 4173",
     "preview": "cross-env USE_SANDBOX=true PREVIEW_SANDBOX=true run-s build:package preview:package",
     "lint": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../.eslintignore'",
@@ -43,7 +44,7 @@
     "extends": "../../package.json"
   },
   "peerDependencies": {
-    "@kong/kongponents": "^8.18.5",
+    "@kong/kongponents": "^8.18.6",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
@@ -53,7 +54,7 @@
     "lodash.clonedeep": "^4.5.0"
   },
   "devDependencies": {
-    "@kong/kongponents": "^8.18.5",
+    "@kong/kongponents": "^8.18.6",
     "@types/lodash.clonedeep": "^4.5.7"
   }
 }
