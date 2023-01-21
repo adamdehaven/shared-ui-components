@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.5](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.8.4...@kong-ui/forms@0.8.5) (2023-01-21)
+
+
+### 🐛 Bug Fixes
+
+* externalize dependencies and add rollup-plugin-visualizer [KHCP-5862] ([#419](https://github.com/Kong/shared-ui-components/issues/419)) ([feff9db](https://github.com/Kong/shared-ui-components/commit/feff9db3a4520f8cbcec8c0d91b160f7d8db975e))
+
+
+
+
+
 ## [0.8.4](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.8.3...@kong-ui/forms@0.8.4) (2023-01-20)
 
 

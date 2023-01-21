@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.8](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.7.7...@kong-ui/cli@0.7.8) (2023-01-21)
+
+
+### 🐛 Bug Fixes
+
+* externalize dependencies and add rollup-plugin-visualizer [KHCP-5862] ([#419](https://github.com/Kong/shared-ui-components/issues/419)) ([feff9db](https://github.com/Kong/shared-ui-components/commit/feff9db3a4520f8cbcec8c0d91b160f7d8db975e))
+
+
+
+
+
 ## [0.7.7](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.7.6...@kong-ui/cli@0.7.7) (2023-01-20)
 
 

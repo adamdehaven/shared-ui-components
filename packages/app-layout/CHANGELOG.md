@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.13](https://github.com/Kong/shared-ui-components/compare/@kong-ui/app-layout@0.8.12...@kong-ui/app-layout@0.8.13) (2023-01-21)
+
+
+### 🐛 Bug Fixes
+
+* externalize dependencies and add rollup-plugin-visualizer [KHCP-5862] ([#419](https://github.com/Kong/shared-ui-components/issues/419)) ([feff9db](https://github.com/Kong/shared-ui-components/commit/feff9db3a4520f8cbcec8c0d91b160f7d8db975e))
+
+
+
+
+
 ## [0.8.12](https://github.com/Kong/shared-ui-components/compare/@kong-ui/app-layout@0.8.11...@kong-ui/app-layout@0.8.12) (2023-01-20)
 
 
