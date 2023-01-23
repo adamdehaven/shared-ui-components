@@ -174,7 +174,6 @@ export default function useSession() {
 
       return session.value
     } catch (_) {
-      console.error('Failed to validate session')
       saveSessionData()
     }
   }
