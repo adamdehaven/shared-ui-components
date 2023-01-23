@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.17](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.18.16...@kong-ui/konnect-app-shell@0.18.17) (2023-01-23)
+
+
+### ♻️ Chores
+
+* remove console.error ([5d73b3f](https://github.com/Kong/shared-ui-components/commit/5d73b3f5f39c74aaabbad6883d55a322a3b5233b))
+
+
+
+
+
 ## [0.18.16](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.18.15...@kong-ui/konnect-app-shell@0.18.16) (2023-01-23)
 
 
