@@ -163,7 +163,7 @@ importers:
   packages/forms:
     specifiers:
       '@kong-ui/core': workspace:^0.9.2
-      '@kong-ui/core-app-layout': ^0.10.0
+      '@kong-ui/core-app-layout': ^0.10.1
       '@kong-ui/core-i18n': ^0.1.6
       '@kong/kongponents': ^8.18.8
       '@types/lodash': ^4.14.191
@@ -173,7 +173,7 @@ importers:
       pug: ^3.0.2
     dependencies:
       '@kong-ui/core': link:../core
-      '@kong-ui/core-app-layout': 0.10.0_@kong+kongponents@8.18.8
+      '@kong-ui/core-app-layout': 0.10.1_@kong+kongponents@8.18.8
       '@kong-ui/core-i18n': 0.1.6
       fecha: 4.2.3
       lodash: 4.17.21
@@ -186,7 +186,7 @@ importers:
   packages/konnect-app-shell:
     specifiers:
       '@kong-ui/core': workspace:^0.9.2
-      '@kong-ui/core-app-layout': ^0.10.0
+      '@kong-ui/core-app-layout': ^0.10.1
       '@kong-ui/core-i18n': ^0.1.6
       '@kong/kauth-client-typescript-axios': ^0.1707.0
       '@kong/kongponents': ^8.18.8
@@ -196,7 +196,7 @@ importers:
       uuid: ^9.0.0
     dependencies:
       '@kong-ui/core': link:../core
-      '@kong-ui/core-app-layout': 0.10.0_@kong+kongponents@8.18.8
+      '@kong-ui/core-app-layout': 0.10.1_@kong+kongponents@8.18.8
       '@kong-ui/core-i18n': 0.1.6
       '@kong/kauth-client-typescript-axios': 0.1707.0
       axios: 1.2.3
@@ -1257,10 +1257,10 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@kong-ui/core-app-layout/0.10.0_@kong+kongponents@8.18.8:
-    resolution: {integrity: sha512-vD1SfWvP4PwGZ93As/U5eHU2PXAREn8hPY1Ilt/B0m6V6/u5epXO7ezczVrxiiOBeLlaR5JXcGHQ1Aqi+kSMDg==}
+  /@kong-ui/core-app-layout/0.10.1_@kong+kongponents@8.18.8:
+    resolution: {integrity: sha512-e65MpVxSPamFSj/Mx3RJfKAFKelObNzL+p6R+VIyeEkK1cO/lEbbJp/grRXkgLhWBfiywhSUM4MgKLAlXjZ1Wg==}
     peerDependencies:
-      '@kong/kongponents': ^8.18.7
+      '@kong/kongponents': ^8.18.8
       vue: ^3.2.45
       vue-router: ^4.1.6
     dependencies:
