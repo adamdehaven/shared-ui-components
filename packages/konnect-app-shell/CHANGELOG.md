@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.18](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.18.17...@kong-ui/konnect-app-shell@0.18.18) (2023-01-23)
+
+
+### ♻️ Chores
+
+* [KHCP-5724] add more proxies for local development ([#433](https://github.com/Kong/shared-ui-components/issues/433)) ([2013601](https://github.com/Kong/shared-ui-components/commit/201360101374c872e3df164be189c0a8159b044a))
+
+
+
+
+
 ## [0.18.17](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.18.16...@kong-ui/konnect-app-shell@0.18.17) (2023-01-23)
 
 
