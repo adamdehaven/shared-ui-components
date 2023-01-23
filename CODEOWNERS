@@ -16,7 +16,6 @@
 
 # Core UI Team
 /packages/core/ @adamdehaven @ValeryG @jillztom
-/packages/app-layout/ @adamdehaven @ValeryG @jillztom
 /packages/konnect-app-shell/ @adamdehaven @ValeryG @jillztom
 
 # Kong Manager Team

@@ -93,7 +93,7 @@
 </template>
 
 <script>
-import { ExternalLink } from '@kong-ui/app-layout'
+import { ExternalLink } from '@kong-ui/core-app-layout'
 import OIDCCommonSchema from './schemas/OIDCCommon'
 import OIDCAuthSchema from './schemas/OIDCAuth'
 import VueFormGenerator from '../generator/FormGenerator.vue'

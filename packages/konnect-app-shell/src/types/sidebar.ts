@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import type { SidebarPrimaryItem, SidebarSecondaryItem } from '@kong-ui/app-layout'
+import type { SidebarPrimaryItem, SidebarSecondaryItem } from '@kong-ui/core-app-layout'
 import { KonnectPrimaryRouteKey } from './routes'
 
 /**

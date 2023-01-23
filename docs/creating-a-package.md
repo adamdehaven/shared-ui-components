@@ -254,10 +254,10 @@ We cannot control the `html` base font size and therefore these relative units a
 
 If your component exposes any CSS variables, they **must** be prefixed with your package name `--kong-ui-{package-name}`
 
-For example, the `@kong-ui/app-layout` package exposes the following CSS variables:
+For example, the `@kong-ui/foo` package exposes the following CSS variables:
 
 ```css
---kong-ui-app-sidebar-mobile-icon-color
+--kong-ui-foo-background-color
 ```
 
 ## Testing
