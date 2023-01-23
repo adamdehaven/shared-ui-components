@@ -6,6 +6,16 @@ import { defineConfig, mergeConfig } from 'vite'
 // Package name MUST always match the kebab-case package name inside the component's package.json file and the name of your `/packages/{package-name}` directory
 const packageName = 'konnect-app-shell'
 
+const mutateCookieAttributes = (proxy: any) => {
+  proxy.on('proxyRes', (proxyRes: any) => {
+    if (proxyRes.headers['set-cookie']) {
+      proxyRes.headers['set-cookie'] = (proxyRes.headers['set-cookie']).map(h => {
+        return h.replace(/Domain=.*;/, 'Domain=localhost;').replace(/Secure; /, '')
+      })
+    }
+  })
+}
+
 // Merge the shared Vite config with the local one defined below
 const config = mergeConfig(sharedViteConfig, defineConfig({
   build: {
@@ -21,6 +31,27 @@ const config = mergeConfig(sharedViteConfig, defineConfig({
   server: {
     proxy: {
       // TODO: when KHCP-5497 consume this from the helper function
+      '^/kauth/api': {
+        target: 'https://global.api.konghq.tech/kauth',
+        rewrite: (path) => path.replace(/^\/kauth\/api/, '/api'),
+        changeOrigin: true,
+        configure: (proxy, options) => {
+          mutateCookieAttributes(proxy)
+        },
+      },
+
+      '^/us/kong-api/konnect/api': {
+        target: 'https://{geo}.api.konghq.tech/konnect-api'.replace(/\{geo\}/, 'us'),
+        rewrite: (path) => path.replace('/us/kong-api/konnect/', ''),
+        changeOrigin: true,
+      },
+
+      '^/eu/kong-api/konnect/api': {
+        target: 'https://{geo}.api.konghq.tech/konnect-api'.replace(/\{geo\}/, 'eu'),
+        rewrite: (path) => path.replace('/us/kong-api/konnect/', ''),
+        changeOrigin: true,
+      },
+
       '^/(?!(([a-z]{2}|global)/)?(index.ts|App.vue|router.ts|pages|sandbox|mesh-manager|src|node_modules|@vite|@id|@fs))': {
         target: 'https://cloud.konghq.tech',
         changeOrigin: true,
