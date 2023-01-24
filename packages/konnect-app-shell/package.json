@@ -37,7 +37,11 @@
     "test:unit": "cross-env FORCE_COLOR=1 vitest run",
     "test:unit:open": "cross-env FORCE_COLOR=1 vitest --ui"
   },
-  "repository": "https://github.com/Kong/shared-ui-components/tree/main/packages/konnect-app-shell",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kong/shared-ui-components.git",
+    "directory": "packages/konnect-app-shell"
+  },
   "author": "Kong, Inc.",
   "license": "UNLICENSED",
   "volta": {
