@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.3](https://github.com/Kong/shared-ui-components/compare/@kong-ui/core@0.9.2...@kong-ui/core@0.9.3) (2023-01-24)
+
+
+### ♻️ Chores
+
+* update package.json repo ([af5daae](https://github.com/Kong/shared-ui-components/commit/af5daaeb75fcc517dc629ad13c8c26faab4ef5b9))
+
+
+
+
+
 ## [0.9.2](https://github.com/Kong/shared-ui-components/compare/@kong-ui/core@0.9.1...@kong-ui/core@0.9.2) (2023-01-21)
 
 
