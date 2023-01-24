@@ -148,11 +148,11 @@ importers:
 
   packages/copy-uuid:
     specifiers:
-      '@kong-ui-public/i18n': ^0.2.0
+      '@kong-ui-public/i18n': ^0.2.2
       '@kong-ui/core': workspace:^0.9.4
       '@kong/kongponents': ^8.18.8
     dependencies:
-      '@kong-ui-public/i18n': 0.2.0
+      '@kong-ui-public/i18n': 0.2.2
       '@kong-ui/core': link:../core
     devDependencies:
       '@kong/kongponents': 8.18.8
@@ -163,7 +163,7 @@ importers:
   packages/forms:
     specifiers:
       '@kong-ui-public/app-layout': ^0.11.3
-      '@kong-ui-public/i18n': ^0.2.0
+      '@kong-ui-public/i18n': ^0.2.2
       '@kong-ui/core': workspace:^0.9.4
       '@kong/kongponents': ^8.18.8
       '@types/lodash': ^4.14.191
@@ -173,7 +173,7 @@ importers:
       pug: ^3.0.2
     dependencies:
       '@kong-ui-public/app-layout': 0.11.3_@kong+kongponents@8.18.8
-      '@kong-ui-public/i18n': 0.2.0
+      '@kong-ui-public/i18n': 0.2.2
       '@kong-ui/core': link:../core
       fecha: 4.2.3
       lodash: 4.17.21
@@ -186,7 +186,7 @@ importers:
   packages/konnect-app-shell:
     specifiers:
       '@kong-ui-public/app-layout': ^0.11.3
-      '@kong-ui-public/i18n': ^0.2.0
+      '@kong-ui-public/i18n': ^0.2.2
       '@kong-ui/core': workspace:^0.9.4
       '@kong/kauth-client-typescript-axios': ^0.1708.0
       '@kong/kongponents': ^8.18.8
@@ -196,7 +196,7 @@ importers:
       uuid: ^9.0.0
     dependencies:
       '@kong-ui-public/app-layout': 0.11.3_@kong+kongponents@8.18.8
-      '@kong-ui-public/i18n': 0.2.0
+      '@kong-ui-public/i18n': 0.2.2
       '@kong-ui/core': link:../core
       '@kong/kauth-client-typescript-axios': 0.1708.0
       axios: 1.2.4
@@ -1270,8 +1270,8 @@ packages:
       lodash.clonedeep: 4.5.0
     dev: false
 
-  /@kong-ui-public/i18n/0.2.0:
-    resolution: {integrity: sha512-58IitTtx+WEyJT1wdMM9gSyq5E6NuaUrOvG2NyPdYvCdhGi1SFpdlaEFWe/nlZPOHnkPp74EevM/l+QFzkDxcA==}
+  /@kong-ui-public/i18n/0.2.2:
+    resolution: {integrity: sha512-liy6ROYYEgLnAPx3L7KkBwsUlHTTxzIEI7AfgeKYg3ESoIt7O6cZ8YhU00L0OYVpVKLE/ag4WqhSC1MrX9dKgw==}
     peerDependencies:
       vue: ^3.2.45
     dependencies:
