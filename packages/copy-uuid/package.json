@@ -48,7 +48,7 @@
     "extends": "../../package.json"
   },
   "peerDependencies": {
-    "@kong/kongponents": "^8.18.8",
+    "@kong/kongponents": "^8.19.1",
     "vue": "^3.2.45"
   },
   "dependencies": {
@@ -56,6 +56,6 @@
     "@kong-ui/core": "workspace:^0.9.4"
   },
   "devDependencies": {
-    "@kong/kongponents": "^8.18.8"
+    "@kong/kongponents": "^8.19.1"
   }
 }
