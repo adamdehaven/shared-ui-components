@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { AppError } from '@kong-ui/core-app-layout'
+import { AppError } from '@kong-ui-public/app-layout'
 import composables from '../../composables'
 import CopyTraceId from './CopyTraceId.vue'
 

@@ -75,8 +75,8 @@ import { computed, ref } from 'vue'
 import composables from '../composables'
 import type { Geo } from '../types'
 
-import type { NavbarDropdownMenuItem } from '@kong-ui/core-app-layout'
-import { ExternalLink, NavbarDropdownMenu } from '@kong-ui/core-app-layout'
+import type { NavbarDropdownMenuItem } from '@kong-ui-public/app-layout'
+import { ExternalLink, NavbarDropdownMenu } from '@kong-ui-public/app-layout'
 import { KonnectEnterpriseLogo } from './icons'
 
 import { FeatureFlags } from '../types'

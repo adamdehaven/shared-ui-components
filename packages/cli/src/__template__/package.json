@@ -45,6 +45,7 @@
     "url": "https://github.com/Kong/shared-ui-components.git",
     "directory": "packages/{%%PACKAGE_NAME%%}"
   },
+  "homepage": "https://github.com/Kong/shared-ui-components/tree/main/packages/{%%PACKAGE_NAME%%}",
   "author": "Kong, Inc.",
   "license": "UNLICENSED",
   "volta": {

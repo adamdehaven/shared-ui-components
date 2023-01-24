@@ -42,6 +42,7 @@
     "url": "https://github.com/Kong/shared-ui-components.git",
     "directory": "packages/konnect-app-shell"
   },
+  "homepage": "https://github.com/Kong/shared-ui-components/tree/main/packages/konnect-app-shell",
   "author": "Kong, Inc.",
   "license": "UNLICENSED",
   "volta": {
@@ -53,9 +54,9 @@
     "vue-router": "^4.1.6"
   },
   "dependencies": {
+    "@kong-ui-public/app-layout": "^0.11.2",
+    "@kong-ui-public/i18n": "^0.2.0",
     "@kong-ui/core": "workspace:^0.9.3",
-    "@kong-ui/core-app-layout": "^0.10.2",
-    "@kong-ui/core-i18n": "^0.1.6",
     "@kong/kauth-client-typescript-axios": "^0.1708.0",
     "axios": "^1.2.4",
     "launchdarkly-js-client-sdk": "^2.24.2",

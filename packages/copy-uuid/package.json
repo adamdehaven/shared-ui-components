@@ -41,6 +41,7 @@
     "url": "https://github.com/Kong/shared-ui-components.git",
     "directory": "packages/copy-uuid"
   },
+  "homepage": "https://github.com/Kong/shared-ui-components/tree/main/packages/copy-uuid",
   "author": "Kong, Inc.",
   "license": "UNLICENSED",
   "volta": {
@@ -51,8 +52,8 @@
     "vue": "^3.2.45"
   },
   "dependencies": {
-    "@kong-ui/core": "workspace:^0.9.3",
-    "@kong-ui/core-i18n": "^0.1.6"
+    "@kong-ui-public/i18n": "^0.2.0",
+    "@kong-ui/core": "workspace:^0.9.3"
   },
   "devDependencies": {
     "@kong/kongponents": "^8.18.8"

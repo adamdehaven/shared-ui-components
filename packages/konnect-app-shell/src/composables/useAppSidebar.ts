@@ -2,7 +2,7 @@ import { ref, computed } from 'vue'
 import { GLOBAL_GEO_PATH } from '../constants'
 import composables from './'
 import type { KonnectAppShellSidebarItem, KonnectAppShellSidebarPrimaryItem } from '../types'
-import type { SidebarPrimaryItem, SidebarProfileItem } from '@kong-ui/core-app-layout'
+import type { SidebarPrimaryItem, SidebarProfileItem } from '@kong-ui-public/app-layout'
 
 export default function useAppSidebar() {
   const hostAppSidebarItem = ref<KonnectAppShellSidebarItem>()

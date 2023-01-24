@@ -85,16 +85,16 @@
 
 <script setup lang="ts">
 import { computed, reactive, ref, watch, watchEffect, PropType, onBeforeMount, nextTick } from 'vue'
-import { AppLayout } from '@kong-ui/core-app-layout'
+import { AppLayout } from '@kong-ui-public/app-layout'
 import { GruceLogo, KonnectLogo } from './icons'
-import type { SidebarSecondaryItem } from '@kong-ui/core-app-layout'
+import type { SidebarSecondaryItem } from '@kong-ui-public/app-layout'
 import { useWindow } from '@kong-ui/core'
 import composables from '../composables'
 import { GLOBAL_GEO_NAME } from '../constants'
 import type { KonnectAppShellSidebarItem, Geo, KonnectAppShellState, SessionData, ErrorProp } from '../types'
 import GeoSelectForm from './forms/GeoSelectForm.vue'
 import GlobalError from './errors/GlobalError.vue'
-import '@kong-ui/core-app-layout/dist/style.css'
+import '@kong-ui-public/app-layout/dist/style.css'
 import GeoSwitcher from './GeoSwitcher.vue'
 import HelpDropdown from './HelpDropdown.vue'
 

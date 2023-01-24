@@ -63,7 +63,7 @@ This monorepo comes pre-configured with config files and other settings that :sp
 - A [`vite.config.ts`](#include-a-viteconfigts-file) that extends (via `mergeConfig`) the root `vite.config.shared.ts`
 - All code **must** be contained within the `{package-name}/src` directory
 - A file at `src/index.ts` that exports all of the package exports.
-- If utilizing **any** text strings, your package **must** utilize a `src/locales/{lang}.json` file for the text strings and incorporate the `useI18n` helper from `@kong-ui/core-i18n`
+- If utilizing **any** text strings, your package **must** utilize a `src/locales/{lang}.json` file for the text strings and incorporate the `useI18n` helper from `@kong-ui-public/i18n`
 - All packages are initialized with their own fully-functional Vue sandbox.
 
 ## Include a `vite.config.ts` file
@@ -110,7 +110,7 @@ During our release automation, Lerna will ensure that the version of `@kong-ui/d
 Include loosely bounded (SemVer-wise) peer deps, i.e. `vue` or `vue-router`
 
 ```sh
-pnpm --filter="@kong-ui/core-demo-component" add --save-peer vue@latest
+pnpm --filter="@kong-ui/demo-component" add --save-peer vue@latest
 ```
 
 ### `devDependencies`

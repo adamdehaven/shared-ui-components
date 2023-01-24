@@ -112,7 +112,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { ExternalLink } from '@kong-ui/core-app-layout'
+import { ExternalLink } from '@kong-ui-public/app-layout'
 import { KonnectEnterpriseLogo as HelpKonnectEnterpriseLogo } from './icons'
 import composables from '../composables'
 import externalLinks from '../external-links'

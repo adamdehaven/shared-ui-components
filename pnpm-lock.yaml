@@ -148,12 +148,12 @@ importers:
 
   packages/copy-uuid:
     specifiers:
+      '@kong-ui-public/i18n': ^0.2.0
       '@kong-ui/core': workspace:^0.9.3
-      '@kong-ui/core-i18n': ^0.1.6
       '@kong/kongponents': ^8.18.8
     dependencies:
+      '@kong-ui-public/i18n': 0.2.0
       '@kong-ui/core': link:../core
-      '@kong-ui/core-i18n': 0.1.6
     devDependencies:
       '@kong/kongponents': 8.18.8
 
@@ -162,9 +162,9 @@ importers:
 
   packages/forms:
     specifiers:
+      '@kong-ui-public/app-layout': ^0.11.2
+      '@kong-ui-public/i18n': ^0.2.0
       '@kong-ui/core': workspace:^0.9.3
-      '@kong-ui/core-app-layout': ^0.10.2
-      '@kong-ui/core-i18n': ^0.1.6
       '@kong/kongponents': ^8.18.8
       '@types/lodash': ^4.14.191
       fecha: ^4.2.3
@@ -172,9 +172,9 @@ importers:
       lodash.debounce: ^4.0.8
       pug: ^3.0.2
     dependencies:
+      '@kong-ui-public/app-layout': 0.11.2_@kong+kongponents@8.18.8
+      '@kong-ui-public/i18n': 0.2.0
       '@kong-ui/core': link:../core
-      '@kong-ui/core-app-layout': 0.10.2_@kong+kongponents@8.18.8
-      '@kong-ui/core-i18n': 0.1.6
       fecha: 4.2.3
       lodash: 4.17.21
       lodash.debounce: 4.0.8
@@ -185,9 +185,9 @@ importers:
 
   packages/konnect-app-shell:
     specifiers:
+      '@kong-ui-public/app-layout': ^0.11.2
+      '@kong-ui-public/i18n': ^0.2.0
       '@kong-ui/core': workspace:^0.9.3
-      '@kong-ui/core-app-layout': ^0.10.2
-      '@kong-ui/core-i18n': ^0.1.6
       '@kong/kauth-client-typescript-axios': ^0.1708.0
       '@kong/kongponents': ^8.18.8
       '@types/uuid': ^9.0.0
@@ -195,9 +195,9 @@ importers:
       launchdarkly-js-client-sdk: ^2.24.2
       uuid: ^9.0.0
     dependencies:
+      '@kong-ui-public/app-layout': 0.11.2_@kong+kongponents@8.18.8
+      '@kong-ui-public/i18n': 0.2.0
       '@kong-ui/core': link:../core
-      '@kong-ui/core-app-layout': 0.10.2_@kong+kongponents@8.18.8
-      '@kong-ui/core-i18n': 0.1.6
       '@kong/kauth-client-typescript-axios': 0.1708.0
       axios: 1.2.4
       launchdarkly-js-client-sdk: 2.24.2
@@ -1257,10 +1257,10 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@kong-ui/core-app-layout/0.10.2_@kong+kongponents@8.18.8:
-    resolution: {integrity: sha512-e+JXmGQn/FA95x3jh+itRdJvwbY4eacpLA8tRE3ppxodDJMvC/C374m9qCnqmXvf/V/xgNWbn0bPDqaH9/0MOQ==}
+  /@kong-ui-public/app-layout/0.11.2_@kong+kongponents@8.18.8:
+    resolution: {integrity: sha512-mkeXEVXgzaoV1E8gZEU10lVl9ohu6i0U4H/j3jttNrVpwJkxYQyu3s6vpx2UTOuKADkPeewDaIRcqlEr9BbQ5w==}
     peerDependencies:
-      '@kong/kongponents': ^8.19.0
+      '@kong/kongponents': ^8.19.1
       vue: ^3.2.45
       vue-router: ^4.1.6
     dependencies:
@@ -1270,8 +1270,8 @@ packages:
       lodash.clonedeep: 4.5.0
     dev: false
 
-  /@kong-ui/core-i18n/0.1.6:
-    resolution: {integrity: sha512-6Il3FrPkzOU5SfrlEGoecn77S5ICuxgdorU4b+sW8r62GD1PpMis+2P54zo1LyJB6SEsikM4Y1vdroMvKq9HWA==}
+  /@kong-ui-public/i18n/0.2.0:
+    resolution: {integrity: sha512-58IitTtx+WEyJT1wdMM9gSyq5E6NuaUrOvG2NyPdYvCdhGi1SFpdlaEFWe/nlZPOHnkPp74EevM/l+QFzkDxcA==}
     peerDependencies:
       vue: ^3.2.45
     dependencies:
@@ -4533,7 +4533,7 @@ packages:
   /axios/0.21.4:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
     dependencies:
-      follow-redirects: 1.15.2
+      follow-redirects: 1.15.2_debug@4.3.4
     transitivePeerDependencies:
       - debug
     dev: true
@@ -4541,7 +4541,7 @@ packages:
   /axios/0.27.2:
     resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
     dependencies:
-      follow-redirects: 1.15.2
+      follow-redirects: 1.15.2_debug@4.3.4
       form-data: 4.0.0
     transitivePeerDependencies:
       - debug
@@ -4549,7 +4549,7 @@ packages:
   /axios/1.2.4:
     resolution: {integrity: sha512-lIQuCfBJvZB/Bv7+RWUqEJqNShGOVpk9v7P0ZWx5Ip0qY6u7JBAU6dzQPMLasU9vHL2uD8av/1FDJXj7n6c39w==}
     dependencies:
-      follow-redirects: 1.15.2
+      follow-redirects: 1.15.2_debug@4.3.4
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -6202,7 +6202,6 @@ packages:
         optional: true
     dependencies:
       ms: 2.1.2
-    dev: true
 
   /debug/4.3.4_supports-color@8.1.1:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
@@ -8116,7 +8115,7 @@ packages:
       from2: 2.3.0
     dev: true
 
-  /follow-redirects/1.15.2:
+  /follow-redirects/1.15.2_debug@4.3.4:
     resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
     engines: {node: '>=4.0'}
     peerDependencies:
@@ -8124,6 +8123,8 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
+    dependencies:
+      debug: 4.3.4
 
   /for-each/0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
@@ -9144,7 +9145,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.15.2
+      follow-redirects: 1.15.2_debug@4.3.4
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
@@ -11437,7 +11438,6 @@ packages:
 
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
-    dev: true
 
   /ms/2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}

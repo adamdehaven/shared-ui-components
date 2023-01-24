@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
 import { inject, PropType } from 'vue'
-import { createI18n } from '@kong-ui/core-i18n'
+import { createI18n } from '@kong-ui-public/i18n'
 import english from '../locales/en.json'
 import { KClipboardProvider, KIcon } from '@kong/kongponents'
 import { COPY_UUID_NOTIFY_KEY } from '../const'
