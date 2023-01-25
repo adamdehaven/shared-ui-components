@@ -54,6 +54,12 @@
         </a>
       </div>
     </template>
+    <template
+      v-if="slotContent.sidebarTop"
+      #sidebar-top
+    >
+      <slot name="sidebar-top" />
+    </template>
 
     <KSkeleton
       v-if="state.loading"
@@ -84,7 +90,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref, watch, watchEffect, PropType, onBeforeMount, nextTick } from 'vue'
+import { computed, reactive, ref, watch, watchEffect, PropType, onBeforeMount, nextTick, useSlots } from 'vue'
 import { AppLayout } from '@kong-ui-public/app-layout'
 import { GruceLogo, KonnectLogo } from './icons'
 import type { SidebarSecondaryItem } from '@kong-ui-public/app-layout'
@@ -152,6 +158,11 @@ const emit = defineEmits<{
   (e: 'update:loading', isLoading: boolean): void,
   (e: 'update:session', session: SessionData | undefined): void,
 }>()
+
+const slots = useSlots()
+const slotContent = reactive({
+  sidebarTop: computed((): boolean => !!slots['sidebar-top']),
+})
 
 const state: KonnectAppShellState = reactive({
   activeGeo: undefined,
