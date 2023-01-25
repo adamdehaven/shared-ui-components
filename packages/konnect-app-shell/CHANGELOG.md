@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.18.29...@kong-ui/konnect-app-shell@0.19.0) (2023-01-25)
+
+
+### ✨ Features
+
+* **konnect-app-shell:** add sidebar-top slot ([62ebd9f](https://github.com/Kong/shared-ui-components/commit/62ebd9f8c1d6354b5ec9f34182f16ecc685f22ce))
+
+
+
+
+
 ## [0.18.29](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.18.28...@kong-ui/konnect-app-shell@0.18.29) (2023-01-25)
 
 
