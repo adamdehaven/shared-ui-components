@@ -31,7 +31,7 @@ importers:
       commitizen: ^4.3.0
       conventional-changelog-metahub: ^4.0.1
       cross-env: ^7.0.3
-      cypress: ^12.3.0
+      cypress: ^12.4.0
       cz-conventional-changelog: ^3.3.0
       eslint: ^8.32.0
       eslint-plugin-cypress: ^2.12.1
@@ -69,7 +69,7 @@ importers:
       '@babel/types': 7.20.7
       '@commitlint/cli': 17.4.2
       '@commitlint/config-conventional': 17.4.2
-      '@cypress/code-coverage': 3.10.0_cypress@12.3.0
+      '@cypress/code-coverage': 3.10.0_cypress@12.4.0
       '@datadog/datadog-ci': 2.3.2
       '@digitalroute/cz-conventional-changelog-for-jira': 7.5.1
       '@evilmartians/lefthook': 1.2.8
@@ -93,7 +93,7 @@ importers:
       commitizen: 4.3.0
       conventional-changelog-metahub: 4.0.1
       cross-env: 7.0.3
-      cypress: 12.3.0
+      cypress: 12.4.0
       cz-conventional-changelog: 3.3.0
       eslint: 8.32.0
       eslint-plugin-cypress: 2.12.1_eslint@8.32.0
@@ -657,14 +657,14 @@ packages:
       postcss-selector-parser: 6.0.11
     dev: true
 
-  /@cypress/code-coverage/3.10.0_cypress@12.3.0:
+  /@cypress/code-coverage/3.10.0_cypress@12.4.0:
     resolution: {integrity: sha512-K5pW2KPpK4vKMXqxd6vuzo6m9BNgpAv1LcrrtmqAtOJ1RGoEILXYZVost0L6Q+V01NyY7n7jXIIfS7LR3nP6YA==}
     peerDependencies:
       cypress: '*'
     dependencies:
       '@cypress/webpack-preprocessor': 5.16.1
       chalk: 4.1.2
-      cypress: 12.3.0
+      cypress: 12.4.0
       dayjs: 1.10.7
       debug: 4.3.4
       execa: 4.1.0
@@ -3261,7 +3261,7 @@ packages:
   /@types/cypress__code-coverage/3.10.0:
     resolution: {integrity: sha512-wzgBnjD5yyZhpOKNxKNqptAMgzY2klexrA97loeUa/63Rmnnsno2y/AmcaPSkTBaqDjDXgyEAxTiCgWeMGGOuA==}
     dependencies:
-      cypress: 12.3.0
+      cypress: 12.4.0
     dev: true
 
   /@types/datadog-metrics/0.6.1:
@@ -5990,8 +5990,8 @@ packages:
     resolution: {integrity: sha512-NJGVKPS81XejHcLhaLJS7plab0fK3slPh11mESeeDq2W4ZI5kUKK/LRRdVDvjJseojbPB7ZwjnyOybg3Igea/A==}
     dev: true
 
-  /cypress/12.3.0:
-    resolution: {integrity: sha512-ZQNebibi6NBt51TRxRMYKeFvIiQZ01t50HSy7z/JMgRVqBUey3cdjog5MYEbzG6Ktti5ckDt1tfcC47lmFwXkw==}
+  /cypress/12.4.0:
+    resolution: {integrity: sha512-//h93K/yGC/7pxv1KamlkADbKHLp5h3f9rZDE2McRjXZDagMETH0sXowOOanvhsH8cFt/JWspIcK+p9cuaoAqg==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     hasBin: true
     requiresBuild: true
@@ -6028,7 +6028,7 @@ packages:
       listr2: 3.14.0_enquirer@2.3.6
       lodash: 4.17.21
       log-symbols: 4.1.0
-      minimist: 1.2.6
+      minimist: 1.2.7
       ospath: 1.2.2
       pretty-bytes: 5.6.0
       proxy-from-env: 1.0.0
@@ -11288,10 +11288,6 @@ packages:
       arrify: 1.0.1
       is-plain-obj: 1.1.0
       kind-of: 6.0.3
-    dev: true
-
-  /minimist/1.2.6:
-    resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
     dev: true
 
   /minimist/1.2.7:
