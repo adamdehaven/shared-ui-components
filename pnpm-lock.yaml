@@ -191,7 +191,7 @@ importers:
       '@kong/kauth-client-typescript-axios': ^0.1715.0
       '@kong/kongponents': ^8.20.0
       '@types/uuid': ^9.0.0
-      axios: ^1.2.4
+      axios: ^1.2.5
       launchdarkly-js-client-sdk: ^2.24.2
       uuid: ^9.0.0
     dependencies:
@@ -199,7 +199,7 @@ importers:
       '@kong-ui-public/i18n': 0.2.2
       '@kong-ui/core': link:../core
       '@kong/kauth-client-typescript-axios': 0.1715.0
-      axios: 1.2.4
+      axios: 1.2.5
       launchdarkly-js-client-sdk: 2.24.2
       uuid: 9.0.0
     devDependencies:
@@ -4546,8 +4546,8 @@ packages:
     transitivePeerDependencies:
       - debug
 
-  /axios/1.2.4:
-    resolution: {integrity: sha512-lIQuCfBJvZB/Bv7+RWUqEJqNShGOVpk9v7P0ZWx5Ip0qY6u7JBAU6dzQPMLasU9vHL2uD8av/1FDJXj7n6c39w==}
+  /axios/1.2.5:
+    resolution: {integrity: sha512-9pU/8mmjSSOb4CXVsvGIevN+MlO/t9OWtKadTaLuN85Gge3HGorUckgp8A/2FH4V4hJ7JuQ3LIeI7KAV9ITZrQ==}
     dependencies:
       follow-redirects: 1.15.2
       form-data: 4.0.0
@@ -12091,7 +12091,7 @@ packages:
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.26
       '@zkochan/js-yaml': 0.0.6
-      axios: 1.2.4
+      axios: 1.2.5
       chalk: 4.1.0
       chokidar: 3.5.3
       cli-cursor: 3.1.0
