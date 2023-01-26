@@ -53,6 +53,6 @@ const sidebarItems = computed((): KonnectAppShellSidebarItem | null => {
 const appShellReady = (): void => {
   console.log('Konnect App Shell @ready event fired')
 
-  console.log('evaluateFeatureFlag', evaluateFeatureFlag('kp-14-multi-geo'))
+  console.log('evaluateFeatureFlag', evaluateFeatureFlag('kp-14-multi-geo', false))
 }
 </script>

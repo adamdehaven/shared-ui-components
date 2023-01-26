@@ -6,6 +6,7 @@ import { SESSION_NAME, CYPRESS_USER_SESSION_EXISTS } from '../constants'
 import type { SessionData, Tier } from '../types'
 import { useWindow } from '@kong-ui/core'
 
+// Initialize these ref(s) outside the function for persistence
 const session = ref<SessionData>()
 
 export default function useSession() {
@@ -75,7 +76,13 @@ export default function useSession() {
       // Ensure to combine with existing data
       session.value = { ...(session.value || {}), ...userSessionData }
 
+      // Store the session data
       await saveSessionData(session.value)
+
+      const { fetchTopLevelPermissions } = composables.usePermissions()
+      // Fetch the top-level permissions in order to evaluate the sidebar items
+      // Fetching here avoids some content delay when rendering the sidebar
+      await fetchTopLevelPermissions()
 
       // Initialize DataDog with the actual user id
       globalThis.DD_RUM && globalThis.DD_RUM.onReady(() => {
@@ -303,7 +310,7 @@ export default function useSession() {
   }
 
   /**
-   * Attempt to nitialize the session from localStorage. Should only be called once in the KonnectAppShell onBeforeMount hook.
+   * Attempt to initialize the session from localStorage. Should only be called once in the KonnectAppShell onBeforeMount hook.
    */
   const initializeSession = async (): Promise<{ error: Ref<boolean>, forceAuthentication: Ref<boolean> }> => {
     // Fetch session data from localStorage

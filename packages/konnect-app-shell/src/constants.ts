@@ -18,3 +18,9 @@ export const AUTH_ROUTES = [
   'registration',
   'reset-password',
 ]
+
+/** A list of actions that, when checked should evaluate to `true` to allow access for a user with `#root-readonly` permissions. */
+export const ROOT_READONLY_ALLOWED_ACTIONS = [
+  '#list',
+  '#retrieve',
+]

@@ -2,7 +2,7 @@ import { ref } from 'vue'
 import axios from 'axios'
 import type { KongUiConfig } from '../types'
 
-// Initialize the config ref outside the function for persistence
+// Initialize these ref(s) outside the function for persistence
 const config = ref<KongUiConfig>()
 
 export default function useAppConfig() {

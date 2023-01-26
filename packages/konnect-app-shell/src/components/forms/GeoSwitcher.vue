@@ -72,15 +72,15 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import composables from '../composables'
-import type { Geo } from '../types'
+import composables from '../../composables'
+import type { Geo } from '../../types'
 
 import type { NavbarDropdownMenuItem } from '@kong-ui-public/app-layout'
 import { ExternalLink, NavbarDropdownMenu } from '@kong-ui-public/app-layout'
-import { KonnectEnterpriseLogo } from './icons'
+import { KonnectEnterpriseLogo } from '../icons'
 
-import { FeatureFlags } from '../types'
-import externalLinks from '../external-links'
+import { FeatureFlags } from '../../types'
+import externalLinks from '../../external-links'
 
 const props = defineProps({
   /**
@@ -190,7 +190,7 @@ const onGeoChange = (item: NavbarDropdownMenuItem): void => {
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/variables";
+@import "../../styles/variables";
 
 .geo-switcher {
   --KButtonFontSize: 14px;

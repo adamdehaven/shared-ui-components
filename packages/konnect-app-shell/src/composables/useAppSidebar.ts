@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { GLOBAL_GEO_PATH } from '../constants'
 import composables from './'
 import type { KonnectAppShellSidebarItem, KonnectAppShellSidebarPrimaryItem } from '../types'
@@ -6,8 +6,15 @@ import type { SidebarPrimaryItem, SidebarProfileItem } from '@kong-ui-public/app
 
 export default function useAppSidebar() {
   const hostAppSidebarItem = ref<KonnectAppShellSidebarItem>()
+
+  // Keep the local variable in-sync with the KonnectAppShell prop(s)
+  const update = (items: KonnectAppShellSidebarItem): void => {
+    hostAppSidebarItem.value = items
+  }
+
   // activeGeo may be undefined at first, but everything in this function is reactive so they should update
   const { activeGeo } = composables.useGeo()
+  const { canUserAccess } = composables.usePermissions()
   // Default to a leading-slash so the KonnectAppShell will redirect accordingly as a fallback
   const activeGeoPath = computed((): string => activeGeo.value ? `/${activeGeo.value.code}/` : '/')
 
@@ -24,12 +31,14 @@ export default function useAppSidebar() {
       key: 'overview',
       to: `${activeGeoPath.value}overview/`,
       icon: 'sharedConfig',
+      isAuthorized: () => canUserAccess({ service: 'accounts', action: '#root', resourcePath: null }, false),
     },
     {
       name: 'Runtime Manager',
       key: 'runtime-manager',
       to: `${activeGeoPath.value}runtime-manager/`,
       icon: 'runtimes',
+      isAuthorized: () => canUserAccess({ service: 'konnect', action: '#list', resourcePath: 'runtimegroups' }, false),
     },
     {
       name: 'Mesh Manager',
@@ -42,18 +51,21 @@ export default function useAppSidebar() {
       key: 'servicehub',
       to: `${activeGeoPath.value}servicehub/`,
       icon: 'serviceHub',
+      isAuthorized: () => canUserAccess({ service: 'konnect', action: '#list', resourcePath: 'services' }, false),
     },
     {
       name: 'Dev Portal',
       key: 'portal',
       to: `${activeGeoPath.value}portal/`,
       icon: 'devPortal',
+      isAuthorized: () => canUserAccess({ service: 'konnect', action: '#list', resourcePath: 'portals' }, false),
     },
     {
       name: 'Analytics',
       key: 'analytics',
       to: `${activeGeoPath.value}analytics/`,
       icon: 'vitalsChart',
+      isAuthorized: () => canUserAccess({ service: 'konnect', action: '#retrieve', resourcePath: 'reports' }, false),
     },
   ]))
 
@@ -70,12 +82,14 @@ export default function useAppSidebar() {
       key: 'organization',
       to: `${GLOBAL_GEO_PATH}organization/`,
       icon: 'organizations',
+      isAuthorized: () => canUserAccess({ service: 'accounts', action: '#root', resourcePath: null }, false),
     },
     {
       name: 'Settings',
       key: 'settings',
       to: `${GLOBAL_GEO_PATH}settings/`,
       icon: 'cogwheel',
+      isAuthorized: () => canUserAccess({ service: 'accounts', action: '#root', resourcePath: null }, false),
     },
   ]))
 
@@ -98,11 +112,6 @@ export default function useAppSidebar() {
       external: true,
     },
   ]))
-
-  // Keep the local variable in-sync with the KonnectAppShell prop(s)
-  const update = (items: KonnectAppShellSidebarItem): void => {
-    hostAppSidebarItem.value = items
-  }
 
   /**
    * Modify the sidebar items based on the parentKey and child items
@@ -152,15 +161,30 @@ export default function useAppSidebar() {
     })
   }
 
-  // Sidebar items must be exported as computed properties to keep them reactive
-  const topItems = computed((): SidebarPrimaryItem[] => {
-    return prepareSidebarPrimaryItems(sidebarTopPrimaryItems.value)
-  })
-  const bottomItems = computed((): SidebarPrimaryItem[] => {
-    return prepareSidebarPrimaryItems(sidebarBottomPrimaryItems.value)
-  })
-  const profileItems = computed((): SidebarProfileItem[] => {
-    return sidebarProfileItems.value
+  const filterAuthorizedItems = async (items: KonnectAppShellSidebarPrimaryItem[]): Promise<SidebarPrimaryItem[]> => {
+    const allowedItems: KonnectAppShellSidebarPrimaryItem[] = []
+
+    for (const item of items) {
+      if (item.isAuthorized === undefined || await item.isAuthorized() === true) {
+        allowedItems.push(item)
+      }
+    }
+
+    return prepareSidebarPrimaryItems(allowedItems)
+  }
+
+  const topItems = ref<SidebarPrimaryItem[]>()
+  const bottomItems = ref<SidebarPrimaryItem[]>()
+  const profileItems = ref<SidebarProfileItem[]>(sidebarProfileItems.value)
+
+  // Update the top sidebar items whenever the underlying data changes; must also watch `hostAppSidebarItem`
+  watch([sidebarTopPrimaryItems, hostAppSidebarItem], async () => {
+    topItems.value = await filterAuthorizedItems(sidebarTopPrimaryItems.value)
+  }, { deep: true })
+
+  // Update the bottom sidebar items whenever the underlying data changes; must also watch `hostAppSidebarItem`
+  watch([sidebarBottomPrimaryItems, hostAppSidebarItem], async () => {
+    bottomItems.value = await filterAuthorizedItems(sidebarBottomPrimaryItems.value)
   })
 
   return {

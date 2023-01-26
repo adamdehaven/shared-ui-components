@@ -142,8 +142,6 @@ describe('useSession', async () => {
 
     const sessionDataFromLocalStorage: SessionData = JSON.parse(decodeURIComponent(atob(localStorage.getItem(SESSION_NAME) || '')))
 
-    console.log('sessionDataFromLocalStorage', sessionDataFromLocalStorage)
-
     // @ts-ignore
     expect(sessionDataFromLocalStorage.to?.path).toBe(currentPath)
     // Ensure the other properties were removed

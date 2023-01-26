@@ -6,7 +6,10 @@ import { KonnectPrimaryRouteKey } from './routes'
  * The KonnectAppShell sidebar top-level navigation items
  */
 export interface KonnectAppShellSidebarPrimaryItem extends SidebarPrimaryItem {
+  /** The Konnect top-level navigation item key */
   key: KonnectPrimaryRouteKey
+  /** Pass in the canUserAccess function with the associated krn parameters */
+  isAuthorized?: () => Promise<boolean>
 }
 
 export interface KonnectAppShellSidebarItem {

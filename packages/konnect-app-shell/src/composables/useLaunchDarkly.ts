@@ -4,7 +4,7 @@ import type { LDClient, LDUser, LDFlagValue } from 'launchdarkly-js-client-sdk'
 import composables from './'
 import type { FeatureFlags } from '../types'
 
-// Keep these refs outside the function for persistence
+// Initialize these ref(s) outside the function for persistence
 const ldClient = ref<LDClient>()
 const isInitialized = ref(false)
 

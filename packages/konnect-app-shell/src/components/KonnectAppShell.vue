@@ -101,7 +101,7 @@ import type { KonnectAppShellSidebarItem, Geo, KonnectAppShellState, SessionData
 import GeoSelectForm from './forms/GeoSelectForm.vue'
 import GlobalError from './errors/GlobalError.vue'
 import '@kong-ui-public/app-layout/dist/style.css'
-import GeoSwitcher from './GeoSwitcher.vue'
+import GeoSwitcher from './forms/GeoSwitcher.vue'
 import HelpDropdown from './HelpDropdown.vue'
 
 const { useSession, useAppSidebar, useGeo, useI18n, useKAuthApi } = composables
@@ -204,15 +204,7 @@ const toggleErrorState = (show: boolean, header: string, text?: string, traceId?
 const hideAppContent = computed((): boolean => state.loading || state.error.show || !state.activeGeo)
 
 const win = useWindow()
-const { topItems, bottomItems, profileItems, update: updateSidebarItems } = useAppSidebar()
 const { setAllGeos, setActiveGeo, getActiveGeo } = useGeo()
-
-// Keep sidebarItems in sync with the useAppSidebar composable
-watchEffect(() => {
-  if (props.sidebarItems) {
-    updateSidebarItems(props.sidebarItems)
-  }
-})
 
 // Emit the active geo from the component whenever it is updated
 watch(() => state.activeGeo, (activeGeo: Geo | undefined) => {
@@ -296,6 +288,15 @@ const { initializeSession, session } = useSession()
 watch(session, (sessionData: SessionData | undefined) => {
   if (sessionData) {
     emit('update:session', sessionData)
+  }
+})
+
+const { topItems, bottomItems, profileItems, update: updateSidebarItems } = useAppSidebar()
+
+// Keep sidebarItems in sync with the useAppSidebar composable
+watchEffect(async () => {
+  if (props.sidebarItems) {
+    updateSidebarItems(props.sidebarItems)
   }
 })
 

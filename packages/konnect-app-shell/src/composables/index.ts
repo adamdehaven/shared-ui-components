@@ -1,20 +1,23 @@
-import useLaunchDarkly from './useLaunchDarkly'
 import useAppConfig from './useAppConfig'
 import useAppSidebar from './useAppSidebar'
 import useGeo from './useGeo'
 import useI18n from './useI18n'
 import useKAuthApi from './useKAuthApi'
+import useLaunchDarkly from './useLaunchDarkly'
+import usePermissions from './usePermissions'
 import useSession from './useSession'
+// Expose composables imported from `@kong-ui/core`
 import { useWindow } from '@kong-ui/core'
 
 // All composables must be exported as part of the default object for Cypress test stubs
 export default {
-  useLaunchDarkly,
   useAppConfig,
   useAppSidebar,
   useGeo,
   useI18n,
   useKAuthApi,
+  useLaunchDarkly,
+  usePermissions,
   useSession,
   useWindow,
 }

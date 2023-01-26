@@ -1,6 +1,6 @@
 import type { App } from 'vue'
 import KonnectAppShell from './components/KonnectAppShell.vue'
-import GeoSwitcher from './components/GeoSwitcher.vue'
+import GeoSwitcher from './components/forms/GeoSwitcher.vue'
 import type { SidebarPrimaryItem, SidebarSecondaryItem, SidebarProfileItem } from '@kong-ui-public/app-layout'
 import { GruceLogo, KonnectLogo, KonnectEnterpriseLogo } from './components/icons'
 

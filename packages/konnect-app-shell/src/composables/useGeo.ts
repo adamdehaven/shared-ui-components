@@ -5,7 +5,7 @@ import type { Geo } from '../types'
 import { useWindow } from '@kong-ui/core'
 import { v5 as uuidv5 } from 'uuid'
 
-// Define the `geos` ref outside of the composable so that they persist across `useGeo` imports
+// Initialize these ref(s) outside the function for persistence
 const geos = ref<Geo[]>([])
 
 export default function useGeo() {

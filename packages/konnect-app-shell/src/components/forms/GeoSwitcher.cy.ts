@@ -1,11 +1,11 @@
 import { ref } from 'vue'
 import GeoSwitcher from './GeoSwitcher.vue'
-import composables from '../composables'
+import composables from '../../composables'
 
 import { v4 as uuidv4, v5 as uuidv5 } from 'uuid'
-import { FeatureFlags } from '../types'
-import { KHCP_GEO_LOCAL_STORAGE_KEY } from '../constants'
-import english from '../locales/en.json'
+import { FeatureFlags } from '../../types'
+import { KHCP_GEO_LOCAL_STORAGE_KEY } from '../../constants'
+import english from '../../locales/en.json'
 import type { LDFlagValue } from 'launchdarkly-js-client-sdk'
 
 const geoSwitcher = {
