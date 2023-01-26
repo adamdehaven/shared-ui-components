@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.19.5...@kong-ui/konnect-app-shell@0.20.0) (2023-01-26)
+
+
+### ✨ Features
+
+* **konnect-app-shell:** fetch permissions [KHCP-5708, KHCP-5495] ([#364](https://github.com/Kong/shared-ui-components/issues/364)) ([03c0c53](https://github.com/Kong/shared-ui-components/commit/03c0c5362c43585d24f5cef5d8d93ceeee1a3259))
+
+
+
+
+
 ## [0.19.5](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.19.4...@kong-ui/konnect-app-shell@0.19.5) (2023-01-26)
 
 
