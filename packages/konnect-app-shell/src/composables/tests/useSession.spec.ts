@@ -85,6 +85,12 @@ describe('useSession', async () => {
           data: {},
         } as AxiosResponse)),
       },
+      // @ts-ignore
+      me: {
+        meAPIRetrievePermissions: () => new Promise((resolve) => resolve({
+          data: [],
+        } as AxiosResponse)),
+      },
     })
 
     // Mock any redirects redirect

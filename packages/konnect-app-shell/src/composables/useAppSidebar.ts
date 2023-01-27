@@ -8,13 +8,14 @@ export default function useAppSidebar() {
   const hostAppSidebarItem = ref<KonnectAppShellSidebarItem>()
 
   // Keep the local variable in-sync with the KonnectAppShell prop(s)
-  const update = (items: KonnectAppShellSidebarItem): void => {
-    hostAppSidebarItem.value = items
+  const update = (item: KonnectAppShellSidebarItem): void => {
+    hostAppSidebarItem.value = item
   }
 
   // activeGeo may be undefined at first, but everything in this function is reactive so they should update
   const { activeGeo } = composables.useGeo()
-  const { canUserAccess } = composables.usePermissions()
+  const { userHasSomePermissions, canUserAccess } = composables.usePermissions()
+
   // Default to a leading-slash so the KonnectAppShell will redirect accordingly as a fallback
   const activeGeoPath = computed((): string => activeGeo.value ? `/${activeGeo.value.code}/` : '/')
 
@@ -176,9 +177,15 @@ export default function useAppSidebar() {
 
   // Update the top and bottom sidebar items whenever the underlying data changes; must also watch `hostAppSidebarItem`
   watchEffect(async () => {
-    if (hostAppSidebarItem.value || sidebarTopPrimaryItems.value || sidebarBottomPrimaryItems.value) {
-      topItems.value = await filterAuthorizedItems(sidebarTopPrimaryItems.value)
-      bottomItems.value = await filterAuthorizedItems(sidebarBottomPrimaryItems.value)
+    if (userHasSomePermissions.value && (hostAppSidebarItem.value || sidebarTopPrimaryItems.value || sidebarBottomPrimaryItems.value)) {
+
+      const [topFilteredItems, bottomFilteredItems] = await Promise.all([
+        filterAuthorizedItems(sidebarTopPrimaryItems.value),
+        filterAuthorizedItems(sidebarBottomPrimaryItems.value),
+      ])
+
+      topItems.value = topFilteredItems
+      bottomItems.value = bottomFilteredItems
     }
   })
 

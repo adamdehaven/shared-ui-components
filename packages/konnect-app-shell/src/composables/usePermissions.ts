@@ -11,6 +11,8 @@ const krns = ref<KrnFromApi[]>([])
 const userHasRootAccess = ref<boolean>(false)
 // Does the user have root access
 const userHasRootReadonlyAccess = ref<boolean>(false)
+// Does the user have permissions for at least one entity (e.g. one KRN with a valid action)?
+const userHasSomePermissions = computed((): boolean => krns.value.some(krn => !!krn.actions?.length && krn.actions.some(action => !!action)))
 
 /**
  * Determine if the resource path from a KRN from the API matches a requested resource path guard.
@@ -421,7 +423,7 @@ export default function usePermissions() {
       const { data: { data: userPermissions } } = await kAuthApi.value.me.meAPIRetrievePermissions('', '', true, [], activeGeo)
 
       await addKrns({
-        krns: userPermissions as KrnFromApi[],
+        krns: userPermissions as KrnFromApi[] || [],
       })
     } catch (err) {
       // TODO: handle error
@@ -439,6 +441,7 @@ export default function usePermissions() {
     canUserAccess,
     fetchTopLevelPermissions,
     // Export computed helpers
+    userHasSomePermissions,
     isOrgAdmin,
     isOrgAdminReadonly,
   }
