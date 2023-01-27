@@ -148,11 +148,11 @@ importers:
 
   packages/copy-uuid:
     specifiers:
-      '@kong-ui-public/i18n': ^0.2.2
+      '@kong-ui-public/i18n': ^0.2.3
       '@kong-ui/core': workspace:^0.9.4
       '@kong/kongponents': ^8.20.0
     dependencies:
-      '@kong-ui-public/i18n': 0.2.2
+      '@kong-ui-public/i18n': 0.2.3
       '@kong-ui/core': link:../core
     devDependencies:
       '@kong/kongponents': 8.20.0
@@ -163,7 +163,7 @@ importers:
   packages/forms:
     specifiers:
       '@kong-ui-public/app-layout': ^0.11.7
-      '@kong-ui-public/i18n': ^0.2.2
+      '@kong-ui-public/i18n': ^0.2.3
       '@kong-ui/core': workspace:^0.9.4
       '@kong/kongponents': ^8.20.0
       '@types/lodash': ^4.14.191
@@ -173,7 +173,7 @@ importers:
       pug: ^3.0.2
     dependencies:
       '@kong-ui-public/app-layout': 0.11.7_@kong+kongponents@8.20.0
-      '@kong-ui-public/i18n': 0.2.2
+      '@kong-ui-public/i18n': 0.2.3
       '@kong-ui/core': link:../core
       fecha: 4.2.3
       lodash: 4.17.21
@@ -186,7 +186,7 @@ importers:
   packages/konnect-app-shell:
     specifiers:
       '@kong-ui-public/app-layout': ^0.11.7
-      '@kong-ui-public/i18n': ^0.2.2
+      '@kong-ui-public/i18n': ^0.2.3
       '@kong-ui/core': workspace:^0.9.4
       '@kong/kauth-client-typescript-axios': ^0.1715.0
       '@kong/kongponents': ^8.20.0
@@ -196,7 +196,7 @@ importers:
       uuid: ^9.0.0
     dependencies:
       '@kong-ui-public/app-layout': 0.11.7_@kong+kongponents@8.20.0
-      '@kong-ui-public/i18n': 0.2.2
+      '@kong-ui-public/i18n': 0.2.3
       '@kong-ui/core': link:../core
       '@kong/kauth-client-typescript-axios': 0.1715.0
       axios: 1.2.5
@@ -1073,8 +1073,8 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@formatjs/fast-memoize/1.2.7:
-    resolution: {integrity: sha512-hPeM5LXUUjtCKPybWOUAWpv8lpja8Xz+uKprFPJcg5F2Rd+/bf1E0UUsLRpaAgOReAf5HMRtoIgv/UcyPICrTQ==}
+  /@formatjs/fast-memoize/1.2.8:
+    resolution: {integrity: sha512-PemNUObyoIZcqdQ1ixTPugzAzhEj7j6AHIyrq/qR6x5BFTvOQeXHYsVZUqBEFduAIscUaDfou+U+xTqOiunJ3Q==}
     dependencies:
       tslib: 2.5.0
     dev: false
@@ -1094,8 +1094,8 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@formatjs/intl-displaynames/6.2.3:
-    resolution: {integrity: sha512-teB0L68MDGM8jEKQg55w7nvFjzeLHE6e3eK/04s+iuEVYYmvjjiHJKHrthKENzcJ0F6mHf/AwXrbX+1mKxT6AQ==}
+  /@formatjs/intl-displaynames/6.2.4:
+    resolution: {integrity: sha512-CmTbSjnmAZHNGuA9vBkWoDHvrcrRauDb0OWc6nk2dAPtesQdadr49Q9N18fr8IV7n3rblgKiYaFVjg68UkRxNg==}
     dependencies:
       '@formatjs/ecma402-abstract': 1.14.3
       '@formatjs/intl-localematcher': 0.2.32
@@ -1116,8 +1116,8 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@formatjs/intl/2.6.3:
-    resolution: {integrity: sha512-JaVZk14U/GypVfCZPevQ0KdruFkq16FXx7g398/Dm+YEx/W7sRiftbZeDy4wQ7WGryb45e763XycxD9o/vm9BA==}
+  /@formatjs/intl/2.6.4:
+    resolution: {integrity: sha512-xUuVxcJpyUxRjIaaaaFes3acTRS9T6vkL7onXBmfVT5+HTakVDGeRA7DYQD9u8ZUdzlqxe/4AuIuC+E9zBTngQ==}
     peerDependencies:
       typescript: ^4.7
     peerDependenciesMeta:
@@ -1125,11 +1125,11 @@ packages:
         optional: true
     dependencies:
       '@formatjs/ecma402-abstract': 1.14.3
-      '@formatjs/fast-memoize': 1.2.7
+      '@formatjs/fast-memoize': 1.2.8
       '@formatjs/icu-messageformat-parser': 2.1.14
-      '@formatjs/intl-displaynames': 6.2.3
+      '@formatjs/intl-displaynames': 6.2.4
       '@formatjs/intl-listformat': 7.1.7
-      intl-messageformat: 10.2.5
+      intl-messageformat: 10.2.6
       tslib: 2.5.0
     dev: false
 
@@ -1270,14 +1270,14 @@ packages:
       lodash.clonedeep: 4.5.0
     dev: false
 
-  /@kong-ui-public/i18n/0.2.2:
-    resolution: {integrity: sha512-liy6ROYYEgLnAPx3L7KkBwsUlHTTxzIEI7AfgeKYg3ESoIt7O6cZ8YhU00L0OYVpVKLE/ag4WqhSC1MrX9dKgw==}
+  /@kong-ui-public/i18n/0.2.3:
+    resolution: {integrity: sha512-ZB/W/QKp0FLxJ7AdL3ulKV/46zImZkcqABAcf8eQDlelvqst76RUZfIdOcsqYZKIa5TQiXuZ+2Wb4u5mnhtMgA==}
     peerDependencies:
       vue: ^3.2.45
     dependencies:
-      '@formatjs/intl': 2.6.3
+      '@formatjs/intl': 2.6.4
       flat: 5.0.2
-      intl-messageformat: 10.2.5
+      intl-messageformat: 10.2.6
     transitivePeerDependencies:
       - typescript
     dev: false
@@ -9452,11 +9452,11 @@ packages:
       side-channel: 1.0.4
     dev: true
 
-  /intl-messageformat/10.2.5:
-    resolution: {integrity: sha512-AievYMN6WLLHwBeCTv4aRKG+w3ZNyZtkObwgsKk3Q7GNTq8zDRvDbJSBQkb2OPeVCcAKcIXvak9FF/bRNavoww==}
+  /intl-messageformat/10.2.6:
+    resolution: {integrity: sha512-qaTfGjXhdgDup5h3O8406GlQjEj0ky3q0cWWu/lL+H6vJA+sY2/8e4l4XrRPbi9vp38Pop0gO5dsrMO0DdEEBw==}
     dependencies:
       '@formatjs/ecma402-abstract': 1.14.3
-      '@formatjs/fast-memoize': 1.2.7
+      '@formatjs/fast-memoize': 1.2.8
       '@formatjs/icu-messageformat-parser': 2.1.14
       tslib: 2.5.0
     dev: false

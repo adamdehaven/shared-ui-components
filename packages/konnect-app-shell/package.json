@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "@kong-ui-public/app-layout": "^0.11.7",
-    "@kong-ui-public/i18n": "^0.2.2",
+    "@kong-ui-public/i18n": "^0.2.3",
     "@kong-ui/core": "workspace:^0.9.4",
     "@kong/kauth-client-typescript-axios": "^0.1715.0",
     "axios": "^1.2.5",
