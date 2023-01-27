@@ -5,10 +5,13 @@ export interface KongUiConfig {
     v1: {
       kauth: string
       [api: string]: any
-    },
+    }
     v2: {
       global: string
       [api: string]: any
+    }
+    [version: string]: {
+      [api: string]: string
     }
   }
   launchDarkly: {
