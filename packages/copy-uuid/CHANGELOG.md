@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.18](https://github.com/Kong/shared-ui-components/compare/@kong-ui/copy-uuid@0.7.17...@kong-ui/copy-uuid@0.7.18) (2023-01-27)
+
+
+### ♻️ Chores
+
+* **types:** add global types ([#461](https://github.com/Kong/shared-ui-components/issues/461)) ([c58f6d4](https://github.com/Kong/shared-ui-components/commit/c58f6d49dbc4016d4b00d92e529c0d6384688b05))
+
+
+
+
+
 ## [0.7.17](https://github.com/Kong/shared-ui-components/compare/@kong-ui/copy-uuid@0.7.16...@kong-ui/copy-uuid@0.7.17) (2023-01-27)
 
 
