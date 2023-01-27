@@ -1,4 +1,4 @@
-import { ref, computed, watchEffect, readonly } from 'vue'
+import { ref, computed, watchEffect } from 'vue'
 import { GLOBAL_GEO_PATH } from '../constants'
 import composables from './'
 import type { KonnectAppShellSidebarItem, KonnectAppShellSidebarPrimaryItem } from '../types'
@@ -183,9 +183,9 @@ export default function useAppSidebar() {
   })
 
   return {
-    topItems: readonly(topItems),
-    bottomItems: readonly(bottomItems),
-    profileItems: readonly(profileItems),
+    topItems,
+    bottomItems,
+    profileItems,
     update,
   }
 }
