@@ -142,8 +142,8 @@ export default function usePermissions() {
           return false
         }
 
-        // if meta.preventReadonlyUser is true, and the user only has `#root-readonly` permissions, reject access
-        if (!!Object.prototype.hasOwnProperty.call(match.meta, 'preventReadonlyUser') && match.meta.preventReadonlyUser === true && userHasRootReadonlyAccess.value) {
+        // if meta.preventReadonlyUser is true, and the user ONLY has `#root-readonly` permissions, reject access
+        if (!!Object.prototype.hasOwnProperty.call(match.meta, 'preventReadonlyUser') && match.meta.preventReadonlyUser === true && !userHasRootAccess.value && userHasRootReadonlyAccess.value && krns.value.length === 1) {
           return false
         }
 

@@ -32,42 +32,42 @@ export default function useAppSidebar() {
       key: 'overview',
       to: `${activeGeoPath.value}overview/`,
       icon: 'sharedConfig',
-      isAuthorized: () => canUserAccess({ service: 'accounts', action: '#root', resourcePath: null }, false),
+      isAuthorized: async () => await canUserAccess({ service: 'accounts', action: '#root', resourcePath: null }, false) || await canUserAccess({ service: 'accounts', action: '#root-readonly', resourcePath: null }, false),
     },
     {
       name: 'Runtime Manager',
       key: 'runtime-manager',
       to: `${activeGeoPath.value}runtime-manager/`,
       icon: 'runtimes',
-      isAuthorized: () => canUserAccess({ service: 'konnect', action: '#list', resourcePath: 'runtimegroups' }, false),
+      isAuthorized: async () => canUserAccess({ service: 'konnect', action: '#list', resourcePath: 'runtimegroups' }, false),
     },
     {
       name: 'Mesh Manager',
       key: 'mesh-manager',
       to: `${activeGeoPath.value}mesh-manager/`,
       icon: 'brain',
-      isAuthorized: () => canUserAccess({ service: 'accounts', action: '#root', resourcePath: null }, false),
+      isAuthorized: async () => await canUserAccess({ service: 'accounts', action: '#root', resourcePath: null }, false) || await canUserAccess({ service: 'accounts', action: '#root-readonly', resourcePath: null }, false),
     },
     {
       name: 'Service Hub',
       key: 'servicehub',
       to: `${activeGeoPath.value}servicehub/`,
       icon: 'serviceHub',
-      isAuthorized: () => canUserAccess({ service: 'konnect', action: '#list', resourcePath: 'services' }, false),
+      isAuthorized: async () => canUserAccess({ service: 'konnect', action: '#list', resourcePath: 'services' }, false),
     },
     {
       name: 'Dev Portal',
       key: 'portal',
       to: `${activeGeoPath.value}portal/`,
       icon: 'devPortal',
-      isAuthorized: () => canUserAccess({ service: 'konnect', action: '#list', resourcePath: 'portals' }, false),
+      isAuthorized: async () => canUserAccess({ service: 'konnect', action: '#list', resourcePath: 'portals' }, false),
     },
     {
       name: 'Analytics',
       key: 'analytics',
       to: `${activeGeoPath.value}analytics/`,
       icon: 'vitalsChart',
-      isAuthorized: () => canUserAccess({ service: 'konnect', action: '#retrieve', resourcePath: 'reports' }, false),
+      isAuthorized: async () => canUserAccess({ service: 'konnect', action: '#retrieve', resourcePath: 'reports' }, false),
     },
   ]))
 
@@ -84,14 +84,14 @@ export default function useAppSidebar() {
       key: 'organization',
       to: `${GLOBAL_GEO_PATH}organization/`,
       icon: 'organizations',
-      isAuthorized: () => canUserAccess({ service: 'accounts', action: '#root', resourcePath: null }, false),
+      isAuthorized: async () => await canUserAccess({ service: 'accounts', action: '#root', resourcePath: null }, false) || await canUserAccess({ service: 'accounts', action: '#root-readonly', resourcePath: null }, false),
     },
     {
       name: 'Settings',
       key: 'settings',
       to: `${GLOBAL_GEO_PATH}settings/`,
       icon: 'cogwheel',
-      isAuthorized: () => canUserAccess({ service: 'accounts', action: '#root', resourcePath: null }, false),
+      isAuthorized: async () => await canUserAccess({ service: 'accounts', action: '#root', resourcePath: null }, false) || await canUserAccess({ service: 'accounts', action: '#root-readonly', resourcePath: null }, false),
     },
   ]))
 
@@ -171,14 +171,13 @@ export default function useAppSidebar() {
     return prepareSidebarPrimaryItems(allowedItems)
   }
 
-  const topItems = ref<SidebarPrimaryItem[]>()
-  const bottomItems = ref<SidebarPrimaryItem[]>()
+  const topItems = ref<SidebarPrimaryItem[]>([])
+  const bottomItems = ref<SidebarPrimaryItem[]>([])
   const profileItems = ref<SidebarProfileItem[]>(sidebarProfileItems.value)
 
   // Update the top and bottom sidebar items whenever the underlying data changes; must also watch `hostAppSidebarItem`
   watchEffect(async () => {
     if (userHasSomePermissions.value && (hostAppSidebarItem.value || sidebarTopPrimaryItems.value || sidebarBottomPrimaryItems.value)) {
-
       const [topFilteredItems, bottomFilteredItems] = await Promise.all([
         filterAuthorizedItems(sidebarTopPrimaryItems.value),
         filterAuthorizedItems(sidebarBottomPrimaryItems.value),
