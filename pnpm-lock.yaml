@@ -190,7 +190,7 @@ importers:
       '@kong-ui-public/app-layout': ^0.11.11
       '@kong-ui-public/i18n': ^0.2.3
       '@kong-ui/core': workspace:^0.9.5
-      '@kong/kauth-client-typescript-axios': ^0.1716.0
+      '@kong/kauth-client-typescript-axios': ^0.1721.0
       '@kong/kongponents': ^8.21.2
       '@types/uuid': ^9.0.0
       axios: ^1.2.5
@@ -200,7 +200,7 @@ importers:
       '@kong-ui-public/app-layout': 0.11.11_@kong+kongponents@8.21.2
       '@kong-ui-public/i18n': 0.2.3
       '@kong-ui/core': link:../core
-      '@kong/kauth-client-typescript-axios': 0.1716.0
+      '@kong/kauth-client-typescript-axios': 0.1721.0
       axios: 1.2.5
       launchdarkly-js-client-sdk: 2.24.2
       uuid: 9.0.0
@@ -1284,8 +1284,8 @@ packages:
       - typescript
     dev: false
 
-  /@kong/kauth-client-typescript-axios/0.1716.0:
-    resolution: {integrity: sha512-u72oDwbKkUtL8D/xrF90CPJqxP9q6Tg/wbMrqOpG8PN2n0mdgYSFr742uRQEIwGVtV/d88f3u3QWwFdbHlJksw==}
+  /@kong/kauth-client-typescript-axios/0.1721.0:
+    resolution: {integrity: sha512-ldwR7gdz44iYwEttJaCZJqm8MfNY6Vdj+CCuGm2U/4NJQHtpjBEgcdUYlGQwe5N7IXJE3XHTWHPENuos3fQ7Hw==}
     dev: false
 
   /@kong/kongponents/8.21.2:
