@@ -42,7 +42,7 @@ export default {
 <style lang="scss">
 .vue-form-generator .field-staticMap img {
   display: block;
-  width: auto;
   max-width: 100%;
+  width: auto;
 }
 </style>

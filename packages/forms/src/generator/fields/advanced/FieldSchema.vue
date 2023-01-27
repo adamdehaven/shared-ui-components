@@ -51,8 +51,8 @@ export default {
 <style lang="scss">
 .slide-fade-enter-active,
 .slide-fade-leave-active {
-  transition: all .5s;
   padding: 0;
+  transition: all .5s;
 }
 .slide-fade-enter-from,
 .slide-fade-leave-to {
@@ -69,27 +69,27 @@ export default {
 
 .field-dropdown {
   .title {
-    display: flex;
-    position: relative;
     align-items:center;
-    width: 100%;
-    height: 45px;
-    padding: 0 16px 0 5px;
     background-color: var(--grey-100);
     border-bottom: 1px solid #eee;
     cursor: pointer;
+    display: flex;
+    height: 45px;
+    padding: 0 16px 0 5px;
+    position: relative;
     transition: transform .2s cubic-bezier(0.41,0.35,1,0.28) 0s, background-color .2s ease-in;
+    width: 100%;
     &:hover { background-color: #f5f5f5; }
   }
   i {
     margin-left: auto;
-    user-select: none;
     transition: all .7s;
+    user-select: none;
   }
   .content {
-    height: auto;
     border: 1px solid #eee;
     border-top: 0;
+    height: auto;
     overflow: hidden;
     transition: all .5s;
     i:hover { color: #c9302c; }

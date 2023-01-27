@@ -107,14 +107,14 @@ export default {
     display: none;
   }
   .control-help {
-    width: 100%;
-    margin-left: 32px;
-    font-weight: normal;
     color: rgba(0,0,0,.45);
+    font-weight: normal;
+    margin-left: 32px;
+    width: 100%;
   }
   .form-check-input {
-    margin-right: 8px;
     margin-bottom: 8px;
+    margin-right: 8px;
   }
   .option-field {
     margin-top: 16px;

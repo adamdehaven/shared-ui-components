@@ -141,21 +141,21 @@ export default {
 
     .mainRow {
       cursor: pointer;
-      position: relative;
       padding-right: 10px;
+      position: relative;
 
       .arrow {
-        position: absolute;
-        right: -9px;
-        top: 3px;
-        width: 16px;
-        height: 16px;
-
-        transform: rotate(0deg);
-        transition: transform 0.5s;
 
         background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAGdJREFUOI3tzjsOwjAURNGDUqSgTxU5K2AVrJtswjUsgHSR0qdxAZZFPrS+3ZvRzBsqf9MUtBtazJk+oMe0VTriiZCFX8nbpENMgfARjsn74vKj5IFruhfc8d6zIF9S/Hyk5HS4spMVeFcOjszaOwMAAAAASUVORK5CYII=");
         background-repeat: no-repeat;
+        height: 16px;
+        position: absolute;
+        right: -9px;
+        top: 3px;
+
+        transform: rotate(0deg);
+        transition: transform 0.5s;
+        width: 16px;
       }
 
       &.expanded {

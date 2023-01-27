@@ -39,8 +39,8 @@ export default {
 <style lang="scss">
 .vue-form-generator .field-wrap button.delete {
   &, &:hover {
-    border: none;
     background: none;
+    border: none;
   }
 }
 </style>

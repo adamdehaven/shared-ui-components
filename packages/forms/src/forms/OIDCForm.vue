@@ -303,8 +303,8 @@ export default {
     flex-wrap: wrap;
 
     .auth-method {
-      width: 50%;
       margin-bottom: 8px;
+      width: 50%;
     }
   }
 

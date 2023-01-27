@@ -36,55 +36,55 @@ $field-switch-height: 30px;
 
 .vue-form-generator .field-switch {
   .field-wrap label {
-    position: relative;
-    display: block;
-    width: $field-switch-width;
-    height: $field-switch-height;
-    padding: 0;
-    margin: 0 10px 10px 0;
     border-radius: calc(#{$field-switch-height} / 2);
     box-shadow: inset 0 -1px white, inset 0 1px 1px rgba(0, 0, 0, 0.05);
     cursor: pointer;
+    display: block;
+    height: $field-switch-height;
+    margin: 0 10px 10px 0;
+    padding: 0;
+    position: relative;
+    width: $field-switch-width;
   }
   input {
-    position: absolute;
-    top: 0;
     left: 0;
     opacity: 0;
+    position: absolute;
+    top: 0;
   }
   .label {
-    position: relative;
-    display: block;
-    height: inherit;
-    font-size: 10px;
-    text-transform: uppercase;
     background: #eceeef;
     border-radius: inherit;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.15);
+    display: block;
+    font-size: 10px;
+    height: inherit;
+    position: relative;
+    text-transform: uppercase;
   }
   .label:before,
   .label:after {
+    line-height: 1;
+    margin-top: -7px;
     position: absolute;
     top: 50%;
-    margin-top: -7px;
-    line-height: 1;
     -webkit-transition: inherit;
     -moz-transition: inherit;
     -o-transition: inherit;
     transition: inherit;
   }
   .label:before {
+    color: #aaaaaa;
     content: attr(data-off);
     right: 11px;
-    color: #aaaaaa;
     text-shadow: 0 1px rgba(255, 255, 255, 0.5);
   }
   .label:after {
+    color: #ffffff;
     content: attr(data-on);
     left: 11px;
-    color: #ffffff;
-    text-shadow: 0 1px rgba(0, 0, 0, 0.2);
     opacity: 0;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.2);
   }
   input:checked ~ .label {
     background: #e1b42b;
@@ -98,33 +98,33 @@ $field-switch-height: 30px;
   }
 
   .handle {
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    width: $field-switch-height - 2px;
-    height: $field-switch-height - 2px;
     background: linear-gradient(to bottom, #ffffff 40%, #f0f0f0);
     background-image: -webkit-linear-gradient(top, #ffffff 40%, #f0f0f0);
     border-radius: 100%;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    height: $field-switch-height - 2px;
+    left: 1px;
+    position: absolute;
+    top: 1px;
+    width: $field-switch-height - 2px;
   }
   .handle:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -6px 0 0 -6px;
-    width: 12px;
-    height: 12px;
     background: linear-gradient(to bottom, #eeeeee, #ffffff);
     background-image: -webkit-linear-gradient(top, #eeeeee, #ffffff);
     border-radius: 6px;
     box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
+    content: "";
+    height: 12px;
+    left: 50%;
+    margin: -6px 0 0 -6px;
+    position: absolute;
+    top: 50%;
+    width: 12px;
   }
   input:checked ~ .handle {
+    box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
     left: $field-switch-width - ($field-switch-height - 1px);
     left: calc(100% - (#{$field-switch-height} - 1px));
-    box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
   }
 
   /* Transition

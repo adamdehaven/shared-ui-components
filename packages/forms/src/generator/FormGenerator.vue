@@ -237,8 +237,8 @@ export default {
   }
 
   .field-advanced {
-    margin-top: -8px;
     margin-bottom: 8px;
+    margin-top: -8px;
 
     .form-group:last-child {
       margin-bottom: 16px;
@@ -250,21 +250,21 @@ export default {
   }
 
   .form-control {
-    // Default Bootstrap .form-control style
-    display: block;
-    &:not([class*=" col-"]) {
-      width: 100%;
-    }
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
     background-color: #fff;
     background-image: none;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    color: #555;
+    // Default Bootstrap .form-control style
+    display: block;
+    font-size: 14px;
+    line-height: 1.42857143;
+    padding: 6px 12px;
     transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    &:not([class*=" col-"]) {
+      width: 100%;
+    }
   } // .form-control
 
   div.help {
@@ -272,12 +272,12 @@ export default {
     position: relative;
 
     .icon {
-      display: inline-block;
-      width: 16px;
-      height: 14px;
       background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAA+UlEQVQ4ja3TS0oDQRAG4C8+lq7ceICICoLGK7iXuNBbeAMJuPVOIm7cqmDiIncIggg+cMZFaqCnZyYKWtB0df31V1VXdfNH6S2wD9CP8xT3KH8T9BiTcE7XBMOfyBcogvCFO9ziLWwFRosyV+QxthNsA9dJkEYlvazsQdi3sBv6Ol6TBLX+HWT3fcQZ3vGM5fBLk+ynAU41m1biCXvhs4OPBDuBpa6GxF0P8YAj3GA1d1qJfdoS4DOIcIm1DK9x8iaWeDF/SP3QU6zRROpjLDFLsFlibx1jJaMkSIGrWKntvItcyTBKzCcybsvc9ZmYz3kz9Ooz/b98A8yvW13B3ch6AAAAAElFTkSuQmCC");
-      background-repeat: no-repeat;
       background-position: center center;
+      background-repeat: no-repeat;
+      display: inline-block;
+      height: 14px;
+      width: 16px;
     } // .icon
   } // div.help
 
@@ -285,58 +285,58 @@ export default {
     display: flex;
 
     .buttons {
-      white-space: nowrap;
       margin-left: 4px;
+      white-space: nowrap;
     }
 
     button,
     input[type="submit"] {
-      // Default Bootstrap button style
-      display: inline-block;
-      padding: 6px 12px;
-      margin: 0px;
-      font-size: 14px;
-      font-weight: normal;
-      line-height: 1.42857143;
-      text-align: center;
-      white-space: nowrap;
-      vertical-align: middle;
-      touch-action: manipulation;
-      cursor: pointer;
-      user-select: none;
-      color: #333;
       background-color: #fff;
       border: 1px solid #ccc;
       border-radius: 4px;
+      color: #333;
+      cursor: pointer;
+      // Default Bootstrap button style
+      display: inline-block;
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 1.42857143;
+      margin: 0px;
+      padding: 6px 12px;
+      text-align: center;
+      touch-action: manipulation;
+      user-select: none;
+      vertical-align: middle;
+      white-space: nowrap;
 
       &:not(:last-child) {
         margin-right: 4px;
       }
 
       &:hover {
-        color: #333;
         background-color: #e6e6e6;
         border-color: #adadad;
+        color: #333;
       }
 
       &:active {
-        color: #333;
         background-color: #d4d4d4;
         border-color: #8c8c8c;
-        outline: 0;
         box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+        color: #333;
+        outline: 0;
       }
 
       &:disabled {
-        opacity: 0.6;
         cursor: not-allowed;
+        opacity: 0.6;
       }
     } // button, input[submit]
   } // .field-wrap
 
   .hint {
-    font-style: italic;
     font-size: 12px;
+    font-style: italic;
   } // .hint
 
   /* Toggle Switch
@@ -354,10 +354,10 @@ export default {
         }
       }
       label {
-        width: 44px;
+        box-shadow: none;
         height: 24px;
         margin: 0;
-        box-shadow: none;
+        width: 44px;
       }
     }
     .label {
@@ -366,22 +366,22 @@ export default {
       &:before,
       &:after {
         color: var(--black-70);
-        text-shadow: none;
-        margin-left: 42px;
         font-size: 14px;
-        left: 18px;
         font-weight: normal;
+        left: 18px;
+        margin-left: 42px;
+        text-shadow: none;
         text-transform: none;
         width: max-content;
       }
     }
     .handle {
-      top: 2px;
-      left: 2px;
-      width: 20px;
-      height: 20px;
       background: #fff;
       box-shadow: none;
+      height: 20px;
+      left: 2px;
+      top: 2px;
+      width: 20px;
       &:before {
         background: none;
         box-shadow: none;
@@ -394,8 +394,8 @@ export default {
 .vue-form-generator div.help {
   .icon {
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiI+ICA8cGF0aCBmaWxsPSIjMDA4NkU2IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02IDExYy0yLjc2MSAwLTUtMi4yMzktNS01czIuMjM5LTUgNS01IDUgMi4yMzkgNSA1LTIuMjM5IDUtNSA1TTYgMEMyLjY4NiAwIDAgMi42ODYgMCA2czIuNjg2IDYgNiA2IDYtMi42ODYgNi02LTIuNjg2LTYtNi02bTAgM2MtMS4xMDUgMC0yIC44OTUtMiAyaDFjMC0uNTUyLjQ0OC0xIDEtMXMxIC40NDggMSAxLS40NDggMS0xIDEtMSAuNDQ4LTEgMWgxYzEuMTA1IDAgMi0uODk1IDItMnMtLjg5NS0yLTItMnpNNSA5aDJWOEg1djF6Ii8+PC9zdmc+);
-    width: 12px;
     height: 12px;
+    width: 12px;
   }
 }
 
@@ -403,27 +403,27 @@ export default {
 .vue-form-generator .field-wrap input[type=submit].danger:hover,
 .vue-form-generator .field-wrap button.danger:active,
 .vue-form-generator .field-wrap input[type=submit].danger:active {
-  color: var(--red-600);
   background-color: var(--white);
   box-shadow: none;
+  color: var(--red-600);
 }
 .vue-form-generator .field-wrap button.btn-link:hover,
 .vue-form-generator .field-wrap input[type=submit].btn-link:hover,
 .vue-form-generator .field-wrap button.btn-link:active,
 .vue-form-generator .field-wrap input[type=submit].btn-link:active {
-  color: var(--blue-500);
   background-color: var(--white);
   box-shadow: none;
+  color: var(--blue-500);
 }
 
 .vue-form-generator .field-checkbox {
-  display: flex;
   align-items: center;
+  display: flex;
 }
 
 .vue-form-generator .field-checkbox label {
-  order: 1;
   margin: 0;
+  order: 1;
 }
 
 .vue-form-generator .field-checkbox input {

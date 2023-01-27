@@ -120,11 +120,11 @@ const submitForm = async (): Promise<void> => {
   --KCardPaddingX: 42px;
   --KCardBorderRadius: 10px;
   --KButtonPaddingY: var(--spacing-sm, 12px);
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   flex-direction: column;
   height: 100%;
+  justify-content: center;
 
   .select-region-card {
     max-width: 428px;
@@ -140,8 +140,8 @@ const submitForm = async (): Promise<void> => {
     width: 100% !important;
 
     .k-select-input {
-      width: 100% !important;
       height: 44px !important;
+      width: 100% !important;
     }
   }
 }
@@ -154,14 +154,14 @@ const submitForm = async (): Promise<void> => {
 
 .select-submit {
   display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 32px;
   font-size: 18px;
+  justify-content: center;
+  margin-top: 32px;
+  width: 100%;
 }
 
 .button-loading-spinner {
-  padding-right: 0;
   margin-right: 8px;
+  padding-right: 0;
 }
 </style>

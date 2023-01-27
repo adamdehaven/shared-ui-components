@@ -216,8 +216,8 @@ export default {
   .k-button {
     &,
     &:hover {
-      border: none;
       background: none;
+      border: none;
     }
   }
 }

@@ -401,16 +401,16 @@ export default {
 }
 
 .sidebar-header-logo {
-  display: flex;
   align-items: center;
-  width: 100%;
+  display: flex;
   min-height: $navbar-height;
+  width: 100%;
 
   > a {
-    display: flex;
     align-items: center;
-    width: 100%;
+    display: flex;
     text-decoration: none;
+    width: 100%;
 
     .konnect-logo {
       display: flex;
@@ -421,15 +421,15 @@ export default {
 
 // This logo only displays when the sidebar is hidden because of an error
 .navbar-full-logo {
-  display: none;
   align-items: center;
+  display: none;
 
   @media (min-width: $viewport-md) {
     display: flex;
   }
 }
 .top-right-container {
-  display: flex;
   align-items: center;
+  display: flex;
 }
 </style>

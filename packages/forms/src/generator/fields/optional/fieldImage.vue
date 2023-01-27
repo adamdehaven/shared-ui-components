@@ -77,31 +77,31 @@ export default {
   }
 
   .preview {
-    position: relative;
-    margin-top: 5px;
-    height: 100px;
+    background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: center center;
     border: 1px solid #ccc;
     border-radius: 3px;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    height: 100px;
+    margin-top: 5px;
+    position: relative;
 
     .remove {
       background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAXUlEQVR42u2SwQoAIAhD88vVLy8KBlaS0i1oJwP3piGVg0Skmpq8HjqZrWl9uwCbGAmwKYGZs/6iqgMyAdJuM8W2QmYKpLt/0AG9ASCv/oAnANd3AEjmAlFT1BypAV+PnRH5YehvAAAAAElFTkSuQmCC");
-      width: 16px;
-      height: 16px;
+      bottom: 3px;
 
       font-size: 16px;
+      height: 16px;
+      opacity: 0.7;
 
       position: absolute;
       right: 3px;
-      bottom: 3px;
-      opacity: 0.7;
+      width: 16px;
 
       &:hover {
-        opacity: 1;
         cursor: pointer;
+        opacity: 1;
       }
     }
   }

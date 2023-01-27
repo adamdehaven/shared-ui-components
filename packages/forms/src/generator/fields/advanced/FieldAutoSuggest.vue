@@ -268,14 +268,14 @@ export default {
 
 <style lang="scss" scoped>
 .k-select {
-  padding: 0!important;
   border: none!important;
+  padding: 0!important;
 
   .autosuggest__results_message {
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 14px;
     padding: 8px 0;
     text-align: center;
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.7);
   }
 
   .k-select-item-label span:last-child {

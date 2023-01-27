@@ -192,8 +192,8 @@ $errorColor: #f00;
 }
 .form-group {
   display: inline-block;
-  vertical-align: top;
   margin-bottom: 16px;
+  vertical-align: top;
 
   label {
     font-weight: 400;
@@ -213,12 +213,12 @@ $errorColor: #f00;
 
   &.required {
     > label:after {
-      content: "*";
-      font-weight: normal;
       color: Red;
+      content: "*";
+      font-size: 14px;
+      font-weight: normal;
       // position: absolute;
       padding-left: 3px;
-      font-size: 14px;
     }
   }
 
@@ -233,21 +233,21 @@ $errorColor: #f00;
     input:not([type="checkbox"]),
     textarea,
     select {
-      border: 1px solid $errorColor;
       background-color: rgba($errorColor, 0.15);
+      border: 1px solid $errorColor;
     }
 
     .errors {
       color: $errorColor;
       font-size: 12px;
       span {
-        display: block;
         background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAiklEQVR4Xt2TMQoCQQxF3xdhu72MpZU3GU/meBFLOztPYrVWsQmEWSaMsIXgK8P8RyYkMjO2sAN+K9gTIAmDAlzoUzE7p4IFytvDCQWJKSStYB2efcAvqZFM0BcstMx5naSDYFzfLhh/4SmRM+6Agw/xIX0tKEDFufeDNRUc4XqLRz3qabVIf3BMHwl6Ktexn3nmAAAAAElFTkSuQmCC");
         background-repeat: no-repeat;
+        display: block;
+        font-weight: 600;
+        margin-top: 3px;
         padding-left: 17px;
         padding-top: 0;
-        margin-top: 3px;
-        font-weight: 600;
       }
     }
   }

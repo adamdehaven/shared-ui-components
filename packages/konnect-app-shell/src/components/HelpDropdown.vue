@@ -175,29 +175,29 @@ const onCopyOrgId = async (copyToClipboard: (str: string) => Promise<boolean>): 
   }
 
   .k-button {
-    box-shadow: none !important;
-    position: relative;
-    top: -3px;
     background-color: transparent;
     border: none;
+    box-shadow: none !important;
     cursor: pointer;
     font-weight: 400;
+    position: relative;
+    top: -3px;
     &.help-dropdown-btn {
-      padding-right: 0;
       padding-left: 0;
+      padding-right: 0;
     }
 
     .kong-icon.kong-icon-help,
     .kong-icon.kong-icon-help > svg {
-      width: 24px;
       height: 24px;
+      width: 24px;
     }
   }
   li.k-dropdown-item {
-    padding-top: 0;
     padding-bottom: 0;
     padding-left: 0;
     padding-right: 0;
+    padding-top: 0;
   }
 
   .width-100 {
@@ -210,12 +210,12 @@ const onCopyOrgId = async (copyToClipboard: (str: string) => Promise<boolean>): 
     margin-left: auto;
   }
   .org-name {
-    font-weight: 500 !important;
     display: flex;
+    font-weight: 500 !important;
     span {
-      white-space: nowrap;
-      text-overflow: ellipsis;
       overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
   svg {
@@ -224,8 +224,8 @@ const onCopyOrgId = async (copyToClipboard: (str: string) => Promise<boolean>): 
 }
 
 .help-dropdown-popover.k-popover.dropdown-popover {
+  margin-top: 0 ! important;
   position: relative;
   top: -5px !important;
-  margin-top: 0 ! important;
 }
 </style>

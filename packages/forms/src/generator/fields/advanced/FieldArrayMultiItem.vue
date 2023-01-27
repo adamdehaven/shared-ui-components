@@ -28,13 +28,13 @@ export default {
 <style lang="scss" scoped>
 .vue-form-generator .field-wrap button.delete {
   &, &:hover {
-    border: none;
     background: none;
+    border: none;
   }
 }
 .label-hint {
   font-weight: 300;
-  text-align: center;
   padding: 8px;
+  text-align: center;
 }
 </style>

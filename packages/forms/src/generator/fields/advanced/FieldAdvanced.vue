@@ -64,22 +64,22 @@ export default {
 
 <style lang="scss" scoped>
 .field-advanced {
-  margin-top: -16px;
   margin-bottom: 32px !important;
+  margin-top: -16px;
 }
 .advanced-field-dropdown-wrapper {
-  width: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%;
   .advanced-field-title {
-    display: flex;
     align-items: center;
-    margin-top: 16px;
     color: #0077cc;
     cursor: pointer;
+    display: flex;
+    font-size: inherit;
+    margin-top: 16px;
     order: 2;
     padding: 0;
-    font-size: inherit;
     i {
       color: #0077cc;
       font-size: 16px;
@@ -90,15 +90,15 @@ export default {
     }
   }
   .advanced-field-dropdown {
-    position: relative;
     display: block;
-    width: 100%;
-    max-height: 100%;
     height: auto;
+    max-height: 100%;
+    position: relative;
+    width: 100%;
     /* transition: max-height 300ms cubic-bezier(.785, .135, .15, .86); */
     &.closed {
-      overflow: hidden;
       max-height: 0;
+      overflow: hidden;
     }
   }
 }

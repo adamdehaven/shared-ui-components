@@ -201,8 +201,8 @@ const onGeoChange = (item: NavbarDropdownMenuItem): void => {
   }
 
   .label-container {
-    display: flex;
     align-items: center;
+    display: flex;
   }
   .width-100 {
     width: 100%;
