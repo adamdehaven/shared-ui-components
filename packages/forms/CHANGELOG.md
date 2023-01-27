@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.25](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.8.24...@kong-ui/forms@0.8.25) (2023-01-27)
+
+
+### ♻️ Chores
+
+* **stylelint:** add stylelint-order ([#464](https://github.com/Kong/shared-ui-components/issues/464)) ([bcc4f35](https://github.com/Kong/shared-ui-components/commit/bcc4f35a53c1cbab6add87b8ce86467dbb3936b4))
+
+
+
+
+
 ## [0.8.24](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.8.23...@kong-ui/forms@0.8.24) (2023-01-27)
 
 
