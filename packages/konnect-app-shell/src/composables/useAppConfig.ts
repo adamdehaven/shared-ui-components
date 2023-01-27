@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, readonly } from 'vue'
 import axios from 'axios'
 import type { KongUiConfig } from '../types'
 
@@ -27,8 +27,8 @@ export default function useAppConfig() {
   }
 
   return {
-    config,
-    error,
+    config: readonly(config),
+    error: readonly(error),
     fetchAppShellConfig,
   }
 }

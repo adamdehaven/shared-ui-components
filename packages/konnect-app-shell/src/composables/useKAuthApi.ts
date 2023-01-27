@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, readonly } from 'vue'
 import type { Ref } from 'vue'
 import { KAuthApi } from '../services'
 import type { KAuthApi as KAuthApiType } from '../services'
@@ -37,7 +37,7 @@ export default function useKAuthApi() {
 
   return {
     init,
-    kAuthApi: kAuthApi as Ref<KAuthApiType>, // Force a non-undefined type
+    kAuthApi: readonly(kAuthApi) as Ref<KAuthApiType>, // Force a non-undefined type
     error,
   }
 }

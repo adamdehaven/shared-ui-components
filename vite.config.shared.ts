@@ -90,6 +90,7 @@ export default defineConfig({
     exclude: [
       '**/dist/**',
       '**/__template__/**',
+      '**/node_modules/**',
       'packages/cli/**',
     ],
   },

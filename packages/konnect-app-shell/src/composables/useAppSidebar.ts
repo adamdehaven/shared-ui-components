@@ -1,4 +1,4 @@
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watchEffect, readonly } from 'vue'
 import { GLOBAL_GEO_PATH } from '../constants'
 import composables from './'
 import type { KonnectAppShellSidebarItem, KonnectAppShellSidebarPrimaryItem } from '../types'
@@ -45,6 +45,7 @@ export default function useAppSidebar() {
       key: 'mesh-manager',
       to: `${activeGeoPath.value}mesh-manager/`,
       icon: 'brain',
+      isAuthorized: () => canUserAccess({ service: 'accounts', action: '#root', resourcePath: null }, false),
     },
     {
       name: 'Service Hub',
@@ -123,10 +124,6 @@ export default function useAppSidebar() {
       return []
     }
 
-    if (!hostAppSidebarItem.value?.parentKey) {
-      return primaryItems
-    }
-
     return primaryItems.map((item: SidebarPrimaryItem) => {
       // Create a copy of the original for mutation
       // This is required to trigger reactivity
@@ -177,20 +174,18 @@ export default function useAppSidebar() {
   const bottomItems = ref<SidebarPrimaryItem[]>()
   const profileItems = ref<SidebarProfileItem[]>(sidebarProfileItems.value)
 
-  // Update the top sidebar items whenever the underlying data changes; must also watch `hostAppSidebarItem`
-  watch([sidebarTopPrimaryItems, hostAppSidebarItem], async () => {
-    topItems.value = await filterAuthorizedItems(sidebarTopPrimaryItems.value)
-  }, { deep: true })
-
-  // Update the bottom sidebar items whenever the underlying data changes; must also watch `hostAppSidebarItem`
-  watch([sidebarBottomPrimaryItems, hostAppSidebarItem], async () => {
-    bottomItems.value = await filterAuthorizedItems(sidebarBottomPrimaryItems.value)
+  // Update the top and bottom sidebar items whenever the underlying data changes; must also watch `hostAppSidebarItem`
+  watchEffect(async () => {
+    if (hostAppSidebarItem.value || sidebarTopPrimaryItems.value || sidebarBottomPrimaryItems.value) {
+      topItems.value = await filterAuthorizedItems(sidebarTopPrimaryItems.value)
+      bottomItems.value = await filterAuthorizedItems(sidebarBottomPrimaryItems.value)
+    }
   })
 
   return {
-    topItems,
-    bottomItems,
-    profileItems,
+    topItems: readonly(topItems),
+    bottomItems: readonly(bottomItems),
+    profileItems: readonly(profileItems),
     update,
   }
 }

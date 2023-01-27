@@ -91,7 +91,7 @@ export default function useLaunchDarkly() {
   return {
     initialize,
     isInitialized: readonly(isInitialized),
-    ldClient,
+    ldClient: readonly(ldClient),
     evaluateFeatureFlag,
   }
 }
