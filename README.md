@@ -11,6 +11,7 @@ Monorepo for internally-published Vue components
 - [Development](#development)
   - [Setup](#setup)
   - [Dev Server](#dev-server)
+  - [Styleint](#styleint)
   - [ESLint](#eslint)
   - [Type Checking](#type-checking)
   - [Testing](#testing)
@@ -38,6 +39,8 @@ Here are some criteria to help figure out if your code belongs to this mono-repo
 
 All packages must be created utilizing the `pnpm run create-package` CLI. [See here for more details.](./docs/creating-a-package.md#required-use-the-provided-cli-to-scaffold-your-new-package)
 
+Be sure to familiarize yourself with the [Component Requirements](./docs/creating-a-package.md#component-requirements), including style rules.
+
 ### Setup
 
 To get started, install dependencies
@@ -60,6 +63,18 @@ Run the dev server in your `packages/{package-name}/sandbox/` directory with hot
 
 ```sh
 pnpm --filter "@kong-ui/{package-name}" run dev
+```
+
+### Styleint
+
+Stylelint package files
+
+```sh
+# Lint only
+pnpm --filter "@kong-ui/{package-name}" run stylelint
+
+# Lint and fix
+pnpm --filter "@kong-ui/{package-name}" run stylelint:fix
 ```
 
 ### ESLint
