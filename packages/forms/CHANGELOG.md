@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.30](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.8.29...@kong-ui/forms@0.8.30) (2023-01-30)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.21.3 ([#478](https://github.com/Kong/shared-ui-components/issues/478)) ([a58a452](https://github.com/Kong/shared-ui-components/commit/a58a4524feb2363caab4affa4c76f2762ced8dd4))
+
+
+
+
+
 ## [0.8.29](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.8.28...@kong-ui/forms@0.8.29) (2023-01-30)
 
 
