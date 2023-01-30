@@ -50,7 +50,7 @@
     "vue": "^3.2.45"
   },
   "dependencies": {
-    "@kong-ui-public/i18n": "^0.2.3",
+    "@kong-ui-public/i18n": "^0.2.4",
     "@kong-ui/core": "workspace:^0.9.5"
   },
   "devDependencies": {
