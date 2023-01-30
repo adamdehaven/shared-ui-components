@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.12](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.20.11...@kong-ui/konnect-app-shell@0.20.12) (2023-01-30)
+
+
+### 🐛 Bug Fixes
+
+* **deps:** update dependency axios to ^1.2.6 ([#470](https://github.com/Kong/shared-ui-components/issues/470)) ([f63d62e](https://github.com/Kong/shared-ui-components/commit/f63d62e497607d7df7168ba204724a95e4644453))
+
+
+
+
+
 ## [0.20.11](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.20.10...@kong-ui/konnect-app-shell@0.20.11) (2023-01-27)
 
 
