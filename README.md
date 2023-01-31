@@ -2,7 +2,7 @@
 
 > **Note**: Docs are a work in-progress
 
-Monorepo for internally-published Vue components
+Monorepo for **privately published** Kong UI components and utilities.
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
