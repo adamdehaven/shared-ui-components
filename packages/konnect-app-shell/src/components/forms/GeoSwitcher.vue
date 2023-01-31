@@ -28,7 +28,7 @@
         data-testid="geo-switcher-global-more-regions-option"
         has-divider
       >
-        <ExternalLink
+        <KExternalLink
           class="width-100"
           data-testid="geo-switcher-global-more-regions-option-link"
           hide-icon
@@ -40,7 +40,7 @@
               <KonnectEnterpriseLogo />
             </div>
           </div>
-        </ExternalLink>
+        </KExternalLink>
       </KDropdownItem>
     </NavbarDropdownMenu>
 
@@ -76,7 +76,7 @@ import composables from '../../composables'
 import type { Geo } from '../../types'
 
 import type { NavbarDropdownMenuItem } from '@kong-ui-public/app-layout'
-import { ExternalLink, NavbarDropdownMenu } from '@kong-ui-public/app-layout'
+import { NavbarDropdownMenu } from '@kong-ui-public/app-layout'
 import { KonnectEnterpriseLogo } from '../icons'
 
 import { FeatureFlags } from '../../types'

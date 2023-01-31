@@ -13,9 +13,9 @@
       <template #common>
         <div class="general-settings">
           <div class="mb-2">
-            <ExternalLink href="https://docs.konghq.com/hub/kong-inc/openid-connect/#important-configuration-parameters">
+            <KExternalLink href="https://docs.konghq.com/hub/kong-inc/openid-connect/#important-configuration-parameters">
               <span class="section-header">Common Configuration Settings</span>
-            </ExternalLink>
+            </KExternalLink>
           </div>
           <div class="description mb-3">
             Parameters for enabling the OpenID Connect plugin. Set these parameters before adding authorization, authentication, or other advanced configuration details.
@@ -53,9 +53,9 @@
       <template #authorization>
         <div class="general-settings">
           <div class="mb-2">
-            <ExternalLink href="https://docs.konghq.com/hub/kong-inc/openid-connect/#authorization">
+            <KExternalLink href="https://docs.konghq.com/hub/kong-inc/openid-connect/#authorization">
               <span class="section-header">Authorization Configuration Settings</span>
-            </Externallink>
+            </KExternalLink>
           </div>
           <div class="description mb-3">
             Parameters for setting up claims-based authorization.
@@ -72,9 +72,9 @@
       <template #advanced>
         <div class="general-settings">
           <div class="mb-2">
-            <ExternalLink href="https://docs.konghq.com/hub/kong-inc/openid-connect/">
+            <KExternalLink href="https://docs.konghq.com/hub/kong-inc/openid-connect/">
               <span class="section-header">Advanced Configuration Settings</span>
-            </ExternalLink>
+            </KExternalLink>
           </div>
           <div class="description mb-3">
             Advanced parameters for manually configuring the OpenID Connect plugin.
@@ -93,14 +93,13 @@
 </template>
 
 <script>
-import { ExternalLink } from '@kong-ui-public/app-layout'
 import OIDCCommonSchema from './schemas/OIDCCommon'
 import OIDCAuthSchema from './schemas/OIDCAuth'
 import VueFormGenerator from '../generator/FormGenerator.vue'
 
 export default {
   name: 'OIDCForm',
-  components: { ExternalLink, VueFormGenerator },
+  components: { VueFormGenerator },
   props: {
     formModel: {
       type: Object,
