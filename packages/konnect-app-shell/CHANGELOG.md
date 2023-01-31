@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.22](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.20.21...@kong-ui/konnect-app-shell@0.20.22) (2023-01-31)
+
+
+### 📦 Code Refactoring
+
+* consume external link kongponent [KHCP-5927] ([#480](https://github.com/Kong/shared-ui-components/issues/480)) ([f014727](https://github.com/Kong/shared-ui-components/commit/f014727a64e5a3fe50f0e35e6f1e4c9349366ea4))
+
+
+
+
+
 ## [0.20.21](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.20.20...@kong-ui/konnect-app-shell@0.20.21) (2023-01-31)
 
 
