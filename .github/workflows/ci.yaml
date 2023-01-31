@@ -184,16 +184,12 @@ jobs:
 
       - name: Download Unit Test LCOV Reports
         uses: actions/download-artifact@v3
-        # ** remove when copy-uuid package has unit tests **
-        if: ${{ matrix.container != 'copy-uuid' }}
         with:
           name: unit-test-coverage
           path: coverage
 
       - name: Report Unit to Coveralls
         uses: coverallsapp/github-action@master
-        # ** remove when copy-uuid package has unit tests **
-        if: ${{ matrix.container != 'copy-uuid' }}
         with:
           github-token: ${{ secrets.github_token }}
           path-to-lcov: coverage/${{ matrix.container }}/coverage/lcov.info
