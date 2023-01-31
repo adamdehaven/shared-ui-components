@@ -153,7 +153,7 @@ importers:
 
   packages/forms:
     specifiers:
-      '@kong-ui-public/app-layout': ^0.11.12
+      '@kong-ui-public/app-layout': ^0.12.0
       '@kong-ui-public/i18n': ^0.2.5
       '@kong-ui/core': workspace:^0.9.5
       '@kong/kongponents': ^8.21.4
@@ -163,7 +163,7 @@ importers:
       lodash.debounce: ^4.0.8
       pug: ^3.0.2
     dependencies:
-      '@kong-ui-public/app-layout': 0.11.12_@kong+kongponents@8.21.4
+      '@kong-ui-public/app-layout': 0.12.0_@kong+kongponents@8.21.4
       '@kong-ui-public/i18n': 0.2.5
       '@kong-ui/core': link:../core
       fecha: 4.2.3
@@ -176,7 +176,7 @@ importers:
 
   packages/konnect-app-shell:
     specifiers:
-      '@kong-ui-public/app-layout': ^0.11.12
+      '@kong-ui-public/app-layout': ^0.12.0
       '@kong-ui-public/i18n': ^0.2.5
       '@kong-ui/core': workspace:^0.9.5
       '@kong/kauth-client-typescript-axios': ^0.1727.0
@@ -187,7 +187,7 @@ importers:
       launchdarkly-js-client-sdk: ^2.24.2
       uuid: ^9.0.0
     dependencies:
-      '@kong-ui-public/app-layout': 0.11.12_@kong+kongponents@8.21.4
+      '@kong-ui-public/app-layout': 0.12.0_@kong+kongponents@8.21.4
       '@kong-ui-public/i18n': 0.2.5
       '@kong-ui/core': link:../core
       '@kong/kauth-client-typescript-axios': 0.1727.0
@@ -1250,8 +1250,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@kong-ui-public/app-layout/0.11.12_@kong+kongponents@8.21.4:
-    resolution: {integrity: sha512-6NMLMF/9UQ5DSRzR7xZjqA+1DXw5HTyHL/nQNA4m+Ee/hRk8fg5wGJqEQDNHlIJ+sGnZEXJvLDbJrGd+xYBPjA==}
+  /@kong-ui-public/app-layout/0.12.0_@kong+kongponents@8.21.4:
+    resolution: {integrity: sha512-LcMKYtOqf6FXvpyKg0KSjFrfNj1S0J1roypgKSuZss+7mFqtZqogcK6MLGcZAb8qYryJq13tjcWQJxtcVVpRCQ==}
     peerDependencies:
       '@kong/kongponents': ^8.21.3
       vue: ^3.2.45
