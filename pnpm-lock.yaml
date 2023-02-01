@@ -174,7 +174,7 @@ importers:
 
   packages/konnect-app-shell:
     specifiers:
-      '@kong-ui-public/app-layout': ^0.12.4
+      '@kong-ui-public/app-layout': ^0.12.5
       '@kong-ui-public/i18n': ^0.2.5
       '@kong-ui/core': workspace:^0.9.5
       '@kong/kauth-client-typescript-axios': ^0.1737.0
@@ -185,7 +185,7 @@ importers:
       launchdarkly-js-client-sdk: ^2.24.2
       uuid: ^9.0.0
     dependencies:
-      '@kong-ui-public/app-layout': 0.12.4_@kong+kongponents@8.21.5
+      '@kong-ui-public/app-layout': 0.12.5_@kong+kongponents@8.21.5
       '@kong-ui-public/i18n': 0.2.5
       '@kong-ui/core': link:../core
       '@kong/kauth-client-typescript-axios': 0.1737.0
@@ -1248,10 +1248,10 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@kong-ui-public/app-layout/0.12.4_@kong+kongponents@8.21.5:
-    resolution: {integrity: sha512-/2WgRxbVu5jDNjyy9OU0Q/B+sAncXcvTFrEaxz8ORYkl1j7gG7ToE3NUVa1TX+axqaBG8TWbIhigEyGyDKdkEQ==}
+  /@kong-ui-public/app-layout/0.12.5_@kong+kongponents@8.21.5:
+    resolution: {integrity: sha512-D9KD1pGV0hX3JwZbZJSnxVDCFa01EZbkoRE6Ga7YbJB7eQUTqk4N0BYbYps5lv4DF4EbRtgXW6u/Ad82fmdlxA==}
     peerDependencies:
-      '@kong/kongponents': ^8.21.5
+      '@kong/kongponents': ^8.22.0
       vue: ^3.2.45
       vue-router: ^4.1.6
     dependencies:
