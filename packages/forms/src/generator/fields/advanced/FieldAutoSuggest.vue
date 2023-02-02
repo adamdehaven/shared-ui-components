@@ -44,7 +44,7 @@
 <script>
 import { FORMS_API_KEY } from '../../../const'
 import abstractField from '../abstractField'
-import debounce from 'lodash.debounce'
+import { debounce } from 'lodash'
 import { isValidUuid } from '../../utils/isValidUuid'
 
 const requestResultsLimit = 50
@@ -144,53 +144,56 @@ export default {
         this.message = 'Type something to search'
       }
 
+      if (typeof this.performSearch !== 'function') {
+        this.performSearch = debounce(
+          this.search,
+          500,
+        )
+      }
+
       this.performSearch(query)
     },
 
-    performSearch: debounce(
-      async function(query) {
-        if (query.trim().length === 0) {
-          return
-        }
+    async search(query) {
+      if (query.trim().length === 0) {
+        return
+      }
 
-        this.loading = true
-        const items = []
-        const promises = []
-        const fields = this.getInputFields()
-        const filteredIds = new Set()
+      this.loading = true
+      const items = []
+      const promises = []
+      const fields = this.getInputFields()
+      const filteredIds = new Set()
 
-        // If query is a valid UUID, do the exact search
-        if (isValidUuid(query) && fields.includes('id')) {
-          promises.push((async () => {
-            const item = await this.fetchExact(query)
+      // If query is a valid UUID, do the exact search
+      if (isValidUuid(query) && fields.includes('id')) {
+        promises.push((async () => {
+          const item = await this.fetchExact(query)
 
-            items.push({ ...item, label: this.getSuggestionLabel(item), value: item.id })
-          })())
-        } else {
-          // Search on fields with backend filtering support
-          promises.push(...fields.filter((field) => field !== 'id').map(async (field) => {
-            const result = await this.fetchSuggestions(query, field)
+          items.push({ ...item, label: this.getSuggestionLabel(item), value: item.id })
+        })())
+      } else {
+        // Search on fields with backend filtering support
+        promises.push(...fields.filter((field) => field !== 'id').map(async (field) => {
+          const result = await this.fetchSuggestions(query, field)
+          result.forEach((item) => {
+            if (!filteredIds.has(item.id)) {
+              filteredIds.add(item.id)
+              items.push({ ...item, label: this.getSuggestionLabel(item), value: item.id })
+            }
+          })
+        }))
+      }
 
-            result.forEach((item) => {
-              if (!filteredIds.has(item.id)) {
-                filteredIds.add(item.id)
-                items.push({ ...item, label: this.getSuggestionLabel(item), value: item.id })
-              }
-            })
-          }))
-        }
+      await Promise.all(promises)
 
-        await Promise.all(promises)
+      this.items = items
+      if (this.items.length === 0) {
+        this.message = 'No results'
+      }
 
-        this.items = items
-        if (this.items.length === 0) {
-          this.message = 'No results'
-        }
-
-        this.loading = false
-      },
-      500,
-    ),
+      this.loading = false
+    },
 
     getItem(data) {
       if (data.data) {

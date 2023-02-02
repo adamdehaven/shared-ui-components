@@ -50,10 +50,8 @@
   },
   "dependencies": {
     "@kong-ui-public/i18n": "^0.2.5",
-    "@kong-ui/core": "workspace:^0.9.5",
     "fecha": "^4.2.3",
-    "lodash": "^4.17.21",
-    "lodash.debounce": "^4.0.8"
+    "lodash": "^4.17.21"
   },
   "peerDependencies": {
     "@kong/kongponents": "^8.22.0",
