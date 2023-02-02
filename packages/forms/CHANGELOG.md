@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.8.39...@kong-ui/forms@0.9.0) (2023-02-02)
+
+
+### ✨ Features
+
+* **forms:** add custom form for ExitTransformer plugin ([#500](https://github.com/Kong/shared-ui-components/issues/500)) ([b4358c8](https://github.com/Kong/shared-ui-components/commit/b4358c8ceabec9f8420e2222403cce1b9654ed07))
+
+
+
+
+
 ## [0.8.39](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.8.38...@kong-ui/forms@0.8.39) (2023-02-02)
 
 
