@@ -65,6 +65,6 @@
   "devDependencies": {
     "@kong/kongponents": "^8.22.2",
     "@types/uuid": "^9.0.0",
-    "@vue/test-utils": "^2.2.9"
+    "@vue/test-utils": "^2.2.10"
   }
 }
