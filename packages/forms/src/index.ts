@@ -40,6 +40,7 @@ export const getSharedFormName = (modelName: string): string => {
     'post-function': 'PostFunction',
     // Pre and Post function plugins are using same component
     'pre-function': 'PostFunction',
+    'exit-transformer': 'ExitTransformer',
   }
 
   return mapping[modelName]
