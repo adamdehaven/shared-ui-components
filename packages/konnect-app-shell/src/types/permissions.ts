@@ -14,9 +14,16 @@ export interface ParsedKrn {
 
 // Permission Krn
 export interface RequestedPermissionKrn {
-  service: string // The service the krn is a member of, defined in the kauth YAML file. Examples: 'konnect', 'accounts'
-  action: string // The action required to access the route. Examples: '#retrieve', '#create'
-  resourcePath: string | null // The krn resource the user needs to access. This is everything after the organization id in the krn resource. Example: services/{UUID}
+  /** The service the krn is a member of, defined in the kauth YAML file. Examples: 'konnect', 'accounts' */
+  service: string
+  /** The action required to access the route, including the leading hash `#`. Examples: '#retrieve', '#create' */
+  action: string
+  /** The krn resource the user needs to access. This is everything after the organization id in the krn resource. Examples: `services/{UUID}`, `null` */
+  resourcePath: string | null
+}
+
+export interface RequestedPermissionDictionary {
+  [key: string]: RequestedPermissionKrn
 }
 
 export interface AddKrnAction {

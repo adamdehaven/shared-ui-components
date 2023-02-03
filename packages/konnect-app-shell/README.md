@@ -1,9 +1,13 @@
 # @kong-ui/konnect-app-shell
 
-## TODO/Questions
+> **TODO**: Component description
 
-- How can a consuming app close the mobile sidebar on navigate?
+- [Host application requirements](#host-application-requirements)
+  - [Root App component](#root-app-component)
+  - [Router configuration](#router-configuration)
+- [Evaluating Permissions](#evaluating-permissions)
 
+---
 
 ## Host application requirements
 
@@ -20,16 +24,7 @@ If any `<router-link>` elements are utilized inside any of the template slots pr
     :sidebar-items="sidebarItems"
     @update:active-geo="updateActiveGeo"
     @ready="appShellReady"
-  >
-    <template #navbar>
-      <router-link
-        v-if="activeGeo"
-        :to="{ name: 'home', params: { geo: activeGeo.code } }"
-      >
-        Navbar example link
-      </router-link>
-    </template>
-  </KonnectAppShell>
+  />
 </template>
 
 <script setup lang="ts">
@@ -117,3 +112,7 @@ const router = createVueRouter({
   routes: generateRoutes('mesh-manager', routes, 'home'),
 })
 ```
+
+## Evaluating Permissions
+
+[See the docs for information on evaluating permissions](docs/permissions.md)

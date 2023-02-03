@@ -32,6 +32,7 @@ export default class KongAuthApi {
   constructor(baseUrl: string = '/kauth') {
     const { i18n: { t } } = composables.useI18n()
     const { exists, refresh, isRefreshing, destroy } = composables.useSession()
+    const { setTraceIdFromError } = composables.useApiError()
     const win = useWindow()
 
     this.baseUrl = baseUrl || ''
@@ -75,10 +76,7 @@ export default class KongAuthApi {
 
         // If response code is 403 or 404, store datadog trace id in localStorage for display on error page(s) if not already set
         if ([403, 404].includes(error.response.status) && !localStorage.getItem('dd_error_trace_id')) {
-          const ddTraceId = error.response.headers['x-datadog-trace-id']
-          if (ddTraceId) {
-            localStorage.setItem('dd_error_trace_id', ddTraceId)
-          }
+          setTraceIdFromError(error)
         }
 
         if (error.code === 'ERR_NETWORK') {

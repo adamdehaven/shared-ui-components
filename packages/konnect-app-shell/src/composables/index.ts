@@ -1,3 +1,4 @@
+import useApiError from './useApiError'
 import useAppConfig from './useAppConfig'
 import useAppSidebar from './useAppSidebar'
 import useGeo from './useGeo'
@@ -11,6 +12,7 @@ import { useWindow } from '@kong-ui/core'
 
 // All composables must be exported as part of the default object for Cypress test stubs
 export default {
+  useApiError,
   useAppConfig,
   useAppSidebar,
   useGeo,

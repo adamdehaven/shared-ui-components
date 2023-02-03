@@ -112,9 +112,9 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { KonnectEnterpriseLogo as HelpKonnectEnterpriseLogo } from './icons'
-import composables from '../composables'
-import externalLinks from '../external-links'
+import { KonnectEnterpriseLogo as HelpKonnectEnterpriseLogo } from '../icons'
+import composables from '../../composables'
+import externalLinks from '../../external-links'
 
 const { i18n: { t } } = composables.useI18n()
 const win = composables.useWindow()
@@ -164,7 +164,7 @@ const onCopyOrgId = async (copyToClipboard: (str: string) => Promise<boolean>): 
 </style>
 
 <style lang="scss" scoped>
-@import "../styles/variables";
+@import "../../styles/variables";
 
 .help-dropdown {
   margin-top: 4px;

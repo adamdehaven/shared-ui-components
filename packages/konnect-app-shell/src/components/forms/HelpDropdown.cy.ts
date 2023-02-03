@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import composables from '../composables'
+import composables from '../../composables'
 import HelpDropdown from './HelpDropdown.vue'
 
 describe('HelpDropdown component', () => {

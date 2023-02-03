@@ -8,6 +8,21 @@
     :sidebar-top-items="!hideSidebar ? topItems : undefined"
   >
     <template #notification>
+      <AuthValidate
+        v-slot="{ isAllowedEntity }"
+        :krn-args="{
+          isAllowedEntity: {
+            service: 'konnect',
+            action: '#list',
+            resourcePath: 'plugins',
+          }
+        }"
+      >
+        <KAlert
+          v-if="isAllowedEntity"
+          alert-message="This is a test message"
+        />
+      </AuthValidate>
       <slot name="notification" />
     </template>
     <template #navbar>
@@ -102,7 +117,8 @@ import GeoSelectForm from './forms/GeoSelectForm.vue'
 import GlobalError from './errors/GlobalError.vue'
 import '@kong-ui-public/app-layout/dist/style.css'
 import GeoSwitcher from './forms/GeoSwitcher.vue'
-import HelpDropdown from './HelpDropdown.vue'
+import HelpDropdown from './forms/HelpDropdown.vue'
+import AuthValidate from './AuthValidate'
 
 const { useSession, useAppSidebar, useGeo, useI18n, useKAuthApi } = composables
 const props = defineProps({

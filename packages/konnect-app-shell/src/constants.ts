@@ -24,3 +24,6 @@ export const ROOT_READONLY_ALLOWED_ACTIONS = [
   '#list',
   '#retrieve',
 ]
+
+/** The localStorage key for Datadog trace ids */
+export const DATADOG_TRACE_ID_LOCALSTORAGE_KEY = 'dd_error_trace_id'
