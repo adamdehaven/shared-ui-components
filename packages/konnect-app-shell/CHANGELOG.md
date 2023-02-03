@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.21.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.20.37...@kong-ui/konnect-app-shell@0.21.0) (2023-02-03)
+
+
+### ✨ Features
+
+* **konnect-app-shell:** authvalidate component [KHCP-5517] ([#497](https://github.com/Kong/shared-ui-components/issues/497)) ([6aaa106](https://github.com/Kong/shared-ui-components/commit/6aaa106a2687355eea345d0de6d805ef1c660d69))
+
+
+
+
+
 ## [0.20.37](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.20.36...@kong-ui/konnect-app-shell@0.20.37) (2023-02-03)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.3](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.9.2...@kong-ui/forms@0.9.3) (2023-02-03)
+
+
+### 🐛 Bug Fixes
+
+* **forms:** resolve lint errors ([#517](https://github.com/Kong/shared-ui-components/issues/517)) ([a7b61b2](https://github.com/Kong/shared-ui-components/commit/a7b61b2ade2e24bfcd5fd807f118dd3810a28f1c))
+
+
+
+
+
 ## [0.9.2](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.9.1...@kong-ui/forms@0.9.2) (2023-02-03)
 
 
