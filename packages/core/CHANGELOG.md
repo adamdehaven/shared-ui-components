@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.7](https://github.com/Kong/shared-ui-components/compare/@kong-ui/core@0.9.6...@kong-ui/core@0.9.7) (2023-02-03)
+
+
+### 🐛 Bug Fixes
+
+* **core:** update vite-ignore comment ([2ae7985](https://github.com/Kong/shared-ui-components/commit/2ae7985fcd575ba822e3a8ae368bc0663b6ccec7))
+
+
+
+
+
 ## [0.9.6](https://github.com/Kong/shared-ui-components/compare/@kong-ui/core@0.9.5...@kong-ui/core@0.9.6) (2023-02-03)
 
 

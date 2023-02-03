@@ -1,6 +1,6 @@
 {
   "name": "@kong-ui/konnect-app-shell",
-  "version": "0.21.0",
+  "version": "0.21.1",
   "type": "module",
   "main": "./dist/konnect-app-shell.umd.js",
   "module": "./dist/konnect-app-shell.es.js",
@@ -56,7 +56,7 @@
   "dependencies": {
     "@kong-ui-public/app-layout": "^0.12.8",
     "@kong-ui-public/i18n": "^0.2.7",
-    "@kong-ui/core": "workspace:^0.9.6",
+    "@kong-ui/core": "workspace:^0.9.7",
     "@kong/kauth-client-typescript-axios": "^0.1742.0",
     "axios": "^1.3.1",
     "launchdarkly-js-client-sdk": "^2.24.2",
