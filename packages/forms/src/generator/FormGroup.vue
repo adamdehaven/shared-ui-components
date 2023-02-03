@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <div
     class="form-group"
@@ -44,7 +45,7 @@
         :model="model"
         :schema="field"
         :vfg="vfg"
-        @modelUpdated="onModelUpdated"
+        @model-updated="onModelUpdated"
         @validated="onFieldValidated"
       />
       <div
@@ -97,9 +98,13 @@ export default {
       type: Object,
       required: true,
     },
-    model: Object,
+    model: {
+      type: Object,
+      default: () => undefined,
+    },
     options: {
       type: Object,
+      default: () => undefined,
     },
     field: {
       type: Object,
