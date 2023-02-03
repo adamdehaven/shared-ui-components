@@ -31,7 +31,7 @@ export default class KongAuthApi {
 
   constructor(baseUrl: string = '/kauth') {
     const { i18n: { t } } = composables.useI18n()
-    const { exists, refresh, isRefreshing, destroy } = composables.useSession()
+    const { session, isRefreshing } = composables.useSession()
     const { setTraceIdFromError } = composables.useApiError()
     const win = useWindow()
 
@@ -64,7 +64,7 @@ export default class KongAuthApi {
       const pathArray = currentPath?.split('/')
       if (err && pathArray && pathArray.length > 1 && !AUTH_ROUTES.includes(pathArray[1])) {
         // Destroy the session
-        await destroy(currentPath)
+        await session.destroy(currentPath)
         // Redirect the user to the login page to reauthenticate
         win.setLocationAssign('/login?logout=true')
       }
@@ -119,7 +119,7 @@ export default class KongAuthApi {
 
           return new Promise((resolve, reject) => {
             // If session does not exist, do not try refreshing
-            if (!exists.value) {
+            if (!session.exists) {
               if (this.authErrorCallback) {
                 this.authErrorCallback(error)
               }
@@ -130,8 +130,8 @@ export default class KongAuthApi {
             }
 
             // Try refreshing
-            refresh().then((sessionIsExpired) => {
-              if (sessionIsExpired) {
+            session.refresh().then((sessionWasRefreshed: boolean) => {
+              if (!sessionWasRefreshed) {
                 // Session is expired, so don't retry requests
                 this.processQueue(false)
 

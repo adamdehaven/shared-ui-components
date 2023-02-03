@@ -1,7 +1,7 @@
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import GeoSwitcher from './GeoSwitcher.vue'
 import composables from '../../composables'
-
+import type { Session } from '../../types'
 import { v4 as uuidv4, v5 as uuidv5 } from 'uuid'
 import { FeatureFlags } from '../../types'
 import { KHCP_GEO_LOCAL_STORAGE_KEY } from '../../constants'
@@ -53,8 +53,7 @@ interface GeoSwitcherMountOptions {
   }[]
 }
 
-describe('GeoSwitcher component', () => {
-
+describe('<GeoSwitcher />', () => {
   const userId = uuidv4()
   const orgId = uuidv4()
   const geoLocalStorageKey = `${KHCP_GEO_LOCAL_STORAGE_KEY}-${uuidv5(orgId, userId)}`
@@ -67,10 +66,15 @@ describe('GeoSwitcher component', () => {
 
     // Stub feature flags
     cy.stub(composables, 'useSession').callsFake(() => ({
-      exists: ref(true),
-      session: ref({
-        organization: {
-          isEnterprise: (!tier || tier === 'enterprise'),
+      session: reactive<Partial<Session>>({
+        exists: true,
+        data: {
+          // @ts-ignore
+          organization: {
+            id: 'orgId',
+            name: 'orgName',
+            isEnterprise: tier === 'enterprise',
+          },
         },
       }),
     }))

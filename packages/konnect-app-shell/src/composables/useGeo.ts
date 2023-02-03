@@ -17,8 +17,8 @@ export default function useGeo() {
 
   // Generate a localStorage key based on the user's org and user id
   const geoLocalStorageKey = computed((): string => {
-    if (session.value?.organization?.id && session.value?.user?.id) {
-      return `${KHCP_GEO_LOCAL_STORAGE_KEY}-${uuidv5(session.value.organization.id, session.value.user.id)}`
+    if (session.data?.organization?.id && session.data?.user?.id) {
+      return `${KHCP_GEO_LOCAL_STORAGE_KEY}-${uuidv5(session.data?.organization.id, session.data?.user.id)}`
     }
 
     return KHCP_GEO_LOCAL_STORAGE_KEY
@@ -114,7 +114,7 @@ export default function useGeo() {
         localStorage.setItem(geoLocalStorageKey.value, newGeo)
       }
     } catch (err) {
-      // Failed setting the active geo, likely because no session.data.user.id or session.data.organization.id are set, which causes the `uuidv5` generation to fail
+      // Failed setting the active geo, likely because no session.data?.user.id or session.data?.organization.id are set, which causes the `uuidv5` generation to fail
       // If the user is on the /login page, remove the query params and reload the page
       const currentPath = win.getLocationPathname()
       if (currentPath.includes('/login') && win.getLocationSearch().includes('loginSuccess')) {

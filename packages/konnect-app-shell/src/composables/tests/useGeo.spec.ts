@@ -15,7 +15,7 @@ describe('useGeo', async () => {
 
   beforeAll(() => {
     // Stub the session org and user id to generate the localStorage key
-    const sessionSpy = vi.spyOn(session, 'value', 'get')
+    const sessionSpy = vi.spyOn(session, 'data', 'get')
     sessionSpy.mockReturnValue({
       // @ts-ignore
       user: {

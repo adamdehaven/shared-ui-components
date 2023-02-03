@@ -125,8 +125,8 @@ const statusURL = externalLinks.platformStatusURL
 const supportURL = externalLinks.konnectSupportURL
 const { session } = composables.useSession()
 
-const orgId = computed((): string => session.value?.organization?.id || '')
-const orgName = computed((): string => session.value?.organization?.name || '')
+const orgId = computed((): string => session.data?.organization?.id || '')
+const orgName = computed((): string => session.data?.organization?.name || '')
 
 // TODO: based this decision based on KRN or use future IsAuthorized component
 const isQuickStartAllowed = computed((): boolean => true)

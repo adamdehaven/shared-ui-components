@@ -10,17 +10,17 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import type { KonnectAppShellSidebarItem, Geo, SessionData } from '../src/types'
+import type { KonnectAppShellSidebarItem, Geo, Session } from '../src/types'
 import { evaluateFeatureFlag } from '../src'
 
 const route = useRoute()
 const activeGeo = ref()
-const session = ref<SessionData>()
+const session = ref<Session>()
 const geoChanged = (geo: Geo) => {
   activeGeo.value = geo
 }
-const sessionChanged = (sessionData: SessionData) => {
-  session.value = sessionData
+const sessionChanged = (sessionObj: Session) => {
+  session.value = sessionObj
 }
 const sidebarItems = computed((): KonnectAppShellSidebarItem | null => {
   if (!activeGeo.value) {

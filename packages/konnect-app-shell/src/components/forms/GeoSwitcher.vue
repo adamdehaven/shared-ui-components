@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="sessionExists && multiGeoEnabled && availableGeos && availableGeos.length"
+    v-if="session.exists && multiGeoEnabled && availableGeos && availableGeos.length"
     class="geo-switcher"
   >
     <NavbarDropdownMenu
@@ -73,13 +73,11 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import composables from '../../composables'
+import { FeatureFlags } from '../../types'
 import type { Geo } from '../../types'
-
 import type { NavbarDropdownMenuItem } from '@kong-ui-public/app-layout'
 import { NavbarDropdownMenu } from '@kong-ui-public/app-layout'
 import { KonnectEnterpriseLogo } from '../icons'
-
-import { FeatureFlags } from '../../types'
 import externalLinks from '../../external-links'
 
 const props = defineProps({
@@ -122,8 +120,8 @@ const showGlobalGeo = ref(win.getLocationPathname().startsWith('/global'))
 const disabled = ref(false)
 const { i18n: { t } } = useI18n()
 const { geos, activeGeoOverride, getActiveGeo, setActiveGeoOverride } = useGeo()
-const { session, exists: sessionExists } = useSession()
-const isEnterprise = computed((): boolean => sessionExists.value && Boolean(session.value?.organization?.isEnterprise))
+const { session } = useSession()
+const isEnterprise = computed((): boolean => session.exists && Boolean(session.data?.organization?.isEnterprise))
 
 const { evaluateFeatureFlag, isInitialized } = useLaunchDarkly()
 

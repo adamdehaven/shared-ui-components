@@ -1,3 +1,5 @@
+import { RouteLocationNormalized } from 'vue-router'
+
 export interface SessionUser {
   id: string
   email: string
@@ -29,11 +31,12 @@ export interface SessionOrganization {
   billing_email: string
   owner_id: string
   entitlements: OrganizationEntitlements
+  created_at: string
+  updated_at: string
   isEnterprise: boolean
   isPlus: boolean
   isFree: boolean
-  created_at: string
-  updated_at: string
+  isInTrial: boolean
 }
 
 export interface SessionData {
@@ -44,4 +47,25 @@ export interface SessionData {
     name?: string
     [key: string]: any
   }
+}
+
+export interface Session {
+  /** The user and organization session data */
+  data: SessionData
+  /**
+   * Is there an existing user session?
+   * @return {boolean}
+   */
+  exists: boolean
+  /**
+   * Attempt to refresh the active user session and auth cookie
+   * @return {Promise<boolean>} Returns true if refresh was successful
+   */
+  refresh: () => Promise<boolean>
+  /**
+   * Destroy the user's session and log them out via KAuth
+   * @param {string} loginRedirect The path to redirect the user to upon logging back in
+   * @return {Promise<void>}
+   */
+  destroy: (loginRedirect?: RouteLocationNormalized | string) => Promise<void>
 }

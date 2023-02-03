@@ -105,14 +105,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref, watch, watchEffect, PropType, onBeforeMount, nextTick, useSlots } from 'vue'
+import { computed, reactive, ref, watch, watchEffect, PropType, onBeforeMount, nextTick, useSlots, DeepReadonly } from 'vue'
 import { AppLayout } from '@kong-ui-public/app-layout'
 import { GruceLogo, KonnectLogo } from './icons'
 import type { SidebarSecondaryItem } from '@kong-ui-public/app-layout'
 import { useWindow } from '@kong-ui/core'
 import composables from '../composables'
 import { GLOBAL_GEO_NAME } from '../constants'
-import type { KonnectAppShellSidebarItem, Geo, KonnectAppShellState, SessionData, ErrorProp } from '../types'
+import type { KonnectAppShellSidebarItem, Geo, KonnectAppShellState, Session, ErrorProp } from '../types'
 import GeoSelectForm from './forms/GeoSelectForm.vue'
 import GlobalError from './errors/GlobalError.vue'
 import '@kong-ui-public/app-layout/dist/style.css'
@@ -172,7 +172,7 @@ const emit = defineEmits<{
   (e: 'update:active-geo', geo: Geo | undefined): void,
   (e: 'update:error', error: { show: boolean, header?: string, text?: string }): void,
   (e: 'update:loading', isLoading: boolean): void,
-  (e: 'update:session', session: SessionData | undefined): void,
+  (e: 'update:session', session: DeepReadonly<Session>): void,
 }>()
 
 const slots = useSlots()
@@ -301,11 +301,9 @@ const geoSelected = (geo: Geo): void => {
 const { init: initializeKAuth, error: kauthInitError } = useKAuthApi()
 const { initializeSession, session } = useSession()
 
-watch(session, (sessionData: SessionData | undefined) => {
-  if (sessionData) {
-    emit('update:session', sessionData)
-  }
-})
+watch(session, (sessionData: DeepReadonly<Session>) => {
+  emit('update:session', sessionData)
+}, { deep: true })
 
 const { topItems, bottomItems, profileItems, update: updateSidebarItems } = useAppSidebar()
 
@@ -340,14 +338,14 @@ onBeforeMount(async () => {
 
   // If there is an error fetching the session data, show the error UI
   if (sessionError.value) {
-    toggleErrorState(true, t('errors.session.data.header'), t('errors.session.data.text'))
+    toggleErrorState(true, t('errors.session.data?.header'), t('errors.session.data?.text'))
     state.loading = false
 
     return
   }
 
   // You must always first set the array of available geos from the API
-  setAllGeos(session.value?.organization?.entitlements?.regions || [])
+  setAllGeos(session.data?.organization?.entitlements?.regions || [])
 
   // Try to initialize the active region (do not pass any param values here, the function will try to determine the region)
   setActiveGeo()

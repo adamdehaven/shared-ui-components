@@ -22,7 +22,7 @@ export const evaluateFeatureFlag = (key: FeatureFlags | string, defaultValue: LD
 }
 
 export default function useLaunchDarkly() {
-  const { session, exists: sessionExists } = composables.useSession()
+  const { session } = composables.useSession()
   const { config } = composables.useAppConfig()
 
   /**
@@ -31,7 +31,7 @@ export default function useLaunchDarkly() {
    */
   const getUser = (): LDUser => {
     let ldUser
-    if (sessionExists.value) {
+    if (session.exists) {
       // Check if the user is a CI test user
       // Source: client/tests/e2e/smoke/utilities/constants.ts
       // and /client/tests/cypress/support/index.ts
@@ -39,14 +39,14 @@ export default function useLaunchDarkly() {
 
       ldUser = {
         // Pass the Actual user, or if running in Cypress, the default Cypress user
-        key: cypressLDUser || session.value?.user?.id,
+        key: cypressLDUser || session.data?.user?.id,
         anonymous: false,
         custom: {
-          orgId: session.value?.organization?.id,
-          orgName: session.value?.organization?.name,
-          isOwner: !!session.value?.user?.is_owner,
-          featureSet: session.value?.user?.feature_set,
-          tier: session.value?.organization?.entitlements?.tier?.name,
+          orgId: session.data?.organization?.id,
+          orgName: session.data?.organization?.name,
+          isOwner: !!session.data?.user?.is_owner,
+          featureSet: session.data?.user?.feature_set,
+          tier: session.data?.organization?.entitlements?.tier?.name,
           platformId: config.value?.launchDarkly?.platform_id || '',
         },
       }

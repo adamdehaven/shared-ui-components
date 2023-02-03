@@ -1,16 +1,20 @@
-import { ref } from 'vue'
+import { reactive } from 'vue'
 import composables from '../../composables'
+import type { Session } from '../../types'
 import HelpDropdown from './HelpDropdown.vue'
 
-describe('HelpDropdown component', () => {
+describe('<HelpDropdown />', () => {
   const mountComponent = async () => {
 
     cy.stub(composables, 'useSession').callsFake(() => ({
-      exists: ref(true),
-      session: ref({
-        organization: {
-          id: 'orgId',
-          name: 'orgName',
+      session: reactive<Partial<Session>>({
+        exists: true,
+        data: {
+          // @ts-ignore
+          organization: {
+            id: 'orgId',
+            name: 'orgName',
+          },
         },
       }),
     }))

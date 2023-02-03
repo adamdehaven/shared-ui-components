@@ -1,13 +1,18 @@
-import { ref, computed, readonly } from 'vue'
+import { ref, reactive, computed, watch, readonly } from 'vue'
 import type { Ref } from 'vue'
 import { RouteLocationNormalized } from 'vue-router'
 import composables from './'
 import { SESSION_NAME, CYPRESS_USER_SESSION_EXISTS } from '../constants'
-import type { SessionData, Tier } from '../types'
+import type { Session, SessionData, Tier } from '../types'
 import { useWindow } from '@kong-ui/core'
 
 // Initialize these ref(s) outside the function for persistence
-const session = ref<SessionData>()
+const session = reactive<Session>({
+  data: {},
+  exists: false,
+  refresh: async () => false,
+  destroy: async () => undefined,
+})
 
 export default function useSession() {
   const isRefreshing = ref<boolean>(false)
@@ -70,14 +75,15 @@ export default function useSession() {
           isPlus: organizationEntitlements?.data?.tier?.name === 'plus',
           // Fallback to free tier if no tier can be determined
           isFree: organizationEntitlements?.data?.tier?.name === 'free' || (organizationEntitlements?.data?.tier?.name !== 'enterprise' && organizationEntitlements?.data?.tier?.name !== 'plus'),
+          isInTrial: Boolean(organizationEntitlements?.data?.tier?.trial_expires_at),
         },
       }
 
       // Ensure to combine with existing data
-      session.value = { ...(session.value || {}), ...userSessionData }
+      session.data = { ...(session.data || {}), ...userSessionData }
 
       // Store the session data
-      await saveSessionData(session.value)
+      await saveSessionData(session.data)
 
       const { fetchTopLevelPermissions } = composables.usePermissions()
       // Fetch the top-level permissions in order to evaluate the sidebar items
@@ -87,8 +93,8 @@ export default function useSession() {
       // Initialize DataDog with the actual user id
       globalThis.DD_RUM && globalThis.DD_RUM.onReady(() => {
         globalThis.DD_RUM.setUser({
-          id: session.value?.user?.id,
-          orgId: session.value?.organization?.id,
+          id: session.data?.user?.id,
+          orgId: session.data?.organization?.id,
         })
       })
 
@@ -171,15 +177,15 @@ export default function useSession() {
    */
   const fetchLocalStorageData = async (): Promise<SessionData | undefined> => {
     try {
-      const sessionDataRaw = localStorage?.getItem(SESSION_NAME) || encode(session.value) || encode({})
+      const sessionDataRaw = localStorage?.getItem(SESSION_NAME) || encode(session.data) || encode({})
 
       if (!sessionDataRaw) {
-        return session.value
+        return session.data
       }
 
-      session.value = decode(sessionDataRaw)
+      session.data = decode(sessionDataRaw)
 
-      return session.value
+      return session.data
     } catch (_) {
       saveSessionData()
     }
@@ -191,22 +197,22 @@ export default function useSession() {
    * @param {boolean} force Force overwriting the stored object
    */
   const saveSessionData = async (data: SessionData = {}, force = true) => {
-    session.value = { ...data }
+    session.data = { ...data }
 
     // only set the session to local if specifying to force save,
     // or if the session doesn't exist and force is false.
     if (force || (!force && !exists.value)) {
-      if (objectIsEmpty(session.value)) {
+      if (objectIsEmpty(session.data)) {
         localStorage?.removeItem(SESSION_NAME)
       } else {
-        localStorage?.setItem(SESSION_NAME, encode(session.value))
+        localStorage?.setItem(SESSION_NAME, encode(session.data))
       }
     }
   }
 
   /**
    * Attempt to refresh the auth cookie
-   * @returns {boolean} Returns false if refresh was successful.
+   * @returns {boolean} Returns true if refresh was successful.
    */
   const refresh = async (): Promise<boolean> => {
     try {
@@ -218,20 +224,24 @@ export default function useSession() {
         await saveSessionData(await fetchLocalStorageData())
 
         // Successful refresh, session did not expire
-        return false
+        return true
       } else {
         // Fallback to failure
-        return true
+        return false
       }
     } catch (err) {
-      return true
+      return false
     }
   }
 
   const getCookieValue = (name: string): string => document.cookie.match(`(^|;)\\s*${name}\\s*=\\s*([^;]+)`)?.pop() || ''
 
+  /**
+   * Is there an existing user session?
+   * @return {boolean}
+   */
   const exists = computed((): boolean => {
-    // Return true if the session.value.data.user.id has a value
+    // Return true if the session.data?.user.id has a value
     // We also return true here for a cookie value so that Cypress tests do not automatically get logged out. This should never be set for an actual user.
     let userShouldHaveSession = false
 
@@ -241,12 +251,15 @@ export default function useSession() {
 
       userShouldHaveSession = urlSearchParams.get('loginSuccess') === 'true'
     } catch (_) {
-      // Fallback to session.value?.user?.id exists
-      userShouldHaveSession = !!session.value?.user?.id
+      // Fallback to session.data?.user?.id exists
+      userShouldHaveSession = !!session.data?.user?.id
     }
 
-    return !!session.value?.user?.id || userShouldHaveSession === true || !!getCookieValue(CYPRESS_USER_SESSION_EXISTS)
+    return !!session.data?.user?.id || userShouldHaveSession === true || !!getCookieValue(CYPRESS_USER_SESSION_EXISTS)
   })
+
+  // Bind the exists value to the session and update whenver it changes
+  watch(exists, () => (session.exists = exists.value), { immediate: true })
 
   /**
    * Destroy the user's session and log them out via KAuth
@@ -274,7 +287,7 @@ export default function useSession() {
 
     try {
       if (!toRoute?.path) {
-        session.value = undefined
+        session.data = {}
         localStorage?.removeItem(SESSION_NAME)
       } else {
         saveSessionData({ to: toRoute }, true)
@@ -298,7 +311,7 @@ export default function useSession() {
       win.setLocationAssign(logoutUrl.href)
     } catch (err) {
       // Always clear the session data
-      session.value = undefined
+      session.data = {}
       localStorage?.removeItem(SESSION_NAME)
       document.cookie = `${CYPRESS_USER_SESSION_EXISTS}=; Max-Age=-1`
 
@@ -310,11 +323,19 @@ export default function useSession() {
   }
 
   /**
-   * Attempt to initialize the session from localStorage. Should only be called once in the KonnectAppShell onBeforeMount hook.
+   * Attempt to initialize the session from localStorage and init helper functions.
+   * Should only be called once in the KonnectAppShell onBeforeMount hook.
+   * This method is required and must be called before using any other session methods.
    */
   const initializeSession = async (): Promise<{ error: Ref<boolean>, forceAuthentication: Ref<boolean> }> => {
     // Fetch session data from localStorage
     await saveSessionData(await fetchLocalStorageData())
+
+    // Bind the refresh function
+    session.refresh = refresh
+
+    // Bind the destroy function
+    session.destroy = destroy
 
     // Attempt to fetch the session data from the server
     const { forceAuthentication, error } = await fetchSessionData()
@@ -330,8 +351,5 @@ export default function useSession() {
     isRefreshing,
     // methods
     initializeSession,
-    exists,
-    refresh,
-    destroy,
   }
 }

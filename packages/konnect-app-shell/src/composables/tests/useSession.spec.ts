@@ -10,7 +10,7 @@ const orgId = uuidv4()
 const orgTier = 'enterprise'
 
 describe('useSession', async () => {
-  const { session, initializeSession, exists, destroy } = composables.useSession()
+  const { session, initializeSession } = composables.useSession()
   const { kAuthApi } = composables.useKAuthApi()
   const windowLocationSpy: SpyInstance<[], Partial<Location>> = vi.spyOn(window, 'location', 'get')
 
@@ -101,29 +101,29 @@ describe('useSession', async () => {
 
   afterEach(async () => {
     // Important: Destroy session
-    await destroy()
+    await session.destroy()
 
     vi.clearAllMocks()
   })
 
   it('sets the current session data', async () => {
     // Should start empty
-    expect(session.value?.user?.id).toEqual(undefined)
+    expect(session.data?.user?.id).toEqual(undefined)
 
     await initializeSession()
 
-    expect(session.value?.user?.id).toEqual(userId)
-    expect(session.value?.organization?.id).toEqual(orgId)
-    expect(session.value?.organization?.entitlements?.tier?.name).toEqual(orgTier)
+    expect(session.data?.user?.id).toEqual(userId)
+    expect(session.data?.organization?.id).toEqual(orgId)
+    expect(session.data?.organization?.entitlements?.tier?.name).toEqual(orgTier)
   })
 
   it('saves the session data to localStorage', async () => {
     // Should start empty
-    expect(session.value?.user?.id).toEqual(undefined)
+    expect(session.data?.user?.id).toEqual(undefined)
 
     await initializeSession()
 
-    expect(localStorage.getItem(SESSION_NAME)).toBe(btoa(encodeURIComponent(JSON.stringify(session.value))))
+    expect(localStorage.getItem(SESSION_NAME)).toBe(btoa(encodeURIComponent(JSON.stringify(session.data))))
   })
 
   it('removes data from localStorage on destroy', async () => {
@@ -132,9 +132,9 @@ describe('useSession', async () => {
 
     await initializeSession()
 
-    expect(localStorage.getItem(SESSION_NAME)).toBe(btoa(encodeURIComponent(JSON.stringify(session.value))))
+    expect(localStorage.getItem(SESSION_NAME)).toBe(btoa(encodeURIComponent(JSON.stringify(session.data))))
 
-    await destroy()
+    await session.destroy()
 
     expect(localStorage.getItem(SESSION_NAME)).toBe(null)
   })
@@ -144,7 +144,7 @@ describe('useSession', async () => {
 
     // Destroy session and pass the current path
     const currentPath = '/mesh-manager/child'
-    destroy(currentPath)
+    session.destroy(currentPath)
 
     const sessionDataFromLocalStorage: SessionData = JSON.parse(decodeURIComponent(atob(localStorage.getItem(SESSION_NAME) || '')))
 
@@ -157,14 +157,16 @@ describe('useSession', async () => {
 
   it('determines if there is an existing session based on session data', async () => {
     // Should start empty
-    expect(session.value?.user?.id).toEqual(undefined)
+    expect(session.data?.user?.id).toEqual(undefined)
+
+    expect(session.exists).toBe(false)
 
     await initializeSession()
 
-    expect(exists.value).toBe(true)
+    expect(session.exists).toBe(true)
 
-    await destroy()
+    await session.destroy()
 
-    expect(exists.value).toBe(false)
+    expect(session.exists).toBe(false)
   })
 })

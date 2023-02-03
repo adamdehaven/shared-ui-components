@@ -139,7 +139,7 @@ export default function usePermissions() {
         const { session } = useSession()
 
         // if meta.enterpriseOnly is true, and the organization tier is not enterprise, reject access
-        if (!!Object.prototype.hasOwnProperty.call(match.meta, 'enterpriseOnly') && match.meta.enterpriseOnly === true && !session.value?.organization?.isEnterprise) {
+        if (!!Object.prototype.hasOwnProperty.call(match.meta, 'enterpriseOnly') && match.meta.enterpriseOnly === true && !session.data?.organization?.isEnterprise) {
           return false
         }
 
@@ -387,7 +387,7 @@ export default function usePermissions() {
           // No matching permissions were retrieved, so store the krn resource with an empty actions array so the session can cache the response
           const regionId = '*' // in this context, the region doesn't matter, we just need a valid krn format
           const { session } = useSession()
-          const organizationId = session.value?.organization?.id || '*'
+          const organizationId = session.data?.organization?.id || '*'
           const krnUserNoPermissions = `krn:${requestedService}:reg/${regionId}:org/${organizationId}` + (requestedResourcePath ? `:${requestedResourcePath}` : '')
           const deniedKrn: KrnFromApi = {
             resource: krnUserNoPermissions,
