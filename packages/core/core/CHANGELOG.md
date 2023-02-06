@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/core@0.9.8...@kong-ui/core@0.10.0) (2023-02-06)
+
+
+### ✨ Features
+
+* konnect global search [KHCP-5773] ([#391](https://github.com/Kong/shared-ui-components/issues/391)) ([7d5ce48](https://github.com/Kong/shared-ui-components/commit/7d5ce482c3d146f98a5d042b59cda61e5a6092f5))
+
+
+
+
+
 ## [0.9.8](https://github.com/Kong/shared-ui-components/compare/@kong-ui/core@0.9.7...@kong-ui/core@0.9.8) (2023-02-06)
 
 
