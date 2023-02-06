@@ -2,7 +2,6 @@ import type { App } from 'vue'
 import KonnectAppShell from './components/KonnectAppShell.vue'
 import AuthValidate from './components/AuthValidate'
 import GeoSwitcher from './components/forms/GeoSwitcher.vue'
-import type { SidebarPrimaryItem, SidebarSecondaryItem, SidebarProfileItem } from '@kong-ui-public/app-layout'
 import { GruceLogo, KonnectLogo, KonnectEnterpriseLogo } from './components/icons'
 
 // Export Vue plugin as the default
@@ -25,11 +24,4 @@ export {
   GruceLogo,
   KonnectLogo,
   KonnectEnterpriseLogo,
-}
-
-// Export types from '@kong-ui-public/app-layout'
-export type {
-  SidebarPrimaryItem,
-  SidebarSecondaryItem,
-  SidebarProfileItem,
 }

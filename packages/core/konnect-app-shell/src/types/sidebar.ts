@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
-import type { SidebarPrimaryItem, SidebarSecondaryItem } from '@kong-ui-public/app-layout'
 import { KonnectPrimaryRouteKey } from './routes'
+import type { SidebarPrimaryItem, SidebarSecondaryItem, SidebarProfileItem } from '@kong-ui-public/app-layout'
 
 /**
  * The KonnectAppShell sidebar top-level navigation items
@@ -19,4 +18,11 @@ export interface KonnectAppShellSidebarItem {
   label?: string
   /** Nested sidebar items (children) without icons */
   items?: SidebarSecondaryItem[]
+}
+
+// Export types from '@kong-ui-public/app-layout'
+export type {
+  SidebarPrimaryItem,
+  SidebarSecondaryItem,
+  SidebarProfileItem,
 }
