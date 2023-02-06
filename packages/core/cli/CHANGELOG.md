@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.15](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.7.14...@kong-ui/cli@0.7.15) (2023-02-06)
+
+
+### 📦 Code Refactoring
+
+* add workspaces [KHCP-5880] ([#523](https://github.com/Kong/shared-ui-components/issues/523)) ([166e84d](https://github.com/Kong/shared-ui-components/commit/166e84db9b5da690a7f6788e69ce2556b08ae833))
+
+
+
+
+
 ## [0.7.14](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.7.13...@kong-ui/cli@0.7.14) (2023-02-02)
 
 
