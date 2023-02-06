@@ -12,3 +12,5 @@ export default {
 }
 
 export { KonnectGlobalSearch }
+
+export * from './types'
