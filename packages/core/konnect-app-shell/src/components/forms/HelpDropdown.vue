@@ -1,94 +1,92 @@
 <template>
-  <div class="mt-0" />
-  <div>
-    <KDropdownMenu
-      class="help-dropdown"
-      data-testid="header-help-btn"
-      :kpop-attributes="{
-        placement: 'bottomEnd',
-        popoverClasses: 'help-dropdown-popover'
-      }"
-      width="250"
-    >
-      <template #default>
-        <KButton class="help-dropdown-btn">
-          <KIcon
-            color="var(--grey-500)"
-            icon="help"
-            size="24"
-          />
-        </KButton>
-      </template>
-      <template #items>
-        <KDropdownItem>
-          <div
-            class="org-name width-100"
-            data-testid="help-menu-org-name"
-          >
-            <span
-              :title="orgName"
-            >
-              {{ orgName }}
-            </span>
-            <!-- TODO: fix to placement to bottomRight when KHCP-5756 is done -->
-            <KTooltip
-              class="margin-left-auto"
-              :label="tooltipText"
-              placement="bottom"
-            >
-              <KClipboardProvider v-slot="{ copyToClipboard }">
-                <span @click.stop="onCopyOrgId(copyToClipboard)">
-                  <KIcon
-                    class="copy-icon"
-                    color="var(--black-45)"
-                    data-testid="help-menu-copy-org-id"
-                    hide-title
-                    icon="copy"
-                    size="16"
-                  />
-                </span>
-              </KClipboardProvider>
-            </KTooltip>
-          </div>
-        </KDropdownItem>
-        <KDropdownItem
-          has-divider
+  <KDropdownMenu
+    class="help-dropdown"
+    data-testid="header-help-btn"
+    :kpop-attributes="{
+      placement: 'bottomEnd',
+      popoverClasses: 'help-dropdown-popover'
+    }"
+    width="250"
+  >
+    <template #default>
+      <KButton class="help-dropdown-btn">
+        <KIcon
+          color="var(--grey-500)"
+          icon="help"
+          size="24"
+        />
+      </KButton>
+    </template>
+    <template #items>
+      <KDropdownItem>
+        <div
+          class="org-name width-100"
+          data-testid="help-menu-org-name"
         >
-          <KExternalLink
-            class="width-100"
-            data-testid="docs-link"
-            hide-icon
-            :href="docsURL"
+          <span
+            :title="orgName"
           >
-            {{ t('navbar.help_menu.documentation_link') }}
-          </KExternalLink>
-        </KDropdownItem>
-        <KDropdownItem>
-          <KExternalLink
-            class="width-100"
-            data-testid="status-link"
-            hide-icon
-            :href="statusURL"
+            {{ orgName }}
+          </span>
+          <!-- TODO: fix to placement to bottomRight when KHCP-5756 is done -->
+          <KTooltip
+            class="margin-left-auto"
+            :label="tooltipText"
+            placement="bottom"
           >
-            {{ t('navbar.help_menu.status_link') }}
-          </KExternalLink>
-        </KDropdownItem>
-        <KDropdownItem>
-          <KExternalLink
-            class="width-100"
-            data-testid="support-link"
-            hide-icon
-            :href="supportURL"
-          >
-            <div class="enterprize-logo width-100">
-              {{ t('navbar.help_menu.support_link') }}
-              <div class="margin-left-auto">
-                <HelpKonnectEnterpriseLogo />
-              </div>
+            <KClipboardProvider v-slot="{ copyToClipboard }">
+              <span @click.stop="onCopyOrgId(copyToClipboard)">
+                <KIcon
+                  class="copy-icon"
+                  color="var(--black-45)"
+                  data-testid="help-menu-copy-org-id"
+                  hide-title
+                  icon="copy"
+                  size="16"
+                />
+              </span>
+            </KClipboardProvider>
+          </KTooltip>
+        </div>
+      </KDropdownItem>
+      <KDropdownItem
+        has-divider
+      >
+        <ExternalLink
+          class="width-100"
+          data-testid="docs-link"
+          hide-icon
+          :href="docsURL"
+        >
+          {{ t('navbar.help_menu.documentation_link') }}
+        </ExternalLink>
+      </KDropdownItem>
+      <KDropdownItem>
+        <ExternalLink
+          class="width-100"
+          data-testid="status-link"
+          hide-icon
+          :href="statusURL"
+        >
+          {{ t('navbar.help_menu.status_link') }}
+        </ExternalLink>
+      </KDropdownItem>
+      <KDropdownItem>
+        <ExternalLink
+          class="width-100"
+          data-testid="support-link"
+          hide-icon
+          :href="supportURL"
+        >
+          <div class="enterprize-logo width-100">
+            {{ t('navbar.help_menu.support_link') }}
+            <div class="margin-left-auto">
+              <HelpKonnectEnterpriseLogo />
             </div>
-          </KExternalLink>
-        </KDropdownItem>
-        <!-- <AuthValidate
+          </div>
+        </ExternalLink>
+      </KDropdownItem>
+      <!-- <AuthValidate
           v-slot="{ isAllowed }"
           :krn-args="{
             service: 'accounts',
@@ -96,18 +94,17 @@
             resourcePath: null
           }"
         > -->
-        <KDropdownItem
-          v-if="isQuickStartAllowed"
-          data-testid="quick-start"
-          has-divider
-          @click="goToQuickStart"
-        >
-          {{ t('navbar.help_menu.goto_quick_start') }}
-        </KDropdownItem>
-        <!-- </AuthValidate> -->
-      </template>
-    </KDropdownMenu>
-  </div>
+      <KDropdownItem
+        v-if="isQuickStartAllowed"
+        data-testid="quick-start"
+        has-divider
+        @click="goToQuickStart"
+      >
+        {{ t('navbar.help_menu.goto_quick_start') }}
+      </KDropdownItem>
+      <!-- </AuthValidate> -->
+    </template>
+  </KDropdownMenu>
 </template>
 
 <script setup lang="ts">
@@ -167,12 +164,6 @@ const onCopyOrgId = async (copyToClipboard: (str: string) => Promise<boolean>): 
 @import "../../styles/variables";
 
 .help-dropdown {
-  margin-top: 4px;
-
-  @media screen and (min-width: $viewport-md) {
-    padding-right: 28px;
-  }
-
   .k-button {
     background-color: transparent;
     border: none;
@@ -181,6 +172,7 @@ const onCopyOrgId = async (copyToClipboard: (str: string) => Promise<boolean>): 
     font-weight: 400;
     position: relative;
     top: -3px;
+
     &.help-dropdown-btn {
       padding-left: 0;
       padding-right: 0;
@@ -192,6 +184,7 @@ const onCopyOrgId = async (copyToClipboard: (str: string) => Promise<boolean>): 
       width: 24px;
     }
   }
+
   li.k-dropdown-item {
     padding-bottom: 0;
     padding-left: 0;
@@ -202,21 +195,26 @@ const onCopyOrgId = async (copyToClipboard: (str: string) => Promise<boolean>): 
   .width-100 {
     width: 100%;
   }
+
   .enterprize-logo {
     display: flex
   }
+
   .margin-left-auto {
     margin-left: auto;
   }
+
   .org-name {
     display: flex;
     font-weight: 500 !important;
+
     span {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
   }
+
   svg {
     margin-right: 0 !important;
   }

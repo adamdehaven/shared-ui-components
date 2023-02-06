@@ -2,11 +2,11 @@
 
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import {%%COMPONENT_NAME%%} from './{%%COMPONENT_NAME%%}.vue'
+import KonnectGlobalSearch from './KonnectGlobalSearch.vue'
 
-describe('<{%%COMPONENT_NAME%%} />', () => {
+describe('<KonnectGlobalSearch />', () => {
   it('renders', () => {
-    const wrapper = mount({%%COMPONENT_NAME%%})
+    const wrapper = mount(KonnectGlobalSearch)
 
     expect(wrapper.exists()).toBe(true)
   })

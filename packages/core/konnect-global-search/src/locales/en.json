@@ -1,0 +1,26 @@
+{
+  "global_search": {
+    "search_options": {
+      "all": "All",
+      "services": "Services",
+      "users": "Users",
+      "developers": "Developers",
+      "documents": "Documents"
+    },
+    "loading": "Loading...",
+    "search": "Search",
+    "success": "Success",
+    "tags": "Tags",
+    "none": "None",
+    "no_results": {
+      "label": "No results found",
+      "description": "Please adjust the criteria and try again."
+    },
+    "errors": {
+      "general": {
+        "label": "Error retrieving results",
+        "description": "Please refresh the page and try searching again."
+      }
+    }
+  }
+}

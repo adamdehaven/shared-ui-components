@@ -4,10 +4,12 @@ export interface KongUiConfig {
   api: {
     v1: {
       kauth: string
+      konnect: string
       [api: string]: any
     }
     v2: {
       global: string
+      geo: string
       [api: string]: any
     }
     [version: string]: {

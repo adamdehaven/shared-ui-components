@@ -1,0 +1,49 @@
+<template>
+  <div class="sandbox-container">
+    <main>
+      <p>This is the Global Search that is always refreshing the page when search resuslt is selected</p>
+      <KonnectGlobalSearch
+        active-geo-code="us"
+        search-api-url="/us/kong-api/konnect"
+      />
+
+      <br>
+      <hr>
+      <br>
+
+      <p>This is the Global Search that fires 'selected' event and lets application do deal with refresh versus router.push</p>
+      <KonnectGlobalSearch
+        active-geo-code="us"
+        search-api-url="/us/kong-api/konnect"
+        :should-navigate="false"
+        @selected="resultSelected"
+      />
+      <br>
+      <KCodeBlock
+        v-if="selResult"
+        id="search-result"
+        :code="selResult"
+        is-single-line
+        language="json"
+        :show-copy-button="false"
+      />
+    </main>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import { KonnectGlobalSearch } from '../src'
+import type { SelectedSearchItem } from '../src/types'
+
+const selResult = ref('')
+const resultSelected = (res: SelectedSearchItem) => {
+  selResult.value = JSON.stringify(res)
+}
+</script>
+
+<style lang="scss" scoped>
+.sandbox-container {
+  padding: 20px;
+}
+</style>

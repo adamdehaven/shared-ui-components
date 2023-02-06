@@ -36,9 +36,13 @@
           <KonnectLogo theme="light" />
         </div>
       </a>
+      <KonnectGlobalSearch
+        v-if="appConfig?.api.v1.konnect && state.activeGeo?.code && session.exists"
+        :active-geo-code="state.activeGeo?.code"
+        :search-api-url="searchApiUrl"
+      />
       <slot name="navbar" />
-      &nbsp;
-      <div class="top-right-container">
+      <div class="navbar-right-actions">
         <GeoSwitcher
           global
         />
@@ -109,18 +113,20 @@ import { computed, reactive, ref, watch, watchEffect, PropType, onBeforeMount, n
 import { AppLayout } from '@kong-ui-public/app-layout'
 import { GruceLogo, KonnectLogo } from './icons'
 import type { SidebarSecondaryItem } from '@kong-ui-public/app-layout'
+import { KonnectGlobalSearch } from '@kong-ui/konnect-global-search'
 import { useWindow } from '@kong-ui/core'
 import composables from '../composables'
 import { GLOBAL_GEO_NAME } from '../constants'
 import type { KonnectAppShellSidebarItem, Geo, KonnectAppShellState, Session, ErrorProp } from '../types'
 import GeoSelectForm from './forms/GeoSelectForm.vue'
 import GlobalError from './errors/GlobalError.vue'
-import '@kong-ui-public/app-layout/dist/style.css'
 import GeoSwitcher from './forms/GeoSwitcher.vue'
 import HelpDropdown from './forms/HelpDropdown.vue'
 import AuthValidate from './AuthValidate'
+import '@kong-ui-public/app-layout/dist/style.css'
+import '@kong-ui/konnect-global-search/dist/style.css'
 
-const { useSession, useAppSidebar, useGeo, useI18n, useKAuthApi } = composables
+const { useSession, useAppSidebar, useGeo, useI18n, useKAuthApi, useAppConfig } = composables
 const props = defineProps({
   // Provide the secondary sidebar items that should be injected into the top-level primary item with the corresponding `parentKey`
   sidebarItems: {
@@ -192,6 +198,9 @@ const state: KonnectAppShellState = reactive({
 })
 
 const { i18n: { t } } = useI18n()
+
+const { config: appConfig } = useAppConfig()
+const searchApiUrl = computed((): string => (appConfig?.value && state.activeGeo && appConfig?.value.api.v1.konnect.replace('{geo}', state.activeGeo.code)) || '')
 
 const hideNavbar = computed((): boolean => (props.navbarHidden || state.loading || !state.activeGeo) && !state.error.show)
 const hideSidebar = computed((): boolean => {
@@ -442,7 +451,7 @@ export default {
     display: flex;
   }
 }
-.top-right-container {
+.navbar-right-actions {
   align-items: center;
   display: flex;
 }
