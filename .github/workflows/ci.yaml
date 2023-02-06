@@ -20,6 +20,7 @@ jobs:
       targets: ${{steps.changed_packages.outputs.targets}}
       filter: ${{steps.changed_packages.outputs.filter}}
       spec: ${{steps.changed_packages.outputs.spec}}
+      unitTestFilter: ${{steps.changed_packages.outputs.unitTestFilter}}
 
     steps:
       - name: Remove preview consumption comment
@@ -58,6 +59,7 @@ jobs:
 
           filter=""
           specPackages=""
+          unitTestFilter=""
 
           # get the list of changed packages, grab the location
           for pkgFolder in $(lerna ${lernaCommand} --l --json|jq -r '.[].location')
@@ -73,13 +75,21 @@ jobs:
             if [[ -n "${findRes}" ]]; then
                 specPackages="${specPackages}${pkgFolder},"
             fi
+
+            findRes=$(find "${pkgFolder}" -name "*.spec.ts" || true)
+            if [[ -n "${findRes}" ]]; then
+                unitTestFilter="${unitTestFilter}${pkgFolder}|"
+            fi
           done
 
           # remove trailing '|' from pnpm filter
           filter="{("$(echo "${filter}" | sed 's/|$//')")}"
           echo "filter=${filter}"
 
-          targets=$(echo "${filter}"| sed 's/{(/\[\"/'| sed 's/)}/\"\]'/|sed 's/|/\"\,\"/g'| sed 's/packages\///g')
+          unitTestFilter="{("$(echo "${unitTestFilter}" | sed 's/|$//')")}"
+          echo "unitTestFilter=${unitTestFilter}"
+
+          targets=$(echo "${unitTestFilter}"| sed 's/{(/\[\"/'| sed 's/)}/\"\]'/|sed 's/|/\"\,\"/g'| sed 's/packages\///g')
           echo "targets=${targets}"
 
           # remove trailing ',' from cypress spec
@@ -90,7 +100,7 @@ jobs:
           echo "filter=${filter}" >> $GITHUB_OUTPUT
           echo "spec=${specPackages}" >> $GITHUB_OUTPUT
           echo "targets=${targets}" >> $GITHUB_OUTPUT
-
+          echo "unitTestFilter=${unitTestFilter}" >> $GITHUB_OUTPUT
   build:
     name: Build And Test
     needs: install-dependencies
@@ -117,7 +127,7 @@ jobs:
         run: pnpm --stream --filter "...${{needs.install-dependencies.outputs.filter}}..." run build
 
       - name: Run Unit Tests
-        run: pnpm --stream --filter "${{needs.install-dependencies.outputs.filter}}" run test:unit --coverage
+        run: pnpm --stream --filter "${{needs.install-dependencies.outputs.unitTestFilter}}" run test:unit --coverage
 
       - name: Prepare Cypress
         if: ${{ needs.install-dependencies.outputs.spec != '' }}
@@ -177,7 +187,7 @@ jobs:
     needs: [install-dependencies, build]
     runs-on: ubuntu-latest
     continue-on-error: true
-    if: ${{ needs.install-dependencies.outputs.targets != '[]' }}
+    if: ${{ needs.install-dependencies.outputs.targets != '[""]' }}
     strategy:
       fail-fast: false
       matrix:
