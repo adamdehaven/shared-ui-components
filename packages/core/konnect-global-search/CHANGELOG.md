@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-global-search@0.1.3...@kong-ui/konnect-global-search@0.1.4) (2023-02-06)
+
+
+### ♻️ Chores
+
+* remove container class ([7e0cf16](https://github.com/Kong/shared-ui-components/commit/7e0cf16c3b92ca4af7ee28ac65b2a8424c5acb5c))
+
+
+
+
+
 ## [0.1.3](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-global-search@0.1.2...@kong-ui/konnect-global-search@0.1.3) (2023-02-06)
 
 
