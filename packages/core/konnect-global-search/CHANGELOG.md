@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-global-search@0.1.1...@kong-ui/konnect-global-search@0.1.2) (2023-02-06)
+
+
+### 🐛 Bug Fixes
+
+* **deps:** update dependency axios to ^1.3.2 ([#531](https://github.com/Kong/shared-ui-components/issues/531)) ([ba518a6](https://github.com/Kong/shared-ui-components/commit/ba518a6697759b186d34c743b2174570a4b450b4))
+
+
+
+
+
 ## [0.1.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-global-search@0.1.0...@kong-ui/konnect-global-search@0.1.1) (2023-02-06)
 
 
