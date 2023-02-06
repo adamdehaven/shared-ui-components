@@ -11,7 +11,10 @@ export default function useSearchApi(baseUrl: string) {
   const fetchSearchResults = async (searchFilter: string, searchQuery: string): Promise<void> => {
     try {
       // Fetch the config
-      const { data }: { data: SearchResultsResponse } = await axios.get(`${baseUrl}/api/search${searchFilter ? '/' + searchFilter : ''}?q=${searchQuery}`)
+      const { data }: { data: SearchResultsResponse } = await axios.get(`${baseUrl}/api/search${searchFilter ? '/' + searchFilter : ''}?q=${searchQuery}`, {
+        withCredentials: true,
+        timeout: 10000,
+      })
 
       // If expected data is missing, throw an error
       if (!data?.data) {
