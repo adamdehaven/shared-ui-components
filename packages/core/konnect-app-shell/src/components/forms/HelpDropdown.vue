@@ -52,27 +52,27 @@
       <KDropdownItem
         has-divider
       >
-        <ExternalLink
+        <KExternalLink
           class="width-100"
           data-testid="docs-link"
           hide-icon
           :href="docsURL"
         >
           {{ t('navbar.help_menu.documentation_link') }}
-        </ExternalLink>
+        </KExternalLink>
       </KDropdownItem>
       <KDropdownItem>
-        <ExternalLink
+        <KExternalLink
           class="width-100"
           data-testid="status-link"
           hide-icon
           :href="statusURL"
         >
           {{ t('navbar.help_menu.status_link') }}
-        </ExternalLink>
+        </KExternalLink>
       </KDropdownItem>
       <KDropdownItem>
-        <ExternalLink
+        <KExternalLink
           class="width-100"
           data-testid="support-link"
           hide-icon
@@ -84,7 +84,7 @@
               <HelpKonnectEnterpriseLogo />
             </div>
           </div>
-        </ExternalLink>
+        </KExternalLink>
       </KDropdownItem>
       <!-- <AuthValidate
           v-slot="{ isAllowed }"
