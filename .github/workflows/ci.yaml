@@ -1,7 +1,4 @@
 name: CI
-# concurrency:
-# group: ${{ github.ref }}
-# cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 on:
   push:
     branches:
@@ -105,7 +102,7 @@ jobs:
     name: Build And Test
     needs: install-dependencies
     # do not do anything unless changed package is detected
-    if: ${{ needs.install-dependencies.outputs.filter != '{packages/()}' }}
+    if: ${{ needs.install-dependencies.outputs.filter != '{()}' }}
     runs-on: ubuntu-latest
     env:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
