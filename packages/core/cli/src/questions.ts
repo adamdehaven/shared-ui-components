@@ -1,9 +1,23 @@
 import { kebabCase, packagePath } from './core'
+import inquirer from 'inquirer'
 import pc from 'picocolors'
 import fs from 'fs'
 
 export default {
-  packageName: {
+  workspaceName: {
+    type: 'list',
+    name: 'workspace',
+    message: 'Select the workspace for your new package:',
+    choices: [
+      'core',
+      'analytics',
+      'portal',
+      new inquirer.Separator(),
+      'other',
+    ],
+    default: 'core',
+  },
+  packageName: (workspace: string) => ({
     type: 'input',
     name: 'name',
     message: 'What is the kebab-case name of the new package?',
@@ -20,13 +34,13 @@ export default {
         return 'Error: The package name can not end with a dash.'
       } else if (input.includes('--')) {
         return 'Error: The package name should not include a double-dash \'--\'.'
-      } else if (fs.existsSync(packagePath(input))) {
+      } else if (fs.existsSync(packagePath(workspace, input))) {
         // Package with name already exists
         return `Error: The package '${kebabCase(input)}' already exists`
       }
       return true
     },
-  },
+  }),
   confirmPackageName: {
     type: 'confirm',
     name: 'confirmName',

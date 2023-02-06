@@ -9,14 +9,15 @@ import emoji from 'node-emoji'
 import inquirer, { Answers } from 'inquirer'
 import questions from '../questions'
 
-const { packageName, confirmPackageName } = questions
+const { workspaceName, packageName, confirmPackageName } = questions
 
 /**
  * @description Create new files for package
+ * @param {string} workspace Workspace name
  * @param {string} packageName Package name
  * @return {*}
  */
-const createPackageFiles = async (packageName: string): Promise<void> => {
+const createPackageFiles = async (workspace: string, packageName: string): Promise<void> => {
   const spinner: Spinner = createSpinner('Creating new package...').start()
   await sleep()
 
@@ -28,9 +29,9 @@ const createPackageFiles = async (packageName: string): Promise<void> => {
   const packageFilesTemplatePath = packageTemplatePath()
   const packageFilesToCreate = await getTemplateFileList(packageFilesTemplatePath)
 
-  // Check to ensure packages/{packageName} directory does not already exist
-  if (fs.existsSync(packagePath(packageName))) {
-    spinner.error({ text: `Error: 'packages/${packageName}' already exists` })
+  // Check to ensure packages/${workspace}/{packageName} directory does not already exist
+  if (fs.existsSync(packagePath(workspace, packageName))) {
+    spinner.error({ text: `Error: 'packages/${workspace}/${packageName}' already exists` })
     process.exit(1)
   }
 
@@ -38,20 +39,20 @@ const createPackageFiles = async (packageName: string): Promise<void> => {
 
   spinner.start({ text: 'Creating new package directory...' })
 
-  // Create new package directory packages/{packageName}
-  fs.mkdirSync(packagePath(packageName), { recursive: true })
+  // Create new package directory packages/${workspace}/{packageName}
+  fs.mkdirSync(packagePath(workspace, packageName), { recursive: true })
 
-  spinner.success({ text: `Created packages/${pc.cyan(packageName)} directory.` })
+  spinner.success({ text: `Created packages/${workspace}/${pc.cyan(packageName)} directory.` })
 
   spinner.start({ text: 'Creating package files...' })
 
-  // Create new files in packages/{packageName}
+  // Create new files in packages/${workspace}/{packageName}
   // eslint-disable-next-line array-callback-return
   for (const filename of packageFilesToCreate) {
     const stats = fs.statSync(filename)
     const filenamePath = filename.split('__template__/')
     const relativePath = filenamePath[1]
-    const newFilePath = `${packagePath(packageName)}/${relativePath.replace(/Template/g, componentName)}`
+    const newFilePath = `${packagePath(workspace, packageName)}/${relativePath.replace(/Template/g, componentName)}`
 
     // If template files exist
     if (stats.isFile()) {
@@ -64,6 +65,7 @@ const createPackageFiles = async (packageName: string): Promise<void> => {
       const fileContent = fs.readFileSync(filename, 'utf8')
         .replace(/{%%PACKAGE_NAME%%}/g, packageName)
         .replace(/{%%COMPONENT_NAME%%}/g, componentName)
+        .replace(/{%%WORKSPACE%%}/g, workspace)
 
       fs.writeFileSync(newFilePath, fileContent, 'utf8')
     }
@@ -76,7 +78,7 @@ const createPackageFiles = async (packageName: string): Promise<void> => {
   await sleep()
 
   const fileStructure = pc.cyan(`
-    ${pc.white('packages/')}
+    ${pc.white(`packages/${workspace}/`)}
     ${pc.white('└──')} ${packageName}/
         ├── sandbox/
         ├── src/
@@ -124,7 +126,7 @@ Your package also comes pre-configured with a Vue
 sandbox where you can interact with your component(s).
 
 Configure the component imports and usage inside the
-/packages/${packageName}/sandbox/ directory.
+/packages/${workspace}/${packageName}/sandbox/ directory.
 
 # Run commands for your package from the root
 $ ${pc.cyan(`pnpm --filter "@kong-ui/${packageName}" {your command}`)}
@@ -144,7 +146,7 @@ $ ${pc.cyan(`pnpm --filter "@kong-ui/${packageName}" run dev`)}
 
 export const createPackage = async (): Promise<void> => {
   console.clear()
-  console.log(boxen(pc.cyan(pc.bold(`${emoji.get('sparkles')} Create a new component package ${emoji.get('sparkles')}`)), {
+  console.log(boxen(pc.cyan(pc.bold(`${emoji.get('sparkles')} Create a new package ${emoji.get('sparkles')}`)), {
     title: '@kong-ui',
     titleAlignment: 'center',
     textAlignment: 'center',
@@ -153,8 +155,24 @@ export const createPackage = async (): Promise<void> => {
   }))
 
   const getPackageName = async (): Promise<Answers> => {
+    // Ask the user to choose a workspace
+    const { workspace } = await inquirer.prompt([workspaceName])
+
+    if (workspace === 'other') {
+      // The user wants to choose a workspace that doesn't exist
+      console.log('')
+      console.log(pc.red(`  New workspaces must be added and configured by ${pc.bold('@Kong/team-core-ui')}.`))
+      console.log('')
+      console.log(`  Reach out on Slack in ${pc.cyan('#team-konnect-core-ui')}`)
+      console.log(`  or tag ${pc.cyan('@Kong/team-core-ui')} on GitHub for help.`)
+      console.log('')
+
+      // Exit
+      process.exit(0)
+    }
+
     // Ask for the package name
-    const { name } = await inquirer.prompt([packageName])
+    const { name } = await inquirer.prompt([packageName(workspace)])
 
     // Output a message confirming their package name
     console.log('  Package name: ' + pc.cyan(`@kong-ui/${name}`))
@@ -164,6 +182,7 @@ export const createPackage = async (): Promise<void> => {
 
     if (!confirmName) {
       // The user did NOT confirm the package name, so inform them that we're starting over
+      console.clear()
       console.log('  Ok, let\'s start over...')
       console.log('')
 
@@ -172,6 +191,7 @@ export const createPackage = async (): Promise<void> => {
     }
 
     return {
+      workspace,
       name,
     }
   }
@@ -179,5 +199,5 @@ export const createPackage = async (): Promise<void> => {
   const answers = await getPackageName()
 
   // Create packages/* files
-  await createPackageFiles(answers.name)
+  await createPackageFiles(answers.workspace, answers.name)
 }

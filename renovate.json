@@ -10,7 +10,7 @@
   "rangeStrategy": "bump",
   "platformAutomerge": true,
   "ignorePaths": [
-    "packages/cli/src/__template__/package.json"
+    "packages/core/cli/src/__template__/package.json"
   ],
   "labels": [
     "dependencies",

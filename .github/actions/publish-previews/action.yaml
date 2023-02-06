@@ -24,22 +24,22 @@ runs:
         mkdir _public
         sha_short=$(git rev-parse --short HEAD)
         npm_instructions=""
-        for folder in $(echo "${{inputs.filter}}" |sed 's/{packages\/(//g'|sed 's/)}//g'| tr '|' '\n')
+        for folder in $(echo "${{inputs.filter}}" |sed 's/{(//g'|sed 's/)}//g'| tr '|' '\n')
         do
             echo "Processing previews for ${folder}"
-            if [[ -d "packages/${folder}/dist" ]]; then
+            if [[ -d "${folder}/dist" ]]; then
                 echo "dist folder found"
-                pkgName=$(cat packages/${folder}/package.json | jq .name | sed 's/"//g')
+                pkgName=$(cat ${folder}/package.json | jq .name | sed 's/"//g')
                 mkdir -p "_public/${pkgName}"
-                cp -R "packages/${folder}/dist" "_public/${pkgName}/."
-                cd "packages/${folder}"
-                tarBall=$(pnpm pack --pack-destination ../../_public)
+                cp -R "${folder}/dist" "_public/${pkgName}/."
+                cd "${folder}"
+                tarBall=$(pnpm pack --pack-destination ../../../_public)
                 hashedTarBall="$(echo "${tarBall}" |sed 's/\.tgz//g')-${sha_short}.tgz"
                 echo "${hashedTarBall}"
                 mv "${tarBall}"  "${hashedTarBall}"
                 fNTarBall=$(echo ${hashedTarBall} | sed 's/^.*_public\///')
                 npm_instructions="${npm_instructions}yarn add \"${pkgName}@https://pr-${{ github.event.number }}--shared-ui-components.netlify.app/${fNTarBall}\""$'\r'$'\n'
-                cd ../../
+                cd ../../../
             fi
         done
 

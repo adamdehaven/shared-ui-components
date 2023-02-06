@@ -27,13 +27,13 @@
     "build:visualize": "BUILD_VISUALIZER='forms' vite build -m production",
     "preview:package": "vite preview --port 4173",
     "preview": "cross-env USE_SANDBOX=true PREVIEW_SANDBOX=true run-s build:package preview:package",
-    "lint": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../.eslintignore'",
-    "lint:fix": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../.eslintignore' --fix",
+    "lint": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../../.eslintignore'",
+    "lint:fix": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../../.eslintignore' --fix",
     "stylelint": "stylelint --allow-empty-input './src/**/*.{css,scss,sass,less,styl,vue}'",
     "stylelint:fix": "stylelint --allow-empty-input './src/**/*.{css,scss,sass,less,styl,vue}' --fix",
     "typecheck": "vue-tsc -p './tsconfig.build.json' --noEmit",
-    "test:component": "BABEL_ENV=cypress cross-env FORCE_COLOR=1 cypress run --component -b chrome --spec './src/**/*.cy.ts' --project '../../.'",
-    "test:component:open": "BABEL_ENV=cypress cross-env FORCE_COLOR=1 cypress open --component -b chrome --project '../../.'",
+    "test:component": "BABEL_ENV=cypress cross-env FORCE_COLOR=1 cypress run --component -b chrome --spec './src/**/*.cy.ts' --project '../../../.'",
+    "test:component:open": "BABEL_ENV=cypress cross-env FORCE_COLOR=1 cypress open --component -b chrome --project '../../../.'",
     "test:unit": "cross-env FORCE_COLOR=1 vitest run",
     "test:unit:open": "cross-env FORCE_COLOR=1 vitest --ui"
   },
@@ -46,7 +46,7 @@
   "author": "Kong, Inc.",
   "license": "UNLICENSED",
   "volta": {
-    "extends": "../../package.json"
+    "extends": "../../../package.json"
   },
   "dependencies": {
     "@kong-ui-public/i18n": "^0.2.7",

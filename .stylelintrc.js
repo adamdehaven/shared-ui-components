@@ -5,12 +5,12 @@ module.exports = {
     'stylelint-config-recommended-vue/scss'
   ],
   ignoreFiles: [
-    'packages/cli/src/__template__/**/*'
+    'packages/core/cli/src/__template__/**/*'
   ],
   overrides: [
     {
       files: [
-        'packages/*/src/**/*.{css,scss,sass,less,styl,vue}',
+        'packages/**/src/**/*.{css,scss,sass,less,styl,vue}',
       ],
       rules: {
         // Disallow relative font units

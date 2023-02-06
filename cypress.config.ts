@@ -16,7 +16,7 @@ export default defineConfig({
           istanbul({
             extension: ['.vue'],
             requireEnv: true,
-            exclude: ['packages/cli/**'],
+            exclude: ['packages/core/cli/**'],
           }),
         ],
       },

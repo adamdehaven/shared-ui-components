@@ -33,5 +33,5 @@ cypress/screenshots/
 # Local Netlify folder
 .netlify
 # cli bin
-packages/cli/bin
+packages/core/cli/bin
 .nyc_output/out.json

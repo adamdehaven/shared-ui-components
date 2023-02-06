@@ -3,7 +3,7 @@
   "useWorkspaces": true,
   "npmClient": "pnpm",
   "packages": [
-    "packages/*"
+    "packages/*/*"
   ],
   "ignoreChanges": [
     "**/*.spec.ts",

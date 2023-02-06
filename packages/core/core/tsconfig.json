@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "dist",
@@ -8,12 +8,12 @@
       "node",
       "vite/client",
       "cypress",
-      "../../cypress/support"
+      "../../../cypress/support"
     ]
   },
   "include": [
     "src/**/*",
-    "sandbox/**/*",
+    "sandbox/**/*"
   ],
   "exclude": [
     "node_modules",

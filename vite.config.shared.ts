@@ -91,7 +91,7 @@ export default defineConfig({
       '**/dist/**',
       '**/__template__/**',
       '**/node_modules/**',
-      'packages/cli/**',
+      'packages/core/cli/**',
     ],
   },
 })
