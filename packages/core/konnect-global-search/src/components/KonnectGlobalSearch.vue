@@ -3,7 +3,7 @@
     v-if="activeGeoCode && searchApiUrl"
     class="kong-ui-konnect-global-search"
   >
-    <div class="search-container container">
+    <div class="search-container">
       <div class="search-icon" />
       <NavbarDropdownMenu
         data-testid="search-dropdown-toggle"
