@@ -1,7 +1,7 @@
 import composables from '../composables'
 import type { RequestedPermissionKrn } from '../types'
 
-const { canUserAccess: canUserAccessOriginal } = composables.usePermissions()
+const { canUserAccess: canUserAccessOriginal, userIsAuthorizedForRoute } = composables.usePermissions()
 
 /**
  * Returns a boolean indicating if the provided RequestedPermissionKrn arguments grant the user access.
@@ -15,4 +15,5 @@ const canUserAccess = async (requestedPermission: RequestedPermissionKrn): Promi
 
 export {
   canUserAccess,
+  userIsAuthorizedForRoute,
 }
