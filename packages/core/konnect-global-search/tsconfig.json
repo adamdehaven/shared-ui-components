@@ -7,6 +7,7 @@
       "node",
       "vite/client",
       "cypress",
+      "cypress/vue",
       "../../cypress/support"
     ]
   },
