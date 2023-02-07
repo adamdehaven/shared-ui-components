@@ -1,0 +1,28 @@
+on:
+  pull_request_target:
+    types:
+      - closed
+
+jobs:
+  unpublish:
+    name: Unpublish or Deprecate NPM previews for PR
+    runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v3
+
+      - name: Unpublish
+        run: |
+          for pkgName in $(lerna ls --l --json|jq -r '.[].name')
+          do
+            echo "package: ${pkgName}"
+            prNumber="${{github.event.number}}"
+            for pkgVersion in $(npm view ${pkgName} --json|jq -r .versions|grep "\-pr.${prNumber}."|sed 's/,//'| sed 's/\"//g')
+            do
+              echo "         version ${pkgVersion}"
+              npm deprecate --force "${pkgName}@${pkgVersion}" "Deprecated PR preview" || true
+              npm unpublish --force "${pkgName}@${pkgVersion}" || true
+            done
+          done
