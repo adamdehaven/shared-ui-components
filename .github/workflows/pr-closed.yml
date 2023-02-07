@@ -1,3 +1,4 @@
+name: Unpublish or Deprecate NPM previews for PR
 on:
   pull_request_target:
     types:
@@ -15,14 +16,29 @@ jobs:
 
       - name: Unpublish
         run: |
+          toUnpublish=()
           for pkgName in $(lerna ls --l --json|jq -r '.[].name')
           do
-            echo "package: ${pkgName}"
             prNumber="${{github.event.number}}"
             for pkgVersion in $(npm view ${pkgName} --json|jq -r .versions|grep "\-pr.${prNumber}."|sed 's/,//'| sed 's/\"//g')
             do
-              echo "         version ${pkgVersion}"
-              npm deprecate --force "${pkgName}@${pkgVersion}" "Deprecated PR preview" || true
-              npm unpublish --force "${pkgName}@${pkgVersion}" || true
+              toUnpublish+=("${pkgName}@${pkgVersion}")
             done
+          done
+
+          echo  "List: ${toUnpublish[*]}"|sed 's/ /\n/g'
+
+          for (( i=${#toUnpublish[@]}-1; i>=0; i-- ))
+          do
+            echo ""
+            echo "*** deprecating: ${toUnpublish[i]}"
+            npm deprecate --force "${toUnpublish[i]}" "Deprecated PR preview" || true
+          done
+
+
+          for (( i=${#toUnpublish[@]}-1; i>=0; i-- ))
+          do
+            echo ""
+            echo "unpublishing: ${toUnpublish[i]}"
+            npm unpublish --force "${toUnpublish[i]}" || true
           done
