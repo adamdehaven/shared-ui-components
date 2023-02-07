@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.9](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.22.8...@kong-ui/konnect-app-shell@0.22.9) (2023-02-07)
+
+
+### 🐛 Bug Fixes
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kauth-client-typescript-axios to ^0.1746.0 ([#540](https://github.com/Kong/shared-ui-components/issues/540)) ([fe047c4](https://github.com/Kong/shared-ui-components/commit/fe047c475a387648c64e6f3b1adcaa8996406eb5))
+
+
+### ♻️ Chores
+
+* **types:** add cypress/vue ([1bfdeaf](https://github.com/Kong/shared-ui-components/commit/1bfdeafb21ca063525953adcce2d737bc823c4a2))
+
+
+
+
+
 ## [0.22.8](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.22.7...@kong-ui/konnect-app-shell@0.22.8) (2023-02-07)
 
 

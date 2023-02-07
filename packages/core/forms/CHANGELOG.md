@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.2](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.10.1...@kong-ui/forms@0.10.2) (2023-02-07)
+
+
+### ♻️ Chores
+
+* **types:** add cypress/vue ([1bfdeaf](https://github.com/Kong/shared-ui-components/commit/1bfdeafb21ca063525953adcce2d737bc823c4a2))
+
+
+
+
+
 ## [0.10.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/forms@0.10.0...@kong-ui/forms@0.10.1) (2023-02-07)
 
 

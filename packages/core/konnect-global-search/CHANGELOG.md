@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-global-search@0.1.7...@kong-ui/konnect-global-search@0.1.8) (2023-02-07)
+
+
+### ♻️ Chores
+
+* **types:** add cypress/vue ([1bfdeaf](https://github.com/Kong/shared-ui-components/commit/1bfdeafb21ca063525953adcce2d737bc823c4a2))
+
+
+
+
+
 ## [0.1.7](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-global-search@0.1.6...@kong-ui/konnect-global-search@0.1.7) (2023-02-07)
 
 
