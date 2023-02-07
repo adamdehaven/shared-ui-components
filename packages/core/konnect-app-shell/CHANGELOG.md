@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.10](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.22.9...@kong-ui/konnect-app-shell@0.22.10) (2023-02-07)
+
+
+### 🐛 Bug Fixes
+
+* **konnect-app-shell:** export userIsAuthorizedForRoute ([1b9201d](https://github.com/Kong/shared-ui-components/commit/1b9201d6d30f0d60b445ffc6b2578b0f01dbd376))
+
+
+
+
+
 ## [0.22.9](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.22.8...@kong-ui/konnect-app-shell@0.22.9) (2023-02-07)
 
 
