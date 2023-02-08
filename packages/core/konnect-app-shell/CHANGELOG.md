@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.4](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.23.3...@kong-ui/konnect-app-shell@0.23.4) (2023-02-08)
+
+
+### 🐛 Bug Fixes
+
+* **konnect-app-shell:** update router config ([#553](https://github.com/Kong/shared-ui-components/issues/553)) ([36d535e](https://github.com/Kong/shared-ui-components/commit/36d535e7278c5aa0b87adc35a2c5ddfe78039e68))
+
+
+
+
+
 ## [0.23.3](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.23.2...@kong-ui/konnect-app-shell@0.23.3) (2023-02-08)
 
 
