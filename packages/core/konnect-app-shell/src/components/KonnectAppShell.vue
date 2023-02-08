@@ -74,7 +74,7 @@
     />
 
     <GlobalErrorMessage
-      v-if="state.error.show"
+      v-else-if="state.error.show"
       :header="state.error.header"
       :text="state.error.text"
       :trace-id="state.error.traceId"
@@ -160,9 +160,9 @@ const props = defineProps({
 const emit = defineEmits<{
   (e: 'ready'): void,
   (e: 'update:active-geo', geo: Geo | undefined): void,
-  (e: 'update:error', error: { show: boolean, header?: string, text?: string }): void,
-  (e: 'update:loading', isLoading: boolean): void,
   (e: 'update:session', session: DeepReadonly<Session>): void,
+  (e: 'update:loading', isLoading: boolean): void,
+  (e: 'update:error', error: GlobalError): void,
 }>()
 
 const slots = useSlots()

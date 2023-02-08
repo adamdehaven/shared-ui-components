@@ -62,7 +62,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watchEffect } from 'vue'
+import { computed, ref, watchEffect, onBeforeMount, onBeforeUnmount } from 'vue'
 import composables from '../../composables'
 import type { GeoSelectOptionItem, Geo } from '../../types'
 import { KonnectLogo } from '../icons'
@@ -112,6 +112,22 @@ const submitForm = async (): Promise<void> => {
   // Emit the selected geo
   emit('select', activeGeo)
 }
+
+onBeforeMount(() => {
+  // Center the form in the layout
+  const appLayoutContent = document?.querySelector('.kong-ui-app-layout-content')
+  if (appLayoutContent) {
+    appLayoutContent.classList.add('is-full-height')
+  }
+})
+
+onBeforeUnmount(() => {
+  // Remove the added class
+  const appLayoutContent = document?.querySelector('.kong-ui-app-layout-content')
+  if (appLayoutContent) {
+    appLayoutContent.classList.remove('is-full-height')
+  }
+})
 </script>
 
 <style lang="scss" scoped>
@@ -163,5 +179,11 @@ const submitForm = async (): Promise<void> => {
 .button-loading-spinner {
   margin-right: 8px;
   padding-right: 0;
+}
+</style>
+
+<style lang="scss">
+.kong-ui-app-layout-content.is-full-height {
+  height: 100%;
 }
 </style>

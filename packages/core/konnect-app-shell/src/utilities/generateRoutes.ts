@@ -66,9 +66,15 @@ export default function generateRoutes({
       path: '/',
       name: 'konnect-app-shell-root',
       children: [
+        // Add a root path equal to the `konnectPrimaryRouteKey` (e.g. '/mesh-manager') to prevent a router error if no geo is active
+        {
+          path: konnectPrimaryRouteKey,
+          name: 'konnect-app-shell-app-root',
+          component: {},
+        },
         {
           path: routeType === 'geo' ? '/:geo([a-z]{2})' : '/global',
-          name: routeType === 'geo' ? 'geo' : 'global',
+          name: routeType,
           redirect: rootRedirectRoute.value, // Redirect to app home/landing page
           children: [
             {
@@ -78,7 +84,7 @@ export default function generateRoutes({
               children: [
                 {
                   path: '',
-                  name: 'konnect-app-shell-app-root',
+                  name: `konnect-app-shell-${routeType}-app-root`,
                   redirect: rootRedirectRoute.value, // Redirect to app home/landing page
                   children: [
                     ...routes,
