@@ -73,14 +73,14 @@
       type="fullscreen-kong"
     />
 
-    <GlobalError
+    <GlobalErrorMessage
       v-if="state.error.show"
       :header="state.error.header"
       :text="state.error.text"
       :trace-id="state.error.traceId"
     >
       <slot name="error" />
-    </GlobalError>
+    </GlobalErrorMessage>
 
     <GeoSelectForm
       v-else-if="!state.activeGeo"
@@ -104,7 +104,7 @@ import composables from '../composables'
 import { GLOBAL_GEO_NAME } from '../constants'
 import type { KonnectAppShellSidebarItem, Geo, KonnectAppShellState, Session, GlobalError } from '../types'
 import GeoSelectForm from './forms/GeoSelectForm.vue'
-import GlobalError from './errors/GlobalError.vue'
+import GlobalErrorMessage from './errors/GlobalErrorMessage.vue'
 import GeoSwitcher from './forms/GeoSwitcher.vue'
 import HelpDropdown from './forms/HelpDropdown.vue'
 import '@kong-ui-public/app-layout/dist/style.css'
