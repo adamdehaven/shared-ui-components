@@ -94,7 +94,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref, watch, watchEffect, PropType, onBeforeMount, nextTick, useSlots, DeepReadonly } from 'vue'
+import { computed, reactive, ref, watch, watchEffect, PropType, onBeforeMount, nextTick, useSlots, DeepReadonly, onErrorCaptured } from 'vue'
 import { AppLayout } from '@kong-ui-public/app-layout'
 import { GruceLogo, KonnectLogo } from './icons'
 import type { SidebarSecondaryItem } from '@kong-ui-public/app-layout'
@@ -199,7 +199,7 @@ const hideSidebar = computed((): boolean => {
   return false
 })
 
-const toggleErrorState = (show: boolean, header: string, text?: string, traceId?: string): void => {
+const toggleErrorState = ({ show, header, text, traceId }: ErrorProp): void => {
   state.error.header = header
   state.error.text = text || ''
   state.error.traceId = traceId || ''
@@ -314,7 +314,12 @@ onBeforeMount(async () => {
 
   // If there is an error fetching the app config, show the error UI
   if (kauthInitError.value) {
-    toggleErrorState(true, t('errors.app_config.header'), t('errors.app_config.text'))
+    toggleErrorState({
+      show: true,
+      header: t('errors.app_config.header'),
+      text: t('errors.app_config.text'),
+      traceId: '',
+    })
     state.loading = false
 
     return
@@ -331,7 +336,12 @@ onBeforeMount(async () => {
 
   // If there is an error fetching the session data, show the error UI
   if (sessionError.value) {
-    toggleErrorState(true, t('errors.session.data?.header'), t('errors.session.data?.text'))
+    toggleErrorState({
+      show: true,
+      header: t('errors.session.data?.header'),
+      text: t('errors.session.data?.text'),
+      traceId: '',
+    })
     state.loading = false
 
     return
@@ -381,6 +391,21 @@ onBeforeMount(async () => {
 
   // Emit a ready event - this should ALWAYS be last
   emit('ready')
+})
+
+// Catch errors that propagate from child components and send them to DataDog
+onErrorCaptured((error, instance, info) => {
+  // Send error to DataDog
+  if (error && globalThis.DD_RUM) {
+    globalThis.DD_RUM.addError(error, {
+      source: 'KonnectAppShell',
+      childComponent: instance?.$options.__name,
+      info,
+    })
+  }
+
+  // Return false to prevent the error escaping this top-level boundary
+  return false
 })
 </script>
 
