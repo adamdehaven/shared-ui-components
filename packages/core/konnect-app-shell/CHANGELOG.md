@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.23.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.22.17...@kong-ui/konnect-app-shell@0.23.0) (2023-02-08)
+
+
+### ✨ Features
+
+* **konnect-app-shell:** add error boundary [KHCP-5515] ([#550](https://github.com/Kong/shared-ui-components/issues/550)) ([db8b6f2](https://github.com/Kong/shared-ui-components/commit/db8b6f20bf9a857132badc835b601da7728e405d))
+
+
+
+
+
 ## [0.22.17](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.22.16...@kong-ui/konnect-app-shell@0.22.17) (2023-02-08)
 
 
