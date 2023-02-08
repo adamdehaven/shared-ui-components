@@ -86,7 +86,7 @@ export default function generateRoutes({
                       path: '404',
                       name: 'not-found',
                       alias: ':pathMatch(.*)*',
-                      component: () => import('../components/errors/GlobalError.vue'),
+                      component: () => import('../components/errors/GlobalErrorMessage.vue'),
                       props: {
                         header: t('errors.not_found.header'),
                         text: t('errors.not_found.text'),
