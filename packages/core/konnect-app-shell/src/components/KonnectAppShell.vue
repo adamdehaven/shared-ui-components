@@ -102,7 +102,7 @@ import { KonnectGlobalSearch } from '@kong-ui/konnect-global-search'
 import { useWindow } from '@kong-ui/core'
 import composables from '../composables'
 import { GLOBAL_GEO_NAME } from '../constants'
-import type { KonnectAppShellSidebarItem, Geo, KonnectAppShellState, Session, ErrorProp } from '../types'
+import type { KonnectAppShellSidebarItem, Geo, KonnectAppShellState, Session, GlobalError } from '../types'
 import GeoSelectForm from './forms/GeoSelectForm.vue'
 import GlobalError from './errors/GlobalError.vue'
 import GeoSwitcher from './forms/GeoSwitcher.vue'
@@ -146,9 +146,9 @@ const props = defineProps({
   },
   // Show or hide the error state
   error: {
-    type: Object as PropType<ErrorProp>,
+    type: Object as PropType<GlobalError>,
     // Should always default to show = false and empty values
-    default: (): ErrorProp => ({
+    default: (): GlobalError => ({
       show: false,
       header: '',
       text: '',
@@ -199,7 +199,7 @@ const hideSidebar = computed((): boolean => {
   return false
 })
 
-const toggleErrorState = ({ show, header, text, traceId }: ErrorProp): void => {
+const toggleErrorState = ({ show, header, text, traceId }: GlobalError): void => {
   state.error.header = header
   state.error.text = text || ''
   state.error.traceId = traceId || ''

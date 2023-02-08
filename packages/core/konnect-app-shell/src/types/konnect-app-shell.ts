@@ -1,6 +1,6 @@
 import type { Geo } from './geo'
 
-export interface ErrorProp {
+export interface GlobalError {
   /** Show or hide the global error state */
   show: boolean
   /** The error header text */
@@ -14,5 +14,5 @@ export interface ErrorProp {
 export interface KonnectAppShellState {
   activeGeo: Geo | undefined
   loading: boolean
-  error: ErrorProp
+  error: GlobalError
 }
