@@ -17,9 +17,14 @@ jobs:
       - name: Unpublish
         run: |
           toUnpublish=()
+
+          prNumber="${{github.event.number}}"
+
           for pkgName in $(lerna ls --l --json|jq -r '.[].name')
           do
-            prNumber="${{github.event.number}}"
+
+            npm dist-tag rm "${pkgName}" "pr-${prNumber}" || true
+
             for pkgVersion in $(npm view ${pkgName} --json|jq -r .versions|grep "\-pr.${prNumber}."|sed 's/,//'| sed 's/\"//g')
             do
               toUnpublish+=("${pkgName}@${pkgVersion}")
