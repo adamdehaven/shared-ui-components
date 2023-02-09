@@ -25,5 +25,12 @@
   ],
   "encrypted": {
     "npmrc": "wcFMA/xDdHCJBTolAQ//UptcuhPm+2aFoWursCSKffqBIOAX84ytXMm2/YW5h/rxmBR5Xpm6Pu9Cu2At61frDkjmm14ji2OVBnx5gU8zQjZAzZbTmtYLGvrEaVFnRtwibDCeCwP3yh+55KlcelZoYHQnEWlbS2XJH9xBf4kfctz2kr+uheVIwpKABoMnjVTZ8gvLiDHRNzPmt/1+u1w1Vmll69ajHV30MCan4/Y+6tVxaAXkUdofwhx8hoUwABU38JjOHdyTZsggEq9gCSRC3p1k7guAJsl+inuLv4NWdgRV30Fk+/X3Z0SihwHgfa+UnTgvv95ERZbnZQb/uVdgMTcsG2tSZ0gF3lFurt4wsi4suSm+hvkKL9MeXsoLTNT7uYiyPXo+aDnzOlSVgI0Q9Nsv6F7c1k3h5PPiBN0L4dsdwpOzi0UmU7+pTJbPw4XBTX1B0MdKkt+k0O1u1/lXOApcRsch7IlMXljX+0JytVJ7+lvxPoXYTi66469fkoSCxQPibNVHcNEIVZee+eYwdN6gIokJd4sMTKDGc4FyPuqPiAMkVqxpGJBJ209A8kyOTwghV/U95fJ+p/IPTSHn8KQMMA5QnxQnHqCu7FG6BLsmoSSnLKdy2t6j7hoHxeb731J9ovXnXel5GTAyAarELNE0fQsk6mCeJ/YkA+r5Y8SDY2ndgaguzMvKqNFVFHrSkAFp9EOFACXZSm+ixRq3acYZc1gxZRfdMWSKfYGCE+r9eT5f83/lx8j3HSn61kTlvHF92b4VGfWcK+w8Jq/qkqR1f0KPT//UwUITuW0Q4gAJBGYLl3eXaF7L6wLTtXdbL2Gsb4qXy0wMSOXR0mmwX7czMwXBojIZQ+iq6xW0LvpaV1QOi4Gs9eROnObooRygfQ"
-  }
+  },
+  "stabilityDays": 14,
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["^@kong\/", "^@kong-ui\/", "^@kong-ui-public\/"],
+      "stabilityDays": 0
+    }
+  ]
 }
