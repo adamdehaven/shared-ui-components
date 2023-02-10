@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.2](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.8.1...@kong-ui/cli@0.8.2) (2023-02-10)
+
+
+### ♻️ Chores
+
+* **cli:** add entities workspace and cli docs ([#564](https://github.com/Kong/shared-ui-components/issues/564)) ([b581f86](https://github.com/Kong/shared-ui-components/commit/b581f86fa7cf5c9522e3b44c134003c10b6d9925))
+
+
+
+
+
 ## [0.8.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.8.0...@kong-ui/cli@0.8.1) (2023-02-07)
 
 
