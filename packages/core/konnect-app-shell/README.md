@@ -223,7 +223,7 @@ The `@ready` event is emitted when the `KonnectAppShell` component has properly 
 1. Fetched and stored the user's top-level permissions from KAuth
 1. Initialized DataDog RUM, if present
 1. Initialized Launch Darkly and fetched the feature flags for the user
-1. Set the active Konnect region (geo) based on the user organization's entitled regions (and conditionally forcing the user to choose a region, if applicable)
+1. Set the active Konnect region (geo) based on the user's organization's entitled regions (and conditionally forcing the user to choose a region, if applicable)
 1. Unblock props so that the host app may now control the state of the component
 1. Cleared the global loading state
 
@@ -237,7 +237,7 @@ Until the `@ready` event has been emitted, you should assume the following:
 - Permissions have not yet been fetched
 - The Konnect active region has not been determined
 - The `KonnectAppShell` is overriding `props` passed by the host application (e.g. `loading`)
-- Launch Darkly feature flags are not yet availalbe for evaluation
+- Launch Darkly feature flags are not yet available for evaluation
 
 #### `update:active-geo`
 
