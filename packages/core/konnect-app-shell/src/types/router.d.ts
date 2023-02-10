@@ -1,8 +1,13 @@
+import { RouteLocationNormalized } from 'vue-router'
 import type { LaunchDarklyFeatureFlag } from './index'
 
 // Define potential route.meta interfaces from Konnect Apps
 declare module 'vue-router' {
   interface RouteMeta {
+    /**
+     * @prop {string} title Route title
+     */
+    title?: string
     /**
      * @prop {LaunchDarklyFeatureFlag[]} Array of Launch Darkly feature flags
      */
@@ -12,20 +17,12 @@ declare module 'vue-router' {
      */
     enterpriseOnly?: boolean
     /**
-     * @prop {boolean} preventReadonlyUser Prevent `#root-readonly` users from accessing the route (e.g. 'quick-start' routes are Org Admin only)
+     * @prop {boolean} preventReadonlyUser Prevent users with only `#root-readonly` permissions from accessing the route
      */
     preventReadonlyUser?: boolean
     /**
-     * @prop {boolean} full Fullpage route component
+     * @prop {(route: RouteLocationNormalized) => Promise<boolean>} isAuthorized Asynchronous function to determine if a user should have access to the route. Must utilize the `canUserAccess` function imported from `@kong-ui/konnect-app-shell`
      */
-    full?: boolean
-    /**
-     * @prop {string} title Route title
-     */
-    title?: string
-    /**
-     * @prop {boolean} excludeAsBreadcrumb Exclude the route from breadcrumbs
-     */
-    excludeAsBreadcrumb?: boolean
+    isAuthorized?: (route: RouteLocationNormalized) => Promise<boolean>
   }
 }

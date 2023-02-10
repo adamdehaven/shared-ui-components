@@ -1,9 +1,14 @@
 export interface Geo {
-  code: string // geo code, e.g. 'us'
-  name: string // Display name of the geo from en.json
-  userCanSelect: boolean // default to true
-  isActive: boolean // default to false
-  isActiveOverride: boolean // default to false
+  /** The region code. Example: 'us' */
+  code: string
+  /** The display name of the region */
+  name: string
+  /** Is the region selectable by the user. Currently, this property is unused and is always set to `true`. */
+  userCanSelect: boolean
+  /** Is this the active region */
+  isActive: boolean
+  /** Is this region an active override of the normally active region */
+  isActiveOverride: boolean
 }
 
 export interface GeoSelectOptionItem {

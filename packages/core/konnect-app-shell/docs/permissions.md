@@ -1,9 +1,10 @@
 # Evaluating Permissions
 
-> Permissions in the `@kong-ui/konnect-app-shell` are evaluated in alignment with the accepted [Guarding Konnect UI with KRN permissions madr](https://github.com/Kong/kong-madr/blob/main/docs/adr/0021-guarding-konnect-ui-with-krn-permissions.md).
+Permissions in the `@kong-ui/konnect-app-shell` are evaluated in alignment with the accepted [Guarding Konnect UI with KRN permissions madr](https://github.com/Kong/kong-madr/blob/main/docs/adr/0021-guarding-konnect-ui-with-krn-permissions.md).
 
 - [Summary](#summary)
-  - [A single function determines authorization](#a-single-function-determines-authorization)
+  - [A single function evaluates authorization: `canUserAccess`](#a-single-function-evaluates-authorization-canuseraccess)
+- [Guarding routes with the `userIsAuthorizedForRoute`](#guarding-routes-with-the-userisauthorizedforroute)
 - [Guarding UI with the AuthValidate component](#guarding-ui-with-the-authvalidate-component)
   - [Evaluate multiple permissions with a dictionary of `krnArgs`](#evaluate-multiple-permissions-with-a-dictionary-of-krnargs)
   - [Evaluate a single permission](#evaluate-a-single-permission)
@@ -19,21 +20,59 @@ If a match is found, the user is granted access to the resource (route, componen
 
 If a match is not found, and there is no krn stored in memory matching the requested krn `resourcePath`, the composable requests the associated permission object from the KAuth API. If a match is then returned, the user is granted access to the resource. If a match is not found, the requested krn (valid or not) is stored in memory with an empty `actions` array to prevent future queries to the API for the given `resourcePath`. In other words, once a krn is stored in memory, it is not fetched again until the user logs out or the app rehydrates (i.e. hard page refresh).
 
-### A single function determines authorization
+### A single function evaluates authorization: `canUserAccess`
 
-The `canUserAccess(krnArgs)` function in the permissions composable holds the core authorization logic which is used by the `AuthValidate` component to guard the UI and other functionality.
+The `canUserAccess` function in the permissions composable holds the core authorization logic which is used by [route guards](./router.md#route-guards) as well as the [`AuthValidate` component](#guarding-ui-with-the-authvalidate-component) to guard the UI and other functionality.
 
-This `async` function returns a `Promise<boolean>` that can be used to allow or disallow access based on a user's assigned permissions. **This function must be called asynchronously as it also handles fetching missing KRNs from the KAuth API.**
+```ts
+const canUserAccess = async (requestedPermission: RequestedPermissionKrn): Promise<boolean>
 
-> Note that the `canUserAccess` function will always return `false` until the `@ready` event is emitted from the `KonnectAppShell.vue` component.
+interface RequestedPermissionKrn {
+  /** The service the krn is a member of, defined in the Kauth YAML file. Examples: 'konnect', 'accounts' */
+  service: string
+  /** The action required to access the route, including the leading hash `#`. Examples: '#retrieve', '#create' */
+  action: string
+  /** The krn resource the user needs to access. This is everything after the organization id in the krn resource. Examples: `services/{UUID}`, `null` */
+  resourcePath: string | null
+}
+```
 
-This function is exposed directly to consuming applications and can be imported as shown here:
+The function can be directly imported in the host application to use where applicable.
 
 ```ts
 import { canUserAccess } from '@kong-ui/konnect-app-shell'
 ```
 
-Proper use-cases for this function include guarding routes via the `meta.isAuthorized` property.
+This `async` function accepts a `RequestedPermissionKrn` object as its only parameter and returns a `Promise<boolean>` that can be used to allow or disallow access based on a user's assigned permissions. **This function must be called asynchronously as it also handles fetching missing KRNs from the KAuth API.**
+
+If a krn resource is already stored in memory, the function will evaluate the requested permission against the krn with matching parameters and resolve the `Promise` by returning a `boolean` indicating if the user has the proper permission.
+
+If no stored krns match the given params, the function will asynchronously request the user's matching permissions from the KAuth API, and then resolve the `Promise` accordingly.
+
+If the user does not have any matching permissions returned from KAuth, the requested krn resource will be stored in memory with an empty array of actions to prevent attempting to fetch the same permission again during the user's current session (meaning, until the user refreshes the page, etc.)
+
+> Note that the `canUserAccess` function will always return `false` until the `@ready` event is emitted from the `KonnectAppShell.vue` component.
+
+Proper use-cases for this function include guarding routes via the `meta.isAuthorized` property, evaluating if a user is an Organization Admin, etc. [More details on guarding routes can be viewed here](./router.md).
+
+#### Example: Checking for Organization Admin
+
+As an example, here's how you can check if a user is an Organization Admin utilizing the `canUserAccess` utility function:
+
+```ts
+import { canUserAccess } from '@kong-ui/konnect-app-shell'
+import { ref, onBeforeMount } from 'vue'
+
+const userIsOrgAdmin = ref<boolean>(false)
+
+onBeforeMount(async () => {
+  userIsOrgAdmin.value = await canUserAccess({ service: 'accounts', action: '#root', resourcePath: null })
+})
+```
+
+## Guarding routes with the `userIsAuthorizedForRoute`
+
+[See the documentation for `userIsAuthorizedForRoute` in the Router Configuration Requirements](./router.md#routerbeforeeach-in-the-host-application)
 
 ## Guarding UI with the AuthValidate component
 
@@ -90,8 +129,8 @@ In this example, I have defined a dictionary with two keys: `isAllowedCreate` an
   <!-- Show card if list permissions eval to true -->
   <KCard v-if="isAllowedRetrieve" title="This is the title" body="Body content"/>
 
-  <!-- Show paragraph if BOTH permissions eval to true -->
-  <p v-if="isAllowedCreate && isAllowedRetrieve">This paragraph requires both booleans to eval to true.</p>
+  <!-- Show paragraph if EITHER permission evaluates to true -->
+  <p v-if="isAllowedCreate || isAllowedRetrieve">This paragraph requires either boolean to eval to true.</p>
 
 </AuthValidate>
 ```

@@ -39,7 +39,7 @@ export default function useAppSidebar() {
       key: 'runtime-manager',
       to: `${activeGeoPath.value}runtime-manager/`,
       icon: 'runtimes',
-      isAuthorized: async () => canUserAccess({ service: 'konnect', action: '#list', resourcePath: 'runtimegroups' }, false),
+      isAuthorized: async () => await canUserAccess({ service: 'konnect', action: '#list', resourcePath: 'runtimegroups' }, false),
     },
     {
       name: 'Mesh Manager',
@@ -53,21 +53,21 @@ export default function useAppSidebar() {
       key: 'servicehub',
       to: `${activeGeoPath.value}servicehub/`,
       icon: 'serviceHub',
-      isAuthorized: async () => canUserAccess({ service: 'konnect', action: '#list', resourcePath: 'services' }, false),
+      isAuthorized: async () => await canUserAccess({ service: 'konnect', action: '#list', resourcePath: 'services' }, false),
     },
     {
       name: 'Dev Portal',
       key: 'portal',
       to: `${activeGeoPath.value}portal/`,
       icon: 'devPortal',
-      isAuthorized: async () => canUserAccess({ service: 'konnect', action: '#list', resourcePath: 'portals' }, false),
+      isAuthorized: async () => await canUserAccess({ service: 'konnect', action: '#list', resourcePath: 'portals' }, false),
     },
     {
       name: 'Analytics',
       key: 'analytics',
       to: `${activeGeoPath.value}analytics/`,
       icon: 'vitalsChart',
-      isAuthorized: async () => canUserAccess({ service: 'konnect', action: '#retrieve', resourcePath: 'reports' }, false),
+      isAuthorized: async () => await canUserAccess({ service: 'konnect', action: '#retrieve', resourcePath: 'reports' }, false),
     },
   ]))
 

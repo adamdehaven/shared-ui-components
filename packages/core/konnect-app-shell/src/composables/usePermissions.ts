@@ -197,6 +197,7 @@ export default function usePermissions() {
       // or if meta.isAuthorized evaluates to true (via boolean or calling the function)
       try {
         allowAccess = to.meta?.isAuthorized === undefined ||
+        // @ts-ignore
         to.meta?.isAuthorized === true ||
         (typeof to.meta?.isAuthorized === 'function' && await to.meta?.isAuthorized(originalToRoute) === true)
       } catch (err) {
