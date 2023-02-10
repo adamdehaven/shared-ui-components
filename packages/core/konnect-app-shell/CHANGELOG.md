@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.12](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.23.11...@kong-ui/konnect-app-shell@0.23.12) (2023-02-10)
+
+
+### 📚 Documentation
+
+* **konnect-app-shell:** fix typo ([e97aa43](https://github.com/Kong/shared-ui-components/commit/e97aa437feac9237cd1b4ed265485944f71d0319))
+
+
+
+
+
 ## [0.23.11](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.23.10...@kong-ui/konnect-app-shell@0.23.11) (2023-02-10)
 
 
