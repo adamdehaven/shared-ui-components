@@ -18,7 +18,7 @@ Evaluating permissions requires passing a single parameter comprised of krn argu
 
 If a match is found, the user is granted access to the resource (route, component, etc.).
 
-If a match is not found, and there is no krn stored in memory matching the requested krn `resourcePath`, the composable requests the associated permission object from the KAuth API. If a match is then returned, the user is granted access to the resource. If a match is not found, the requested krn (valid or not) is stored in memory with an empty `actions` array to prevent future queries to the API for the given `resourcePath`. In other words, once a krn is stored in memory, it is not fetched again until the user logs out or the app rehydrates (i.e. hard page refresh).
+If a match is not found, and there is no krn stored in memory matching the requested krn resource, the composable requests the associated permission object from the KAuth API. If a match is then returned, the user is granted access to the resource. If a match is not found, the requested krn (valid or not) is stored in memory with an empty `actions` array to prevent future queries to the API for the given `resourcePath`. In other words, once a krn is stored in memory, it is not fetched again until the user logs out or the app rehydrates (i.e. hard page refresh).
 
 ### A single function evaluates authorization: `canUserAccess`
 
