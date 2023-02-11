@@ -1,6 +1,6 @@
 {
   "name": "@kong-ui/konnect-app-shell",
-  "version": "0.23.13",
+  "version": "0.23.14",
   "type": "module",
   "main": "./dist/konnect-app-shell.umd.js",
   "module": "./dist/konnect-app-shell.es.js",
