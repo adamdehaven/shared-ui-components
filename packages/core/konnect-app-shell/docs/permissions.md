@@ -14,7 +14,7 @@ Permissions in the `@kong-ui/konnect-app-shell` are evaluated in alignment with 
 
 ## Summary
 
-Evaluating authorization requires passing a single parameter comprised of krn arguments which the composable utilizes to attempt to match the requested krn and action against the krn resources and available action(s) returned from the KAuth API.
+Evaluating permissions requires passing a single parameter comprised of krn arguments which the composable utilizes to attempt to match the requested krn and action against the krn resources and available action(s) returned from the KAuth API.
 
 If a match is found, the user is granted access to the resource (route, component, etc.).
 
