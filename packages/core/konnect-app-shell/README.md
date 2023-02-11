@@ -5,7 +5,7 @@ The all-in-one wrapper component for Konnect UI microfrontend applications.
 - [Features](#features)
 - [Requirements](#requirements)
   - [General requirements](#general-requirements)
-  - [Router Configuration](#router-configuration)
+  - [Required Router Configuration](#required-router-configuration)
   - [Evaluating Permissions](#evaluating-permissions)
   - [Evaluating Feature Flags](#evaluating-feature-flags)
 - [Usage](#usage)
@@ -53,7 +53,7 @@ The all-in-one wrapper component for Konnect UI microfrontend applications.
 - The host application **must** keep this package reasonably up-to-date.
 - The host application should **only** utilize the permissions helpers provided by this package (i.e. `canUserAccess` and `userIsAuthorizedForRoute` utilities and `AuthValidate` component)
 
-### Router Configuration
+### Required Router Configuration
 
 [Read more about the router configuration requirements here.](docs/router.md)
 
@@ -292,6 +292,79 @@ See the documentation in [Evaluating Feature Flags](docs/feature-flags.md).
 <details>
 
 <summary>:sparkles: Click to view the expanded usage example :sparkles:</summary>
+
+```html
+<!-- App.vue -->
+
+<template>
+  <KonnectAppShell
+    :error="globalError"
+    :sidebar-items="sidebarItems"
+    @ready="appShellReady"
+    @update:active-geo="activeGeoChanged"
+    @update:session="sessionChanged"
+  />
+</template>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { evaluateFeatureFlag } from '@kong-ui/konnect-app-shell'
+import type { KonnectAppShellSidebarItem, Geo, Session } from '@kong-ui/konnect-app-shell'
+import { useGlobalErrorStore } from '@/stores'
+import { storeToRefs } from 'pinia'
+
+const route = useRoute()
+
+const sessionChanged = (sessionData: Session) => {
+  // Update the data in the session store when emitted from KonnectAppShell
+}
+
+const activeGeoChanged = (geo: Geo) => {
+  // Update the data in the geo store when emitted from KonnectAppShell
+}
+
+// Initialize the global error store
+const globalErrorStore = useGlobalErrorStore()
+const { error: globalError } = storeToRefs(globalErrorStore)
+
+// Construct your app's secondary sidebar navigation items
+const sidebarItems = computed((): KonnectAppShellSidebarItem | null => {
+  if (!activeGeo.value) {
+    return null
+  }
+
+  // Determine if the sidebar item is active if any matched route.name evaluates to the `routeName` string passed
+  const active = (routeName: string): boolean => !!route?.matched.some(({ name }) => name === routeName)
+
+  return {
+    parentKey: 'runtime-manager', // KonnectPrimaryRouteKey
+    label: String(route.params.service || ''), // Set the label from the sidebar store
+    items: route.params.service // Only render the child items if the required route param is present
+      ? [
+        {
+          name: 'Example Child Page',
+          to: {
+            name: 'service-show',
+            params: {
+              service: route.params.service, // Must pass any required route params
+            },
+          },
+          active: active('service-show'),
+        },
+      ]
+      : [],
+  }
+})
+
+const appShellReady = (): void => {
+  console.log('Konnect App Shell @ready event fired')
+
+  // Example of evaluating a Feature Flag - only available once the @ready event has been emitted from KonnectAppShell
+  const multiGeoEnabled: boolean = evaluateFeatureFlag('kp-14-multi-geo', false)
+}
+</script>
+```
 
 </details>
 
