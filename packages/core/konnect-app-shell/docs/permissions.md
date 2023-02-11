@@ -1,6 +1,6 @@
 # Evaluating Permissions
 
-Permissions in the `@kong-ui/konnect-app-shell` are evaluated in alignment with the accepted [Guarding Konnect UI with KRN permissions madr](https://github.com/Kong/kong-madr/blob/main/docs/adr/0021-guarding-konnect-ui-with-krn-permissions.md).
+Permissions in the `@kong-ui/konnect-app-shell` are evaluated in alignment with the accepted [Guarding Konnect UI with KRN permissions ADR](https://github.com/Kong/kong-madr/blob/main/docs/adr/0021-guarding-konnect-ui-with-krn-permissions.md).
 
 - [Summary](#summary)
   - [A single function evaluates authorization: `canUserAccess`](#a-single-function-evaluates-authorization-canuseraccess)
