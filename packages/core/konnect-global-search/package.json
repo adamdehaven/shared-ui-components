@@ -1,6 +1,6 @@
 {
   "name": "@kong-ui/konnect-global-search",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "type": "module",
   "main": "./dist/konnect-global-search.umd.js",
   "module": "./dist/konnect-global-search.es.js",
