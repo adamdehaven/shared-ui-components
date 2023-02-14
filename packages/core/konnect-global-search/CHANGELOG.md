@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.18](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-global-search@0.1.17...@kong-ui/konnect-global-search@0.1.18) (2023-02-14)
+
+
+### 🚨 Tests
+
+* **global-search:** add component tests [khcp-6064] ([#562](https://github.com/Kong/shared-ui-components/issues/562)) ([734bddd](https://github.com/Kong/shared-ui-components/commit/734bddd3c5a19db26632264772a26bbee53bfb42))
+
+
+
+
+
 ## [0.1.17](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-global-search@0.1.16...@kong-ui/konnect-global-search@0.1.17) (2023-02-11)
 
 
