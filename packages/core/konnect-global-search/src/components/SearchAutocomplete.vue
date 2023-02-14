@@ -19,12 +19,15 @@
         />
       </template>
       <template #loading>
-        <p class="loading-search">
+        <p
+          class="loading-search"
+          data-testid="global-search-loading"
+        >
           {{ t('global_search.loading') }}
         </p>
       </template>
       <template #empty>
-        <div>
+        <div :data-testid="error ? 'global-search-error-state' : 'global-search-empty-state'">
           <p class="no-search-result">
             {{ error ? t('global_search.errors.general.label') : t('global_search.no_results.label') }}
           </p>
@@ -94,7 +97,14 @@ const debounceSearch = (initialQuery: string, delay = 300) => {
     clearTimeout(timeout)
     timeout = setTimeout(async () => {
       query.value = q
-      await fetchSearchResults(props.selectedOption, query.value)
+      try {
+        loadingSelect.value = true
+        await fetchSearchResults(props.selectedOption, query.value)
+      } catch (err) {
+        throw new Error('Could not fetch url')
+      } finally {
+        loadingSelect.value = false
+      }
     }, delay)
   }
 
@@ -296,12 +306,6 @@ const filteredSuggestions = computed((): any[] => {
 
   return filtered
 })
-
-watch(filteredSuggestions, (newVal, oldVal) => {
-  if (newVal !== oldVal) {
-    loadingSelect.value = false
-  }
-}, { deep: true })
 
 // Watch the selected option. When it changes, init a new search request to update the results list
 watch(() => props.selectedOption, () => {
