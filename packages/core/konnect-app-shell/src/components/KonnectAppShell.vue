@@ -4,7 +4,7 @@
     :sidebar-bottom-items="!hideSidebar ? bottomItems : undefined"
     :sidebar-hidden="hideSidebar"
     :sidebar-profile-items="!hideSidebar ? profileItems : undefined"
-    :sidebar-profile-name="!hideSidebar ? 'App User' : undefined"
+    :sidebar-profile-name="sidebarProfileName"
     :sidebar-top-items="!hideSidebar ? topItems : undefined"
   >
     <template #notification>
@@ -198,6 +198,7 @@ const hideSidebar = computed((): boolean => {
 
   return false
 })
+const sidebarProfileName = computed((): string => !hideSidebar.value && session.data.user?.full_name ? session.data.user.full_name : t('sidebar.profileName'))
 
 const toggleErrorState = ({ show, header, text, traceId }: GlobalError): void => {
   state.error.header = header

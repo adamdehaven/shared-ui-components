@@ -9,6 +9,9 @@
       "copy_orgid_success": "Organization ID copied to clipboard"
     }
   },
+  "sidebar": {
+    "profileName": "Konnect User"
+  },
   "geo": {
     "available_geos": {
       "us": "US (North America)",
