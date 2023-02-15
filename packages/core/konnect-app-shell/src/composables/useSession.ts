@@ -85,10 +85,10 @@ export default function useSession() {
       // Store the session data
       await saveSessionData(session.data)
 
-      const { fetchTopLevelPermissions } = composables.usePermissions()
-      // Fetch the top-level permissions in order to evaluate the sidebar items
+      const { fetchInitialPermissions } = composables.usePermissions()
+      // Fetch the initial permissions in order to evaluate the sidebar items
       // Fetching here avoids some content delay when rendering the sidebar
-      await fetchTopLevelPermissions()
+      await fetchInitialPermissions()
 
       // Initialize DataDog with the actual user id
       globalThis.DD_RUM && globalThis.DD_RUM.onReady(() => {

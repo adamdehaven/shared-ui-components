@@ -416,27 +416,28 @@ export default function usePermissions() {
     return matchingResources.length > 0
   }
 
-  const fetchTopLevelPermissions = async (): Promise<void> => {
+  /**
+   * Fetch the initial permissions for the user's session
+   * @param topLevelOnly Should we only request the top-level permissions from the API? Defaults to false
+   */
+  const fetchInitialPermissions = async (topLevelOnly = false): Promise<void> => {
     const { getActiveGeo } = useGeo()
     const activeGeo = getActiveGeo({ allowOverride: false })?.code
     const { kAuthApi } = useKAuthApi()
 
-    try {
-      // Fetch top-level user permissions for the active geo; catch any errors so the app doesn't crash
-      const { data: { data: userPermissions } } = await kAuthApi.value.me.meAPIRetrievePermissions('', '', true, [], activeGeo).catch((error) => {
-        setTraceIdFromError(error)
+    // Fetch top-level user permissions for the active geo; catch any errors so the app doesn't crash
+    const { data: { data: userPermissions } } = await kAuthApi.value.me.meAPIRetrievePermissions('', '', topLevelOnly, [], activeGeo).catch((error) => {
+      setTraceIdFromError(error)
 
-        // Return an empty array
-        return { data: { data: [] } }
-      })
+      console.error('usePermissions(fetchInitialPermissions): could not fetch top-level permissions', error)
 
-      await addKrns({
-        krns: userPermissions as KrnFromApi[] || [],
-      })
-    } catch (err) {
-      // TODO: handle error
-      console.error('usePermissions(fetchTopLevelPermissions): could not fetch top-level permissions', err)
-    }
+      // Return an empty array
+      return { data: { data: [] } }
+    })
+
+    await addKrns({
+      krns: userPermissions as KrnFromApi[] || [],
+    })
   }
 
   // Computed helpers
@@ -447,7 +448,7 @@ export default function usePermissions() {
     userIsAuthorizedForRoute,
     addKrns,
     canUserAccess,
-    fetchTopLevelPermissions,
+    fetchInitialPermissions,
     // Export computed helpers
     userHasSomePermissions,
     isOrgAdmin,
