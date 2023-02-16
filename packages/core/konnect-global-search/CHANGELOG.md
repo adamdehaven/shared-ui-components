@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.24](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-global-search@0.1.23...@kong-ui/konnect-global-search@0.1.24) (2023-02-16)
+
+
+### 🐛 Bug Fixes
+
+* **styles:** breakpoints ([23d35b3](https://github.com/Kong/shared-ui-components/commit/23d35b3263943e6e9d9a3656139745345c607e72))
+* **styles:** breakpoints ([5b82527](https://github.com/Kong/shared-ui-components/commit/5b8252783d3476720bdf9be84da360f33e5d8e22))
+
+
+
+
+
 ## [0.1.23](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-global-search@0.1.22...@kong-ui/konnect-global-search@0.1.23) (2023-02-16)
 
 
