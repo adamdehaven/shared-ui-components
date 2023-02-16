@@ -457,7 +457,7 @@ export default {
   align-items: center;
   display: none;
 
-  @media (min-width: $viewport-lg) {
+  @media (min-width: $viewport-md) {
     display: flex;
   }
 }
