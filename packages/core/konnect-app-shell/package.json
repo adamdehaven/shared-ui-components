@@ -54,7 +54,7 @@
     "vue-router": "^4.1.6"
   },
   "dependencies": {
-    "@kong-ui-public/app-layout": "^0.12.19",
+    "@kong-ui-public/app-layout": "^0.12.20",
     "@kong-ui-public/i18n": "^0.3.0",
     "@kong-ui/core": "workspace:^0.10.1",
     "@kong-ui/konnect-global-search": "workspace:^0.1.26",
