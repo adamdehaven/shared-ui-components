@@ -54,11 +54,11 @@
     "lodash": "^4.17.21"
   },
   "peerDependencies": {
-    "@kong/kongponents": "^8.26.2",
+    "@kong/kongponents": "^8.27.0",
     "vue": "^3.2.47"
   },
   "devDependencies": {
-    "@kong/kongponents": "^8.26.2",
+    "@kong/kongponents": "^8.27.0",
     "@types/lodash": "^4.14.191",
     "pug": "^3.0.2"
   }
