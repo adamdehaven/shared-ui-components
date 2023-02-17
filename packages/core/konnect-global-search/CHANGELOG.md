@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.28](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-global-search@0.1.27...@kong-ui/konnect-global-search@0.1.28) (2023-02-17)
+
+
+### ♻️ Chores
+
+* **deps:** update dependency [@kong](https://github.com/kong)/kongponents to ^8.26.1 ([#583](https://github.com/Kong/shared-ui-components/issues/583)) ([6914a5c](https://github.com/Kong/shared-ui-components/commit/6914a5c6c4e25f17ce9a9bd09ab98a92bd847df8))
+
+
+
+
+
 ## [0.1.27](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-global-search@0.1.26...@kong-ui/konnect-global-search@0.1.27) (2023-02-16)
 
 
