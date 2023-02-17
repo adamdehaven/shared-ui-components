@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.3](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.8.2...@kong-ui/cli@0.8.3) (2023-02-17)
+
+
+### 📚 Documentation
+
+* **konnect-app-shell:** add documentation [KHCP-5675] ([#552](https://github.com/Kong/shared-ui-components/issues/552)) ([1d6c629](https://github.com/Kong/shared-ui-components/commit/1d6c6298655e6d35816ca74a4999165ffb6ae2b0))
+
+
+### ♻️ Chores
+
+* add export ([deff3f9](https://github.com/Kong/shared-ui-components/commit/deff3f9de542a631e26b711fa27af1bc9726681b))
+
+
+
+
+
 ## [0.8.2](https://github.com/Kong/shared-ui-components/compare/@kong-ui/cli@0.8.1...@kong-ui/cli@0.8.2) (2023-02-10)
 
 
