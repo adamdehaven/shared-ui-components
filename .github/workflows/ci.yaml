@@ -185,7 +185,7 @@ jobs:
 
           git checkout ${{ github.head_ref }}
 
-          lerna version prerelease --preid ${preid} --allow-branch ${{ github.head_ref }} --conventional-prerelease --yes --amend --no-changelog
+          lerna version prerelease --preid ${preid} --allow-branch ${{ github.head_ref }} --conventional-prerelease --yes --amend
 
           npm_instructions=""
           for pkg in $(pnpm --stream --filter "${{needs.install-dependencies.outputs.filter}}" publish  --no-git-checks --access restricted --report-summary --tag "${tag}" | grep "+ "| sed 's/+ //')
