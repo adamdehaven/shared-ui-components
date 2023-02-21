@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.31](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-global-search@0.1.30...@kong-ui/konnect-global-search@0.1.31) (2023-02-21)
+
+**Note:** Version bump only for package @kong-ui/konnect-global-search
+
+
+
+
+
 ## [0.1.30](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-global-search@0.1.29...@kong-ui/konnect-global-search@0.1.30) (2023-02-17)
 
 
