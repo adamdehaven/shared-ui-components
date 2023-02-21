@@ -204,6 +204,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Provide preview link info
+        if: ${{ env.npm_instructions != '' }}
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           header: pr_preview_consumption
