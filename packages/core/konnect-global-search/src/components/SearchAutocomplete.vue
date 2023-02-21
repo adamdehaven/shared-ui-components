@@ -1,5 +1,12 @@
 <template>
   <div class="global-search">
+    <div class="global-search-icon">
+      <KIcon
+        color="var(--kong-ui-konnect-global-search-secondary-color, var(--steel-300, #a3b6d9))"
+        icon="search"
+        size="20"
+      />
+    </div>
     <KSelect
       appearance="select"
       autosuggest
@@ -101,7 +108,7 @@ const debounceSearch = (initialQuery: string, delay = 300) => {
         loadingSelect.value = true
         await fetchSearchResults(props.selectedOption, query.value)
       } catch (err) {
-        throw new Error('Could not fetch url')
+        throw new Error('Could not fetch search results')
       } finally {
         loadingSelect.value = false
       }
@@ -321,17 +328,41 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-
 .global-search {
+  border-left: 1px solid var(--black-10, rgba(0, 0, 0, 0.1));
+  padding-left: 12px;
+  position: relative;
   width: 100%;
 
-  // Requirement from Design
-  .kong-icon-chevronDown {
-    display: none !important;
+  .global-search-icon {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    left: 12px;
+    line-height: 1;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    z-index: 1;
   }
 
-  .k-select {
-    max-width: 635px;
+  :deep(.k-select) {
+    .k-select-input {
+      --KInputColor: var(--kong-ui-konnect-global-search-input-color, var(--white, #fff));
+      --KInputPlaceholderColor: var(--kong-ui-konnect-global-search-secondary-color, var(--steel-300, #a3b6d9));
+      background-color: transparent;
+      border: none;
+
+      &.select-input-container > .kong-icon.kong-icon-chevronDown {
+        // Requirement from Design
+        display: none !important;
+      }
+
+      .k-input {
+        background-color: transparent;
+        padding-left: 32px;
+      }
+    }
   }
 
   // Hiding it for better user experience otherwise the button flashes visible during the KSelectItem selection toggle; can't use display: none since we must be able to simulate a click
@@ -351,28 +382,28 @@ onMounted(() => {
     }
   }
 
-  .loading-search {
+  .loading-search,
+  .no-search-result {
     font-size: 16px;
+    line-height: 1.1;
+    margin: 0;
+    padding: 12px;
+  }
+
+  .loading-search {
     font-weight: 500;
-    line-height: 8px;
-    margin-left: 12px;
-    margin-top: 16px;
   }
 
   .no-search-result {
-    font-size: 16px;
     font-weight: 600;
-    line-height: 8px;
-    margin-bottom: 20px;
-    margin-left: 12px;
-    margin-top: 24px;
+    padding-bottom: 0;
   }
 
   .try-again-search {
     font-size: 13px;
     font-weight: 400;
-    line-height: 8px;
-    margin-left: 12px;
+    line-height: 1.2;
+    padding: 0 12px;
   }
 }
 </style>

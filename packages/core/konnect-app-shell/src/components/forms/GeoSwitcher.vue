@@ -191,11 +191,30 @@ const onGeoChange = (item: NavbarDropdownMenuItem): void => {
 @import "../../styles/variables";
 
 .geo-switcher {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 216px;
   --KButtonFontSize: 14px;
 
   // Decrease font-size when on mobile
   @media screen and (min-width: $viewport-sm) {
+    min-width: 236px;
     --KButtonFontSize: unset;
+  }
+
+  :deep(.k-button) {
+    &.k-dropdown-btn {
+      --KButtonOutlineColor: var(--steel-300, #A3B6D9);
+      --KButtonOutlineActive: rgba(255, 255, 255, .1);
+      background-color: transparent;
+      color: var(--steel-300, #A3B6D9);
+    }
+  }
+
+  :deep(.k-popover.k-dropdown-popover) {
+    margin-top: 0 !important;
+    position: relative;
+    top: 9px !important;
   }
 
   .label-container {

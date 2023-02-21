@@ -43,7 +43,16 @@ const resultSelected = (res: SelectedSearchItem) => {
 </script>
 
 <style lang="scss" scoped>
+
 .sandbox-container {
+  color: white;
   padding: 20px;
+  background: linear-gradient(180deg, #001740 0%, #073382 100%);
+}
+</style>
+
+<style lang="scss">
+body, html, #app, .sandbox-container {
+  height: 100%;
 }
 </style>

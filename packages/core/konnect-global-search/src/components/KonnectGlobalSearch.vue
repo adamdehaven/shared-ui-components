@@ -4,8 +4,8 @@
     class="kong-ui-konnect-global-search"
   >
     <div class="search-container">
-      <div class="search-icon" />
       <NavbarDropdownMenu
+        class="dropdown-search-filter"
         data-testid="search-dropdown-toggle"
         :options="searchOptions"
         @change="changeSearchOption"
@@ -100,25 +100,30 @@ const optionToIndexMapping = (option: NavbarDropdownMenuItem) => {
 .kong-ui-konnect-global-search {
   --KInputBorder: transparent;
   --KInputDisabledBackground: var(--white);
+  background-color: var(--kong-ui-konnect-global-search-background-color, rgba(#fff, 0.1));
+  border-radius: 100px;
   display: flex;
-  margin-left: 12px!important;
   width: 100%;
 
   .search-container {
     display: flex;
-    margin-left: 34px;
     padding: 0;
+    padding-right: 16px;
     width: 100%;
 
-    .search-icon {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M6 12c-3.3137085 0-6-2.6862915-6-6s2.6862915-6 6-6 6 2.6862915 6 6c0 1.29583043-.410791 2.49571549-1.1092521 3.47653436l1.2305724 1.23057244 2.8232632 2.8338633c.3897175.3911808.3947266 1.0192147.005164 1.4087774-.3868655.3868655-1.014825.3873148-1.4087774-.005164l-2.8338633-2.8232632-1.23057244-1.2305724C8.49571549 11.589209 7.29583043 12 6 12zm4-6c0-2.209139-1.790861-4-4-4S2 3.790861 2 6s1.790861 4 4 4 4-1.790861 4-4z'/%3E%3C/svg%3E");
-      background-position: 0 50%;
-      background-repeat: no-repeat;
-      // generated using https://codepen.io/sosuke/pen/Pjoqqp
-      filter: invert(31%) sepia(11%) saturate(2713%) hue-rotate(180deg) brightness(88%) contrast(85%);
-      float: left;
-      margin: 8px 12px 8px 0;
-      min-width: 16px;
+    .dropdown-search-filter {
+      :deep(.dropdown-trigger) {
+        .k-button {
+          background-color: transparent;
+          border-bottom-right-radius: 0;
+          border-top-right-radius: 0;
+          color: var(--kong-ui-konnect-global-search-filter-color, var(--steel-200, #dae3f2));
+          font-weight: 500;
+          height: 44px;
+          padding-right: var(--spacing-sm, 12px);
+          --KButtonOutlineColor: var(--kong-ui-konnect-global-search-secondary-color, var(--steel-300, #a3b6d9));
+        }
+      }
     }
   }
 }

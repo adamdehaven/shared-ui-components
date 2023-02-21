@@ -10,40 +10,39 @@
     <template #notification>
       <slot name="notification" />
     </template>
-    <template #navbar>
+    <template #navbar-mobile-logo>
+      <a href="/">
+        <GruceLogo />
+        <div class="logo-title">
+          <KonnectLogo theme="dark" />
+        </div>
+      </a>
+    </template>
+    <template #navbar-logo>
       <a
         v-if="hideSidebar"
-        class="navbar-full-logo"
+        class="navbar-logo-desktop"
         href="/"
       >
         <GruceLogo />
         <div class="logo-title">
-          <KonnectLogo theme="light" />
+          <KonnectLogo theme="dark" />
         </div>
       </a>
+    </template>
+    <template #navbar-left>
+      <slot name="navbar" />
+    </template>
+    <template #navbar-center>
       <KonnectGlobalSearch
         v-if="appConfig?.api.v1.konnect && state.activeGeo?.code && session.exists"
         :active-geo-code="state.activeGeo?.code"
         :search-api-url="searchApiUrl"
       />
-      <slot name="navbar" />
-      <div class="navbar-right-actions">
-        <GeoSwitcher
-          global
-        />
-        <HelpDropdown />
-      </div>
     </template>
-    <template #navbar-mobile-logo>
-      <a href="/">
-        <GruceLogo />
-        <div
-          class="logo-title"
-          :class="{ 'sidebar-is-hidden': hideSidebar }"
-        >
-          <KonnectLogo theme="light" />
-        </div>
-      </a>
+    <template #navbar-right>
+      <GeoSwitcher global />
+      <HelpDropdown />
     </template>
     <template #sidebar-header>
       <div
@@ -424,10 +423,6 @@ export default {
   display: none;
   padding-left: 16px;
 
-  &.sidebar-is-hidden {
-    display: flex;
-  }
-
   @media (min-width: $viewport-sm) {
     display: flex;
   }
@@ -452,8 +447,8 @@ export default {
   }
 }
 
-// This logo only displays when the sidebar is hidden because of an error
-.navbar-full-logo {
+// This logo only displays on larger screens when the sidebar is hidden
+.navbar-logo-desktop {
   align-items: center;
   display: none;
 
@@ -461,8 +456,14 @@ export default {
     display: flex;
   }
 }
-.navbar-right-actions {
-  align-items: center;
-  display: flex;
+
+:deep(.kong-ui-konnect-global-search) {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 500px;
+
+  @media (max-width: ($viewport-lg - 1px)) {
+    display: none;
+  }
 }
 </style>

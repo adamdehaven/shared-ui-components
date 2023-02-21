@@ -218,7 +218,7 @@ $errorColor: #f00;
 
   &.required {
     > label:after {
-      color: Red;
+      color: red;
       content: "*";
       font-size: 14px;
       font-weight: normal;

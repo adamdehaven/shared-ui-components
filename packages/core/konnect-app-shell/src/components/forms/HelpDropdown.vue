@@ -11,7 +11,7 @@
     <template #default>
       <KButton class="help-dropdown-btn">
         <KIcon
-          color="var(--grey-500)"
+          color="var(--steel-300, #A3B6D9)"
           icon="help"
           size="24"
         />
@@ -165,7 +165,7 @@ const onCopyOrgId = async (copyToClipboard: (str: string) => Promise<boolean>): 
 
 .help-dropdown {
   .k-button {
-    background-color: transparent;
+    background-color: transparent !important;
     border: none;
     box-shadow: none !important;
     cursor: pointer;
@@ -218,11 +218,11 @@ const onCopyOrgId = async (copyToClipboard: (str: string) => Promise<boolean>): 
   svg {
     margin-right: 0 !important;
   }
-}
 
-.help-dropdown-popover.k-popover.dropdown-popover {
-  margin-top: 0 ! important;
-  position: relative;
-  top: -5px !important;
+  :deep(.help-dropdown-popover.k-popover.k-dropdown-popover) {
+    margin-top: 0 !important;
+    position: relative;
+    top: 6px !important;
+  }
 }
 </style>

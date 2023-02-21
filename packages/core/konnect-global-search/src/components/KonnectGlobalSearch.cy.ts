@@ -49,7 +49,7 @@ describe('<KonnectGlobalSearch />', () => {
 
     cy.get('.kong-ui-konnect-global-search').should('exist')
     // search icon
-    cy.get('.kong-ui-konnect-global-search .search-container .search-icon').should('be.visible')
+    cy.get('.kong-ui-konnect-global-search .search-container .global-search-icon').should('be.visible')
     // search select input
     cy.getTestId('filter-select').should('be.visible')
     // filter category dropdown

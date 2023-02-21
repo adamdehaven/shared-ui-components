@@ -5,11 +5,12 @@ Konnect global search UI.
 - [Features](#features)
 - [Requirements](#requirements)
 - [Usage](#usage)
-- [Install](#install)
+  - [Install](#install)
   - [Props](#props)
   - [Events](#events)
   - [Usage Example](#usage-example)
-  - [Local Development](#local-development)
+- [CSS Variables](#css-variables)
+- [Local Development](#local-development)
 
 ## Features
 
@@ -22,7 +23,7 @@ Konnect global search UI.
 
 ## Usage
 
-## Install
+### Install
 
 Install the component in your host application
 
@@ -87,6 +88,17 @@ const resultSelected = (res: SelectedSearchItem) => {
 </script>
 ```
 
-### Local Development
+## CSS Variables
+
+You can customize some of the `KonnectGlobalSearch.vue` CSS by adding CSS variables to your app. In most use-cases, this shouldn't be necessary.
+
+Variable | Description | Default
+---------|----------|---------
+`--kong-ui-konnect-global-search-background-color` | The background-color of the search UI | `transparent`
+`--kong-ui-konnect-global-search-input-color` | The color of the search input text | `var(--white, #fff)`
+`--kong-ui-konnect-global-search-filter-color` | The color of the filter dropdown button text | `var(--steel-200, #dae3f2)`
+`--kong-ui-konnect-global-search-secondary-color` | The color of the search and caret icons, and placeholder text | `var(--steel-200, #dae3f2)`
+
+## Local Development
 
 In order to run the local App Sandbox, you must have a valid auth token in your browser cookies from the search endpoint.
