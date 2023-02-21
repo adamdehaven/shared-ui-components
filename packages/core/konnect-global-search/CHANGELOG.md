@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-global-search@0.1.32...@kong-ui/konnect-global-search@0.2.0) (2023-02-21)
+
+
+### Features
+
+* **konnect-app-shell:** implement unification ux ([#582](https://github.com/Kong/shared-ui-components/issues/582)) ([b22bc8e](https://github.com/Kong/shared-ui-components/commit/b22bc8e0b858a87e4c0aee3eefb03e7b5ff69cd2))
+
+
+
+
+
 ## [0.1.32](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-global-search@0.1.31...@kong-ui/konnect-global-search@0.1.32) (2023-02-21)
 
 

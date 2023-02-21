@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.24.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.23.39...@kong-ui/konnect-app-shell@0.24.0) (2023-02-21)
+
+
+### Features
+
+* **konnect-app-shell:** implement unification ux ([#582](https://github.com/Kong/shared-ui-components/issues/582)) ([b22bc8e](https://github.com/Kong/shared-ui-components/commit/b22bc8e0b858a87e4c0aee3eefb03e7b5ff69cd2))
+
+
+
+
+
 ## [0.23.39](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.23.38...@kong-ui/konnect-app-shell@0.23.39) (2023-02-21)
 
 
