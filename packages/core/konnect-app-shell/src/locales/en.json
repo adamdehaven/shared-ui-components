@@ -7,7 +7,8 @@
       "goto_quick_start": "Quick Start",
       "copy_orgid_tooltip": "Copy Organization ID",
       "copy_orgid_success": "Organization ID copied to clipboard"
-    }
+    },
+    "github_star_tooltip": "Star Kong Gateway on GitHub"
   },
   "sidebar": {
     "profileName": "Konnect User"

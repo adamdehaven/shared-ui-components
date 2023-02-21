@@ -43,6 +43,11 @@
     <template #navbar-right>
       <GeoSwitcher global />
       <HelpDropdown />
+      <GithubStar
+        v-if="session.data.organization?.isFree"
+        :tooltip-text="t('navbar.github_star_tooltip')"
+        :url="externalLinks.kongGatewayRepoUrl"
+      />
     </template>
     <template #sidebar-header>
       <div
@@ -101,13 +106,16 @@ import { KonnectGlobalSearch } from '@kong-ui/konnect-global-search'
 import { useWindow } from '@kong-ui/core'
 import composables from '../composables'
 import { GLOBAL_GEO_NAME } from '../constants'
+import externalLinks from '../external-links'
 import type { KonnectAppShellSidebarItem, Geo, KonnectAppShellState, Session, GlobalError } from '../types'
 import GeoSelectForm from './forms/GeoSelectForm.vue'
 import GlobalErrorMessage from './errors/GlobalErrorMessage.vue'
 import GeoSwitcher from './forms/GeoSwitcher.vue'
 import HelpDropdown from './forms/HelpDropdown.vue'
+import { GithubStar } from '@kong-ui-public/misc-widgets'
 import '@kong-ui-public/app-layout/dist/style.css'
 import '@kong-ui/konnect-global-search/dist/style.css'
+import '@kong-ui-public/misc-widgets/dist/style.css'
 
 const { useSession, useAppSidebar, useGeo, useI18n, useKAuthApi, useAppConfig } = composables
 const props = defineProps({

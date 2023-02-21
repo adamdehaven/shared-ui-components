@@ -4,4 +4,5 @@ export default {
   platformStatusURL: 'https://kong.statuspage.io/',
   konnectSupportURL: 'https://support.konghq.com/support/s/',
   pricing: 'https://konghq.com/pricing',
+  kongGatewayRepoUrl: 'http://github.com/kong/kong',
 }

@@ -56,6 +56,7 @@
   "dependencies": {
     "@kong-ui-public/app-layout": "0.13.3",
     "@kong-ui-public/i18n": "^0.3.0",
+    "@kong-ui-public/misc-widgets": "^0.2.4",
     "@kong-ui/core": "workspace:^0.10.1",
     "@kong-ui/konnect-global-search": "workspace:^0.2.1",
     "@kong/kauth-client-typescript-axios": "^0.1769.0",
