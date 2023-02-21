@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.24.1...@kong-ui/konnect-app-shell@0.25.0) (2023-02-21)
+
+
+### Features
+
+* **konnect-app-shell:** add github star [KHCP-6199] ([#596](https://github.com/Kong/shared-ui-components/issues/596)) ([114d43a](https://github.com/Kong/shared-ui-components/commit/114d43a5d86858a0a95703479bc448ef54275103))
+
+
+
+
+
 ## [0.24.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.24.0...@kong-ui/konnect-app-shell@0.24.1) (2023-02-21)
 
 **Note:** Version bump only for package @kong-ui/konnect-app-shell
