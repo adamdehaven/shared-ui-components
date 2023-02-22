@@ -47,6 +47,15 @@ const props = defineProps({
   },
 })
 
+const escapeUnsafeCharacters = (unescapedCodeString: string): string => {
+  return unescapedCodeString
+    .replace(/&/g, '&amp')
+    .replace(/'/g, '&apos')
+    .replace(/"/g, '&quot')
+    .replace(/>/g, '&gt')
+    .replace(/</g, '&lt')
+}
+
 const entitySourceMapping = {
   [KonnectSearchIndexType.ServicePackage]: props.entity.source.name,
   [KonnectSearchIndexType.ServiceVersion]: props.entity.source.service_package?.name + ' › ' + props.entity.source.version,
@@ -55,7 +64,8 @@ const entitySourceMapping = {
   [KonnectSearchIndexType.ServiceVersionDocuments]: props.entity.source.service_version?.version + ' › ' + props.entity.source.path,
   [KonnectSearchIndexType.Developers]: props.entity.source.email,
 }
-const entityMatchingSource = entitySourceMapping[props.entity.index] || props.entity.source.id
+// Replace unsafe HTML
+const entityMatchingSource = escapeUnsafeCharacters(entitySourceMapping[props.entity.index] || props.entity.source.id)
 
 const entityTypeMapping = {
   [KonnectSearchIndexType.ServicePackage]: 'Service',
