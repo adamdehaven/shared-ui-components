@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.4](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.25.3...@kong-ui/konnect-app-shell@0.25.4) (2023-02-22)
+
+
+### Bug Fixes
+
+* **geo:** fallback to uuidv4 ([3705ded](https://github.com/Kong/shared-ui-components/commit/3705dedd4f38032677e31fa33ff341dc8a40374c))
+
+
+
+
+
 ## [0.25.3](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.25.2...@kong-ui/konnect-app-shell@0.25.3) (2023-02-22)
 
 
