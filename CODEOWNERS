@@ -27,9 +27,10 @@
 # Core packages
 /packages/core/core/ @adamdehaven @ValeryG @jillztom
 /packages/core/konnect-app-shell/ @adamdehaven @ValeryG @jillztom
+/packages/core/forms/ @Leopoldthecoder @sumimakito @Kong/team-core-ui
 
-# Kong Manager Team
-/packages/core/forms/ @Leopoldthecoder @sumimakito
+# Entities packages
+/packages/entities/entities-shared/ @Kong/team-km @Kong/team-core-ui
 
 # Portal packages
 

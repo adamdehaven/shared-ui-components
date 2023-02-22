@@ -1,0 +1,6 @@
+{
+  "deleteModal": {
+    "message": "Are you sure you want to delete this {entityType}?",
+    "messageWithName": "Are you sure you want to delete this {entityType} {entityName}?"
+  }
+}

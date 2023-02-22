@@ -218,6 +218,17 @@ importers:
       vue: 3.2.47
       vue-router: 4.1.6_vue@3.2.47
 
+  packages/entities/entities-shared:
+    specifiers:
+      '@kong-ui-public/i18n': ^0.3.0
+      '@kong/kongponents': ^8.28.0
+      vue: ^3.2.47
+    dependencies:
+      '@kong-ui-public/i18n': 0.3.0_vue@3.2.47
+    devDependencies:
+      '@kong/kongponents': 8.28.0_vue@3.2.47
+      vue: 3.2.47
+
 packages:
 
   /@ampproject/remapping/2.2.0:
@@ -8318,6 +8329,18 @@ packages:
         optional: true
     dependencies:
       debug: 4.3.4
+
+  /follow-redirects/1.15.2_debug@4.3.4:
+    resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dependencies:
+      debug: 4.3.4
+    dev: true
 
   /for-each/0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
