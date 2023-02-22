@@ -3,7 +3,7 @@ import composables from './'
 import { KHCP_GEO_LOCAL_STORAGE_KEY } from '../constants'
 import type { Geo } from '../types'
 import { useWindow } from '@kong-ui/core'
-import { v5 as uuidv5 } from 'uuid'
+import { v4 as uuidv4, v5 as uuidv5 } from 'uuid'
 
 // Initialize these ref(s) outside the function for persistence
 const geos = ref<Geo[]>([])
@@ -21,7 +21,7 @@ export default function useGeo() {
       return `${KHCP_GEO_LOCAL_STORAGE_KEY}-${uuidv5(session.data?.organization.id, session.data?.user.id)}`
     }
 
-    return KHCP_GEO_LOCAL_STORAGE_KEY
+    return `${KHCP_GEO_LOCAL_STORAGE_KEY}-${uuidv5(uuidv4(), uuidv4())}`
   })
 
   /**
