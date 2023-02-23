@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.10](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.25.9...@kong-ui/konnect-app-shell@0.25.10) (2023-02-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kong/kauth-client-typescript-axios to ^0.1772.0 ([#611](https://github.com/Kong/shared-ui-components/issues/611)) ([fb93b55](https://github.com/Kong/shared-ui-components/commit/fb93b559db2563fb615a798707d09dc81c97d0bb))
+
+
+
+
+
 ## [0.25.9](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.25.8...@kong-ui/konnect-app-shell@0.25.9) (2023-02-23)
 
 
