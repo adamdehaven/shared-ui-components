@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.14](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.25.13...@kong-ui/konnect-app-shell@0.25.14) (2023-02-24)
+
+
+### Bug Fixes
+
+* **konnect-app-shell:** session refactor ([#615](https://github.com/Kong/shared-ui-components/issues/615)) ([bd54829](https://github.com/Kong/shared-ui-components/commit/bd54829d56ff34cddc26b365cf1b9350dc395918))
+
+
+
+
+
 ## [0.25.13](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.25.12...@kong-ui/konnect-app-shell@0.25.13) (2023-02-24)
 
 
