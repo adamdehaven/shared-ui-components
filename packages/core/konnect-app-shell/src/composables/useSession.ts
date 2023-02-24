@@ -2,7 +2,7 @@ import { ref, reactive, computed, watch, readonly } from 'vue'
 import type { Ref } from 'vue'
 import { RouteLocationNormalized } from 'vue-router'
 import composables from './'
-import { SESSION_NAME, CYPRESS_USER_SESSION_EXISTS } from '../constants'
+import { SESSION_NAME, CYPRESS_USER_SESSION_EXISTS, HEADER_KONNECT_ACTING_AS, HEADER_KONNECT_FEATURE_SET } from '../constants'
 import type { Session, SessionData, Tier } from '../types'
 import { useWindow } from '@kong-ui/core'
 
@@ -33,7 +33,7 @@ export default function useSession() {
       error.value = false
 
       const [userMe, organizationMe, organizationEntitlements] = await Promise.all([
-        await kAuthApi.value.users.userAPIRetrieveMe(),
+        await kAuthApi.value.v2.me.getUsersMe(),
         await kAuthApi.value.organization.organizationAPIRetrieveCurrentOrganization(),
         await kAuthApi.value.entitlement.entitlementAPIRetrieveCurrentEntitlement(),
       ])
@@ -51,7 +51,7 @@ export default function useSession() {
           preferred_name: userMe?.data?.preferred_name || '',
           is_owner: (!!userMe?.data?.id && (userMe?.data?.id === organizationMe?.data?.owner_id)) || false,
           active: userMe?.data?.active || false,
-          feature_set: userMe?.data?.feature_set || '',
+          feature_set: userMe?.headers && userMe?.headers[HEADER_KONNECT_FEATURE_SET] !== undefined ? userMe.headers[HEADER_KONNECT_FEATURE_SET] : '',
           created_at: userMe?.data?.created_at || '',
           updated_at: userMe?.data?.updated_at || '',
         },
@@ -77,6 +77,8 @@ export default function useSession() {
           isFree: organizationEntitlements?.data?.tier?.name === 'free' || (organizationEntitlements?.data?.tier?.name !== 'enterprise' && organizationEntitlements?.data?.tier?.name !== 'plus'),
           isInTrial: Boolean(organizationEntitlements?.data?.tier?.trial_expires_at),
         },
+        // Set the impersonation state from the response header, fallback to false
+        konnectActAs: userMe?.headers && userMe?.headers[HEADER_KONNECT_ACTING_AS] !== undefined ? userMe.headers[HEADER_KONNECT_ACTING_AS] === 'true' : false,
       }
 
       // Ensure to combine with existing data

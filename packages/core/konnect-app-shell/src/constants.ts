@@ -27,3 +27,8 @@ export const ROOT_READONLY_ALLOWED_ACTIONS = [
 
 /** The localStorage key for Datadog trace ids */
 export const DATADOG_TRACE_ID_LOCALSTORAGE_KEY = 'dd_error_trace_id'
+
+/** KAuth `/users/me` impersonation header */
+export const HEADER_KONNECT_ACTING_AS = 'konnect-acting-as'
+/** KAuth `/users/me` feature_set header */
+export const HEADER_KONNECT_FEATURE_SET = 'konnect-feature-set'

@@ -8,6 +8,23 @@
     :sidebar-top-items="!hideSidebar ? topItems : undefined"
   >
     <template #notification>
+      <KAlert
+        v-if="session.exists && session.data?.konnectActAs"
+        appearance="danger"
+        class="impersonation-banner"
+        data-testid="konnect-impersonation-banner"
+      >
+        <template #alertMessage>
+          <div class="impersonation-banner-message">
+            <KIcon
+              color="var(--red-700, #922021)"
+              icon="teamMember"
+              size="24"
+            />
+            <div>{{ t('notifications.impersonation') }}</div>
+          </div>
+        </template>
+      </KAlert>
       <slot name="notification" />
     </template>
     <template #navbar-mobile-logo>
@@ -346,8 +363,8 @@ onBeforeMount(async () => {
   if (sessionError.value) {
     toggleErrorState({
       show: true,
-      header: t('errors.session.data?.header'),
-      text: t('errors.session.data?.text'),
+      header: t('errors.session.data.header'),
+      text: t('errors.session.data.text'),
       traceId: '',
     })
     state.loading = false
@@ -472,6 +489,29 @@ export default {
 
   @media (max-width: ($viewport-lg - 1px)) {
     display: none;
+  }
+}
+
+.impersonation-banner {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  .impersonation-banner-message {
+    align-items: center;
+    display: flex;
+    font-size: 14px;
+    gap: 16px;
+    justify-content: center;
+
+    @media (min-width: $viewport-sm) {
+      font-size: 16px;
+      gap: 8px;
+    }
+
+    :deep(svg) {
+      display: block;
+    }
   }
 }
 </style>

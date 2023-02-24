@@ -52,6 +52,25 @@ const config = mergeConfig(sharedViteConfig, defineConfig({
         changeOrigin: true,
       },
 
+      // v2 global APIs (proxied)
+      '^/kong-api/v2': {
+        target: 'https://global.api.konghq.tech',
+        rewrite: (path) => (path.replace(/^\/kong-api/, '')),
+        changeOrigin: true,
+        configure: (proxy) => {
+          mutateCookieAttributes(proxy)
+        },
+      },
+
+      // v2 global APIs
+      '^/v2': {
+        target: 'https://global.api.konghq.tech',
+        changeOrigin: true,
+        configure: (proxy) => {
+          mutateCookieAttributes(proxy)
+        },
+      },
+
       '^/(?!(([a-z]{2}|global)/)?(index.ts|App.vue|router.ts|pages|sandbox|mesh-manager|src|node_modules|@vite|@id|@fs))': {
         target: 'https://cloud.konghq.tech',
         changeOrigin: true,

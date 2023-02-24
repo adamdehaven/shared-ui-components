@@ -41,6 +41,8 @@ export interface SessionOrganization {
 
 export interface SessionData {
   user?: SessionUser | null
+  /** Is KAdmin impersonation active */
+  konnectActAs?: boolean
   organization?: SessionOrganization | null
   to?: string | {
     path: string

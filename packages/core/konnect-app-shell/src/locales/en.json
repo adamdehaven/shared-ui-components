@@ -34,6 +34,9 @@
     "tooltipText": "Click to copy",
     "success": "Copied!"
   },
+  "notifications": {
+    "impersonation": "User impersonation is active for your current session"
+  },
   "errors": {
     "routes": {
       "invalidPath": "Route paths should not begin with a leading slash."

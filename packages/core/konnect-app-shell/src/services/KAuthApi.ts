@@ -6,14 +6,18 @@ import {
   EntitlementAPIApi,
   MeAPIApi,
   OrganizationAPIApi,
-  UserAPIApi,
 } from '@kong/kauth-client-typescript-axios'
+import {
+  Configuration as V2Configuration,
+  MeApi as V2MeApi,
+} from '@kong/kauth-client-v2-axios'
 import composables from '../composables'
 import { AUTH_ROUTES } from '../constants'
 import { useWindow } from '@kong-ui/core'
 
 export default class KongAuthApi {
-  private baseUrl: string
+  private v1BaseUrl: string
+  private v2BaseUrl: string
   private failedQueue: Array<any>
   private authErrorCallback: (error: AxiosError<unknown, any>) => void
   // Set the client to public in order to utilize axios with the bound interceptors
@@ -27,23 +31,30 @@ export default class KongAuthApi {
   entitlement: EntitlementAPIApi
   me: MeAPIApi
   organization: OrganizationAPIApi
-  users: UserAPIApi
+  /**
+   * KAuth v2 APIs
+   * All V2 APIs should be exposed within the `v2: {}` object
+   * ===================================
+   */
+  v2: {
+    me: V2MeApi
+  }
 
-  constructor(baseUrl: string = '/kauth') {
+  constructor(v1BaseUrl: string = '/kauth', v2BaseUrl: string = '') {
     const { i18n: { t } } = composables.useI18n()
     const { session, isRefreshing } = composables.useSession()
     const { setTraceIdFromError } = composables.useApiError()
     const win = useWindow()
 
-    this.baseUrl = baseUrl || ''
+    this.v1BaseUrl = v1BaseUrl || ''
+    this.v2BaseUrl = v2BaseUrl || ''
     this.failedQueue = []
     this.client = axios.create({ withCredentials: true, timeout: 30000 })
     this.authErrorCallback = async (err: AxiosError<unknown, any>) => {
-      // Redirect to unauthorized page if 403 response
+      // Show global unauthorized error if 403 response
       if (err?.response?.status === 403) {
         // TODO: Handle unauthorized error
-        console.log('authErrorCallback: 403', err)
-        // router.push({ name: 'unauthorized' })
+        console.error('KonnectAppShell: authErrorCallback: 403', err)
 
         return
       }
@@ -52,10 +63,10 @@ export default class KongAuthApi {
         return
       }
 
-      // If 404 error from API, redirect to the 404 page and return
+      // If 404 error from API, show global not found error
       if (err?.response?.status === 404) {
         // TODO: Handle not found error
-        console.log('authErrorCallback: 404', err)
+        console.error('KonnectAppShell: authErrorCallback: 404', err)
 
         return
       }
@@ -65,8 +76,6 @@ export default class KongAuthApi {
       if (err && pathArray && pathArray.length > 1 && !AUTH_ROUTES.includes(pathArray[1])) {
         // Destroy the session
         await session.destroy(currentPath)
-        // Redirect the user to the login page to reauthenticate
-        win.setLocationAssign('/login?logout=true')
       }
     }
 
@@ -160,7 +169,12 @@ export default class KongAuthApi {
 
     // KAuth v1 API baseConfig
     const baseConfig = new Configuration({
-      basePath: this.baseUrl,
+      basePath: this.v1BaseUrl,
+    })
+
+    // KAuth v2 API baseConfig
+    const baseConfigV2 = new V2Configuration({
+      basePath: this.v2BaseUrl,
     })
 
     // KAuth v1 APIs
@@ -168,7 +182,11 @@ export default class KongAuthApi {
     this.entitlement = new EntitlementAPIApi(baseConfig, baseConfig.basePath, this.client)
     this.me = new MeAPIApi(baseConfig, baseConfig.basePath, this.client)
     this.organization = new OrganizationAPIApi(baseConfig, baseConfig.basePath, this.client)
-    this.users = new UserAPIApi(baseConfig, baseConfig.basePath, this.client)
+
+    // KAuth v2 APIs
+    this.v2 = {
+      me: new V2MeApi(baseConfigV2, baseConfigV2.basePath, this.client),
+    }
   }
 
   private processQueue(shouldProceed = true) {

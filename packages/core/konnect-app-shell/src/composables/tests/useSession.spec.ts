@@ -21,10 +21,12 @@ describe('useSession', async () => {
       env: 'production',
       api: {
         v1: {
+          konnect: '/konnect-api',
           kauth: '/kauth',
         },
         v2: {
           global: '',
+          geo: '',
         },
       },
       launchDarkly: {
@@ -34,20 +36,6 @@ describe('useSession', async () => {
     })
 
     vi.spyOn(kAuthApi, 'value', 'get').mockReturnValue({
-      // @ts-ignore
-      users: {
-        userAPIRetrieveMe: () => new Promise((resolve) => resolve({
-          data: {
-            id: userId,
-            email: 'user@example.com',
-            full_name: 'Ready Player One',
-            active: true,
-            created_at: '',
-            preferred_name: 'Player1',
-            feature_set: '',
-          },
-        } as AxiosResponse)),
-      },
       // @ts-ignore
       organization: {
         organizationAPIRetrieveCurrentOrganization: () => new Promise((resolve) => resolve({
@@ -90,6 +78,21 @@ describe('useSession', async () => {
         meAPIRetrievePermissions: () => new Promise((resolve) => resolve({
           data: [],
         } as AxiosResponse)),
+      },
+      v2: {
+        // @ts-ignore
+        me: {
+          getUsersMe: () => new Promise((resolve) => resolve({
+            data: {
+              id: userId,
+              email: 'user@example.com',
+              full_name: 'Ready Player One',
+              active: true,
+              created_at: '',
+              preferred_name: 'Player1',
+            },
+          } as AxiosResponse)),
+        },
       },
     })
 
