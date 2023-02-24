@@ -118,6 +118,8 @@ export default function useSession() {
        */
       // TODO: Ensure you only want to destroy if 401 error
       if ([401, 403].includes(err.response?.status)) {
+        // log for debugging
+        console.warn('fetchSessionData', err)
         forceAuthentication.value = true
         await destroy(win.getLocationPathname())
       } else {
