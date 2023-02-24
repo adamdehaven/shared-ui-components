@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.18](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.25.17...@kong-ui/konnect-app-shell@0.25.18) (2023-02-24)
+
+
+### Bug Fixes
+
+* **session:** log 401 errors ([a5ad62c](https://github.com/Kong/shared-ui-components/commit/a5ad62ce03330cfc9dee0ef247447fefbbe3ad08))
+
+
+
+
+
 ## [0.25.17](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.25.16...@kong-ui/konnect-app-shell@0.25.17) (2023-02-24)
 
 
