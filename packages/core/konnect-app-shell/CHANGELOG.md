@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.11](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.25.10...@kong-ui/konnect-app-shell@0.25.11) (2023-02-24)
+
+
+### Bug Fixes
+
+* **geo-switcher:** update active and focus style ([979248e](https://github.com/Kong/shared-ui-components/commit/979248ead7c681dae3796c12f13153156c0a0b14))
+
+
+
+
+
 ## [0.25.10](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.25.9...@kong-ui/konnect-app-shell@0.25.10) (2023-02-23)
 
 
