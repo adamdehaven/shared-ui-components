@@ -208,15 +208,15 @@ const onGeoChange = (item: NavbarDropdownMenuItem): void => {
       --KButtonOutlineActive: rgba(255, 255, 255, .1);
       background-color: transparent;
       color: var(--steel-300, #A3B6D9);
-    }
 
-    &:focus-visible {
-      outline: 1px solid var(--steel-300, #A3B6D9);
-    }
+      &:focus-visible {
+        outline: 1px solid var(--steel-300, #A3B6D9);
+      }
 
-    &:focus,
-    &:disabled:active {
-      background-color: rgba(255, 255, 255, .1) !important;
+      &:focus,
+      &:disabled:active {
+        background-color: rgba(255, 255, 255, .1) !important;
+      }
     }
   }
 

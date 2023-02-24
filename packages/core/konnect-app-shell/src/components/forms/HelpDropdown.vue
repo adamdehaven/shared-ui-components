@@ -174,8 +174,11 @@ const onCopyOrgId = async (copyToClipboard: (str: string) => Promise<boolean>): 
     top: -3px;
 
     &.help-dropdown-btn {
-      padding-left: 0;
-      padding-right: 0;
+      padding: 0;
+
+      &:focus-visible {
+        outline: 1px solid var(--steel-300, #A3B6D9) !important;
+      }
     }
 
     .kong-icon.kong-icon-help,
@@ -222,7 +225,7 @@ const onCopyOrgId = async (copyToClipboard: (str: string) => Promise<boolean>): 
   :deep(.help-dropdown-popover.k-popover.k-dropdown-popover) {
     margin-top: 0 !important;
     position: relative;
-    top: 6px !important;
+    top: 17px !important;
   }
 }
 </style>
