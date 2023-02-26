@@ -1,6 +1,6 @@
 {
   "name": "@kong-ui/entities-shared",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "main": "./dist/entities-shared.umd.js",
   "module": "./dist/entities-shared.es.js",
