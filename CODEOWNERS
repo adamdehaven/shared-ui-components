@@ -30,7 +30,7 @@
 /packages/core/forms/ @Leopoldthecoder @sumimakito @Kong/team-core-ui
 
 # Entities packages
-/packages/entities/entities-shared/ @Kong/team-km @Kong/team-core-ui
+/packages/entities/ @Kong/team-km @Kong/team-core-ui
 
 # Portal packages
 

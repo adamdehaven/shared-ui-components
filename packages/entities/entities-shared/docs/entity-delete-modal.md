@@ -98,3 +98,4 @@ TypeScript interfaces [are available here](https://github.com/Kong/shared-ui-com
 
 ```ts
 import type { EntityTypes } from '@kong-ui/entities-shared'
+```

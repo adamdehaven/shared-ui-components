@@ -4,3 +4,4 @@
 // Example:
 // export * from './component-types'
 export * from './entity-delete-modal'
+export * from './entity-base-table'

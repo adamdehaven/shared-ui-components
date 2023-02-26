@@ -21,11 +21,13 @@
   },
   "peerDependencies": {
     "@kong/kongponents": "^8.28.0",
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@kong/kongponents": "^8.28.0",
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
   },
   "scripts": {
     "dev": "cross-env USE_SANDBOX=true vite",
@@ -55,6 +57,6 @@
     "extends": "../../../package.json"
   },
   "dependencies": {
-    "@kong-ui-public/i18n": "^0.3.0"
+    "@kong-ui-public/i18n": "^0.3.1"
   }
 }

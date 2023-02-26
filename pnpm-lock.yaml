@@ -222,14 +222,16 @@ importers:
 
   packages/entities/entities-shared:
     specifiers:
-      '@kong-ui-public/i18n': ^0.3.0
+      '@kong-ui-public/i18n': ^0.3.1
       '@kong/kongponents': ^8.28.0
       vue: ^3.2.47
+      vue-router: ^4.1.6
     dependencies:
       '@kong-ui-public/i18n': 0.3.1_vue@3.2.47
     devDependencies:
       '@kong/kongponents': 8.28.0_vue@3.2.47
       vue: 3.2.47
+      vue-router: 4.1.6_vue@3.2.47
 
 packages:
 

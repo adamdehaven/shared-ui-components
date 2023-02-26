@@ -17,6 +17,11 @@ const router = createRouter({
       name: 'entity-delete-modal',
       component: () => import('./pages/EntityDeleteModalPage.vue'),
     },
+    {
+      path: '/entity-base-table',
+      name: 'entity-base-table',
+      component: () => import('./pages/EntityBaseTablePage.vue'),
+    },
   ],
 })
 
