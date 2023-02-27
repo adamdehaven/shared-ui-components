@@ -57,6 +57,7 @@ const resourcePathMatches = (parsedKrn: ParsedKrn, requestedResourcePath: string
 
 export default function usePermissions() {
   const { useGeo, useSession, useLaunchDarkly, useKAuthApi, useApiError } = composables
+  const { kAuthApi, init: initializeKAuth, error: kauthInitError } = useKAuthApi()
   const { setTraceIdFromError } = useApiError()
 
   const parseKrn = (krnResource: string): ParsedKrn => {
@@ -304,6 +305,15 @@ export default function usePermissions() {
    * @returns {Promise<boolean>}
    */
   const canUserAccess = async (requestedPermission: RequestedPermissionKrn, fetchMissingPermissions: boolean = true): Promise<boolean> => {
+    // Ensure the KAuth client is initialized (will do nothing if already initialized)
+    // This will also fetch the `kong-ui/config`
+    await initializeKAuth()
+
+    // If initializing the KAuth config fails, return false to deny access
+    if (kauthInitError.value) {
+      return false
+    }
+
     const { service: requestedService, action, resourcePath: requestedResourcePath } = requestedPermission
 
     // If set, ensure the requestedResourcePath does not include invalid characters in the path
@@ -353,7 +363,6 @@ export default function usePermissions() {
       try {
         const { getActiveGeo } = useGeo()
         const activeGeo = getActiveGeo({ allowOverride: false })?.code
-        const { kAuthApi } = useKAuthApi()
 
         let resourceAndActionMatch
 
@@ -423,7 +432,6 @@ export default function usePermissions() {
   const fetchInitialPermissions = async (topLevelOnly = false): Promise<void> => {
     const { getActiveGeo } = useGeo()
     const activeGeo = getActiveGeo({ allowOverride: false })?.code
-    const { kAuthApi } = useKAuthApi()
 
     // Fetch top-level user permissions for the active geo; catch any errors so the app doesn't crash
     const { data: { data: userPermissions } } = await kAuthApi.value.me.meAPIRetrievePermissions('', '', topLevelOnly, [], activeGeo).catch((error) => {

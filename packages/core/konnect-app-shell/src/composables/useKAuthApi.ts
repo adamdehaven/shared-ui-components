@@ -16,7 +16,7 @@ export default function useKAuthApi() {
     try {
       if (typeof kAuthApi.value === 'undefined') {
 
-        if (!config.value?.api?.v1?.kauth || !config.value?.api?.v2?.global) {
+        if (!config.value || !config.value?.api?.v1?.kauth || !config.value?.api?.v2?.global) {
           // Fetch the kong-ui/config to set the KAuth base URL
           await fetchAppShellConfig()
         }

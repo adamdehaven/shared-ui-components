@@ -1,4 +1,5 @@
-import { vi, describe, expect, it, afterEach } from 'vitest'
+import { vi, describe, expect, it, beforeEach, afterEach } from 'vitest'
+import { ref } from 'vue'
 import { ROOT_READONLY_ALLOWED_ACTIONS } from '../../constants'
 import composables from '../../composables'
 import { flushPromises } from '@vue/test-utils'
@@ -6,6 +7,17 @@ import { flushPromises } from '@vue/test-utils'
 const rootPermissions = ['#root', '#root-readonly']
 
 describe('usePermissions', () => {
+  beforeEach(() => {
+    // @ts-ignore
+    vi.spyOn(composables, 'useKAuthApi').mockImplementation(() => {
+      return {
+        init: () => null,
+        kAuthApi: ref(true),
+        error: ref(false),
+      }
+    })
+  })
+
   afterEach(async () => {
     const { addKrns } = composables.usePermissions()
 
