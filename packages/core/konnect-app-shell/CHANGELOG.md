@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.27.0...@kong-ui/konnect-app-shell@0.27.1) (2023-02-27)
+
+
+### Bug Fixes
+
+* **konnect-app-shell:** init kauth client for canuseraccess [KHCP-6384] ([#633](https://github.com/Kong/shared-ui-components/issues/633)) ([64ca8a1](https://github.com/Kong/shared-ui-components/commit/64ca8a1a4b61e97cc846d2294b9c3d48de68b53a))
+
+
+
+
+
 # [0.27.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.26.1...@kong-ui/konnect-app-shell@0.27.0) (2023-02-27)
 
 
