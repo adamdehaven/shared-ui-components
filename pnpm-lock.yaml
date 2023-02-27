@@ -5,8 +5,8 @@ importers:
   .:
     specifiers:
       '@babel/types': ^7.20.7
-      '@commitlint/cli': ^17.4.2
-      '@commitlint/config-conventional': ^17.4.2
+      '@commitlint/cli': ^17.4.3
+      '@commitlint/config-conventional': ^17.4.3
       '@cypress/code-coverage': ^3.10.0
       '@datadog/datadog-ci': ^2.4.0
       '@digitalroute/cz-conventional-changelog-for-jira': ^7.5.1
@@ -10737,7 +10737,7 @@ packages:
       redent: 3.0.0
       trim-newlines: 3.0.1
       type-fest: 0.18.1
-      yargs-parser: 20.2.4
+      yargs-parser: 20.2.9
     dev: true
 
   /meow/9.0.0:
