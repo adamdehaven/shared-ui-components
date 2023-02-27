@@ -3,13 +3,12 @@ import composables from './'
 import { KHCP_GEO_LOCAL_STORAGE_KEY } from '../constants'
 import type { Geo } from '../types'
 import { useWindow } from '@kong-ui/core'
-import { v4 as uuidv4, v5 as uuidv5 } from 'uuid'
 
 // Initialize these ref(s) outside the function for persistence
 const geos = ref<Geo[]>([])
 
 export default function useGeo() {
-  const { session } = composables.useSession()
+  const { userOrgGeneratedUuid } = composables.useSession()
   // This computed variable will NOT respect an active override
   const activeGeo = computed((): Geo | undefined => geos.value.find((geo: Geo) => geo.isActive === true) || undefined)
   // Must return null if no override is defined
@@ -17,11 +16,7 @@ export default function useGeo() {
 
   // Generate a localStorage key based on the user's org and user id
   const geoLocalStorageKey = computed((): string => {
-    if (session.data?.organization?.id && session.data?.user?.id) {
-      return `${KHCP_GEO_LOCAL_STORAGE_KEY}-${uuidv5(session.data?.organization.id, session.data?.user.id)}`
-    }
-
-    return `${KHCP_GEO_LOCAL_STORAGE_KEY}-${uuidv5(uuidv4(), uuidv4())}`
+    return `${KHCP_GEO_LOCAL_STORAGE_KEY}-${userOrgGeneratedUuid.value}`
   })
 
   /**

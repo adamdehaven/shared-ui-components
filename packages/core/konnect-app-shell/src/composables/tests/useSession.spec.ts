@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, afterEach, beforeAll, SpyInstance } from 'vitest'
 import composables from '../index'
-import { SESSION_NAME } from '../../constants'
+import { SESSION_LOCAL_STORAGE_KEY, SESSION_USER_LOCAL_STORAGE_KEY } from '../../constants'
 import { SessionData } from '../../types'
 import { v4 as uuidv4 } from 'uuid'
 import { AxiosResponse } from 'axios'
@@ -10,7 +10,7 @@ const orgId = uuidv4()
 const orgTier = 'enterprise'
 
 describe('useSession', async () => {
-  const { session, initializeSession } = composables.useSession()
+  const { session, initializeSession, userOrgGeneratedUuid } = composables.useSession()
   const { kAuthApi } = composables.useKAuthApi()
   const windowLocationSpy: SpyInstance<[], Partial<Location>> = vi.spyOn(window, 'location', 'get')
 
@@ -126,20 +126,24 @@ describe('useSession', async () => {
 
     await initializeSession()
 
-    expect(localStorage.getItem(SESSION_NAME)).toBe(btoa(encodeURIComponent(JSON.stringify(session.data))))
+    expect(localStorage.getItem(SESSION_LOCAL_STORAGE_KEY)).toBe(btoa(encodeURIComponent(JSON.stringify(session.data))))
+    expect(localStorage.getItem(SESSION_USER_LOCAL_STORAGE_KEY)).toBe(userOrgGeneratedUuid.value)
   })
 
   it('removes data from localStorage on destroy', async () => {
     // Should start empty
-    expect(localStorage.getItem(SESSION_NAME)).toBe(null)
+    expect(localStorage.getItem(SESSION_LOCAL_STORAGE_KEY)).toBe(null)
+    expect(localStorage.getItem(SESSION_USER_LOCAL_STORAGE_KEY)).toBe(null)
 
     await initializeSession()
 
-    expect(localStorage.getItem(SESSION_NAME)).toBe(btoa(encodeURIComponent(JSON.stringify(session.data))))
+    expect(localStorage.getItem(SESSION_LOCAL_STORAGE_KEY)).toBe(btoa(encodeURIComponent(JSON.stringify(session.data))))
+    expect(localStorage.getItem(SESSION_USER_LOCAL_STORAGE_KEY)).toBe(userOrgGeneratedUuid.value)
 
     await session.destroy()
 
-    expect(localStorage.getItem(SESSION_NAME)).toBe(null)
+    expect(localStorage.getItem(SESSION_LOCAL_STORAGE_KEY)).toBe(null)
+    expect(localStorage.getItem(SESSION_USER_LOCAL_STORAGE_KEY)).toBe(null)
   })
 
   it('stores the user-desired route in localStorage when passed to the destroy method', async () => {
@@ -149,7 +153,7 @@ describe('useSession', async () => {
     const currentPath = '/mesh-manager/child'
     session.destroy(currentPath)
 
-    const sessionDataFromLocalStorage: SessionData = JSON.parse(decodeURIComponent(atob(localStorage.getItem(SESSION_NAME) || '')))
+    const sessionDataFromLocalStorage: SessionData = JSON.parse(decodeURIComponent(atob(localStorage.getItem(SESSION_LOCAL_STORAGE_KEY) || '')))
 
     // @ts-ignore
     expect(sessionDataFromLocalStorage.to?.path).toBe(currentPath)

@@ -31,6 +31,7 @@ export interface SessionOrganization {
   billing_email: string
   owner_id: string
   entitlements: OrganizationEntitlements
+  login_path: string
   created_at: string
   updated_at: string
   isEnterprise: boolean

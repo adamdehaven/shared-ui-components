@@ -2,16 +2,17 @@ import { ref, reactive, computed, watch, readonly } from 'vue'
 import type { Ref } from 'vue'
 import { RouteLocationNormalized } from 'vue-router'
 import composables from './'
-import { SESSION_NAME, CYPRESS_USER_SESSION_EXISTS, HEADER_KONNECT_ACTING_AS, HEADER_KONNECT_FEATURE_SET } from '../constants'
+import { SESSION_LOCAL_STORAGE_KEY, SESSION_USER_LOCAL_STORAGE_KEY, CYPRESS_USER_SESSION_EXISTS, HEADER_KONNECT_ACTING_AS, HEADER_KONNECT_FEATURE_SET } from '../constants'
 import type { Session, SessionData, Tier } from '../types'
 import { useWindow } from '@kong-ui/core'
+import { v4 as uuidv4, v5 as uuidv5 } from 'uuid'
 
 // Initialize these ref(s) outside the function for persistence
 const session = reactive<Session>({
   data: {},
   exists: false,
-  refresh: async () => false,
-  destroy: async () => undefined,
+  refresh: async (): Promise<boolean> => false,
+  destroy: async (): Promise<void> => undefined,
 })
 
 export default function useSession() {
@@ -20,6 +21,37 @@ export default function useSession() {
 
   const { kAuthApi } = composables.useKAuthApi()
   const win = useWindow()
+
+  /**
+   * Generate a v5 UUID comprised of the orgId and userId
+   */
+  const userOrgGeneratedUuid = computed((): string => {
+    if (session.data.organization?.id && session.data.user?.id) {
+      return uuidv5(session.data.organization?.id, session.data.user?.id)
+    }
+
+    return uuidv5(uuidv4(), uuidv4())
+  })
+
+  /**
+   * If the SESSION_USER_LOCAL_STORAGE_KEY localStorage value changes, refresh all browser tabs
+   * @param {StorageEvent} event window storage event
+   * @param {string} localStorageKey The local storage key to check
+   */
+  const refreshOnUserChange = (event: StorageEvent, localStorageKey: string = SESSION_USER_LOCAL_STORAGE_KEY): void => {
+    // If not a localStorage event, exit
+    if (event?.storageArea !== localStorage) {
+      return
+    }
+
+    // Only trigger for our desired key
+    if (event.key === localStorageKey) {
+      // If the value changes, refresh the page
+      if (event.oldValue !== event.newValue) {
+        window?.location?.reload()
+      }
+    }
+  }
 
   const fetchSessionData = async (): Promise<{
     error: Ref<boolean>,
@@ -68,6 +100,7 @@ export default function useSession() {
               trial_expires_at: organizationEntitlements?.data?.tier?.trial_expires_at || null,
             },
           },
+          login_path: organizationMe?.data?.login_path || '',
           created_at: organizationMe?.data?.created_at || '',
           updated_at: organizationMe?.data?.updated_at || '',
           // Helpers
@@ -86,6 +119,12 @@ export default function useSession() {
 
       // Store the session data
       await saveSessionData(session.data)
+
+      // Store the generated UUID to localStorage
+      localStorage?.setItem(SESSION_USER_LOCAL_STORAGE_KEY, userOrgGeneratedUuid.value)
+      // Refresh the page if the localStorage object is changed in another tab
+      window?.removeEventListener('storage', (event: StorageEvent) => refreshOnUserChange(event, SESSION_USER_LOCAL_STORAGE_KEY))
+      window?.addEventListener('storage', (event: StorageEvent) => refreshOnUserChange(event, SESSION_USER_LOCAL_STORAGE_KEY))
 
       const { fetchInitialPermissions } = composables.usePermissions()
       // Fetch the initial permissions in order to evaluate the sidebar items
@@ -181,7 +220,7 @@ export default function useSession() {
    */
   const fetchLocalStorageData = async (): Promise<SessionData | undefined> => {
     try {
-      const sessionDataRaw = localStorage?.getItem(SESSION_NAME) || encode(session.data) || encode({})
+      const sessionDataRaw = localStorage?.getItem(SESSION_LOCAL_STORAGE_KEY) || encode(session.data) || encode({})
 
       if (!sessionDataRaw) {
         return session.data
@@ -207,9 +246,9 @@ export default function useSession() {
     // or if the session doesn't exist and force is false.
     if (force || (!force && !exists.value)) {
       if (objectIsEmpty(session.data)) {
-        localStorage?.removeItem(SESSION_NAME)
+        localStorage?.removeItem(SESSION_LOCAL_STORAGE_KEY)
       } else {
-        localStorage?.setItem(SESSION_NAME, encode(session.data))
+        localStorage?.setItem(SESSION_LOCAL_STORAGE_KEY, encode(session.data))
       }
     }
   }
@@ -277,6 +316,9 @@ export default function useSession() {
 
     isLoggingOut.value = true
 
+    // Grab the login_path before clearing the session data
+    const storedLoginPath = session.data.organization?.login_path || ''
+
     // Store the 'to' route if not login or logout or undefined
     const toRoute: { path: string, name?: string, [key: string]: any } = {
       path: '',
@@ -292,23 +334,33 @@ export default function useSession() {
     try {
       if (!toRoute?.path) {
         session.data = {}
-        localStorage?.removeItem(SESSION_NAME)
+        localStorage?.removeItem(SESSION_LOCAL_STORAGE_KEY)
       } else {
         saveSessionData({ to: toRoute }, true)
       }
 
+      // Remove the generated user session UUID from localStorage
+      localStorage?.removeItem(SESSION_USER_LOCAL_STORAGE_KEY)
+      // Remove the session event listener
+      window?.removeEventListener('storage', (event: StorageEvent) => refreshOnUserChange(event, SESSION_USER_LOCAL_STORAGE_KEY))
+
+      // Log out the user
       const { data: { loginPath } } = await kAuthApi.value.authentication.logout()
 
+      // Try using the loginPath from the response; otherwise, fallback to the stored organization login_path
+      const organizationLoginPath: string = loginPath || storedLoginPath
+
       // Get the login path with IdP loginPath if configured, otherwise just the login path
-      const loginPagePath = loginPath ? `login/${loginPath}` : 'login'
+      // (WITH leading slash)
+      const loginPagePath = loginPath ? `/login/${organizationLoginPath}` : '/login'
 
       // Clear session cookie
       document.cookie = `${CYPRESS_USER_SESSION_EXISTS}=; Max-Age=-1`
 
-      // Otherwise, build a new URL from the root
-      const logoutUrl = new URL(`${window.location.origin}/${loginPagePath}`)
+      // Otherwise, build a new URL from the root and the loginPagePath
+      const logoutUrl = new URL(`${window.location.origin}${loginPagePath}`)
 
-      // Add a `logout=true` parameter so the login element will not initialize login
+      // Add a `?logout=true` query parameter so the login element will not auto-initialize IdP login
       logoutUrl.searchParams.append('logout', 'true')
 
       // Redirect user to logout
@@ -316,7 +368,8 @@ export default function useSession() {
     } catch (err) {
       // Always clear the session data
       session.data = {}
-      localStorage?.removeItem(SESSION_NAME)
+      localStorage?.removeItem(SESSION_LOCAL_STORAGE_KEY)
+      localStorage?.removeItem(SESSION_USER_LOCAL_STORAGE_KEY)
       document.cookie = `${CYPRESS_USER_SESSION_EXISTS}=; Max-Age=-1`
 
       // Redirect user to logout
@@ -352,6 +405,7 @@ export default function useSession() {
 
   return {
     session: readonly(session), // do not allow mutating the session
+    userOrgGeneratedUuid,
     isRefreshing,
     // methods
     initializeSession,

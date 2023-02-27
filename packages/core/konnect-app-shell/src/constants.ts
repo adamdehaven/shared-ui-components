@@ -1,5 +1,7 @@
 /** The localStorage key for session data. */
-export const SESSION_NAME = 'khcp_session'
+export const SESSION_LOCAL_STORAGE_KEY = 'khcp_session'
+/** The localStorage key for the session active user uuidv5(orgId, userId). */
+export const SESSION_USER_LOCAL_STORAGE_KEY = 'khcp-user'
 /** The Cypress auth helper cookie name. */
 export const CYPRESS_USER_SESSION_EXISTS = 'CYPRESS_USER_SESSION_EXISTS'
 

@@ -5,11 +5,10 @@ import { v4 as uuidv4, v5 as uuidv5 } from 'uuid'
 
 const userId = uuidv4()
 const orgId = uuidv4()
-// Test utilizes the fallback storage key (no uuid)
-const testStorageKey = `${KHCP_GEO_LOCAL_STORAGE_KEY}-${uuidv5(orgId, userId)}`
 
 describe('useGeo', async () => {
-  const { session } = composables.useSession()
+  const { session, userOrgGeneratedUuid } = composables.useSession()
+  let testStorageKey: string = ''
   const { setAllGeos, geos, setActiveGeo, setActiveGeoOverride, getActiveGeo, activeGeo, activeGeoOverride, geoLocalStorageKey } = composables.useGeo()
   const windowLocationSpy: SpyInstance<[], Partial<Location>> = vi.spyOn(window, 'location', 'get')
 
@@ -26,6 +25,8 @@ describe('useGeo', async () => {
         id: orgId,
       },
     })
+
+    testStorageKey = `${KHCP_GEO_LOCAL_STORAGE_KEY}-${userOrgGeneratedUuid.value}`
   })
 
   afterEach(() => {

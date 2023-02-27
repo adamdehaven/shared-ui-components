@@ -1,4 +1,4 @@
-import { ref, reactive } from 'vue'
+import { ref, reactive, computed } from 'vue'
 import GeoSwitcher from './GeoSwitcher.vue'
 import composables from '../../composables'
 import type { Session } from '../../types'
@@ -71,12 +71,13 @@ describe('<GeoSwitcher />', () => {
         data: {
           // @ts-ignore
           organization: {
-            id: 'orgId',
+            id: orgId,
             name: 'orgName',
             isEnterprise: tier === 'enterprise',
           },
         },
       }),
+      userOrgGeneratedUuid: computed((): string => uuidv5(orgId, userId)),
     }))
 
     cy.stub(composables, 'useLaunchDarkly').callsFake(() => ({
@@ -184,7 +185,7 @@ describe('<GeoSwitcher />', () => {
       })
 
       localStorage.setItem(geoLocalStorageKey, 'us')
-      mountComponent({ global: true, geos: ['us', 'eu'], path: '/global/organization/teams', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
+      mountComponent({ global: true, geos: ['us', 'eu'], activeGeo: 'us', path: '/global/organization/teams', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
       cy.get(`${geoSwitcher.menu} [data-testid="k-dropdown-btn"]`).should('contain.text', english.geo.global)
     })
 
