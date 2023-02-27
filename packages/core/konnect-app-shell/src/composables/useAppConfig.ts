@@ -20,6 +20,9 @@ export default function useAppConfig() {
 
       // Store the config data
       config.value = data
+
+      // Attach to `globalThis`
+      globalThis.kongUiConfig = config.value
     } catch (err: any) {
       console.log(err)
       error.value = err
