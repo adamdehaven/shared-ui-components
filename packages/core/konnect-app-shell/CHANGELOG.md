@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.27.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.26.1...@kong-ui/konnect-app-shell@0.27.0) (2023-02-27)
+
+
+### Features
+
+* **konnect-app-shell:** refresh on user change and store login_path [KHCP-6360, KHCP-5625] ([#622](https://github.com/Kong/shared-ui-components/issues/622)) ([a1bf9ce](https://github.com/Kong/shared-ui-components/commit/a1bf9ce7cc897ef56a9842b55c93e6ea3f694627))
+
+
+
+
+
 ## [0.26.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.26.0...@kong-ui/konnect-app-shell@0.26.1) (2023-02-27)
 
 
