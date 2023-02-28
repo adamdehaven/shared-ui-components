@@ -37,6 +37,8 @@ Install the component in your host application
 yarn add @kong-ui/entities-shared
 ```
 
+> **Note**: If you are installing `@kong-ui/entities-shared` into another package within this repository, you will need to build it first before attempting to run locally with `pnpm --filter="@kong-ui/entities-shared" run build`.
+
 ### Registration
 
 Import the component in your host application
