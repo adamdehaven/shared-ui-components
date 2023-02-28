@@ -86,7 +86,7 @@ A `@proceed` event is emitted when action button is clicked or the Enter key is 
 
 #### cancel
 
-A `@proceed` event is emitted when cancel/close button is clicked or the Escape key is pressed.
+A `@cancel` event is emitted when cancel/close button is clicked or the Escape key is pressed.
 
 ### Usage example
 
