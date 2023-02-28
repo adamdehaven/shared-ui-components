@@ -49,4 +49,4 @@ import '@kong-ui/entities-shared/dist/style.css'
 ## Individual component documentation
 
 - [`<EntityDeleteModal.vue />`](docs/entity-delete-modal.md)
-- [`<EntityBaseTable.vue />`](docs/entity-basse-table.md)
+- [`<EntityBaseTable.vue />`](docs/entity-base-table.md)
