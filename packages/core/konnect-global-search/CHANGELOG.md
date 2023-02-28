@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.12](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-global-search@0.2.11...@kong-ui/konnect-global-search@0.2.12) (2023-02-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @kong-ui-public/app-layout to v0.13.12 ([#640](https://github.com/Kong/shared-ui-components/issues/640)) ([01a445f](https://github.com/Kong/shared-ui-components/commit/01a445f88ab4160b59747346de84341f4d1c56b5))
+
+
+
+
+
 ## [0.2.11](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-global-search@0.2.10...@kong-ui/konnect-global-search@0.2.11) (2023-02-27)
 
 
