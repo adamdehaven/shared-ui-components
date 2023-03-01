@@ -20,12 +20,12 @@
     "access": "restricted"
   },
   "peerDependencies": {
-    "@kong/kongponents": "^8.28.0",
+    "@kong/kongponents": "^8.30.2",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
-    "@kong/kongponents": "^8.28.0",
+    "@kong/kongponents": "^8.30.2",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },
