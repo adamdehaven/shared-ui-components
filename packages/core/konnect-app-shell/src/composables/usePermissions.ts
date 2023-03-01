@@ -357,13 +357,13 @@ export default function usePermissions() {
       return resourcePathMatches(parsedKrn, requestedResourcePath)
     })
 
-    // If the requestedService is defined and the user has no matching resource paths
-    if (!!requestedService && matchingResources.length === 0) {
+    const { getActiveGeo } = useGeo()
+    const activeGeo = getActiveGeo({ allowOverride: false })?.code
+
+    // Only attempt to fetch missing permissions if the requestedService is defined and the user has no matching resource paths, and there is an activeGeo
+    if (!!requestedService && matchingResources.length === 0 && activeGeo) {
       // Request filtered krn from API to see if user has access that does not currently exist in the store
       try {
-        const { getActiveGeo } = useGeo()
-        const activeGeo = getActiveGeo({ allowOverride: false })?.code
-
         let resourceAndActionMatch
 
         // Fetch any missing krns
