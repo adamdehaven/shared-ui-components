@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.11](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.27.10...@kong-ui/konnect-app-shell@0.27.11) (2023-03-01)
+
+
+### Bug Fixes
+
+* **konnect-app-shell:** only fetch missing permissions if active geo ([1846a95](https://github.com/Kong/shared-ui-components/commit/1846a959b8ad612aaaaddc843a69fcf9179c4e64))
+
+
+
+
+
 ## [0.27.10](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.27.9...@kong-ui/konnect-app-shell@0.27.10) (2023-03-01)
 
 
