@@ -170,7 +170,7 @@ importers:
 
   packages/core/konnect-app-shell:
     specifiers:
-      '@kong-ui-public/app-layout': 0.13.13
+      '@kong-ui-public/app-layout': 0.13.14
       '@kong-ui-public/i18n': ^0.3.1
       '@kong-ui-public/misc-widgets': ^0.2.10
       '@kong-ui/core': workspace:^0.10.1
@@ -184,7 +184,7 @@ importers:
       launchdarkly-js-client-sdk: ^2.24.2
       uuid: ^9.0.0
     dependencies:
-      '@kong-ui-public/app-layout': 0.13.13_@kong+kongponents@8.30.2
+      '@kong-ui-public/app-layout': 0.13.14_@kong+kongponents@8.30.2
       '@kong-ui-public/i18n': 0.3.1
       '@kong-ui-public/misc-widgets': 0.2.10_@kong+kongponents@8.30.2
       '@kong-ui/core': link:../core
@@ -201,7 +201,7 @@ importers:
 
   packages/core/konnect-global-search:
     specifiers:
-      '@kong-ui-public/app-layout': ^0.13.13
+      '@kong-ui-public/app-layout': ^0.13.14
       '@kong-ui-public/i18n': ^0.3.1
       '@kong-ui/core': workspace:^0.10.1
       '@kong/kongponents': ^8.30.2
@@ -210,7 +210,7 @@ importers:
       vue: ^3.2.45
       vue-router: ^4.1.6
     dependencies:
-      '@kong-ui-public/app-layout': 0.13.13_b6w44wcjthtgewpifet3tlezfa
+      '@kong-ui-public/app-layout': 0.13.14_b6w44wcjthtgewpifet3tlezfa
       '@kong-ui-public/i18n': 0.3.1_vue@3.2.47
       '@kong-ui/core': link:../core
       axios: 1.3.3
@@ -1395,10 +1395,10 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@kong-ui-public/app-layout/0.13.13_@kong+kongponents@8.30.2:
-    resolution: {integrity: sha512-UmnGYkUjGCsqFsqnH24le+g9SBK40lKcToWcGmHozpA/B62ty5SrnY8BEtH4cHAu8IRM/W5si/buGVRy4fzq3Q==}
+  /@kong-ui-public/app-layout/0.13.14_@kong+kongponents@8.30.2:
+    resolution: {integrity: sha512-eU6qTQALsTijPsiWKKaF3v0VAACwmiNVHOrNfWKO5JA7JRLnFtNbV4KvfOuZunpvoiDNr23LlyxOYrKtNo/J0g==}
     peerDependencies:
-      '@kong/kongponents': ^8.30.2
+      '@kong/kongponents': ^8.31.0
       vue: ^3.2.47
       vue-router: ^4.1.6
     dependencies:
@@ -1408,10 +1408,10 @@ packages:
       lodash.clonedeep: 4.5.0
     dev: false
 
-  /@kong-ui-public/app-layout/0.13.13_b6w44wcjthtgewpifet3tlezfa:
-    resolution: {integrity: sha512-UmnGYkUjGCsqFsqnH24le+g9SBK40lKcToWcGmHozpA/B62ty5SrnY8BEtH4cHAu8IRM/W5si/buGVRy4fzq3Q==}
+  /@kong-ui-public/app-layout/0.13.14_b6w44wcjthtgewpifet3tlezfa:
+    resolution: {integrity: sha512-eU6qTQALsTijPsiWKKaF3v0VAACwmiNVHOrNfWKO5JA7JRLnFtNbV4KvfOuZunpvoiDNr23LlyxOYrKtNo/J0g==}
     peerDependencies:
-      '@kong/kongponents': ^8.30.2
+      '@kong/kongponents': ^8.31.0
       vue: ^3.2.47
       vue-router: ^4.1.6
     dependencies:
