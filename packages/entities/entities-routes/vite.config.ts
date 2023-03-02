@@ -3,7 +3,7 @@ import { resolve } from 'path'
 import { defineConfig, mergeConfig } from 'vite'
 
 // Package name MUST always match the kebab-case package name inside the component's package.json file and the name of your `/packages/{package-name}` directory
-const packageName = 'konnect-global-search'
+const packageName = 'entities-routes'
 
 // Merge the shared Vite config with the local one defined below
 const config = mergeConfig(sharedViteConfig, defineConfig({
@@ -18,13 +18,13 @@ const config = mergeConfig(sharedViteConfig, defineConfig({
   },
   server: {
     proxy: {
+      // Add the API proxies to inject the Authorization header
       ...getApiProxies(),
     },
   },
-
 }))
 
-// If we are trying to preview a build of the local `package/konnect-global-search/sandbox` directory,
+// If we are trying to preview a build of the local `package/entities-routes/sandbox` directory,
 // unset the external and lib properties
 if (process.env.PREVIEW_SANDBOX) {
   config.build.rollupOptions.external = undefined

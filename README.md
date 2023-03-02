@@ -12,6 +12,7 @@ Monorepo for **privately published** Kong UI components and utilities.
 - [Development](#development)
   - [Setup](#setup)
   - [Dev Server](#dev-server)
+  - [Authorization via Personal Access Tokens](#authorization-via-personal-access-tokens)
   - [Styleint](#styleint)
   - [ESLint](#eslint)
   - [Type Checking](#type-checking)
@@ -68,6 +69,51 @@ Run the dev server in your `packages/{package-name}/sandbox/` directory with hot
 
 ```sh
 pnpm --filter "@kong-ui/{package-name}" run dev
+```
+
+### Authorization via Personal Access Tokens
+
+The [root shared Vite config](/vite.config.shared.ts) exports a `getApiProxies` helper that returns an object of API proxies to pass to the package-level `config.server.proxy`. Under the hood, these proxies also add an `Authorization` header to outgoing request that utilze PAT tokens sourced from `/.env.development.local`.
+
+#### Configuring a PAT
+
+The easiest way to generate a new Personal Access Token is to visit [cloud.konghq.tech/global/tokens](https://cloud.konghq.tech/global/tokens) and log in to your desired Konnect DEV account.
+
+1. Clone the `.env.development.local.example` file at the root of this repository, and rename to `.env.development.local`
+1. Log in to your desired DEV account.
+1. Navigate to [cloud.konghq.tech/global/tokens](https://cloud.konghq.tech/global/tokens)
+1. Create a new PAT
+1. Add the new PAT to `.env.development.local`
+
+    ```sh
+    VITE_KONNECT_PAT=kpat_yAKSkKMoeliberofacilisaliasetinciduntarch1B2aeq5A
+    ```
+
+1. Start up the Vite server in your package
+
+There is also a `VITE_KONG_MANAGER_TOKEN` in the `.env.development.local` file that can be used to authenticate to Kong Manager APIs.
+
+#### Adding proxies with PAT support to your package
+
+Add an import of the `getApiProxies` helper from the root shared config
+
+```ts
+import sharedViteConfig, { getApiProxies } from '../../../vite.config.shared'
+```
+
+Update the `vite.config.ts` file in your package to add the proxies
+
+```ts
+const config = mergeConfig(sharedViteConfig, defineConfig({
+  // ... other code
+  server: {
+    proxy: {
+      // Add the API proxies to inject the Authorization header
+      // Pass the path to the repository root
+      ...getApiProxies('../../../.'),
+    },
+  },
+}))
 ```
 
 ### Styleint

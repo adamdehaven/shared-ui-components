@@ -4,10 +4,10 @@ A base table component for entity list views.
 
 - [Requirements](#requirements)
 - [Usage](#usage)
-    - [Install](#install)
-    - [Props](#props)
-    - [Events](#events)
-    - [Usage example](#usage-example)
+  - [Install](#install)
+  - [Props](#props)
+  - [Events](#events)
+  - [Usage example](#usage-example)
 - [TypeScript interfaces](#typescript-interfaces)
 
 ## Requirements

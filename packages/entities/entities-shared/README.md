@@ -5,10 +5,12 @@ Shared components for Kong entities.
 - [Features](#features)
 - [Requirements](#requirements)
 - [Included components](#included-components)
+- [Included composables](#included-composables)
 - [Usage](#usage)
   - [Install](#install)
   - [Registration](#registration)
 - [Individual component documentation](#individual-component-documentation)
+- [Individual composables documentation](#individual-composables-documentation)
 
 ## Features
 
@@ -24,8 +26,15 @@ Shared components for Kong entities.
 
 - `EntityDeleteModal`
 - `EntityBaseTable`
+- `PermissionsWrapper`
 
 Reference the [individual component docs](#individual-component-documentation) for more info.
+
+## Included composables
+
+- `useAxios`
+
+Reference the [individual composables docs](#individual-composables-documentation) for more info.
 
 ## Usage
 
@@ -52,3 +61,8 @@ import '@kong-ui/entities-shared/dist/style.css'
 
 - [`<EntityDeleteModal.vue />`](docs/entity-delete-modal.md)
 - [`<EntityBaseTable.vue />`](docs/entity-base-table.md)
+- [`<PermissionsWrapper.vue />`](docs/permissions-wrapper.md)
+
+## Individual composables documentation
+
+- [`useAxios`](docs/use-axios.md)

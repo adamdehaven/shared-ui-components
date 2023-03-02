@@ -31,9 +31,8 @@ const config = mergeConfig(sharedViteConfig, defineConfig({
   server: {
     proxy: {
       // TODO: when KHCP-5497 consume this from the helper function
-      '^/kauth/api': {
-        target: 'https://global.api.konghq.tech/kauth',
-        rewrite: (path) => path.replace(/^\/kauth\/api/, '/api'),
+      '^/kauth': {
+        target: 'https://global.api.konghq.tech',
         changeOrigin: true,
         configure: (proxy, options) => {
           mutateCookieAttributes(proxy)

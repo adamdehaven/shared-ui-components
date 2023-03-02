@@ -9,11 +9,13 @@
         empty-state-icon-size="96"
         :empty-state-message="query ? t('baseTable.emptyState.noSearchResultsMessage') : emptyStateOptions.message"
         :empty-state-title="query ? t('baseTable.emptyState.noSearchResultsTitle') : emptyStateOptions.title"
+        :enable-client-sort="enableClientSort"
         :error-state-title="errorMessage"
         :fetcher="fetcher"
         :fetcher-cache-key="String(fetcherCacheKey)"
         :has-error="!!errorMessage"
         :headers="headers"
+        :initial-fetcher-params="initialFetcherParams"
         :is-loading="isLoading"
         :row-attrs="rowAttrs"
         :search-input="query"
@@ -109,6 +111,10 @@ const props = defineProps({
       total: 0,
     }),
   },
+  initialFetcherParams: {
+    type: Object as PropType<Partial<Omit<FetcherParams, 'query'>>>,
+    default: null,
+  },
   // cache key for the fetcher
   fetcherCacheKey: {
     type: Number,
@@ -124,6 +130,11 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  // Enable client-side sort (e.g. for Koko endpoints that do not support sort)
+  enableClientSort: {
+    type: Boolean,
+    default: false,
+  },
   // whether to show the actions column
   enableEntityActions: {
     type: Boolean,
@@ -135,6 +146,7 @@ const props = defineProps({
     default: () => ({}),
   },
   // error message to show in the error state
+  // this prop being set (or empty) determines if the KTable is in an error state
   errorMessage: {
     type: String,
     default: '',

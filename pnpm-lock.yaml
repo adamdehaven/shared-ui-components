@@ -74,7 +74,7 @@ importers:
       '@datadog/datadog-ci': 2.5.0
       '@digitalroute/cz-conventional-changelog-for-jira': 7.5.1
       '@evilmartians/lefthook': 1.2.9
-      '@kong/kongponents': 8.30.2_vue@3.2.47
+      '@kong/kongponents': 8.31.0_vue@3.2.47
       '@rushstack/eslint-patch': 1.2.0
       '@types/cypress__code-coverage': 3.10.0
       '@types/flat': 5.0.2
@@ -164,7 +164,7 @@ importers:
       fecha: 4.2.3
       lodash: 4.17.21
     devDependencies:
-      '@kong/kongponents': 8.30.2
+      '@kong/kongponents': 8.31.0
       '@types/lodash': 4.14.191
       pug: 3.0.2
 
@@ -184,9 +184,9 @@ importers:
       launchdarkly-js-client-sdk: ^2.24.2
       uuid: ^9.0.0
     dependencies:
-      '@kong-ui-public/app-layout': 0.13.17_@kong+kongponents@8.30.2
+      '@kong-ui-public/app-layout': 0.13.17_@kong+kongponents@8.31.0
       '@kong-ui-public/i18n': 0.3.1
-      '@kong-ui-public/misc-widgets': 0.2.12_@kong+kongponents@8.30.2
+      '@kong-ui-public/misc-widgets': 0.2.12_@kong+kongponents@8.31.0
       '@kong-ui/core': link:../core
       '@kong-ui/konnect-global-search': link:../konnect-global-search
       '@kong/kauth-client-typescript-axios': 0.1794.0
@@ -195,7 +195,7 @@ importers:
       launchdarkly-js-client-sdk: 2.24.2
       uuid: 9.0.0
     devDependencies:
-      '@kong/kongponents': 8.30.2
+      '@kong/kongponents': 8.31.0
       '@types/uuid': 9.0.1
       '@vue/test-utils': 2.3.0
 
@@ -210,26 +210,45 @@ importers:
       vue: ^3.2.45
       vue-router: ^4.1.6
     dependencies:
-      '@kong-ui-public/app-layout': 0.13.17_b6w44wcjthtgewpifet3tlezfa
+      '@kong-ui-public/app-layout': 0.13.17_evpiu2h7utriy5xkfbeaztesf4
       '@kong-ui-public/i18n': 0.3.1_vue@3.2.47
       '@kong-ui/core': link:../core
       axios: 1.3.3
       uuid: 9.0.0
     devDependencies:
-      '@kong/kongponents': 8.30.2_vue@3.2.47
+      '@kong/kongponents': 8.31.0_vue@3.2.47
       vue: 3.2.47
       vue-router: 4.1.6_vue@3.2.47
+
+  packages/entities/entities-routes:
+    specifiers:
+      '@kong-ui-public/i18n': ^0.3.1
+      '@kong-ui/entities-shared': workspace:^0.2.0
+      '@kong-ui/konnect-app-shell': ^0.27.6
+      '@kong/kongponents': ^8.28.0
+      axios: ^1.3.4
+      vue: ^3.2.47
+    dependencies:
+      '@kong-ui-public/i18n': 0.3.1_vue@3.2.47
+      '@kong-ui/entities-shared': link:../entities-shared
+      '@kong-ui/konnect-app-shell': link:../../core/konnect-app-shell
+    devDependencies:
+      '@kong/kongponents': 8.28.0_axios@1.3.4+vue@3.2.47
+      axios: 1.3.4
+      vue: 3.2.47
 
   packages/entities/entities-shared:
     specifiers:
       '@kong-ui-public/i18n': ^0.3.1
       '@kong/kongponents': ^8.30.2
+      axios: ^1.3.4
       vue: ^3.2.47
       vue-router: ^4.1.6
     dependencies:
       '@kong-ui-public/i18n': 0.3.1_vue@3.2.47
+      axios: 1.3.4
     devDependencies:
-      '@kong/kongponents': 8.30.2_vue@3.2.47
+      '@kong/kongponents': 8.31.0_vue@3.2.47
       vue: 3.2.47
       vue-router: 4.1.6_vue@3.2.47
 
@@ -1395,27 +1414,27 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@kong-ui-public/app-layout/0.13.17_@kong+kongponents@8.30.2:
+  /@kong-ui-public/app-layout/0.13.17_@kong+kongponents@8.31.0:
     resolution: {integrity: sha512-TNNBQkzCa1iahHg0ady14IFqGmRmkE2G3B5zWDGpkwnH4b2kEKdF5qYp4OBCCmmBytorV4xDXvor9HO7UIo3Bw==}
     peerDependencies:
       '@kong/kongponents': ^8.32.0
       vue: ^3.2.47
       vue-router: ^4.1.6
     dependencies:
-      '@kong/kongponents': 8.30.2
+      '@kong/kongponents': 8.31.0
       focus-trap: 7.3.1
       focus-trap-vue: 4.0.1_focus-trap@7.3.1
       lodash.clonedeep: 4.5.0
     dev: false
 
-  /@kong-ui-public/app-layout/0.13.17_b6w44wcjthtgewpifet3tlezfa:
+  /@kong-ui-public/app-layout/0.13.17_evpiu2h7utriy5xkfbeaztesf4:
     resolution: {integrity: sha512-TNNBQkzCa1iahHg0ady14IFqGmRmkE2G3B5zWDGpkwnH4b2kEKdF5qYp4OBCCmmBytorV4xDXvor9HO7UIo3Bw==}
     peerDependencies:
       '@kong/kongponents': ^8.32.0
       vue: ^3.2.47
       vue-router: ^4.1.6
     dependencies:
-      '@kong/kongponents': 8.30.2_vue@3.2.47
+      '@kong/kongponents': 8.31.0_vue@3.2.47
       focus-trap: 7.3.1
       focus-trap-vue: 4.0.1_oggptlzwchqpaguemspe4ract4
       lodash.clonedeep: 4.5.0
@@ -1448,14 +1467,14 @@ packages:
       - typescript
     dev: false
 
-  /@kong-ui-public/misc-widgets/0.2.12_@kong+kongponents@8.30.2:
+  /@kong-ui-public/misc-widgets/0.2.12_@kong+kongponents@8.31.0:
     resolution: {integrity: sha512-H2HkDDSfRpRbPucgY1pWGxh0ciwohBP1BLzMA6zrvbpnEFnDskShAyoIStWxsFeOD+hcuH8DmP4ZzO/isp7OBQ==}
     peerDependencies:
       '@kong/kongponents': ^8.32.0
       vue: ^3.2.47
     dependencies:
       '@kong-ui-public/i18n': 0.3.1
-      '@kong/kongponents': 8.30.2
+      '@kong/kongponents': 8.31.0
     transitivePeerDependencies:
       - typescript
     dev: false
@@ -1468,8 +1487,29 @@ packages:
     resolution: {integrity: sha512-MNAdxTnogHByr7fKRctVET9lUYBKUYbPb4WoBEF3IdmAPDgITD0zZoeCfjqQMVCLxqL8mv406iePVrKKXt1QTA==}
     dev: false
 
-  /@kong/kongponents/8.30.2:
-    resolution: {integrity: sha512-Kajnru1lJnnkoZdwpp6dkSvknpKFmXL3guQdlCfbfesujcrfNTBD/tQd8ihqJoo4BvZ8PCD1XGPj6PvoQIDqaQ==}
+  /@kong/kongponents/8.28.0_axios@1.3.4+vue@3.2.47:
+    resolution: {integrity: sha512-9POz7vINs2rJ6W4zSCXWNY2hBvGLlITlGorE7nb6npcysJGU9r5iJFwbGN7y8yooVNKWXsNHttCqTdDYgOwCuw==}
+    engines: {node: '>=16.19.0'}
+    peerDependencies:
+      axios: ^0.27.2
+      vue: '>= 3.2.37'
+    dependencies:
+      axios: 1.3.4
+      date-fns: 2.29.3
+      date-fns-tz: 1.3.8_date-fns@2.29.3
+      focus-trap: 7.3.1
+      focus-trap-vue: 3.4.0_oggptlzwchqpaguemspe4ract4
+      popper.js: 1.16.1
+      sortablejs: 1.15.0
+      swrv: 1.0.3_vue@3.2.47
+      uuid: 8.3.2
+      v-calendar: 3.0.0-alpha.8_vue@3.2.47
+      vue: 3.2.47
+      vue-draggable-next: 2.1.1_sgryjax6mhuvmammrozhnrruu4
+    dev: true
+
+  /@kong/kongponents/8.31.0:
+    resolution: {integrity: sha512-t3dObUoMVnPldd12RJwkl3hATclCTlCoXDxHDxD8TWY+4sII48r7nbMrtOYnpnrJA3gkFq+2Jk/+7aUBo+QmUQ==}
     engines: {node: '>=16.19.0'}
     peerDependencies:
       vue: '>= 3.2.37'
@@ -1488,8 +1528,8 @@ packages:
     transitivePeerDependencies:
       - debug
 
-  /@kong/kongponents/8.30.2_vue@3.2.47:
-    resolution: {integrity: sha512-Kajnru1lJnnkoZdwpp6dkSvknpKFmXL3guQdlCfbfesujcrfNTBD/tQd8ihqJoo4BvZ8PCD1XGPj6PvoQIDqaQ==}
+  /@kong/kongponents/8.31.0_vue@3.2.47:
+    resolution: {integrity: sha512-t3dObUoMVnPldd12RJwkl3hATclCTlCoXDxHDxD8TWY+4sII48r7nbMrtOYnpnrJA3gkFq+2Jk/+7aUBo+QmUQ==}
     engines: {node: '>=16.19.0'}
     peerDependencies:
       vue: '>= 3.2.37'
@@ -4201,7 +4241,7 @@ packages:
   /axios/0.21.4:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
     dependencies:
-      follow-redirects: 1.15.2
+      follow-redirects: 1.15.2_debug@4.3.4
     transitivePeerDependencies:
       - debug
     dev: true
@@ -4209,7 +4249,7 @@ packages:
   /axios/0.27.2:
     resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
     dependencies:
-      follow-redirects: 1.15.2
+      follow-redirects: 1.15.2_debug@4.3.4
       form-data: 4.0.0
     transitivePeerDependencies:
       - debug
@@ -4217,7 +4257,17 @@ packages:
   /axios/1.3.3:
     resolution: {integrity: sha512-eYq77dYIFS77AQlhzEL937yUBSepBfPIe8FcgEDN35vMNZKMrs81pgnyrQpwfy4NF4b4XWX1Zgx7yX+25w8QJA==}
     dependencies:
-      follow-redirects: 1.15.2
+      follow-redirects: 1.15.2_debug@4.3.4
+      form-data: 4.0.0
+      proxy-from-env: 1.1.0
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
+  /axios/1.3.4:
+    resolution: {integrity: sha512-toYm+Bsyl6VC5wSkfkbbNB6ROv7KY93PEBBL6xyDczaIHasAiv4wPqQ/c4RjoQzipxRD2W5g21cOqQulZ7rHwQ==}
+    dependencies:
+      follow-redirects: 1.15.2_debug@4.3.4
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -5877,7 +5927,6 @@ packages:
         optional: true
     dependencies:
       ms: 2.1.2
-    dev: true
 
   /debug/4.3.4_supports-color@8.1.1:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
@@ -7785,15 +7834,6 @@ packages:
       from2: 2.3.0
     dev: true
 
-  /follow-redirects/1.15.2:
-    resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-
   /follow-redirects/1.15.2_debug@4.3.4:
     resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
     engines: {node: '>=4.0'}
@@ -7804,7 +7844,6 @@ packages:
         optional: true
     dependencies:
       debug: 4.3.4
-    dev: true
 
   /for-each/0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
@@ -11115,7 +11154,6 @@ packages:
 
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
-    dev: true
 
   /ms/2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
@@ -11781,7 +11819,7 @@ packages:
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.39
       '@zkochan/js-yaml': 0.0.6
-      axios: 1.3.3
+      axios: 1.3.4
       chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1

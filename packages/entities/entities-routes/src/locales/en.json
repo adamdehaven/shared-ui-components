@@ -1,0 +1,30 @@
+{
+  "actions": {
+    "create": "Add Route",
+    "edit": "Edit",
+    "delete": "Delete",
+    "clear": "Clear",
+    "view": "View Details"
+  },
+  "search": {
+    "placeholder": "Filter by exact name or ID"
+  },
+  "routes": {
+    "title": "Routes",
+    "list": {
+      "table_headers": {
+        "name": "Name",
+        "protocols": "Protocols",
+        "hosts": "Hosts",
+        "methods": "Methods",
+        "paths": "Paths",
+        "id": "ID"
+      },
+      "empty_state": {
+        "title": "Add a Route",
+        "description": "Routes proxy requests to an associated Service."
+      },
+      "error": "Routes could not be retrieved"
+    }
+  }
+}

@@ -4,7 +4,7 @@
       <p>This is the Global Search that is always refreshing the page when search resuslt is selected</p>
       <KonnectGlobalSearch
         active-geo-code="us"
-        search-api-url="/us/kong-api/konnect"
+        search-api-url="/kong-api/us/konnect-api"
       />
 
       <br>
@@ -14,7 +14,7 @@
       <p>This is the Global Search that fires 'selected' event and lets application do deal with refresh versus router.push</p>
       <KonnectGlobalSearch
         active-geo-code="us"
-        search-api-url="/us/kong-api/konnect"
+        search-api-url="/kong-api/us/konnect-api"
         :should-navigate="false"
         @selected="resultSelected"
       />

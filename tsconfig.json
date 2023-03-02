@@ -26,6 +26,9 @@
       "cypress/vue"
     ]
   },
+  "include": [
+    "*.d.ts"
+  ],
   "exclude": [
     "node_modules",
     "packages/*/dist"

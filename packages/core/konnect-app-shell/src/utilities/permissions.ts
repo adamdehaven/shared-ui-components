@@ -17,3 +17,15 @@ export {
   canUserAccess,
   userIsAuthorizedForRoute,
 }
+
+/**
+ * ====================================================================================================
+ * These functions are only exported for use in the entities sandbox; do not use these standalone in your app!
+ * ====================================================================================================
+ */
+const { init: initializeKAuth } = composables.useKAuthApi()
+const { initializeSession } = composables.useSession()
+export {
+  initializeKAuth,
+  initializeSession,
+}

@@ -15,6 +15,7 @@
 /packages/core/ @Kong/team-core-ui
 /packages/portal/ @Kong/team-core-ui # TODO: add @Kong/team-devx also
 /packages/analytics/ @Kong/team-core-ui # TODO: add @Kong/team-data also
+/packages/entities/ @Kong/team-km @Kong/team-core-ui
 
 # Packages:
 # These owners will be the default owners for everything in the workspace
@@ -30,7 +31,8 @@
 /packages/core/forms/ @Leopoldthecoder @sumimakito @Kong/team-core-ui
 
 # Entities packages
-/packages/entities/ @Kong/team-km @Kong/team-core-ui
+/packages/entities/entities-shared/ @Kong/team-km @Kong/team-core-ui
+/packages/entities/entities-routes/ @Kong/team-km @Kong/team-core-ui
 
 # Portal packages
 

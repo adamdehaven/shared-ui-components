@@ -1,17 +1,17 @@
 {
-  "name": "@kong-ui/entities-shared",
-  "version": "0.2.4",
+  "name": "@kong-ui/entities-routes",
+  "version": "0.0.1",
   "type": "module",
-  "main": "./dist/entities-shared.umd.js",
-  "module": "./dist/entities-shared.es.js",
+  "main": "./dist/entities-routes.umd.js",
+  "module": "./dist/entities-routes.es.js",
   "types": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "import": "./dist/entities-shared.es.js",
-      "require": "./dist/entities-shared.umd.js"
+      "import": "./dist/entities-routes.es.js",
+      "require": "./dist/entities-routes.umd.js"
     },
     "./package.json": "./package.json",
     "./dist/*": "./dist/*"
@@ -20,21 +20,20 @@
     "access": "restricted"
   },
   "peerDependencies": {
-    "@kong/kongponents": "^8.30.2",
-    "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "@kong/kongponents": "^8.28.0",
+    "vue": "^3.2.47"
   },
   "devDependencies": {
-    "@kong/kongponents": "^8.30.2",
-    "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "@kong/kongponents": "^8.28.0",
+    "axios": "^1.3.4",
+    "vue": "^3.2.47"
   },
   "scripts": {
     "dev": "cross-env USE_SANDBOX=true vite",
     "build": "run-s typecheck build:package build:types",
     "build:package": "vite build",
     "build:types": "vue-tsc -p './tsconfig.build.json' --emitDeclarationOnly",
-    "build:visualize": "BUILD_VISUALIZER='entities-shared' vite build -m production",
+    "build:visualize": "BUILD_VISUALIZER='entities-routes' vite build -m production",
     "preview:package": "vite preview --port 4173",
     "preview": "cross-env USE_SANDBOX=true PREVIEW_SANDBOX=true run-s build:package preview:package",
     "lint": "eslint '**/*.{js,jsx,ts,tsx,vue}' --ignore-path '../../../.eslintignore'",
@@ -43,14 +42,16 @@
     "stylelint:fix": "stylelint --allow-empty-input './src/**/*.{css,scss,sass,less,styl,vue}' --fix",
     "typecheck": "vue-tsc -p './tsconfig.build.json' --noEmit",
     "test:component": "BABEL_ENV=cypress cross-env FORCE_COLOR=1 cypress run --component -b chrome --spec './src/**/*.cy.ts' --project '../../../.'",
-    "test:component:open": "BABEL_ENV=cypress cross-env FORCE_COLOR=1 cypress open --component -b chrome --project '../../../.'"
+    "test:component:open": "BABEL_ENV=cypress cross-env FORCE_COLOR=1 cypress open --component -b chrome --project '../../../.'",
+    "test:unit": "cross-env FORCE_COLOR=1 vitest run",
+    "test:unit:open": "cross-env FORCE_COLOR=1 vitest --ui"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Kong/shared-ui-components.git",
-    "directory": "packages/entities-shared"
+    "directory": "packages/entities-routes"
   },
-  "homepage": "https://github.com/Kong/shared-ui-components/tree/main/packages/entities-shared",
+  "homepage": "https://github.com/Kong/shared-ui-components/tree/main/packages/entities-routes",
   "author": "Kong, Inc.",
   "license": "UNLICENSED",
   "volta": {
@@ -58,6 +59,7 @@
   },
   "dependencies": {
     "@kong-ui-public/i18n": "^0.3.1",
-    "axios": "^1.3.4"
+    "@kong-ui/entities-shared": "workspace:^0.2.0",
+    "@kong-ui/konnect-app-shell": "^0.27.6"
   }
 }

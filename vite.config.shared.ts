@@ -3,7 +3,7 @@
 /**
  * Shared Vite config settings for all components
  */
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import dns from 'dns'
@@ -97,3 +97,89 @@ export default defineConfig({
     ],
   },
 })
+
+/**
+ * Define the server.proxy rules for various shared APIs
+ * These utilize the `VITE_KONNECT_PAT` Konnect PAT token located in `/.env.development.local`
+ * @param pathToRoot The path to the repository root, from the package directory, where your .env.development.local file is located. Defaults to `../../../.' which works for most packages.
+ * @returns Object of API proxies to pass to the vite `config.server.proxy`
+ */
+export const getApiProxies = (pathToRoot: string = '../../../.') => {
+  // Import env variables from the root
+  // Hard-coded to 'DEVELOPMENT' since we are only using the env variables in the local dev server
+  const env = loadEnv('DEVELOPMENT', pathToRoot, '')
+
+  const konnectAuthHeader = env.VITE_KONNECT_PAT
+    ? {
+      authorization: `Bearer ${env.VITE_KONNECT_PAT}`,
+    }
+    : undefined
+
+  const kongManagerAuthHeader = env.VITE_KONG_MANAGER_TOKEN
+    ? {
+      'kong-admin-token': env.VITE_KONG_MANAGER_TOKEN,
+    }
+    : undefined
+
+  return {
+    /**
+     * /kong-ui/config JSON
+     */
+    '^/kong-ui/config': {
+      target: 'https://cloud.konghq.tech',
+      changeOrigin: true,
+    },
+    /**
+     * KONNECT PROXIES
+     * TODO: when KHCP-5497 consume these proxies from the helper function?
+     */
+    '^/us/kong-api/konnect-api': {
+      target: 'https://{geo}.api.konghq.tech'.replace(/\{geo\}/, 'us'),
+      rewrite: (path) => path.replace('/us/kong-api', ''),
+      changeOrigin: true,
+      headers: {
+        ...konnectAuthHeader,
+      },
+    },
+
+    '^/eu/kong-api/konnect-api': {
+      target: 'https://{geo}.api.konghq.tech'.replace(/\{geo\}/, 'eu'),
+      rewrite: (path) => path.replace('/eu/kong-api', ''),
+      changeOrigin: true,
+      headers: {
+        authorization: `Bearer ${env.VITE_KONNECT_PAT}`,
+      },
+    },
+
+    // KAuth v1 APIs
+    '^/kauth': {
+      target: 'https://global.api.konghq.tech',
+      changeOrigin: true,
+      headers: {
+        ...konnectAuthHeader,
+      },
+    },
+
+    // Global v2 APIs
+    '^/kong-api/v2': {
+      target: 'https://global.api.konghq.tech',
+      rewrite: (path) => path.replace('/kong-api', ''),
+      changeOrigin: true,
+      headers: {
+        ...konnectAuthHeader,
+      },
+    },
+
+    /**
+     * KONG MANAGER PROXIES
+     */
+    '^/kong-manager': {
+      target: 'https://kong-admin-nightly.connectia.one',
+      rewrite: (path) => path.replace('/kong-manager', ''),
+      changeOrigin: true,
+      headers: {
+        ...kongManagerAuthHeader,
+      },
+    },
+  }
+}
