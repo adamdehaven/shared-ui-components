@@ -23,7 +23,8 @@ import { canUserAccess } from '@kong-ui/konnect-app-shell'
 const konnectConfig = ref<KonnectRouteListConfig>({
   app: 'konnect',
   apiBaseUrl: '/us/kong-api', // `/{geo}/kong-api`, with leading slash and no trailing slash; Consuming app would pass in something like `https://us.api.konghq.com`
-  controlPlaneId: 'b3b22183-c0d0-445d-8737-c04525ad2b0e',
+  // Set the root `.env.development.local` variable to a control plane your PAT can access
+  controlPlaneId: import.meta.env.VITE_KONNECT_CONTROL_PLANE_ID,
 })
 
 const kongManagerConfig = ref<KongManagerRouteListConfig>({

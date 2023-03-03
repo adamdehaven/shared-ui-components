@@ -73,6 +73,9 @@ export default defineConfig({
   // Change the root when utilizing the sandbox via USE_SANDBOX=true to use the `/sandbox/*` files
   // During the build process, the `/sandbox/*` files are not used and we should default to the package root.
   root: process.env.USE_SANDBOX ? './sandbox' : process.cwd(),
+  // Sets the Vite envDir to point to the repository root `.env.*` files.
+  // Please do NOT add other .env files in child directories.
+  envDir: '../../../../',
   test: {
     globals: true,
     environment: 'jsdom',
@@ -106,8 +109,8 @@ export default defineConfig({
  */
 export const getApiProxies = (pathToRoot: string = '../../../.') => {
   // Import env variables from the root
-  // Hard-coded to 'DEVELOPMENT' since we are only using the env variables in the local dev server
-  const env = loadEnv('DEVELOPMENT', pathToRoot, '')
+  // Hard-coded to 'development' since we are only using the env variables in the local dev server
+  const env = loadEnv('development', pathToRoot, '')
 
   const konnectAuthHeader = env.VITE_KONNECT_PAT
     ? {

@@ -12,7 +12,7 @@ Monorepo for **privately published** Kong UI components and utilities.
 - [Development](#development)
   - [Setup](#setup)
   - [Dev Server](#dev-server)
-  - [Authorization via Personal Access Tokens](#authorization-via-personal-access-tokens)
+  - [env variables and Personal Access Tokens](#env-variables-and-personal-access-tokens)
   - [Styleint](#styleint)
   - [ESLint](#eslint)
   - [Type Checking](#type-checking)
@@ -71,9 +71,13 @@ Run the dev server in your `packages/{package-name}/sandbox/` directory with hot
 pnpm --filter "@kong-ui/{package-name}" run dev
 ```
 
-### Authorization via Personal Access Tokens
+### env variables and Personal Access Tokens
 
-The [root shared Vite config](/vite.config.shared.ts) exports a `getApiProxies` helper that returns an object of API proxies to pass to the package-level `config.server.proxy`. Under the hood, these proxies also add an `Authorization` header to outgoing request that utilze PAT tokens sourced from `/.env.development.local`.
+> **Note**: All `env` variables **must** be located at the root of the repository.
+
+The [root shared Vite config](/vite.config.shared.ts) sets the Vite `envDir` for packages to point to the root `.env.*` files. These `env` files contain the variables needed in order to interact with some of the package sandboxes (i.e. for authorization to the Konnect, KAuth, and Kong Manager APIs).
+
+For authorization, the root config also exports a `getApiProxies` helper that returns an object of API proxies to pass to the package-level `config.server.proxy`. Under the hood, these proxies also add an `Authorization` header to outgoing request that utilze PAT tokens sourced from `/.env.development.local`.
 
 #### Configuring a PAT
 
