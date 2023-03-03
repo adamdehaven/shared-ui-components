@@ -1,6 +1,6 @@
 {
   "name": "@kong-ui/entities-routes",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "main": "./dist/entities-routes.umd.js",
   "module": "./dist/entities-routes.es.js",
