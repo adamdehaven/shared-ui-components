@@ -147,7 +147,7 @@ export const getApiProxies = (pathToRoot: string = '../../../.') => {
       rewrite: (path) => path.replace('/eu/kong-api', ''),
       changeOrigin: true,
       headers: {
-        authorization: `Bearer ${env.VITE_KONNECT_PAT}`,
+        ...konnectAuthHeader,
       },
     },
 
