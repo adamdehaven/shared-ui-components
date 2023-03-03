@@ -46,3 +46,48 @@ export const mockTableHeaders = {
     sortable: false,
   },
 }
+
+export const mockExactMatchFilterConfig = {
+  isExactMatch: true,
+  placeholder: 'Filter by exact name or ID',
+}
+
+export const mockFuzzyMatchFilterConfig = {
+  isExactMatch: false,
+  fields: {
+    name: {
+      label: 'Name',
+      searchable: true,
+    },
+    protocols: {
+      label: 'Protocols',
+      searchable: true,
+    },
+    methods: {
+      label: 'Methods',
+      searchable: true,
+    },
+    port: {
+      label: 'Port',
+      searchable: true,
+    },
+    paths: {
+      label: 'Paths',
+      searchable: true,
+    },
+    // To hide certain fields in the filter, set their `searchable` to `false
+    tags: {
+      label: 'Tags',
+      searchable: false,
+    },
+  },
+  schema: {
+    protocols: {
+      type: 'select',
+      values: ['http', 'https', 'tcp', 'tls', 'grpc', 'grpcs'],
+    },
+    port: {
+      type: 'number',
+    },
+  },
+}

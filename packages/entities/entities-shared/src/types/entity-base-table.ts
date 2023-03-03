@@ -1,11 +1,8 @@
 import { RouteLocationRaw } from 'vue-router'
+import { Field } from './base'
 
 export interface BaseTableHeaders {
-  [key: string]: {
-    label?: string
-    searchable?: boolean
-    sortable?: boolean
-  }
+  [key: string]: Field
 }
 
 export interface EmptyStateOptions {

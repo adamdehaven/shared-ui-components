@@ -1,14 +1,18 @@
 <template>
   <ul>
-    <li>
-      <router-link to="/entity-delete-modal">
-        EntityDeleteModal
-      </router-link>
-    </li>
-    <li>
-      <router-link to="/entity-base-table">
-        EntityBaseTable
+    <li
+      v-for="link in links"
+      :key="link.path"
+    >
+      <router-link :to="link.path">
+        {{ link.label }}
       </router-link>
     </li>
   </ul>
 </template>
+
+<script setup lang="ts">
+import { routes } from '../routes'
+
+const links = routes.filter(route => route.name !== 'home')
+</script>

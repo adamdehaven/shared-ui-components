@@ -3,5 +3,7 @@
 
 // Example:
 export * from './app-config'
+export * from './base'
 export * from './entity-delete-modal'
 export * from './entity-base-table'
+export * from './entity-filter'

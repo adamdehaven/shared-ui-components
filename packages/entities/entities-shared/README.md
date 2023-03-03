@@ -16,6 +16,7 @@ Shared components for Kong entities.
 
 - Modal component for entity delete confirmation ([see the EntityDeleteModal docs for more info](docs/entity-delete-modal.md))
 - Base table component for entity list views ([see the EntityBaseTable docs for more info](docs/entity-base-table.md))
+- Filter component for filtering entities ([see the EntityFilter docs for more info](docs/entity-filter.md))
 
 ## Requirements
 
@@ -26,6 +27,7 @@ Shared components for Kong entities.
 
 - `EntityDeleteModal`
 - `EntityBaseTable`
+- `EntityFilter`
 - `PermissionsWrapper`
 
 Reference the [individual component docs](#individual-component-documentation) for more info.
@@ -61,6 +63,7 @@ import '@kong-ui/entities-shared/dist/style.css'
 
 - [`<EntityDeleteModal.vue />`](docs/entity-delete-modal.md)
 - [`<EntityBaseTable.vue />`](docs/entity-base-table.md)
+- [`<EntityFilter.vue />`](docs/entity-filter.md)
 - [`<PermissionsWrapper.vue />`](docs/permissions-wrapper.md)
 
 ## Individual composables documentation

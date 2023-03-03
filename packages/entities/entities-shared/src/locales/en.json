@@ -9,5 +9,14 @@
       "noSearchResultsMessage": "Please adjust the criteria and try again.",
       "noSearchResultsCtaText": "Clear"
     }
+  },
+  "filter": {
+    "filterButtonText": "Filter",
+    "fieldLabel": "Filter by:",
+    "inputPlaceholder": "Enter a value",
+    "selectPlaceholder": "Select an item",
+    "applyButtonText": "Apply",
+    "clearButtonText": "Clear",
+    "clearAllButtonText": "Clear all filters"
   }
 }
