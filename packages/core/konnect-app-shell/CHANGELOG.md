@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.29.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.28.2...@kong-ui/konnect-app-shell@0.29.0) (2023-03-03)
+
+
+### Features
+
+* **konnect-app-shell:** geo switcher enhancements [KHCP-6441] ([#661](https://github.com/Kong/shared-ui-components/issues/661)) ([7b52deb](https://github.com/Kong/shared-ui-components/commit/7b52deb04c5a4681c9d55111fb9eafc1a0352d2f))
+
+
+
+
+
 ## [0.28.2](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.28.1...@kong-ui/konnect-app-shell@0.28.2) (2023-03-03)
 
 
