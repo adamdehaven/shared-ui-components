@@ -43,7 +43,7 @@
     },
     "unexpected": {
       "header": "An unexpected error has occurred",
-      "text": "Go back to the previous page or <a href=\"/\">return home</a>."
+      "text": "Go back to the previous page or <a href=\"/\" class=\"return-home-link\">return home</a>."
     },
     "app_config": {
       "header": "Could not fetch the app config",
@@ -60,8 +60,14 @@
       "text": "We can't find the page or resource you are looking for. <br>Go back to the previous page or <a href=\"/\">return home</a>."
     },
     "unauthorized": {
-      "header": "You don't have permissions to access this resource.",
-      "text": "Please contact your account administrator for access."
+      "general": {
+        "header": "You don't have permissions to access this resource",
+        "text": "Please contact your account administrator for access."
+      },
+      "no_region_permissions": {
+        "header": "You do not have permissions in this region",
+        "text": "Please contact your account administrator for access. <br><a href=\"/\">Click here to return home</a>"
+      }
     },
     "network": "Network connection lost. Check your internet connection and then try refreshing the page."
   }

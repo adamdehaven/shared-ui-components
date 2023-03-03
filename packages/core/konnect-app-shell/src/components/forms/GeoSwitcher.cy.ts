@@ -4,7 +4,6 @@ import composables from '../../composables'
 import type { Session } from '../../types'
 import { v4 as uuidv4, v5 as uuidv5 } from 'uuid'
 import { FeatureFlags } from '../../types'
-import { KHCP_GEO_LOCAL_STORAGE_KEY } from '../../constants'
 import english from '../../locales/en.json'
 import type { LDFlagValue } from 'launchdarkly-js-client-sdk'
 
@@ -18,6 +17,10 @@ interface GeoSwitcherMountOptions {
    * Array of available geos for the organization
    */
   geos: string[]
+  /**
+   * Array of available geos the user has permissions for
+   */
+  userAllowedRegions?: string[]
   /**
    * Geo code to preset to the active geo for the test (typically this is only set when testing `/global/*` routes so that we can skip the Select Region page)
    */
@@ -56,18 +59,21 @@ interface GeoSwitcherMountOptions {
 describe('<GeoSwitcher />', () => {
   const userId = uuidv4()
   const orgId = uuidv4()
-  const geoLocalStorageKey = `${KHCP_GEO_LOCAL_STORAGE_KEY}-${uuidv5(orgId, userId)}`
 
   const { useGeo } = composables
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const mountComponent = async ({ global, geos = [], activeGeo = '', activeGeoOverride, path = '', tier = 'enterprise', ldFeatureFlags = [] }: GeoSwitcherMountOptions) => {
+  const mountComponent = async ({ global, geos = [], userAllowedRegions = [], activeGeo = '', activeGeoOverride, path = '', tier = 'enterprise', ldFeatureFlags = [] }: GeoSwitcherMountOptions) => {
     const geoStore = useGeo()
 
     cy.stub(composables, 'useSession').callsFake(() => ({
       session: reactive<Partial<Session>>({
         exists: true,
         data: {
+          // @ts-ignore
+          user: {
+            allowed_regions: userAllowedRegions,
+          },
           // @ts-ignore
           organization: {
             id: orgId,
@@ -109,72 +115,96 @@ describe('<GeoSwitcher />', () => {
   }
 
   afterEach(() => {
+    const geoStore = useGeo()
+    const { unsetLocalStorageGeo, geoLocalStorageKey } = geoStore
     // Clear localStorage geo
-    localStorage.removeItem(geoLocalStorageKey)
+    unsetLocalStorageGeo()
+    // Ensure localStorage is cleared
+    cy.wrap(localStorage.getItem(geoLocalStorageKey.value)).should('eq', null)
   })
 
   // TODO: Remove this describe block once the feature flag is removed
   describe('hide if multi-geo feature flag is false', () => {
     it('global switcher should still be hidden even if there is one geo', () => {
-      mountComponent({ global: true, geos: ['us'], path: '/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: false }] })
+      mountComponent({ global: true, geos: ['us'], userAllowedRegions: ['us'], path: '/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: false }] })
       cy.get(geoSwitcher.menu).should('not.exist')
     })
 
     it('global switcher should still be hidden even if there are two geos', () => {
-      mountComponent({ global: true, geos: ['us', 'eu'], path: '/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: false }] })
+      mountComponent({ global: true, geos: ['us', 'eu'], userAllowedRegions: ['us', 'eu'], path: '/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: false }] })
       cy.get(geoSwitcher.menu).should('not.exist')
     })
 
     it('local component switcher should be hidden even if there is one geo', () => {
-      mountComponent({ global: false, geos: ['us'], path: '/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: false }] })
+      mountComponent({ global: false, geos: ['us'], userAllowedRegions: ['us'], path: '/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: false }] })
       cy.get(geoSwitcher.select).should('not.exist')
     })
 
     it('local component switcher should be hidden even if there are two geos', () => {
-      mountComponent({ global: false, geos: ['us', 'eu'], path: '/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: false }] })
+      mountComponent({ global: false, geos: ['us', 'eu'], userAllowedRegions: ['us', 'eu'], path: '/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: false }] })
       cy.get(geoSwitcher.select).should('not.exist')
     })
   })
 
   describe('hide if no geos are returned', () => {
     it('global switcher should be hidden when there are no geos', () => {
-      mountComponent({ global: true, geos: [], path: '/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
+      mountComponent({ global: true, geos: [], userAllowedRegions: [], path: '/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
       cy.get(geoSwitcher.menu).should('not.exist')
     })
 
     it('local component switcher should be hidden when there are no geos', () => {
-      mountComponent({ global: false, geos: [], path: '/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
+      mountComponent({ global: false, geos: [], userAllowedRegions: [], path: '/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
+      cy.get(geoSwitcher.select).should('not.exist')
+    })
+  })
+
+  describe('hide if organization has entitled regions but user has no permissions in any regions', () => {
+    it('global switcher should be hidden when user has no permissions', () => {
+      mountComponent({ global: true, geos: ['us', 'eu'], userAllowedRegions: [], path: '/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
+      cy.get(geoSwitcher.menu).should('not.exist')
+    })
+
+    it('local component switcher should be hidden when user has no permissions', () => {
+      mountComponent({ global: false, geos: ['us', 'eu'], userAllowedRegions: [], path: '/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
       cy.get(geoSwitcher.select).should('not.exist')
     })
   })
 
   describe('global=true specific features', () => {
     it('should show the global picker and hide the override picker', () => {
-      mountComponent({ global: true, geos: ['us'], path: '/us/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
+      mountComponent({ global: true, geos: ['us', 'eu'], userAllowedRegions: ['us', 'eu'], path: '/us/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
       cy.get(geoSwitcher.menu).should('be.visible')
       cy.get(geoSwitcher.select).should('not.exist')
     })
 
-    it('should show one single geo', () => {
+    it('should hide the global picker if the org only has one region entitlement', () => {
       mountComponent({ global: true, geos: ['us'], path: '/us/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
-      cy.get(`${geoSwitcher.menu} [data-testid="k-dropdown-trigger"] .k-button`).click()
-      cy.get('.k-popover.k-dropdown-popover [data-testid^="geo-switcher-global-menu-select-"]').should('have.length', 1)
+      cy.get(geoSwitcher.menu).should('not.exist')
+
+      cy.get(geoSwitcher.select).should('not.exist')
+    })
+
+    it('should hide the override picker if the org only has one region entitlement', () => {
+      mountComponent({ global: false, geos: ['us'], userAllowedRegions: ['us'], path: '/us/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
+      cy.get(geoSwitcher.menu).should('not.exist')
+      cy.get(geoSwitcher.select).should('not.exist')
     })
 
     it('should not show the enterprise pricing link for enterprise orgs', () => {
-      mountComponent({ global: true, geos: ['us'], path: '/us/servicehub', tier: 'enterprise', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
+      mountComponent({ global: true, geos: ['us', 'eu'], userAllowedRegions: ['us', 'eu'], path: '/us/servicehub', tier: 'enterprise', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
       cy.get(`${geoSwitcher.menu} [data-testid="k-dropdown-trigger"] .k-button`).click()
       cy.get('[data-testid="geo-switcher-global-more-regions-option-link"]').should('not.exist')
     })
 
-    it('should show one single geo and the enterprise pricing link for non-enterprise orgs', () => {
+    // This test is currently skipped as the logic for the navbar switcher is to hide the switcher if an organization only has a single entitled region.
+    it.skip('should show one single geo and the enterprise pricing link for non-enterprise orgs', () => {
       mountComponent({ global: true, geos: ['us'], path: '/us/servicehub', tier: 'plus', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
       cy.get(`${geoSwitcher.menu} [data-testid="k-dropdown-trigger"] .k-button`).click()
       cy.get('[data-testid="geo-switcher-global-more-regions-option-link"]').should('be.visible')
     })
 
     it('should show the choice of geos', () => {
-      mountComponent({ global: true, geos: ['us', 'eu'], path: '/us/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
+      mountComponent({ global: true, geos: ['us', 'eu'], userAllowedRegions: ['us', 'eu'], path: '/us/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
       cy.get(`${geoSwitcher.menu} [data-testid="k-dropdown-trigger"] .k-button`).click()
       cy.get('.k-popover.k-dropdown-popover [data-testid^="geo-switcher-global-menu-select-"]').should('have.length', 2)
     })
@@ -184,8 +214,7 @@ describe('<GeoSwitcher />', () => {
         getLocationPathname: () => '/global/organization/teams',
       })
 
-      localStorage.setItem(geoLocalStorageKey, 'us')
-      mountComponent({ global: true, geos: ['us', 'eu'], activeGeo: 'us', path: '/global/organization/teams', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
+      mountComponent({ global: true, geos: ['us', 'eu'], userAllowedRegions: ['us', 'eu'], activeGeo: 'us', path: '/global/organization/teams', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
       cy.get(`${geoSwitcher.menu} [data-testid="k-dropdown-btn"]`).should('contain.text', english.geo.global)
     })
 
@@ -200,7 +229,7 @@ describe('<GeoSwitcher />', () => {
         },
       })
 
-      mountComponent({ global: true, geos: ['us', 'eu'], path: '/us/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
+      mountComponent({ global: true, geos: ['us', 'eu'], userAllowedRegions: ['us', 'eu'], path: '/us/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
 
       cy.get(`${geoSwitcher.menu} [data-testid="k-dropdown-trigger"] .k-button`).click().then(() => {
         cy.get('.k-popover.k-dropdown-popover [data-testid^="geo-switcher-global-menu-select-eu"]').click().then(() =>
@@ -212,36 +241,37 @@ describe('<GeoSwitcher />', () => {
 
   describe('global=false specific features', () => {
     it('should show the override picker and hide the global picker', () => {
-      mountComponent({ global: false, geos: ['us'], path: '/us/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
+      mountComponent({ global: false, geos: ['us', 'eu'], userAllowedRegions: ['us', 'eu'], path: '/us/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
       cy.get(geoSwitcher.menu).should('not.exist')
       cy.get(geoSwitcher.select).should('be.visible')
     })
 
-    it('should show one single geo', () => {
-      mountComponent({ global: false, geos: ['us'], path: '/us/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
+    // This test is currently skipped as the logic for the navbar switcher is to hide the switcher if an organization only has a single entitled region.
+    it.skip('should show one single geo', () => {
+      mountComponent({ global: false, geos: ['us'], userAllowedRegions: ['us'], path: '/us/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
       cy.get('.geo-switcher .k-select').click()
       cy.get(`${geoSwitcher.select} div[data-testid^="k-select-item-"]`).should('have.length', 1)
     })
 
     it('should show the choice of geos', () => {
-      mountComponent({ global: false, geos: ['us', 'eu'], path: '/us/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
+      mountComponent({ global: false, geos: ['us', 'eu'], userAllowedRegions: ['us', 'eu'], path: '/us/servicehub', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
       cy.get('div.geo-switcher .k-select').click()
       cy.get('div[data-testid^="k-select-item-"]').should('have.length', 2)
     })
 
     it('should show the choices on global route', () => {
-      mountComponent({ global: false, geos: ['us', 'eu'], activeGeo: 'eu', path: '/global/organization/teams', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
+      mountComponent({ global: false, geos: ['us', 'eu'], userAllowedRegions: ['us', 'eu'], activeGeo: 'eu', path: '/global/organization/teams', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
       cy.get('input').should('have.value', english.geo.available_geos.eu)
     })
 
     it('should grab value from isActiveOverride', () => {
-      mountComponent({ global: false, geos: ['us', 'eu'], activeGeo: 'us', activeGeoOverride: 'eu', path: '/global/organization/teams', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
+      mountComponent({ global: false, geos: ['us', 'eu'], userAllowedRegions: ['us', 'eu'], activeGeo: 'us', activeGeoOverride: 'eu', path: '/global/organization/teams', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
 
       cy.get('input').should('have.value', english.geo.available_geos.eu)
     })
 
     it('should change store isActiveOverride when geo changed', () => {
-      mountComponent({ global: false, geos: ['us', 'eu'], activeGeo: 'us', path: '/global/organization/teams', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
+      mountComponent({ global: false, geos: ['us', 'eu'], userAllowedRegions: ['us', 'eu'], activeGeo: 'us', path: '/global/organization/teams', ldFeatureFlags: [{ key: FeatureFlags.MultiGeo, value: true }] })
       cy.get('div.geo-switcher .k-select').click()
       cy.get('div[data-testid="k-select-item-eu"]').click().then(() => {
         const geoStore = useGeo()

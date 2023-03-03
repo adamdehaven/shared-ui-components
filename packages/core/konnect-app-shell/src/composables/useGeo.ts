@@ -8,7 +8,6 @@ import { useWindow } from '@kong-ui/core'
 const geos = ref<Geo[]>([])
 
 export default function useGeo() {
-  const { userOrgGeneratedUuid } = composables.useSession()
   // This computed variable will NOT respect an active override
   const activeGeo = computed((): Geo | undefined => geos.value.find((geo: Geo) => geo.isActive === true) || undefined)
   // Must return null if no override is defined
@@ -16,6 +15,8 @@ export default function useGeo() {
 
   // Generate a localStorage key based on the user's org and user id
   const geoLocalStorageKey = computed((): string => {
+    // Warning: The session composable must be utilized inside a function within this file to prevent infinite import loop
+    const { userOrgGeneratedUuid } = composables.useSession()
     return `${KHCP_GEO_LOCAL_STORAGE_KEY}-${userOrgGeneratedUuid.value}`
   })
 
@@ -53,10 +54,14 @@ export default function useGeo() {
     const { i18n } = composables.useI18n()
 
     const geoOptions = geoCodes.map((geoCode: string) => {
+      const code = geoCode.toLowerCase()
+      // Warning: The session composable must be utilized inside a function within this file to prevent infinite import loop
+      const { session } = composables.useSession()
+
       return {
-        code: geoCode.toLowerCase(),
-        name: i18n.source.geo.available_geos[geoCode],
-        userCanSelect: true,
+        code,
+        name: i18n.source.geo.available_geos[code],
+        userCanSelect: session.data.user?.allowed_regions?.includes(code) || false,
         isActive: false,
         isActiveOverride: false,
       }
@@ -93,9 +98,9 @@ export default function useGeo() {
         }
       }
 
-      // Still no newGeo. If the organization entitlements only have one region, set it as active
-      if (!newGeo && geos.value.length === 1) {
-        newGeo = geos.value[0].code
+      // Still no newGeo. If the user only has permissions in one region, set it as active
+      if (!newGeo && geos.value.filter((geo: Geo) => geo.userCanSelect).length === 1) {
+        newGeo = geos.value.filter((geo: Geo) => geo.userCanSelect)[0].code
       }
 
       // If newGeo now has a value, store it in localStorage and the Vue store
@@ -131,6 +136,11 @@ export default function useGeo() {
     })
   }
 
+  // Unset the active geo in localStorage
+  const unsetLocalStorageGeo = (): void => {
+    localStorage.removeItem(geoLocalStorageKey.value)
+  }
+
   return {
     geos: readonly(geos),
     activeGeo,
@@ -139,6 +149,7 @@ export default function useGeo() {
     setAllGeos,
     setActiveGeo,
     setActiveGeoOverride,
+    unsetLocalStorageGeo,
     geoLocalStorageKey,
   }
 }

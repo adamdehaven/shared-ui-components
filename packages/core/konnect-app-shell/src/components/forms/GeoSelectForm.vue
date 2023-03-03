@@ -77,7 +77,7 @@ const loading = ref<boolean>(false)
 
 const regionOptions = computed((): GeoSelectOptionItem[] => {
   // Loop through all available regions from the store
-  return geos.value.map((geo: Geo, idx: number) => {
+  return geos.value.filter((geo: Geo) => !!geo.userCanSelect).map((geo: Geo, idx: number) => {
     return {
       value: geo.code,
       label: geo.name,

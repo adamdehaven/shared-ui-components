@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="session.exists && multiGeoEnabled && availableGeos && availableGeos.length"
+    v-if="session.exists && multiGeoEnabled && availableGeos && availableGeos.length && alwaysShowGeoSwitcher"
     class="geo-switcher"
   >
     <NavbarDropdownMenu
@@ -145,7 +145,7 @@ const availableGeos = computed((): NavbarDropdownMenuItem[] => {
 
   // If we are displaying the global geo switcher in the navbar, use the active geo
   if (props.global) {
-    return geos.value.map((geo: Geo) => ({
+    return geos.value.filter((geo: Geo) => !!geo.userCanSelect).map((geo: Geo) => ({
       value: geo.code,
       label: geo.name,
       selected: geo.isActive,
@@ -154,12 +154,15 @@ const availableGeos = computed((): NavbarDropdownMenuItem[] => {
 
   // Otherwise, we are displaying a local geo switcher within a component in the `/global/*` route
   // so allow overriding the active geo
-  return geos.value.map((geo: Geo) => ({
+  return geos.value.filter((geo: Geo) => !!geo.userCanSelect).map((geo: Geo) => ({
     value: geo.code,
     label: geo.name,
     selected: activeGeoOverride.value?.code ? geo.isActiveOverride : geo.isActive,
   }))
 })
+
+// Always show the geo switcher if the user has permissions for more than 1 selectable region entitlement
+const alwaysShowGeoSwitcher = computed((): boolean => geos.value.filter((geo: Geo) => !!geo.userCanSelect).length > 1)
 
 const onGeoChange = (item: NavbarDropdownMenuItem): void => {
   // If displaying the global switcher, and not showing the 'Global' static option, and the user did not select the already active geo, trigger rehydration

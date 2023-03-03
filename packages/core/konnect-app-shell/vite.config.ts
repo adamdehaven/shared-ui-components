@@ -47,7 +47,7 @@ const config = mergeConfig(sharedViteConfig, defineConfig({
 
       '^/eu/kong-api/konnect/api': {
         target: 'https://{geo}.api.konghq.tech/konnect-api'.replace(/\{geo\}/, 'eu'),
-        rewrite: (path) => path.replace('/us/kong-api/konnect/', ''),
+        rewrite: (path) => path.replace('/eu/kong-api/konnect/', ''),
         changeOrigin: true,
       },
 

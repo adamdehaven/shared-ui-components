@@ -14,13 +14,13 @@ const session = reactive<Session>({
   refresh: async (): Promise<boolean> => false,
   destroy: async (): Promise<void> => undefined,
 })
+const initialPermissionsFetched = ref<boolean>(false)
 
 export default function useSession() {
   const isRefreshing = ref<boolean>(false)
   const isLoggingOut = ref<boolean>(false)
-
-  const { kAuthApi } = composables.useKAuthApi()
   const win = useWindow()
+  const { activeGeo } = composables.useGeo()
 
   /**
    * Generate a v5 UUID comprised of the orgId and userId
@@ -64,11 +64,56 @@ export default function useSession() {
       // Reset the error state
       error.value = false
 
-      const [userMe, organizationMe, organizationEntitlements] = await Promise.all([
+      const { kAuthApi } = composables.useKAuthApi()
+      const [userMe, organizationMe, organizationEntitlements, userPermissions] = await Promise.all([
         await kAuthApi.value.v2.me.getUsersMe(),
         await kAuthApi.value.organization.organizationAPIRetrieveCurrentOrganization(),
         await kAuthApi.value.entitlement.entitlementAPIRetrieveCurrentEntitlement(),
+        // Fetch the top_level permissions for this user for ALL regions
+        await kAuthApi.value.me.meAPIRetrievePermissions('', '', true, [], ''),
       ])
+
+      const userTopLevelPermissions = userPermissions?.data?.data || []
+      const orgEntitledRegions = organizationEntitlements?.data?.regions || []
+
+      const userRegionsWithPermissions = new Set<string>()
+
+      const { parseKrn } = composables.usePermissions()
+
+      // Check if the user has permissions in each entitled region
+      if (userTopLevelPermissions.length && orgEntitledRegions.length) {
+        // Loop through all top-level permissions
+        for (const krn of userTopLevelPermissions) {
+          // If all entitled regions have been added, exit
+          if (userRegionsWithPermissions.size === orgEntitledRegions.length) {
+            break
+          }
+
+          const krnRegion = krn.resource ? parseKrn(krn.resource).region : undefined
+
+          // If the krnRegion is undefined, skip it
+          if (!krnRegion) {
+            continue
+          }
+
+          // If the user has wildcard `*` permissions for any region, automatically add all regions to the array and exit
+          if (krnRegion === '*') {
+            for (const region of orgEntitledRegions) {
+              userRegionsWithPermissions.add(region)
+            }
+
+            // Exit early
+            break
+          }
+
+          for (const region of orgEntitledRegions) {
+            if (krnRegion === region && !userRegionsWithPermissions.has(region)) {
+              userRegionsWithPermissions.add(region)
+              continue
+            }
+          }
+        }
+      }
 
       // User id and Org id are required, so error if they are missing
       if (!userMe?.data?.id || !organizationMe?.data?.id) {
@@ -84,6 +129,7 @@ export default function useSession() {
           is_owner: (!!userMe?.data?.id && (userMe?.data?.id === organizationMe?.data?.owner_id)) || false,
           active: userMe?.data?.active || false,
           feature_set: userMe?.headers && userMe?.headers[HEADER_KONNECT_FEATURE_SET] !== undefined ? userMe.headers[HEADER_KONNECT_FEATURE_SET] : '',
+          allowed_regions: [...userRegionsWithPermissions],
           created_at: userMe?.data?.created_at || '',
           updated_at: userMe?.data?.updated_at || '',
         },
@@ -94,7 +140,7 @@ export default function useSession() {
           owner_id: organizationMe?.data?.owner_id || '',
           entitlements: {
             runtime_group_limit: organizationEntitlements?.data?.runtime_group_limit || 0,
-            regions: organizationEntitlements?.data?.regions || [],
+            regions: orgEntitledRegions,
             tier: {
               name: (organizationEntitlements?.data?.tier?.name) as Tier || '',
               trial_expires_at: organizationEntitlements?.data?.tier?.trial_expires_at || null,
@@ -125,11 +171,6 @@ export default function useSession() {
       // Refresh the page if the localStorage object is changed in another tab
       window?.removeEventListener('storage', (event: StorageEvent) => refreshOnUserChange(event, SESSION_USER_LOCAL_STORAGE_KEY))
       window?.addEventListener('storage', (event: StorageEvent) => refreshOnUserChange(event, SESSION_USER_LOCAL_STORAGE_KEY))
-
-      const { fetchInitialPermissions } = composables.usePermissions()
-      // Fetch the initial permissions in order to evaluate the sidebar items
-      // Fetching here avoids some content delay when rendering the sidebar
-      await fetchInitialPermissions()
 
       // Initialize DataDog with the actual user id
       globalThis.DD_RUM && globalThis.DD_RUM.onReady(() => {
@@ -172,6 +213,21 @@ export default function useSession() {
       }
     }
   }
+
+  // Automatically fetch the user's permissions once the activeGeo has been determined
+  // Fetching here avoids some content delay when rendering the sidebar
+  watch(() => activeGeo.value?.code, async (geoCode) => {
+    // Only perform the fetch once
+    if (!initialPermissionsFetched.value && geoCode) {
+      // Set the persistent ref to true to prevent subsequent fetches
+      initialPermissionsFetched.value = true
+
+      // Fetch the initial permissions in order to evaluate the sidebar items
+      const { fetchInitialPermissions } = composables.usePermissions()
+
+      await fetchInitialPermissions()
+    }
+  })
 
   /**
    * Is the provided object undefined or empty?
@@ -259,6 +315,7 @@ export default function useSession() {
    */
   const refresh = async (): Promise<boolean> => {
     try {
+      const { kAuthApi } = composables.useKAuthApi()
       // Trigger auth refresh
       const response = await kAuthApi.value.authentication.refresh({})
 
@@ -343,6 +400,8 @@ export default function useSession() {
       localStorage?.removeItem(SESSION_USER_LOCAL_STORAGE_KEY)
       // Remove the session event listener
       window?.removeEventListener('storage', (event: StorageEvent) => refreshOnUserChange(event, SESSION_USER_LOCAL_STORAGE_KEY))
+
+      const { kAuthApi } = composables.useKAuthApi()
 
       // Log out the user
       const { data: { loginPath } } = await kAuthApi.value.authentication.logout()

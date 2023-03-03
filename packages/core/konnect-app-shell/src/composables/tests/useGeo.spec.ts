@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, afterEach, beforeAll, SpyInstance } from 'vitest'
+import { describe, it, expect, vi, afterEach, beforeEach, SpyInstance } from 'vitest'
 import composables from '../index'
 import { KHCP_GEO_LOCAL_STORAGE_KEY } from '../../constants'
 import { v4 as uuidv4, v5 as uuidv5 } from 'uuid'
@@ -7,24 +7,34 @@ const userId = uuidv4()
 const orgId = uuidv4()
 
 describe('useGeo', async () => {
-  const { session, userOrgGeneratedUuid } = composables.useSession()
   let testStorageKey: string = ''
   const { setAllGeos, geos, setActiveGeo, setActiveGeoOverride, getActiveGeo, activeGeo, activeGeoOverride, geoLocalStorageKey } = composables.useGeo()
   const windowLocationSpy: SpyInstance<[], Partial<Location>> = vi.spyOn(window, 'location', 'get')
 
-  beforeAll(() => {
+  const mockSessionData = (allowedRegions: string[] = []) => {
+    const { session } = composables.useSession()
+
     // Stub the session org and user id to generate the localStorage key
-    const sessionSpy = vi.spyOn(session, 'data', 'get')
-    sessionSpy.mockReturnValue({
+    vi.spyOn(session, 'data', 'get').mockReturnValue({
       // @ts-ignore
       user: {
         id: userId,
+        allowed_regions: allowedRegions,
       },
       // @ts-ignore
       organization: {
         id: orgId,
       },
     })
+  }
+
+  beforeEach(() => {
+    // @ts-ignore
+    vi.spyOn(composables, 'usePermissions').mockReturnValue({
+      fetchInitialPermissions: vi.fn(),
+    })
+
+    const { userOrgGeneratedUuid } = composables.useSession()
 
     testStorageKey = `${KHCP_GEO_LOCAL_STORAGE_KEY}-${userOrgGeneratedUuid.value}`
   })
@@ -41,6 +51,7 @@ describe('useGeo', async () => {
 
   it('sets all available geos', () => {
     const availableGeos = ['us', 'eu']
+    mockSessionData(availableGeos)
 
     expect(geos.value).toEqual([])
     setAllGeos(availableGeos)
@@ -70,6 +81,7 @@ describe('useGeo', async () => {
 
   it('sets the active geo if the organization only has 1 entitled region', () => {
     const availableGeos = ['us']
+    mockSessionData(availableGeos)
 
     expect(geos.value).toEqual([])
     setAllGeos(availableGeos)
@@ -84,6 +96,9 @@ describe('useGeo', async () => {
   })
 
   it('sets the active geo from the URL', () => {
+    const availableGeos = ['us', 'eu']
+    mockSessionData(availableGeos)
+
     // Create an existing localStorage entry (this should be ignored since the URL will have a geo in the path)
     localStorage?.setItem(testStorageKey, 'us')
     // Verify localStorage item exists
@@ -93,8 +108,6 @@ describe('useGeo', async () => {
     windowLocationSpy.mockReturnValue({
       pathname: '/eu/mesh-manager',
     })
-
-    const availableGeos = ['us', 'eu']
 
     setAllGeos(availableGeos)
     expect(geos.value.length).toBe(2)
@@ -106,6 +119,7 @@ describe('useGeo', async () => {
 
   it('creates a localStorage key from the orgId and userId', () => {
     const availableGeos = ['us']
+    mockSessionData(availableGeos)
 
     setAllGeos(availableGeos)
     setActiveGeo()
@@ -116,6 +130,9 @@ describe('useGeo', async () => {
   })
 
   it('sets the active geo from localStorage', () => {
+    const availableGeos = ['us', 'eu']
+    mockSessionData(availableGeos)
+
     // Pass a URL with no `geo` in the path
     windowLocationSpy.mockReturnValue({
       pathname: '/',
@@ -125,8 +142,6 @@ describe('useGeo', async () => {
     localStorage?.setItem(testStorageKey, 'eu')
     // Verify localStorage item exists
     expect(localStorage?.getItem(testStorageKey)).toEqual('eu')
-
-    const availableGeos = ['us', 'eu']
 
     setAllGeos(availableGeos)
     expect(geos.value.length).toBe(2)
@@ -141,6 +156,8 @@ describe('useGeo', async () => {
     const otherOrgId = uuidv4()
     const otherUserId = uuidv4()
     const otherUserLocalStorageKey = `${KHCP_GEO_LOCAL_STORAGE_KEY}-${uuidv5(otherOrgId, otherUserId)}`
+    const availableGeos = ['us', 'eu']
+    mockSessionData(availableGeos)
 
     // Pass a URL with no `geo` in the path
     windowLocationSpy.mockReturnValue({
@@ -157,8 +174,6 @@ describe('useGeo', async () => {
     // Verify localStorage item exists for this orgId/userId combo
     expect(localStorage?.getItem(otherUserLocalStorageKey)).toEqual('eu')
 
-    const availableGeos = ['us', 'eu']
-
     setAllGeos(availableGeos)
     expect(geos.value.length).toBe(2)
 
@@ -169,6 +184,7 @@ describe('useGeo', async () => {
 
   it('sets the active geo when a valid code is passed', () => {
     const availableGeos = ['us', 'eu']
+    mockSessionData(availableGeos)
 
     setAllGeos(availableGeos)
     expect(geos.value.length).toBe(2)
@@ -179,6 +195,7 @@ describe('useGeo', async () => {
 
   it('sets a localStorage key with UUID for the active geo', () => {
     const availableGeos = ['us']
+    mockSessionData(availableGeos)
 
     setAllGeos(availableGeos)
     expect(geos.value.length).toBe(1)
@@ -190,6 +207,7 @@ describe('useGeo', async () => {
 
   it('sets the active geo override', () => {
     const availableGeos = ['us', 'eu']
+    mockSessionData(availableGeos)
 
     setAllGeos(availableGeos)
     expect(geos.value.length).toBe(2)

@@ -13,7 +13,7 @@
           icon="copy"
           @click="onCopyTraceId(copyToClipboard)"
         >
-          {{ t('copyTraceId.traceId') }} : <span class="pl-2">{{ traceId }}</span>
+          {{ t('copyTraceId.traceId') }} : <span data-testid="traceid">{{ traceId }}</span>
         </KButton>
       </KClipboardProvider>
     </KTooltip>

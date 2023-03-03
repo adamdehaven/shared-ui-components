@@ -134,7 +134,7 @@ import '@kong-ui-public/app-layout/dist/style.css'
 import '@kong-ui/konnect-global-search/dist/style.css'
 import '@kong-ui-public/misc-widgets/dist/style.css'
 
-const { useSession, useAppSidebar, useGeo, useI18n, useKAuthApi, useAppConfig } = composables
+const { useSession, useAppSidebar, useGeo, useI18n, useKAuthApi, useAppConfig, usePermissions } = composables
 const props = defineProps({
   // Provide the secondary sidebar items that should be injected into the top-level primary item with the corresponding `parentKey`
   sidebarItems: {
@@ -229,6 +229,10 @@ const toggleErrorState = ({ show, header, text, traceId }: GlobalError): void =>
   state.error.text = text || ''
   state.error.traceId = traceId || ''
   state.error.show = show
+
+  if (show) {
+    state.loading = false
+  }
 }
 
 // Determine if the app content should be hidden if any of the following are true:
@@ -238,7 +242,7 @@ const toggleErrorState = ({ show, header, text, traceId }: GlobalError): void =>
 const hideAppContent = computed((): boolean => state.loading || state.error.show || !state.activeGeo)
 
 const win = useWindow()
-const { setAllGeos, setActiveGeo, getActiveGeo } = useGeo()
+const { setAllGeos, setActiveGeo, getActiveGeo, unsetLocalStorageGeo } = useGeo()
 
 // Emit the active geo from the component whenever it is updated
 watch(() => state.activeGeo, (activeGeo: Geo | undefined) => {
@@ -345,8 +349,8 @@ onBeforeMount(async () => {
       text: t('errors.app_config.text'),
       traceId: '',
     })
-    state.loading = false
 
+    // Show an error; must return
     return
   }
 
@@ -367,8 +371,8 @@ onBeforeMount(async () => {
       text: t('errors.session.data.text'),
       traceId: '',
     })
-    state.loading = false
 
+    // Show an error; must return
     return
   }
 
@@ -400,6 +404,24 @@ onBeforeMount(async () => {
     win.setLocationReplace(`/${state.activeGeo.code}${currentPath}`)
 
     // We sent the user to a new page; exit early
+    return
+  }
+
+  // Show an error if the user does not have permissions in the active region
+  const { userHasPermissionsInActiveRegion } = usePermissions()
+  if (!userHasPermissionsInActiveRegion.value) {
+    // Unset the active region in localStorage
+    unsetLocalStorageGeo()
+
+    // Show an error
+    toggleErrorState({
+      show: true,
+      header: t('errors.unauthorized.no_region_permissions.header'),
+      text: t('errors.unauthorized.no_region_permissions.text'),
+      traceId: '',
+    })
+
+    // Show an error; must return
     return
   }
 

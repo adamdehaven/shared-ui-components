@@ -47,4 +47,9 @@ const textContent = computed(() => props.text || t('errors.unexpected.text'))
 :deep(.copy-trace-id) {
   margin-top: 24px;
 }
+
+:deep(div a),
+:deep(p a) {
+  color: var(--kong-ui-global-error-message-link-color, var(--blue-500, #1155cb))
+}
 </style>

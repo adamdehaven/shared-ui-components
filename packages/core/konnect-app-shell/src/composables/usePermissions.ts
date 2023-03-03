@@ -11,8 +11,6 @@ const krns = ref<KrnFromApi[]>([])
 const userHasRootAccess = ref<boolean>(false)
 // Does the user have root access
 const userHasRootReadonlyAccess = ref<boolean>(false)
-// Does the user have permissions for at least one entity (e.g. one KRN with a valid action)?
-const userHasSomePermissions = computed((): boolean => krns.value.some(krn => !!krn.actions?.length && krn.actions.some(action => !!action)))
 
 /**
  * Determine if the resource path from a KRN from the API matches a requested resource path guard.
@@ -357,11 +355,10 @@ export default function usePermissions() {
       return resourcePathMatches(parsedKrn, requestedResourcePath)
     })
 
-    const { getActiveGeo } = useGeo()
-    const activeGeo = getActiveGeo({ allowOverride: false })?.code
+    const { activeGeo } = useGeo()
 
     // Only attempt to fetch missing permissions if the requestedService is defined and the user has no matching resource paths, and there is an activeGeo
-    if (!!requestedService && matchingResources.length === 0 && activeGeo) {
+    if (!!requestedService && matchingResources.length === 0 && activeGeo.value?.code) {
       // Request filtered krn from API to see if user has access that does not currently exist in the store
       try {
         let resourceAndActionMatch
@@ -369,7 +366,7 @@ export default function usePermissions() {
         // Fetch any missing krns
         if (fetchMissingPermissions) {
           // If params are null, send an empty string instead, and fetch permissions for the active geo
-          const { data: { data: fetchedKrnPermissions } } = await kAuthApi.value.me.meAPIRetrievePermissions(requestedService || '', requestedResourcePath || '', false, [], activeGeo).catch(() => ({ data: { data: [] } }))
+          const { data: { data: fetchedKrnPermissions } } = await kAuthApi.value.me.meAPIRetrievePermissions(requestedService || '', requestedResourcePath || '', false, [], activeGeo.value?.code).catch(() => ({ data: { data: [] } }))
 
           if (fetchedKrnPermissions && fetchedKrnPermissions.length > 0) {
             addKrns({
@@ -430,11 +427,10 @@ export default function usePermissions() {
    * @param topLevelOnly Should we only request the top-level permissions from the API? Defaults to false
    */
   const fetchInitialPermissions = async (topLevelOnly = false): Promise<void> => {
-    const { getActiveGeo } = useGeo()
-    const activeGeo = getActiveGeo({ allowOverride: false })?.code
+    const { activeGeo } = useGeo()
 
     // Fetch top-level user permissions for the active geo; catch any errors so the app doesn't crash
-    const { data: { data: userPermissions } } = await kAuthApi.value.me.meAPIRetrievePermissions('', '', topLevelOnly, [], activeGeo).catch((error) => {
+    const { data: { data: userPermissions } } = await kAuthApi.value.me.meAPIRetrievePermissions('', '', topLevelOnly, [], activeGeo.value?.code).catch((error) => {
       setTraceIdFromError(error)
 
       console.error('usePermissions(fetchInitialPermissions): could not fetch top-level permissions', error)
@@ -449,17 +445,32 @@ export default function usePermissions() {
   }
 
   // Computed helpers
+
+  // Is the user an organization admin?
   const isOrgAdmin = computed((): boolean => userHasRootAccess.value)
+  // Is the user a readonly organization admin?
   const isOrgAdminReadonly = computed((): boolean => userHasRootReadonlyAccess.value)
+  // Does the user have permissions in the active region?
+  const userHasPermissionsInActiveRegion = computed((): boolean => {
+    const { session } = useSession()
+    const { activeGeo } = useGeo()
+
+    return !!session.data.user?.allowed_regions?.length && !!activeGeo.value?.code && session.data.user.allowed_regions.includes(activeGeo.value.code)
+  })
+
+  // Does the user have permissions for at least one entity (e.g. one KRN with a valid action)?
+  const userHasSomePermissions = computed((): boolean => krns.value.some(krn => !!krn.actions?.length && krn.actions.some(action => !!action)))
 
   return {
     userIsAuthorizedForRoute,
     addKrns,
     canUserAccess,
     fetchInitialPermissions,
+    parseKrn,
     // Export computed helpers
-    userHasSomePermissions,
     isOrgAdmin,
     isOrgAdminReadonly,
+    userHasPermissionsInActiveRegion,
+    userHasSomePermissions,
   }
 }
