@@ -1,5 +1,5 @@
 import { RouteLocationRaw } from 'vue-router'
-import { Field } from './base'
+import { Field } from './index'
 
 export interface BaseTableHeaders {
   [key: string]: Field

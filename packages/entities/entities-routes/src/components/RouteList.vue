@@ -17,22 +17,23 @@
         v-if="state.hasData || filterQuery"
         #toolbar-filter
       >
-        <KInput
+        <EntityFilter
           v-model="filterQuery"
-          :placeholder="t('search.placeholder')"
-          type="text"
+          :config="filterConfig"
         />
       </template>
       <template
         v-if="state.hasData || filterQuery"
         #toolbar-button
       >
-        <KButton
-          appearance="btn-link"
-          icon="plus"
-        >
-          Action Button
-        </KButton>
+        <PermissionsWrapper :auth-function="() => canCreate()">
+          <KButton
+            appearance="primary"
+            icon="plus"
+          >
+            {{ t('routes.list.toolbar_actions.new_route') }}
+          </KButton>
+        </PermissionsWrapper>
       </template>
       <template #name="{ rowValue }">
         <b class="entity-name">{{ rowValue }}</b>
@@ -91,8 +92,8 @@ import composables from '../composables'
 import endpoints from '../routes-endpoints'
 import type { KonnectRouteListConfig, KongManagerRouteListConfig } from '../types'
 import type { AxiosError } from 'axios'
-import { EntityBaseTable, PermissionsWrapper, useAxios } from '@kong-ui/entities-shared'
-import type { BaseTableHeaders, EmptyStateOptions, FetcherParams, FetcherResponse } from '@kong-ui/entities-shared'
+import { EntityBaseTable, EntityFilter, PermissionsWrapper, useAxios } from '@kong-ui/entities-shared'
+import type { BaseTableHeaders, EmptyStateOptions, FetcherParams, FetcherResponse, ExactMatchFilterConfig, FilterFields, FuzzyMatchFilterConfig } from '@kong-ui/entities-shared'
 import '@kong-ui/entities-shared/dist/style.css'
 
 const emit = defineEmits<{
@@ -107,12 +108,14 @@ const props = defineProps({
     type: Object as PropType<KonnectRouteListConfig | KongManagerRouteListConfig>,
     required: true,
     validator: (config: KonnectRouteListConfig | KongManagerRouteListConfig): boolean => {
-      return !!config && ['konnect', 'kongManager'].includes(config?.app)
+      if (!config || !['konnect', 'kongManager'].includes(config?.app)) return false
+      if (config.app === 'kongManager' && !config.isExactMatch && !config.filterSchema) return false
+      return true
     },
   },
   /** An asynchronous function, that returns a boolean, that evaluates if the user can create a new entity */
   canCreate: {
-    type: Function as PropType<(row: object) => Promise<boolean>>,
+    type: Function as PropType<() => Promise<boolean>>,
     required: false,
     default: async () => true,
   },
@@ -141,8 +144,39 @@ const state = reactive({
   errorMessage: '', // this property being set (or empty) determines if the KTable is in an error state
   hasData: false,
 })
-const filterQuery = ref<string>('')
+
 const { i18n: { t } } = composables.useI18n()
+
+const fields = {
+  name: { label: t('routes.list.table_headers.name'), searchable: true, sortable: true },
+  protocols: { label: t('routes.list.table_headers.protocols'), searchable: true },
+  hosts: { label: t('routes.list.table_headers.hosts'), searchable: true },
+  methods: { label: t('routes.list.table_headers.methods'), searchable: true },
+  paths: { label: t('routes.list.table_headers.paths'), searchable: true },
+  id: { label: t('routes.list.table_headers.id'), sortable: true },
+}
+
+const filterQuery = ref<string>('')
+const filterConfig = computed<InstanceType<typeof EntityFilter>['$props']['config']>(() => {
+  const isExactMatch = (props.config.app === 'konnect' || props.config.isExactMatch)
+  const { name, protocols, hosts, methods, paths, id } = fields
+  const filterFields: FilterFields = isExactMatch ? { name, id } : { name, protocols, hosts, methods, paths }
+
+  if (isExactMatch) {
+    return {
+      isExactMatch,
+      fields: filterFields,
+      placeholder: t('search.placeholder'),
+    } as ExactMatchFilterConfig
+  }
+
+  return {
+    isExactMatch,
+    fields: filterFields,
+    schema: props.config.filterSchema,
+  } as FuzzyMatchFilterConfig
+})
+
 const enableClientSort = computed((): boolean => props.config.app === 'konnect')
 const emptyStateOptions: EmptyStateOptions = {
   ctaPath: '', // TODO: Add CTA path
@@ -151,27 +185,16 @@ const emptyStateOptions: EmptyStateOptions = {
   title: t('routes.list.empty_state.title'),
 }
 
-const tableHeaders: BaseTableHeaders = {
-  name: { label: t('routes.list.table_headers.name'), searchable: true, sortable: true },
-  protocols: { label: t('routes.list.table_headers.protocols') },
-  hosts: { label: t('routes.list.table_headers.hosts') },
-  methods: { label: t('routes.list.table_headers.methods') },
-  paths: { label: t('routes.list.table_headers.paths') },
-  id: { label: t('routes.list.table_headers.id'), sortable: true },
-}
+const tableHeaders: BaseTableHeaders = fields
 
 const { axiosInstance } = useAxios({
   headers: props.config?.requestHeaders,
 })
 
-// @ts-ignore
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const buildRequestUrl = (fetcherParams: FetcherParams): string => {
   // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { page, pageSize, offset, sortColumnKey, sortColumnOrder, query } = fetcherParams
-
-  // @ts-ignore
   let url = `${props.config.apiBaseUrl}${endpoints.list[props.config.app]}`
 
   if (props.config.app === 'konnect') {
@@ -180,18 +203,25 @@ const buildRequestUrl = (fetcherParams: FetcherParams): string => {
     url = url.replace(/{workspace}/gi, props.config?.workspace || '')
   }
 
-  // This is done within a try/catch block in case there is an error in constructing the URL (rare)
+  // This is done within a try/catch block in case there is an error in constructing the URL; the fallback value will still fetch but without the params
   try {
     // Construct a URL object, adding the current `window.location.origin` if the path begins with a slash
-    const urlWithParams = props.config.apiBaseUrl.startsWith('/') ? new URL(`${window.location.origin}${url}`) : new URL(url)
+    const baseRequestUrl = props.config.apiBaseUrl.startsWith('/') ? new URL(`${window.location.origin}${url}`) : new URL(url)
 
+    let urlWithParams: URL = new URL(baseRequestUrl.href)
     if (props.config.app === 'konnect') {
       // TODO: append the search, sort, and pagination paths/query strings as needed
+      urlWithParams = new URL(query ? `${baseRequestUrl.href}/${query}/` : baseRequestUrl.href)
     } else if (props.config.app === 'kongManager') {
       // TODO: append the search, sort, and pagination paths/query strings as needed
+      new URLSearchParams(filterQuery.value).forEach((value, key) => {
+        urlWithParams.searchParams.append(key, value)
+      })
     }
 
-    urlWithParams.searchParams.append('size', String(pageSize))
+    if (props.config.app === 'kongManager' || !query) {
+      urlWithParams.searchParams.append('size', String(pageSize))
+    }
 
     return urlWithParams.href
   } catch (err) {
@@ -208,8 +238,15 @@ const fetcher = async (fetcherParams: FetcherParams): Promise<FetcherResponse> =
     state.errorMessage = ''
 
     const requestUrl = buildRequestUrl(fetcherParams)
+    const { data } = await axiosInstance.get(requestUrl)
+    let tableData
 
-    const { data: { data: tableData } } = await axiosInstance.get(requestUrl)
+    if (data.data && Array.isArray(data.data)) {
+      tableData = data.data
+    } else {
+      // Single object is returned, so wrap in an array
+      tableData = [data]
+    }
 
     state.hasData = !!tableData.length
 
@@ -219,6 +256,17 @@ const fetcher = async (fetcherParams: FetcherParams): Promise<FetcherResponse> =
     }
   } catch (error: any) {
     state.hasData = false
+
+    // If response is 404, and there is a filterQuery, show no results instead of error
+    if (filterQuery.value && error.response.status === 404) {
+      state.errorMessage = ''
+
+      return {
+        data: [],
+        total: 0,
+      }
+    }
+
     state.errorMessage = t('routes.list.error')
 
     // Emit the error for the host app

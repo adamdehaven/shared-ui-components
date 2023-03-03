@@ -1,6 +1,7 @@
 <template>
   <template v-if="config.isExactMatch">
     <KInput
+      autocomplete="off"
       class="kong-ui-entity-filter-input"
       data-testid="search-input"
       :model-value="modelValue"
@@ -65,6 +66,7 @@
                   v-else
                   :id="getFieldId(field.value)"
                   v-model="searchParams[field.value]"
+                  autocomplete="off"
                   :placeholder="t('filter.inputPlaceholder')"
                   size="small"
                   :type="getFieldInputType(field.value)"

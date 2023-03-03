@@ -1,4 +1,4 @@
-import type { KonnectConfig, KongManagerConfig } from '@kong-ui/entities-shared'
+import type { KonnectConfig, KongManagerConfig, FilterSchema } from '@kong-ui/entities-shared'
 
 /** Konnect route list config */
 export interface KonnectRouteListConfig extends KonnectConfig {
@@ -6,4 +6,8 @@ export interface KonnectRouteListConfig extends KonnectConfig {
 }
 
 /** Kong Manager route list config */
-export interface KongManagerRouteListConfig extends KongManagerConfig {}
+export interface KongManagerRouteListConfig extends KongManagerConfig {
+  isExactMatch?: boolean
+  /** FilterSchema for fuzzy match */
+  filterSchema?: FilterSchema
+}

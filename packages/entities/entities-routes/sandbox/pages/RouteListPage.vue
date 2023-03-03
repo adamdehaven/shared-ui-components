@@ -1,8 +1,10 @@
 <template>
   <h2>Konnect API</h2>
   <RouteList
-    :can-delete="canDelete"
-    :can-edit="canEdit"
+    :can-create="konnectActions.canCreate"
+    :can-delete="konnectActions.canDelete"
+    :can-edit="konnectActions.canEdit"
+    :can-retrieve="konnectActions.canRetrieve"
     :config="konnectConfig"
   />
 
@@ -13,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import { RouteList } from '../../src'
 import type { KonnectRouteListConfig, KongManagerRouteListConfig } from '../../src'
 import { canUserAccess } from '@kong-ui/konnect-app-shell'
@@ -28,14 +30,30 @@ const kongManagerConfig = ref<KongManagerRouteListConfig>({
   app: 'kongManager',
   workspace: 'default',
   apiBaseUrl: '/kong-manager', // For local dev server proxy
+  isExactMatch: false,
+  filterSchema: {
+    name: {
+      type: 'text',
+    },
+    protocols: {
+      type: 'text',
+    },
+    hosts: {
+      type: 'text',
+    },
+    methods: {
+      type: 'text',
+    },
+    paths: {
+      type: 'text',
+    },
+  },
 })
 
-const canEdit = async (row: Record<string, any>): Promise<boolean> => {
-  return await canUserAccess({ service: 'konnect', action: '#edit', resourcePath: `services/${row.id}` })
-}
-
-const canDelete = async (row: Record<string, any>): Promise<boolean> => {
-  // Org admin
-  return await canUserAccess({ service: 'accounts', action: '#root', resourcePath: null })
-}
+const konnectActions = reactive({
+  canCreate: async (): Promise<boolean> => await canUserAccess({ service: 'konnect', action: '#create', resourcePath: 'services' }),
+  canDelete: async (row: Record<string, any>): Promise<boolean> => await canUserAccess({ service: 'konnect', action: '#delete', resourcePath: `services/${row.id}` }),
+  canEdit: async (row: Record<string, any>): Promise<boolean> => await canUserAccess({ service: 'konnect', action: '#edit', resourcePath: `services/${row.id}` }),
+  canRetrieve: async (row: Record<string, any>): Promise<boolean> => await canUserAccess({ service: 'konnect', action: '#retrieve', resourcePath: `services/${row.id}` }),
+})
 </script>

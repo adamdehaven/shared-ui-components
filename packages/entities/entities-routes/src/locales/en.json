@@ -12,6 +12,9 @@
   "routes": {
     "title": "Routes",
     "list": {
+      "toolbar_actions": {
+        "new_route": "New Route"
+      },
       "table_headers": {
         "name": "Name",
         "protocols": "Protocols",
