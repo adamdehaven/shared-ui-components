@@ -376,12 +376,12 @@ export default function useSession() {
     // Grab the login_path before clearing the session data
     const storedLoginPath = session.data.organization?.login_path || ''
 
-    // Store the 'to' route if not login or logout or undefined
     const toRoute: { path: string, name?: string, [key: string]: any } = {
       path: '',
       name: '',
     }
 
+    // Store the 'to' route if not login or logout or undefined
     if (typeof loginRedirect === 'string') {
       toRoute.path = loginRedirect && !loginRedirect?.includes('login') && !loginRedirect?.includes('logout') && !loginRedirect?.includes('undefined') ? (loginRedirect || '') : ''
     } else {
@@ -404,7 +404,7 @@ export default function useSession() {
       const { kAuthApi } = composables.useKAuthApi()
 
       // Log out the user
-      const { data: { loginPath } } = await kAuthApi.value.authentication.logout()
+      const { data: { loginPath } } = await kAuthApi.value.authentication.logout() || { data: { loginPath: storedLoginPath } }
 
       // Try using the loginPath from the response; otherwise, fallback to the stored organization login_path
       const organizationLoginPath: string = loginPath || storedLoginPath
