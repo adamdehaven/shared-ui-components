@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.29.0...@kong-ui/konnect-app-shell@0.29.1) (2023-03-03)
+
+
+### Bug Fixes
+
+* **konnect-app-shell:** port logout fixes [KHCP-6446] ([#670](https://github.com/Kong/shared-ui-components/issues/670)) ([165f334](https://github.com/Kong/shared-ui-components/commit/165f3345c725350fa56e53e85b7ea7cdbb65a6bd))
+
+
+
+
+
 # [0.29.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.28.2...@kong-ui/konnect-app-shell@0.29.0) (2023-03-03)
 
 
