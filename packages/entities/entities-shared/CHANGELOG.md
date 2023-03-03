@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/entities-shared@0.3.0...@kong-ui/entities-shared@0.4.0) (2023-03-03)
+
+
+### Features
+
+* **entities-shared:** add EntityFilter [KHCP-6327] ([#638](https://github.com/Kong/shared-ui-components/issues/638)) ([a16f5ea](https://github.com/Kong/shared-ui-components/commit/a16f5ea27589b32ab967316f5cea934e50d78b29))
+
+
+
+
+
 # [0.3.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/entities-shared@0.2.4...@kong-ui/entities-shared@0.3.0) (2023-03-02)
 
 
