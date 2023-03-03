@@ -64,7 +64,6 @@ describe('<GeoSwitcher />', () => {
   const mountComponent = async ({ global, geos = [], activeGeo = '', activeGeoOverride, path = '', tier = 'enterprise', ldFeatureFlags = [] }: GeoSwitcherMountOptions) => {
     const geoStore = useGeo()
 
-    // Stub feature flags
     cy.stub(composables, 'useSession').callsFake(() => ({
       session: reactive<Partial<Session>>({
         exists: true,
@@ -80,6 +79,7 @@ describe('<GeoSwitcher />', () => {
       userOrgGeneratedUuid: computed((): string => uuidv5(orgId, userId)),
     }))
 
+    // Stub feature flags
     cy.stub(composables, 'useLaunchDarkly').callsFake(() => ({
       isInitialized: ref(true),
       evaluateFeatureFlag: (key: FeatureFlags | string, defaultValue: LDFlagValue): LDFlagValue => {
