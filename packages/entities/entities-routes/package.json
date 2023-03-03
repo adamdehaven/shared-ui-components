@@ -60,6 +60,6 @@
   "dependencies": {
     "@kong-ui-public/i18n": "^0.3.1",
     "@kong-ui/entities-shared": "workspace:^0.5.0",
-    "@kong-ui/konnect-app-shell": "^0.29.2"
+    "@kong-ui/konnect-app-shell": "workspace:^0.29.2"
   }
 }

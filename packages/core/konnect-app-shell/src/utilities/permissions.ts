@@ -1,7 +1,7 @@
 import composables from '../composables'
 import type { RequestedPermissionKrn } from '../types'
 
-const { canUserAccess: canUserAccessOriginal, userIsAuthorizedForRoute } = composables.usePermissions()
+const { canUserAccess: canUserAccessOriginal, userIsAuthorizedForRoute, fetchUserPermissions } = composables.usePermissions()
 
 /**
  * Returns a boolean indicating if the provided RequestedPermissionKrn arguments grant the user access.
@@ -28,4 +28,5 @@ const { initializeSession } = composables.useSession()
 export {
   initializeKAuth,
   initializeSession,
+  fetchUserPermissions,
 }

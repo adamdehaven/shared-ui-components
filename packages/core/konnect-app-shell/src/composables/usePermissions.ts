@@ -424,16 +424,19 @@ export default function usePermissions() {
 
   /**
    * Fetch the initial permissions for the user's session
-   * @param topLevelOnly Should we only request the top-level permissions from the API? Defaults to false
+   * @param {boolean} topLevelOnly Should we only request the top-level permissions from the API? Defaults to false
+   * @param {string?} region Active Konnect region code
    */
-  const fetchInitialPermissions = async (topLevelOnly = false): Promise<void> => {
+  const fetchUserPermissions = async (topLevelOnly = false, regionCode?: string): Promise<void> => {
     const { activeGeo } = useGeo()
 
+    const permissionsRegionCode = String(regionCode || '')?.toLowerCase() || activeGeo.value?.code
+
     // Fetch top-level user permissions for the active geo; catch any errors so the app doesn't crash
-    const { data: { data: userPermissions } } = await kAuthApi.value.me.meAPIRetrievePermissions('', '', topLevelOnly, [], activeGeo.value?.code).catch((error) => {
+    const { data: { data: userPermissions } } = await kAuthApi.value.me.meAPIRetrievePermissions('', '', topLevelOnly, [], permissionsRegionCode).catch((error) => {
       setTraceIdFromError(error)
 
-      console.error('usePermissions(fetchInitialPermissions): could not fetch top-level permissions', error)
+      console.error('usePermissions(fetchUserPermissions): could not fetch top-level permissions', error)
 
       // Return an empty array
       return { data: { data: [] } }
@@ -465,7 +468,7 @@ export default function usePermissions() {
     userIsAuthorizedForRoute,
     addKrns,
     canUserAccess,
-    fetchInitialPermissions,
+    fetchUserPermissions,
     parseKrn,
     // Export computed helpers
     isOrgAdmin,

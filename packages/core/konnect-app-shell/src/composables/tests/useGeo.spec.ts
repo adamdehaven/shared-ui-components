@@ -31,7 +31,7 @@ describe('useGeo', async () => {
   beforeEach(() => {
     // @ts-ignore
     vi.spyOn(composables, 'usePermissions').mockReturnValue({
-      fetchInitialPermissions: vi.fn(),
+      fetchUserPermissions: vi.fn(),
     })
 
     const { userOrgGeneratedUuid } = composables.useSession()

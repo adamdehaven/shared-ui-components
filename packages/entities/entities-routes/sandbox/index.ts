@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
-import { initializeKAuth, initializeSession } from '@kong-ui/konnect-app-shell'
+import { initializeKAuth, initializeSession, fetchUserPermissions } from '@kong-ui/konnect-app-shell'
 import Kongponents from '@kong/kongponents'
 import '@kong/kongponents/dist/style.css'
 
@@ -36,6 +36,7 @@ const init = async () => {
   try {
     await initializeKAuth()
     await initializeSession()
+    await fetchUserPermissions(false, 'us')
   } catch (err) {
     console.error('Could not initialize sandbox data', err)
   }

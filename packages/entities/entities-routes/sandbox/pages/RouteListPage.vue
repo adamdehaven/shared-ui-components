@@ -20,11 +20,13 @@ import { RouteList } from '../../src'
 import type { KonnectRouteListConfig, KongManagerRouteListConfig } from '../../src'
 import { canUserAccess } from '@kong-ui/konnect-app-shell'
 
+const controlPlaneId = import.meta.env.VITE_KONNECT_CONTROL_PLANE_ID || ''
+
 const konnectConfig = ref<KonnectRouteListConfig>({
   app: 'konnect',
   apiBaseUrl: '/us/kong-api', // `/{geo}/kong-api`, with leading slash and no trailing slash; Consuming app would pass in something like `https://us.api.konghq.com`
   // Set the root `.env.development.local` variable to a control plane your PAT can access
-  controlPlaneId: import.meta.env.VITE_KONNECT_CONTROL_PLANE_ID,
+  controlPlaneId,
 })
 
 const kongManagerConfig = ref<KongManagerRouteListConfig>({
@@ -52,9 +54,12 @@ const kongManagerConfig = ref<KongManagerRouteListConfig>({
 })
 
 const konnectActions = reactive({
-  canCreate: async (): Promise<boolean> => await canUserAccess({ service: 'konnect', action: '#create', resourcePath: 'services' }),
-  canDelete: async (row: Record<string, any>): Promise<boolean> => await canUserAccess({ service: 'konnect', action: '#delete', resourcePath: `services/${row.id}` }),
-  canEdit: async (row: Record<string, any>): Promise<boolean> => await canUserAccess({ service: 'konnect', action: '#edit', resourcePath: `services/${row.id}` }),
-  canRetrieve: async (row: Record<string, any>): Promise<boolean> => await canUserAccess({ service: 'konnect', action: '#retrieve', resourcePath: `services/${row.id}` }),
+  canCreate: async (): Promise<boolean> => await canUserAccess({ service: 'konnect', action: '#edit', resourcePath: `runtimegroups/${controlPlaneId}/routes/*` }),
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  canDelete: async (row: Record<string, any>): Promise<boolean> => await canUserAccess({ service: 'konnect', action: '#edit', resourcePath: `runtimegroups/${controlPlaneId}/routes/*` }),
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  canEdit: async (row: Record<string, any>): Promise<boolean> => await canUserAccess({ service: 'konnect', action: '#edit', resourcePath: `runtimegroups/${controlPlaneId}/routes/*` }),
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  canRetrieve: async (row: Record<string, any>): Promise<boolean> => await canUserAccess({ service: 'konnect', action: '#edit', resourcePath: `runtimegroups/${controlPlaneId}/routes/*` }),
 })
 </script>

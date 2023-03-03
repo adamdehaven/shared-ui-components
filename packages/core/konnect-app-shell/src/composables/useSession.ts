@@ -223,9 +223,9 @@ export default function useSession() {
       initialPermissionsFetched.value = true
 
       // Fetch the initial permissions in order to evaluate the sidebar items
-      const { fetchInitialPermissions } = composables.usePermissions()
+      const { fetchUserPermissions } = composables.usePermissions()
 
-      await fetchInitialPermissions()
+      await fetchUserPermissions(false, geoCode)
     }
   })
 
