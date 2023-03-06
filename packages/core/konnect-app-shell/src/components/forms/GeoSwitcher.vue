@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="session.exists && multiGeoEnabled && availableGeos && availableGeos.length && alwaysShowGeoSwitcher"
+    v-if="session.exists && availableGeos && availableGeos.length && alwaysShowGeoSwitcher"
     class="geo-switcher"
   >
     <NavbarDropdownMenu
@@ -73,7 +73,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import composables from '../../composables'
-import { FeatureFlags } from '../../types'
 import type { Geo } from '../../types'
 import type { NavbarDropdownMenuItem } from '@kong-ui-public/app-layout'
 import { NavbarDropdownMenu } from '@kong-ui-public/app-layout'
@@ -110,7 +109,7 @@ const props = defineProps({
     default: '220', // Prevent text wrapping in the dropdown
   },
 })
-const { useI18n, useLaunchDarkly, useSession, useGeo, useWindow } = composables
+const { useI18n, useSession, useGeo, useWindow } = composables
 
 const emit = defineEmits(['change'])
 
@@ -122,15 +121,6 @@ const { i18n: { t } } = useI18n()
 const { geos, activeGeoOverride, getActiveGeo, setActiveGeoOverride } = useGeo()
 const { session } = useSession()
 const isEnterprise = computed((): boolean => session.exists && Boolean(session.data?.organization?.isEnterprise))
-
-const { evaluateFeatureFlag, isInitialized } = useLaunchDarkly()
-
-const multiGeoEnabled = computed((): boolean => {
-  if (isInitialized.value) {
-    return evaluateFeatureFlag(FeatureFlags.MultiGeo, false)
-  }
-  return false
-})
 
 const availableGeos = computed((): NavbarDropdownMenuItem[] => {
   if (showGlobalGeo.value) {
