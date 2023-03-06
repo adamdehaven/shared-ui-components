@@ -7,7 +7,7 @@
       class="title"
       @click="contentVisible = !contentVisible"
     >
-      {{ model.name ? model.name : 'New Metric' }}
+      {{ model.name ? model.name : 'New Item' }}
       <i class="material-icons">add</i>
     </div>
     <transition name="slide-fade">

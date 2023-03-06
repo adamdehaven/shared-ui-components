@@ -24,7 +24,6 @@ export { default as FieldVueMultiSelect } from '../fields/optional/fieldVueMulti
 export { default as FieldObject } from '../fields/advanced/FieldObject.vue'
 export { default as FieldObjectAdvanced } from '../fields/advanced/FieldObjectAdvanced.vue'
 export { default as FieldArray } from '../fields/advanced/FieldArray.vue'
-export { default as FieldSchema } from '../fields/advanced/FieldSchema.vue'
 export { default as FieldMetric } from '../fields/advanced/FieldMetric.vue'
 export { default as FieldArrayItem } from '../fields/advanced/FieldArrayItem.vue'
 export { default as FieldArrayMultiItem } from '../fields/advanced/FieldArrayMultiItem.vue'
