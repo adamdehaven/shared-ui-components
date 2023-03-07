@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.30.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.29.8...@kong-ui/konnect-app-shell@0.30.0) (2023-03-07)
+
+
+### Features
+
+* **konnect-app-shell:** port geoswitcher and unauthorized logic [KHCP-6461] ([#695](https://github.com/Kong/shared-ui-components/issues/695)) ([f15624e](https://github.com/Kong/shared-ui-components/commit/f15624ee7c8b87ee5dafd6784fd49252f711e5e6))
+
+
+
+
+
 ## [0.29.8](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.29.7...@kong-ui/konnect-app-shell@0.29.8) (2023-03-07)
 
 
