@@ -172,7 +172,7 @@ importers:
     specifiers:
       '@kong-ui-public/app-layout': 0.13.18
       '@kong-ui-public/i18n': ^0.3.1
-      '@kong-ui-public/misc-widgets': ^0.2.13
+      '@kong-ui-public/misc-widgets': ^0.2.15
       '@kong-ui/core': workspace:^0.10.1
       '@kong-ui/konnect-global-search': workspace:^0.3.0
       '@kong/kauth-client-typescript-axios': ^0.1796.0
@@ -186,7 +186,7 @@ importers:
     dependencies:
       '@kong-ui-public/app-layout': 0.13.18_@kong+kongponents@8.31.0
       '@kong-ui-public/i18n': 0.3.1
-      '@kong-ui-public/misc-widgets': 0.2.13_@kong+kongponents@8.31.0
+      '@kong-ui-public/misc-widgets': 0.2.15_@kong+kongponents@8.31.0
       '@kong-ui/core': link:../core
       '@kong-ui/konnect-global-search': link:../konnect-global-search
       '@kong/kauth-client-typescript-axios': 0.1796.0
@@ -1467,8 +1467,8 @@ packages:
       - typescript
     dev: false
 
-  /@kong-ui-public/i18n/0.3.2:
-    resolution: {integrity: sha512-3szb078xdilazghtaWm7Mn7/E9FUjN+FSJ9zNEt9n7CBJDWm4QWYwk6Hy9DVG9hQTK3FHrab5Fohyc3Fk32nOQ==}
+  /@kong-ui-public/i18n/0.3.3:
+    resolution: {integrity: sha512-3afa61T/gD9RevSCboL33tm1FRUAUO93H16KaPCIfIS8rn/D69Qb2u6oJ2pjQbXYHOb/VvZ8dSO0xr6eJ10lxA==}
     peerDependencies:
       vue: ^3.2.47
     dependencies:
@@ -1479,13 +1479,13 @@ packages:
       - typescript
     dev: false
 
-  /@kong-ui-public/misc-widgets/0.2.13_@kong+kongponents@8.31.0:
-    resolution: {integrity: sha512-JrwqpN7oI8w/z5nnQ6ANmvdQTc8trFIHaHlLilPvzXsJkWpFZfZrk3a9YwpsWnFPyKf2K2w1Ch0VBFqClR3SaA==}
+  /@kong-ui-public/misc-widgets/0.2.15_@kong+kongponents@8.31.0:
+    resolution: {integrity: sha512-Ms+ZMJ1d08IcdPdrHjki0axfqne8LEZ50FUjL7TfVeYWw8ANgNVsi6gWE2Dtfq324tWsilDpT5Xfpj3dEM6nlA==}
     peerDependencies:
-      '@kong/kongponents': ^8.32.0
+      '@kong/kongponents': ^8.32.1
       vue: ^3.2.47
     dependencies:
-      '@kong-ui-public/i18n': 0.3.2
+      '@kong-ui-public/i18n': 0.3.3
       '@kong/kongponents': 8.31.0
     transitivePeerDependencies:
       - typescript
