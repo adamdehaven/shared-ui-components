@@ -175,7 +175,7 @@ importers:
       '@kong-ui-public/misc-widgets': ^0.2.15
       '@kong-ui/core': workspace:^0.10.1
       '@kong-ui/konnect-global-search': workspace:^0.3.1
-      '@kong/kauth-client-typescript-axios': ^0.1796.0
+      '@kong/kauth-client-typescript-axios': ^0.1800.0
       '@kong/kauth-client-v2-axios': ^0.0.22
       '@kong/kongponents': ^8.30.2
       '@types/uuid': ^9.0.0
@@ -189,7 +189,7 @@ importers:
       '@kong-ui-public/misc-widgets': 0.2.15_@kong+kongponents@8.31.0
       '@kong-ui/core': link:../core
       '@kong-ui/konnect-global-search': link:../konnect-global-search
-      '@kong/kauth-client-typescript-axios': 0.1796.0
+      '@kong/kauth-client-typescript-axios': 0.1800.0
       '@kong/kauth-client-v2-axios': 0.0.22
       axios: 1.3.3
       launchdarkly-js-client-sdk: 2.24.2
@@ -1491,8 +1491,8 @@ packages:
       - typescript
     dev: false
 
-  /@kong/kauth-client-typescript-axios/0.1796.0:
-    resolution: {integrity: sha512-SEEi2OG/yJ+TRQZeJJqP6YZE5X0a0lCyrNrhhk92rPydmPZrgap1cPgbiSXhHkVaQpbHN3lRnGP/YbnCK7Sapw==}
+  /@kong/kauth-client-typescript-axios/0.1800.0:
+    resolution: {integrity: sha512-LOcyDqwfQ8iKnous/Y+UksPkNNqyYmIlKF534QvPTJvrZ0gq9ucxgrlcuKg+KypKjoLArvCb2sW4Xr62PqgMLg==}
     dev: false
 
   /@kong/kauth-client-v2-axios/0.0.22:
