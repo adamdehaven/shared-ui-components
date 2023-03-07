@@ -1,15 +1,15 @@
 <template>
   <div
-    v-if="session.exists && availableGeos && availableGeos.length && alwaysShowGeoSwitcher"
+    v-if="session.exists && availableGeos && availableGeos.length && !userHasNoPermissions"
     class="geo-switcher"
   >
     <NavbarDropdownMenu
       v-if="global"
       :key="`global-${showGlobalGeo}`"
       data-testid="geo-switcher-global-menu"
-      :disabled="disabled || showGlobalGeo"
+      :disabled="disabled || showGlobalGeo || (!alwaysShowGeoSwitcher && userHasPermissionsInActiveRegion)"
       :options="availableGeos"
-      :tooltip="showGlobalGeo ? t('geo.global_disabled_tooltip') : undefined"
+      :tooltip="showGlobalGeo ? t('geo.global_disabled_tooltip') : !alwaysShowGeoSwitcher && userHasPermissionsInActiveRegion ? t('geo.geo_disabled_tooltip') : undefined"
       width="220"
       @change="onGeoChange"
     >
@@ -45,7 +45,7 @@
     </NavbarDropdownMenu>
 
     <div
-      v-else
+      v-else-if="!global && alwaysShowGeoSwitcher"
       :class="{ 'label-container': label && labelPosition === 'left' }"
     >
       <KLabel
@@ -109,7 +109,7 @@ const props = defineProps({
     default: '220', // Prevent text wrapping in the dropdown
   },
 })
-const { useI18n, useSession, useGeo, useWindow } = composables
+const { useI18n, useSession, usePermissions, useGeo, useWindow } = composables
 
 const emit = defineEmits(['change'])
 
@@ -121,6 +121,7 @@ const { i18n: { t } } = useI18n()
 const { geos, activeGeoOverride, getActiveGeo, setActiveGeoOverride } = useGeo()
 const { session } = useSession()
 const isEnterprise = computed((): boolean => session.exists && Boolean(session.data?.organization?.isEnterprise))
+const { userHasPermissionsInActiveRegion, userHasNoPermissions } = usePermissions()
 
 const availableGeos = computed((): NavbarDropdownMenuItem[] => {
   if (showGlobalGeo.value) {
@@ -135,11 +136,19 @@ const availableGeos = computed((): NavbarDropdownMenuItem[] => {
 
   // If we are displaying the global geo switcher in the navbar, use the active geo
   if (props.global) {
-    return geos.value.filter((geo: Geo) => !!geo.userCanSelect).map((geo: Geo) => ({
-      value: geo.code,
-      label: geo.name,
-      selected: geo.isActive,
-    }))
+    if (userHasPermissionsInActiveRegion.value) {
+      return geos.value.filter((geo: Geo) => !!geo.userCanSelect).map((geo: Geo) => ({
+        value: geo.code,
+        label: geo.name,
+        selected: geo.isActive,
+      }))
+    } else {
+      return geos.value.map((geo: Geo) => ({
+        value: geo.code,
+        label: geo.name,
+        selected: geo.isActive,
+      }))
+    }
   }
 
   // Otherwise, we are displaying a local geo switcher within a component in the `/global/*` route

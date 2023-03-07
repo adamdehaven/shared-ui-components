@@ -135,10 +135,10 @@ describe('<GeoSwitcher />', () => {
     })
   })
 
-  describe('hide if organization has entitled regions but user has no permissions in any regions', () => {
-    it('global switcher should be hidden when user has no permissions', () => {
+  describe('organization has entitled regions but user has no permissions in any regions', () => {
+    it('global switcher should not be hidden when user has no permissions', () => {
       mountComponent({ global: true, geos: ['us', 'eu'], userAllowedRegions: [], path: '/servicehub' })
-      cy.get(geoSwitcher.menu).should('not.exist')
+      cy.get(geoSwitcher.menu).should('be.visible')
     })
 
     it('local component switcher should be hidden when user has no permissions', () => {
@@ -154,9 +154,10 @@ describe('<GeoSwitcher />', () => {
       cy.get(geoSwitcher.select).should('not.exist')
     })
 
-    it('should hide the global picker if the org only has one region entitlement', () => {
-      mountComponent({ global: true, geos: ['us'], path: '/us/servicehub' })
-      cy.get(geoSwitcher.menu).should('not.exist')
+    it('should disable the global picker if the org only has one region entitlement', () => {
+      mountComponent({ global: true, geos: ['us'], userAllowedRegions: ['us'], path: '/us/servicehub' })
+      cy.get(geoSwitcher.menu).should('be.visible')
+      cy.get(geoSwitcher.menu).find('.k-dropdown-btn').should('be.disabled')
 
       cy.get(geoSwitcher.select).should('not.exist')
     })

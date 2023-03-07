@@ -407,19 +407,34 @@ onBeforeMount(async () => {
     return
   }
 
-  // Show an error if the user does not have permissions in the active region
-  const { userHasPermissionsInActiveRegion } = usePermissions()
-  if (!userHasPermissionsInActiveRegion.value) {
+  const { userHasPermissionsInActiveRegion, userHasNoPermissions } = usePermissions()
+
+  if (userHasNoPermissions.value) {
+    // Show an error if the user does not have ANY permissions in ANY region
+    toggleErrorState({
+      show: true,
+      header: t('errors.unauthorized.zero_permissions.header'),
+      text: t('errors.unauthorized.zero_permissions.text'),
+      traceId: '',
+    })
+
     // Unset the active region in localStorage
     unsetLocalStorageGeo()
 
-    // Show an error
+    // Show an error; must return
+    return
+  } else if (!userHasPermissionsInActiveRegion.value) {
+    console.log('here', win.getLocationPathname().replace(`/${state.activeGeo?.code}`, ''))
+    // Show an error if the user does not have permissions in the active region
     toggleErrorState({
       show: true,
-      header: t('errors.unauthorized.no_region_permissions.header'),
-      text: t('errors.unauthorized.no_region_permissions.text'),
+      header: t('errors.unauthorized.no_region_permissions.header').replace(/{geo}/, state.activeGeo?.name),
+      text: t('errors.unauthorized.no_region_permissions.text').replace(/{pathname}/, win.getLocationPathname().replace(`/${state.activeGeo?.code}`, '')),
       traceId: '',
     })
+
+    // Unset the active region in localStorage
+    unsetLocalStorageGeo()
 
     // Show an error; must return
     return

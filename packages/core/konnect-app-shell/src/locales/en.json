@@ -20,6 +20,7 @@
     },
     "global": "Global",
     "global_disabled_tooltip": "The current data view and its configuration apply globally across the system and all regions for your organization.",
+    "geo_disabled_tooltip": "The current Konnect region",
     "region_label": "Region",
     "more_regions": "More regions",
     "selection": {
@@ -65,8 +66,12 @@
         "text": "Please contact your account administrator for access."
       },
       "no_region_permissions": {
-        "header": "You do not have permissions in this region",
-        "text": "Please contact your account administrator for access. <br><a href=\"/\">Click here to return home</a>"
+        "header": "You do not have permissions in the {geo} region",
+        "text": "Please contact your account administrator for access. <br><a href=\"{pathname}\">Click here to return to your region</a>"
+      },
+      "zero_permissions": {
+        "header": "You do not have permissions in this organization",
+        "text": "Please contact your account administrator for access."
       }
     },
     "network": "Network connection lost. Check your internet connection and then try refreshing the page."

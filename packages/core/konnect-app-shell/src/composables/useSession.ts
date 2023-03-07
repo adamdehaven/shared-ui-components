@@ -78,7 +78,7 @@ export default function useSession() {
 
       const userRegionsWithPermissions = new Set<string>()
 
-      const { parseKrn } = composables.usePermissions()
+      const { parseKrn, userHasNoPermissions } = composables.usePermissions()
 
       // Check if the user has permissions in each entitled region
       if (userTopLevelPermissions.length && orgEntitledRegions.length) {
@@ -113,6 +113,8 @@ export default function useSession() {
             }
           }
         }
+      } else if (!userTopLevelPermissions.length) {
+        userHasNoPermissions.value = true
       }
 
       // User id and Org id are required, so error if they are missing
@@ -389,13 +391,6 @@ export default function useSession() {
     }
 
     try {
-      if (!toRoute?.path) {
-        session.data = {}
-        localStorage?.removeItem(SESSION_LOCAL_STORAGE_KEY)
-      } else {
-        saveSessionData({ to: toRoute }, true)
-      }
-
       // Remove the generated user session UUID from localStorage
       localStorage?.removeItem(SESSION_USER_LOCAL_STORAGE_KEY)
       // Remove the session event listener
@@ -404,14 +399,21 @@ export default function useSession() {
       const { kAuthApi } = composables.useKAuthApi()
 
       // Log out the user
-      const { data: { loginPath } } = await kAuthApi.value.authentication.logout() || { data: { loginPath: storedLoginPath } }
+      const { data: { loginPath } } = await kAuthApi.value.authentication.logout() || { data: { loginPath: '' } }
 
       // Try using the loginPath from the response; otherwise, fallback to the stored organization login_path
       const organizationLoginPath: string = loginPath || storedLoginPath
 
       // Get the login path with IdP loginPath if configured, otherwise just the login path
       // (WITH leading slash)
-      const loginPagePath = loginPath ? `/login/${organizationLoginPath}` : '/login'
+      const loginPagePath = organizationLoginPath ? `/login/${organizationLoginPath}` : '/login'
+
+      if (!toRoute?.path) {
+        session.data = {}
+        localStorage?.removeItem(SESSION_LOCAL_STORAGE_KEY)
+      } else {
+        saveSessionData({ to: toRoute }, true)
+      }
 
       // Clear session cookie
       document.cookie = `${CYPRESS_USER_SESSION_EXISTS}=; Max-Age=-1`
@@ -425,6 +427,7 @@ export default function useSession() {
       // Redirect user to logout
       win.setLocationAssign(logoutUrl.href)
     } catch (err) {
+      console.error(err)
       // Always clear the session data
       session.data = {}
       localStorage?.removeItem(SESSION_LOCAL_STORAGE_KEY)

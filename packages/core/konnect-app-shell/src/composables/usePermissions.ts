@@ -11,6 +11,9 @@ const krns = ref<KrnFromApi[]>([])
 const userHasRootAccess = ref<boolean>(false)
 // Does the user have root access
 const userHasRootReadonlyAccess = ref<boolean>(false)
+// Does the user have zero permissions (e.g. no valid KRNs)? Default: false
+// This should only be set in useSession.ts in the `fetchSessionData` method as long as we are fetching ALL permissions for ALL regions
+const userHasNoPermissions = ref<boolean>(false)
 
 /**
  * Determine if the resource path from a KRN from the API matches a requested resource path guard.
@@ -475,5 +478,6 @@ export default function usePermissions() {
     isOrgAdminReadonly,
     userHasPermissionsInActiveRegion,
     userHasSomePermissions,
+    userHasNoPermissions,
   }
 }

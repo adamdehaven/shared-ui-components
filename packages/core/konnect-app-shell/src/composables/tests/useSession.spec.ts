@@ -4,10 +4,12 @@ import { SESSION_LOCAL_STORAGE_KEY, SESSION_USER_LOCAL_STORAGE_KEY } from '../..
 import { SessionData } from '../../types'
 import { v4 as uuidv4 } from 'uuid'
 import { AxiosResponse } from 'axios'
+import { flushPromises } from '@vue/test-utils'
 
 const userId = uuidv4()
 const orgId = uuidv4()
 const orgTier = 'enterprise'
+const orgLoginPath = 'my-login-path'
 
 describe('useSession', async () => {
   const { session, initializeSession, userOrgGeneratedUuid } = composables.useSession()
@@ -44,6 +46,7 @@ describe('useSession', async () => {
             name: 'Unit Test Organization',
             billing_email: 'billing@example.com',
             owner_id: '',
+            loginPath: orgLoginPath,
             created_at: '',
             updated_at: '',
           },
@@ -66,7 +69,7 @@ describe('useSession', async () => {
       authentication: {
         logout: () => new Promise((resolve) => resolve({
           data: {
-            loginPath: '',
+            loginPath: orgLoginPath,
           },
         } as AxiosResponse)),
         refresh: () => new Promise((resolve) => resolve({
@@ -99,6 +102,7 @@ describe('useSession', async () => {
     // Mock any redirects redirect
     windowLocationSpy.mockReturnValue({
       assign: () => vi.fn(),
+      origin: 'http://localhost.cypress.com',
     })
   })
 
@@ -115,6 +119,9 @@ describe('useSession', async () => {
 
     await initializeSession()
 
+    // Await all promises to resolve
+    await flushPromises()
+
     expect(session.data?.user?.id).toEqual(userId)
     expect(session.data?.organization?.id).toEqual(orgId)
     expect(session.data?.organization?.entitlements?.tier?.name).toEqual(orgTier)
@@ -125,6 +132,9 @@ describe('useSession', async () => {
     expect(session.data?.user?.id).toEqual(undefined)
 
     await initializeSession()
+
+    // Await all promises to resolve
+    await flushPromises()
 
     expect(localStorage.getItem(SESSION_LOCAL_STORAGE_KEY)).toBe(btoa(encodeURIComponent(JSON.stringify(session.data))))
     expect(localStorage.getItem(SESSION_USER_LOCAL_STORAGE_KEY)).toBe(userOrgGeneratedUuid.value)
@@ -137,10 +147,16 @@ describe('useSession', async () => {
 
     await initializeSession()
 
+    // Await all promises to resolve
+    await flushPromises()
+
     expect(localStorage.getItem(SESSION_LOCAL_STORAGE_KEY)).toBe(btoa(encodeURIComponent(JSON.stringify(session.data))))
     expect(localStorage.getItem(SESSION_USER_LOCAL_STORAGE_KEY)).toBe(userOrgGeneratedUuid.value)
 
     await session.destroy()
+
+    // Await all promises to resolve
+    await flushPromises()
 
     expect(localStorage.getItem(SESSION_LOCAL_STORAGE_KEY)).toBe(null)
     expect(localStorage.getItem(SESSION_USER_LOCAL_STORAGE_KEY)).toBe(null)
@@ -151,7 +167,13 @@ describe('useSession', async () => {
 
     // Destroy session and pass the current path
     const currentPath = '/mesh-manager/child'
-    session.destroy(currentPath)
+
+    await session.destroy(currentPath)
+
+    // Await all promises to resolve
+    await flushPromises()
+
+    console.log('localStorage.getItem(SESSION_LOCAL_STORAGE_KEY)', localStorage.getItem(SESSION_LOCAL_STORAGE_KEY))
 
     const sessionDataFromLocalStorage: SessionData = JSON.parse(decodeURIComponent(atob(localStorage.getItem(SESSION_LOCAL_STORAGE_KEY) || '')))
 
@@ -170,9 +192,15 @@ describe('useSession', async () => {
 
     await initializeSession()
 
+    // Await all promises to resolve
+    await flushPromises()
+
     expect(session.exists).toBe(true)
 
     await session.destroy()
+
+    // Await all promises to resolve
+    await flushPromises()
 
     expect(session.exists).toBe(false)
   })
