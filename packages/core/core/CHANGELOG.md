@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/core@0.10.1...@kong-ui/core@0.11.0) (2023-03-08)
+
+
+### Features
+
+* **core:** add persistent table settings composable [KHCP-5571] ([#685](https://github.com/Kong/shared-ui-components/issues/685)) ([e3fbdb7](https://github.com/Kong/shared-ui-components/commit/e3fbdb738ec5759f8abc148bf73f7c01286ede96))
+
+
+
+
+
 ## [0.10.1](https://github.com/Kong/shared-ui-components/compare/@kong-ui/core@0.10.0...@kong-ui/core@0.10.1) (2023-02-07)
 
 
