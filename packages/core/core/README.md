@@ -2,6 +2,7 @@
 
 - [useDebounce](#usedebounce)
 - [usePackage](#usepackage)
+- [useTablePreferences](#usetablepreferences)
 - [useWindow](#usewindow)
 
 ## useDebounce
@@ -11,6 +12,10 @@
 ## usePackage
 
 [usePackage docs](./src/usePackage/README.md)
+
+## useTablePreferences
+
+[useTablePreferences docs](./src/useTablePreferences/README.md)
 
 ## useWindow
 
