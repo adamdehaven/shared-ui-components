@@ -59,7 +59,7 @@
     "@kong-ui-public/misc-widgets": "^0.2.18",
     "@kong-ui/core": "workspace:^0.10.1",
     "@kong-ui/konnect-global-search": "workspace:^0.3.3",
-    "@kong/kauth-client-typescript-axios": "^0.1803.0",
+    "@kong/kauth-client-typescript-axios": "^0.1807.0",
     "@kong/kauth-client-v2-axios": "^0.0.23",
     "axios": "^1.3.3",
     "launchdarkly-js-client-sdk": "^2.24.2",
