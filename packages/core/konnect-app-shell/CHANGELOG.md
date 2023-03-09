@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.31.0](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.30.14...@kong-ui/konnect-app-shell@0.31.0) (2023-03-09)
+
+
+### Features
+
+* datadog browser rum client as part of konnect-app-shell [KHCP-5525] ([#709](https://github.com/Kong/shared-ui-components/issues/709)) ([bb626a8](https://github.com/Kong/shared-ui-components/commit/bb626a81628658647d448b183372875a2f7f1573))
+
+
+
+
+
 ## [0.30.14](https://github.com/Kong/shared-ui-components/compare/@kong-ui/konnect-app-shell@0.30.13...@kong-ui/konnect-app-shell@0.30.14) (2023-03-09)
 
 
