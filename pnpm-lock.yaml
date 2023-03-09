@@ -172,7 +172,7 @@ importers:
     specifiers:
       '@kong-ui-public/app-layout': 0.13.22
       '@kong-ui-public/i18n': ^0.3.1
-      '@kong-ui-public/misc-widgets': ^0.2.19
+      '@kong-ui-public/misc-widgets': ^0.2.20
       '@kong-ui/core': workspace:^0.11.0
       '@kong-ui/konnect-global-search': workspace:^0.3.6
       '@kong/kauth-client-typescript-axios': ^0.1809.0
@@ -186,7 +186,7 @@ importers:
     dependencies:
       '@kong-ui-public/app-layout': 0.13.22_@kong+kongponents@8.31.0
       '@kong-ui-public/i18n': 0.3.1
-      '@kong-ui-public/misc-widgets': 0.2.19_@kong+kongponents@8.31.0
+      '@kong-ui-public/misc-widgets': 0.2.20_@kong+kongponents@8.31.0
       '@kong-ui/core': link:../core
       '@kong-ui/konnect-global-search': link:../konnect-global-search
       '@kong/kauth-client-typescript-axios': 0.1809.0
@@ -1479,10 +1479,10 @@ packages:
       - typescript
     dev: false
 
-  /@kong-ui-public/misc-widgets/0.2.19_@kong+kongponents@8.31.0:
-    resolution: {integrity: sha512-UZ/Bdn//dPQb3FaFPw7YPiMssmW/cE5ISedyPMyyA4e41gpR3UxuUENtmJl03+QiUPP300wMA9yVumm9OVOR+g==}
+  /@kong-ui-public/misc-widgets/0.2.20_@kong+kongponents@8.31.0:
+    resolution: {integrity: sha512-9Fr6lsQltJTsUA6/BX0uosxq2EjzUjS/yvK0O6wHhGL2vPFbkm4fcXxEghKxejxdsLZC/7GQqZ+y6ubeSvj+MQ==}
     peerDependencies:
-      '@kong/kongponents': ^8.33.3
+      '@kong/kongponents': ^8.33.4
       vue: ^3.2.47
     dependencies:
       '@kong-ui-public/i18n': 0.3.3
