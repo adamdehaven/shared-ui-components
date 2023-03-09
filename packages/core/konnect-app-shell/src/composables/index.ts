@@ -7,6 +7,8 @@ import useKAuthApi from './useKAuthApi'
 import useLaunchDarkly from './useLaunchDarkly'
 import usePermissions from './usePermissions'
 import useSession from './useSession'
+import useDatadog from './useDatadog'
+
 // Expose composables imported from `@kong-ui/core`
 import { useWindow } from '@kong-ui/core'
 
@@ -21,5 +23,6 @@ export default {
   useLaunchDarkly,
   usePermissions,
   useSession,
+  useDatadog,
   useWindow,
 }

@@ -1,11 +1,15 @@
-import { ref, readonly } from 'vue'
+import { ref, readonly, Ref } from 'vue'
 import axios from 'axios'
 import type { KongUiConfig } from '../types'
 
 // Initialize these ref(s) outside the function for persistence
 const config = ref<KongUiConfig>()
 
-export default function useAppConfig() {
+export default function useAppConfig(): {
+  config: Readonly<Ref<KongUiConfig | undefined>>
+  error: Readonly<Ref<Error | undefined>>
+  fetchAppShellConfig: () => Promise<void>
+} {
   const error = ref<Error>()
 
   const fetchAppShellConfig = async (): Promise<void> => {

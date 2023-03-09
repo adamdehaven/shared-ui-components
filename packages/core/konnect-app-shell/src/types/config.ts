@@ -1,3 +1,5 @@
+import type { RumInitConfiguration } from '@datadog/browser-rum'
+
 // This will need to be extended as properties are added
 export interface KongUiConfig {
   env: 'local' | 'development' | 'production' | string
@@ -19,5 +21,8 @@ export interface KongUiConfig {
   launchDarkly: {
     key: string
     platform_id: string
+  }
+  datadog: {
+    rum?: RumInitConfiguration | Record<string, any>
   }
 }

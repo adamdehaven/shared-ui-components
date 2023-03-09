@@ -134,7 +134,7 @@ import '@kong-ui-public/app-layout/dist/style.css'
 import '@kong-ui/konnect-global-search/dist/style.css'
 import '@kong-ui-public/misc-widgets/dist/style.css'
 
-const { useSession, useAppSidebar, useGeo, useI18n, useKAuthApi, useAppConfig, usePermissions } = composables
+const { useSession, useAppSidebar, useGeo, useI18n, useKAuthApi, useAppConfig, usePermissions, useDatadog } = composables
 const props = defineProps({
   // Provide the secondary sidebar items that should be injected into the top-level primary item with the corresponding `parentKey`
   sidebarItems: {
@@ -208,6 +208,7 @@ const state: KonnectAppShellState = reactive({
 const { i18n: { t } } = useI18n()
 
 const { config: appConfig } = useAppConfig()
+const { init: initDatadog } = useDatadog()
 const searchApiUrl = computed((): string => (appConfig?.value && state.activeGeo && appConfig?.value.api.v1.konnect.replace('{geo}', state.activeGeo.code)) || '')
 
 const hideNavbar = computed((): boolean => (props.navbarHidden || state.loading || !state.activeGeo) && !state.error.show)
@@ -353,6 +354,8 @@ onBeforeMount(async () => {
     // Show an error; must return
     return
   }
+
+  initDatadog()
 
   // Attempt to init the session data.
   // This should ONLY be called once, within the onBeforeMount hook

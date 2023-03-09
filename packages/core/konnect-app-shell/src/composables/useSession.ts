@@ -6,6 +6,7 @@ import { SESSION_LOCAL_STORAGE_KEY, SESSION_USER_LOCAL_STORAGE_KEY, CYPRESS_USER
 import type { Session, SessionData, Tier } from '../types'
 import { useWindow } from '@kong-ui/core'
 import { v4 as uuidv4, v5 as uuidv5 } from 'uuid'
+import { datadogRum } from '@datadog/browser-rum'
 
 // Initialize these ref(s) outside the function for persistence
 const session = reactive<Session>({
@@ -175,11 +176,10 @@ export default function useSession() {
       window?.addEventListener('storage', (event: StorageEvent) => refreshOnUserChange(event, SESSION_USER_LOCAL_STORAGE_KEY))
 
       // Initialize DataDog with the actual user id
-      globalThis.DD_RUM && globalThis.DD_RUM.onReady(() => {
-        globalThis.DD_RUM.setUser({
-          id: session.data?.user?.id,
-          orgId: session.data?.organization?.id,
-        })
+      datadogRum.setUser({
+        id: session.data?.user?.id,
+        orgId: session.data?.organization?.id,
+        featureSet: session.data?.user?.feature_set,
       })
 
       // Init Launch Darkly with session user before calling segment

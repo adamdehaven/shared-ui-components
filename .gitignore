@@ -30,8 +30,6 @@ cypress/screenshots/
 *.sln
 *.sw?
 
-# Local Netlify folder
-.netlify
 # cli bin
 packages/core/cli/bin
 .nyc_output/out.json
